@@ -1,0 +1,64 @@
+### IDE/support
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+*~
+tags
+
+# IntellijIDEA
+.idea/
+.ideaHaskellLib/
+*.iml
+
+# Atom
+.haskell-ghc-mod.json
+
+# VS
+.vscode/
+
+# Emacs
+*#
+.dir-locals.el
+TAGS
+
+# other
+.DS_Store
+.cache
+site/
+/runtime/include/
+_build/
+_build.*/
+*.agdai
+.agda/
+agda2hs/
+docs/examples/html/.*
+docs/*.html
+*.cabal
+/src/Juvix/Utils/OldParser.hs
+docs/CHANGELOG.md
+docs/CONTRIBUTING.md
+docs/LICENSE.md
+docs/README.md
+.juvix-build
+
+# C Code generation
+*.out.c
+*.s
+*.wasm
+*.exe
+book/*
+**/html/*
+
+*.cmi
+*.cmx
+*.cmo
+.history
+# Binary files (produced by `make check`)
+examples/milestone/HelloWorld/HelloWorld
+hie.yaml
+/.shake/
+/.benchmark-results/
+docs/assets/**
+docs/overrides/.icons/bootstrap**

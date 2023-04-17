@@ -1,0 +1,74 @@
+name: The Juvix compiler CI
+"on":
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: the repository ref to build
+        required: true
+        default: main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.head_ref || github.run_id }}"
+  cancel-in-progress: true
+
+env:
+  SKIP: format-juvix-files,typecheck-juvix-examples
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - uses: pre-commit/action@v3.0.0
+
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout our repository
+        uses: actions/checkout@v3
+        with:
+          path: main
+          submodules: recursive
+
+        id: cache-llvm
+        uses: actions/cache@v3
+        with:
+          path: |
+            C:/Program Files/LLVM
+            ./llvm
+          key: "${{ runner.os }}-llvm-13"
+
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "13.0"
+          cached: "${{ steps.cache-llvm.outputs.cache-hit }}"
+
+      - name: Install the latest Wasmer version
+        uses: jaxxstorm/action-install-gh-release@v1.10.0
+        with:
+          repo: wasmerio/wasmer
+          tag: latest
+          binaries-location: bin
+          cache: true
+
+      - name: Generate HTML files from examples
+        run: |
+          cd main
+          echo "$GITHUB_WORKSPACE/.local/bin" >> $GITHUB_PATH
+          make html-examples
+          make demo-example
