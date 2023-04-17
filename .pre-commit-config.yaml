@@ -1,0 +1,44 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: detect-private-key
+      - id: mixed-line-ending
+        exclude: tests/
+      - id: trailing-whitespace
+        exclude: tests/
+      - id: end-of-file-fixer
+        exclude: tests/|assets/
+
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 3.0.0
+    hooks:
+      - id: forbid-binary
+        name: forbid binary files
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.0.0-alpha.6
+    hooks:
+      - id: prettier
+        types_or: [css, javascript, markdown, yaml, toml]
+
+  - repo: local
+    hooks:
+      - id: format-juvix-files
+        name: format Juvix examples
+        entry: make -s format-juvix-files
+        language: system
+        verbose: false
+        pass_filenames: false
+
+      - id: typecheck-juvix-examples
+        name: typecheck Juvix examples
+        entry: make -s typecheck-juvix-examples
+        language: system
+        verbose: false
+        pass_filenames: false

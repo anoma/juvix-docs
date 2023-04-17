@@ -1,0 +1,62 @@
+INHERIT: mkdocs.yml
+plugins:
+  - privacy:
+      enabled: !ENV [CI, false]
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - social
+  - tags
+  # - optimize:
+  #     cache: false
+  #     concurrency: 1
+  #     optimize_png_strip: false
+  #     optimize_jpg_progressive: false
+  #     optimize_jpg_quality: 75
+  - meta
+  - blog:
+      blog_toc: true
+      draft: false
+      authors: true
+      draft_on_serve: true
+      post_date_format: short
+      post_url_date_format: yyyy/MM/dd
+      archive: true
+      archive_name: Archive
+      categories: true
+      categories_name: Categories
+      pagination: true
+      pagination_per_page: 1
+      pagination_keep_content: true
+      
+  - git-committers:
+      enable: true
+      repository: anoma/juvix
+      branch: main
+
+  - rss:
+      match_path: blog/posts/.* 
+      date_from_meta:
+        as_creation: date
+      categories:
+        - categories
+        - tags 
+
+  - mike:
+      canonical_version: latest
+      version_selector: true
+      css_dir: assets/stylesheets
+      javascript_dir: assets/javascripts
+
+extra:
+  generator: false
+  version:
+    provider: mike
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/anoma/juvix
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/juvixlang
+
+  analytics:
+    provider: google
+    property: !ENV GOOGLE_ANALYTICS_KEY
