@@ -55,7 +55,7 @@ theme:
     - navigation.expand
     - navigation.path
     - navigation.footer
-    # - navigation.instant
+    - navigation.instant
     - search.highlight
     - search.suggest
     - toc.follow

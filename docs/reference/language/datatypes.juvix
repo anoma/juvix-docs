@@ -4,15 +4,15 @@ module datatypes;
 type Nat :=
   | zero : Nat
   | suc : Nat -> Nat;
-
 --8<-- [end:typeNat]
+
 --8<-- [start:addNat]
 infixl 6 +;
 + : Nat -> Nat -> Nat;
 + zero b := b;
 + (suc a) b := suc (a + b);
-
 --8<-- [end:addNat]
+
 module List;
   --8<-- [start:typeList]
   infixr 5 ::;
