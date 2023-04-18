@@ -2123,8 +2123,9 @@ constructors: <code>zero</code> and <code>suc</code>. Example elements of type <
 number one represented by <code>suc zero</code>, the number two represented by
 <code>suc (suc zero)</code>, etc.</p>
 <pre><code class="language-juvix">type Nat :=
-    zero : Nat
+  | zero : Nat
   | suc : Nat -&gt; Nat;
+
 </code></pre>
 <p>Constructors can be used like normal functions or in patterns when
 defining functions by pattern matching. For example, here is a function
@@ -2133,18 +2134,21 @@ adding two natural numbers:</p>
 + : Nat -&gt; Nat -&gt; Nat;
 + zero b := b;
 + (suc a) b := suc (a + b);
-</code></pre>
-<p>A data type may have type parameters. A data type with a type parameter
-<code>A</code> is called <em>polymorphic in</em> <code>A</code>. A canonical example is the type
-<code>List</code> polymorphic in the type of list elements.</p>
-<pre><code class="language-juvix">infixr 5 ::;
-type List (A : Type) :=
-    nil : List A
-  | :: : A -&gt; List A -&gt; List A;
 
-elem : {A : Type} -&gt; (A -&gt; A -&gt; Bool) -&gt; A -&gt; List A -&gt; Bool;
-elem _ _ nil := false;
-elem eq s (x :: xs) := eq s x || elem eq s xs;
+</code></pre>
+<p>A data type can possess type parameters. When a data type has a type parameter <code>A</code>, it is referred to as <em>polymorphic in</em> <code>A</code>. A classic example of this concept is the <code>List</code> type, which is polymorphic in the type of its list elements.</p>
+<pre><code class="language-juvix">  infixr 5 ::;
+  type List (A : Type) :=
+    | nil : List A
+    | :: : A -&gt; List A -&gt; List A;
+</code></pre>
+<p>The following function determines whether an element is in a list or not.</p>
+<pre><code class="language-juvix">  open import Stdlib.Data.Bool using {Bool; false; ||};
+
+  elem :
+    {A : Type} -&gt; (A -&gt; A -&gt; Bool) -&gt; A -&gt; List A -&gt; Bool;
+  elem _ _ nil := false;
+  elem eq s (x :: xs) := eq s x || elem eq s xs;
 </code></pre>
 <p>For more examples of inductive types and how to use them, see <a href="https://anoma.github.io/juvix-stdlib/">the Juvix
 standard library</a>.</p>

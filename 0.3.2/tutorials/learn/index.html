@@ -2892,7 +2892,7 @@ case of <code>ncons _ xs</code>, we recursively call <code>nlength</code> on <co
 to the result.</p>
 <p>Let's consider another example – a function which returns the maximum of
 the numbers in a list or 0 for the empty list.</p>
-<pre><code class="language-juvix">  open import Stdlib.Data.Nat.Ord using {max}; 
+<pre><code class="language-juvix">  open import Stdlib.Data.Nat.Ord using {max};
   nmaximum : NList -&gt; Nat;
   nmaximum nnil := 0;
   nmaximum (ncons x xs) := max x (nmaximum xs);

@@ -122,7 +122,7 @@ module NList-example;
   --8<-- [end:nlength]
 
   --8<-- [start:nmaximum]
-  open import Stdlib.Data.Nat.Ord using {max}; 
+  open import Stdlib.Data.Nat.Ord using {max};
   nmaximum : NList -> Nat;
   nmaximum nnil := 0;
   nmaximum (ncons x xs) := max x (nmaximum xs);

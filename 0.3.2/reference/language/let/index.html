@@ -2106,18 +2106,18 @@
 
 <h1 id="local-definitions">Local definitions<a class="headerlink" href="#local-definitions" title="Permanent link">&para;</a></h1>
 <p>Local definitions are introduced with the <code>let</code> construct.</p>
-<pre><code class="language-juvix">sum : NList -&gt; Nat;
+<pre><code class="language-juvix">open import Stdlib.Prelude;
+
+sum : List Nat -&gt; Nat;
 sum lst :=
   let
-    go : Nat -&gt; NList -&gt; Nat;
+    go : Nat -&gt; List Nat -&gt; Nat;
     go acc nnil := acc;
-    go acc (ncons x xs) := go (acc + x) xs;
+    go acc (x :: xs) := go (acc + x) xs;
   in
-  go 0 lst;
+  go zero lst;
 </code></pre>
-<p>The declaractions in a <code>let</code> have the same syntax as declarations inside
-a module, but they are visible only in the expression following the <code>in</code>
-keyword.</p>
+<p>The declarations within a <code>let</code> statement share the same syntax as those inside a module. However, their visibility is limited to the expression that follows the <code>in</code> keyword.</p>
 
   
   

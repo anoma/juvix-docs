@@ -2220,28 +2220,29 @@
 <p>In the following example, we define a function <code>multiplyByTwo</code>. The
 first line <code>multiplyByTwo : Nat -&gt; Nat;</code> is the type signature and the
 second line <code>multiplyByTwo n := 2 * n;</code> is a function clause.</p>
-<pre><code class="language-juvix">open import Stdlib.Prelude;
-
+<pre><code class="language-juvix">open import Stdlib.Data.Nat;
 multiplyByTwo : Nat -&gt; Nat;
 multiplyByTwo n := 2 * n;
 </code></pre>
 <p>A function may have more than one function clause. When a function is
 called, the first clause that matches the arguments is used.</p>
 <p>The following function has two clauses.</p>
-<pre><code class="language-juvix">open import Stdlib.Prelude;
-
+<pre><code class="language-juvix">open import Stdlib.Data.Bool;
 neg : Bool -&gt; Bool;
 neg true := false;
 neg false := true;
 </code></pre>
-<p>When <code>neg</code> is called with <code>true</code>, the first clause is used and the
-function returns <code>false</code>. Similarly, when <code>neg</code> is called with <code>false</code>,
-the second clause is used and the function returns <code>true</code>.</p>
+<p>When <code>neg</code> is called with <code>true</code>, the first clause is used and the function
+returns <code>false</code>. Similarly, when <code>neg</code> is called with <code>false</code>, the second clause
+is used and the function returns <code>true</code>.</p>
 <h2 id="mutually-recursive-functions">Mutually recursive functions<a class="headerlink" href="#mutually-recursive-functions" title="Permanent link">&para;</a></h2>
 <p>Function declarations can depend on each other recursively. In the
 following example, we define a function that checks if a number is
 <code>even</code> by calling a function that checks if a number is <code>odd</code>.</p>
-<pre><code class="language-juvix">open import Stdlib.Prelude;
+<pre><code class="language-juvix">open import Stdlib.Data.Nat;
+open import Stdlib.Data.Bool;
+
+open import Stdlib.Prelude;
 
 odd : Nat -&gt; Bool;
 even : Nat -&gt; Bool;
@@ -2256,7 +2257,7 @@ even (suc n) := odd n;
 <p>Anonymous functions, or <em>lambdas</em>, are introduced with the syntax:</p>
 <pre><code class="language-juvix">\{| pat1 .. patN_1 := clause1
   | ..
-  | pat1 .. patN_M := clauseM}
+  | pat1 .. patN_M := clauseM }
 </code></pre>
 <p>The first pipe <code>|</code> is optional. Instead of <code>\</code> one can also use <code>λ</code>.</p>
 <p>An anonymous function just lists all clauses of a function without
@@ -2280,7 +2281,8 @@ even := \{
 <h2 id="short-definitions">Short definitions<a class="headerlink" href="#short-definitions" title="Permanent link">&para;</a></h2>
 <p>A function definition can be written in one line, with the body
 immediately following the signature:</p>
-<pre><code class="language-juvix">multiplyByTwo : Nat -&gt; Nat := \{n := 2 * n};
+<pre><code class="language-juvix">open import Stdlib.Data.Nat;
+multiplyByTwo : Nat -&gt; Nat := \{ n := 2 * n };
 </code></pre>
 
   

@@ -2105,19 +2105,23 @@
 
 
 <h1 id="comments">Comments<a class="headerlink" href="#comments" title="Permanent link">&para;</a></h1>
-<p>Comments follow the same syntax as in <code>Haskell</code> and <code>Agda</code>. Be aware,
-Juvix has no support for nested comments.</p>
+<p>Comments follow the same syntax as in <code>Haskell</code> and <code>Agda</code>. Be aware, Juvix has no support for nested comments.</p>
 <ul>
 <li>Inline Comment</li>
 </ul>
-<pre><code class="language-juvix">    -- This is a comment!
+<pre><code class="language-juvix">-- This is a comment!
 </code></pre>
 <ul>
 <li>Region comment</li>
 </ul>
-<pre><code class="language-juvix">    {-
-        This is a comment!
-    -}
+<pre><code class="language-juvix">{-
+    This is a comment!
+-}
+</code></pre>
+<ul>
+<li>Judoc inline comments. These are used to document functions and types. See <a href="../../judoc/">Judoc</a> for more information.</li>
+</ul>
+<pre><code class="language-juvix">--- This is a Judoc comment!
 </code></pre>
 
   
