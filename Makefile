@@ -99,7 +99,7 @@ juvix-metafiles:
 	done
 
 .PHONY: html-examples
-html-examples:
+html-examples: juvix
 	@for file in $(EXAMPLES); do \
 			OUTPUTDIR=$(EXAMPLEHTMLOUTPUT)/$$(dirname $$file); \
 			mkdir -p $${OUTPUTDIR}; \
@@ -116,6 +116,7 @@ ALIAS?=latest
 MKDOCSCONFIG?=mkdocs.insiders.yml
 
 icons:
+	rm -rf docs/overrides/.icons/bootstrap
 	@cd docs/overrides/.icons \
 		&& \
 		curl -s https://api.github.com/repos/twbs/icons/releases/latest \
@@ -126,6 +127,7 @@ icons:
 			&& unzip -o bootstrap.zip \
 			&& rm -rf bootstrap.zip \
 			&& mv bootstrap-icons-* bootstrap
+	@unzip -o codicons.zip 
 
 .PHONY: docs
 docs:
@@ -141,9 +143,9 @@ mike: docs
 mike-serve: mike
 	mike serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
-test: checkout-juvix  \
-			html-examples  \
+deploy: checkout-juvix  \
 			juvix-metafiles  \
+			html-examples  \
 			icons \
 			docs
 

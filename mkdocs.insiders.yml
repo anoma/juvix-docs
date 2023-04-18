@@ -1,17 +1,13 @@
 INHERIT: mkdocs.yml
 plugins:
+  - offline:
+      enabled: !ENV [OFFLINE, false]
   - privacy:
       enabled: !ENV [CI, false]
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - social
   - tags
-  # - optimize:
-  #     cache: false
-  #     concurrency: 1
-  #     optimize_png_strip: false
-  #     optimize_jpg_progressive: false
-  #     optimize_jpg_quality: 75
   - meta
   - blog:
       blog_toc: true
@@ -47,6 +43,7 @@ plugins:
       javascript_dir: assets/javascripts
 
 extra:
+  homepage: https://docs.juvix.org
   generator: false
   version:
     provider: mike

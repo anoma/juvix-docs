@@ -6,12 +6,12 @@ categories:
   - implementation-notes
 ---
 
-# Strictly Positive Data Types
+# Stay Positive with Your Data Types
 
 In this blog post, we will investigate the notion of strictly positive inductive
 data types, which is a condition that Juvix mandates for a data type to be
-considered well-typed. We'll begin with a syntactic overview and subsequently
-examine examples to get more familiar.
+considered well-typed. 
+
 
 An **inductive type** is considered *strictly positive* if it either:
 

@@ -62,5 +62,6 @@ hie.yaml
 /.benchmark-results/
 # docs/assets/**
 docs/overrides/.icons/bootstrap**
+docs/overrides/.icons/codeicons/**
 juvix-src/
 python-env/
