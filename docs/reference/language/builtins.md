@@ -22,7 +22,7 @@ builtin nat-plus
 + (suc a) b := suc (a + b);
 ```
 
-##  Builtin axiom definitions.
+## Builtin axiom definitions.
 
 ```juvix
 builtin nat-print

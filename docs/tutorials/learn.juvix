@@ -261,8 +261,8 @@ module Maybe-example;
   type Maybe (A : Type) :=
     | nothing : Maybe A
     | just : A -> Maybe A;
+
   --8<-- [end:Maybe]
-  
   open List-example using {List;nil;::};
 
   module tail-list-example;

@@ -60,7 +60,7 @@ examples/milestone/HelloWorld/HelloWorld
 hie.yaml
 /.shake/
 /.benchmark-results/
-docs/assets/**
+# docs/assets/**
 docs/overrides/.icons/bootstrap**
 juvix-src/
 python-env/

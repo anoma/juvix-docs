@@ -1,4 +1,3 @@
-
 ## [Examples of programs written in Juvix](https://github.com/anoma/juvix/tree/main/examples/milestone)
 
 The following links are clickable versions of their corresponding Juvix

@@ -1,4 +1,3 @@
-
 # Quick Start
 
 To install Juvix, follow the instructions in the [Installation
@@ -54,7 +53,7 @@ juvix html --recursive path/to/source.juvix
 
 This is the Juvix source code of the traditional Hello World program.
 
-``` juvix
+```juvix
 -- HelloWorld.juvix
 module HelloWorld;
 

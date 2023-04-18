@@ -1,0 +1,7 @@
+module Bug;
+axiom A : Type;
+axiom B : Type;
+
+positive
+type B (A : Type) :=
+  b : (A -> B (B A -> A)) -> B A;

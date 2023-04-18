@@ -1,79 +1,86 @@
 ---
 date: 2022-07-25
-authors: 
+authors:
   - jonathan
 categories:
   - implementation-notes
 ---
 
-# Strictly positive data types
+# Strictly Positive Data Types
 
-We follow a syntactic description of strictly positive inductive data types.
+In this blog post, we will investigate the notion of strictly positive inductive
+data types, which is a condition that Juvix mandates for a data type to be
+considered well-typed. We'll begin with a syntactic overview and subsequently
+examine examples to get more familiar.
 
-An inductive type is considered strictly positive if it either does not appear or appears strictly positively within the argument types of its constructors. A name is deemed strictly positive for an inductive type when it never appears in a negative position within the argument types of its constructors. A negative position refers to occurrences situated to the left of an arrow in a type constructor argument.
+An **inductive type** is considered *strictly positive* if it either:
 
-In the example below, the type `X` occurs strictly positive in `c0` and
-negatively at the constructor `c1`. Therefore, `X` is not strictly
-positive.
+1. Does not appear within the argument types of its constructors, or
+2. Appears strictly positively within the argument types of its constructors.
+
+A name is considered strictly positive for an inductive type if it never appears
+in a negative position within the argument types of its constructors. The term
+*negative position* denotes instances located to the left of an arrow in a type
+constructor argument.
+
+## Example
+
+Consider the following data type `X` where `A` and `B` are types in scope:
 
 ```juvix
-axiom B : Type;
-type X :=
-    c0 : (B -> X) -> X
-  | c1 : (X -> X) -> X;
+--8<------ "docs/blog/posts/strictly-positive-data-types/Main.juvix:typeX"
 ```
 
-We could also refer to positive parameters as such parameters occurring
-in no negative positions. For example, the type `B` in the `c0`
-constructor above is on the left of the arrow `B->X`. Then, `B` is at a
-negative position. Negative parameters need to be considered when
-checking strictly positive data types as they may allow defining
-non-strictly positive data types.
+In this example, the type `X` occurs strictly positive in the constructor `c0`,
+but negatively in the constructor `c1` in the type argument `X -> A`. Therefore,
+`X` is not strictly positive.
 
-In the example below, the type `T0` is strictly positive. However, the
-type `T1` is not. Only after unfolding the type application `T0 (T1 A)`
-in the data constructor `c1`, we can find out that `T1` occurs at a
-negative position because of `T0`. More precisely, the type parameter
-`A` of `T0` is negative.
+Positive parameters can also be described as those that do not occur in negative
+positions. For instance, the type `B` in the `c0` constructor above appears to
+the left of the arrow `B->X`, placing `B` in a negative position. It is
+essential to consider negative parameters when verifying strictly positive data
+types, as they might enable the definition of non-strictly positive data types.
+
+Let us consider another example:
 
 ```juvix
-type T0 (A : Type) := c0 : (A -> T0 A) -> T0 A;
-
-type T1 := c1 : T0 T1 -> T1;
+--8<------ "docs/blog/posts/strictly-positive-data-types/Main.juvix:typeT0"
 ```
 
-## Bypass the strict positivity condition
-
-To bypass the positivity check, a data type declaration can be annotated
-with the keyword `positive`. Another way is to use the CLI global flag
-`--no-positivity` when type checking a `Juvix` File.
-
 ```juvix
-$ cat tests/negative/MicroJuvix/NoStrictlyPositiveDataTypes/E5.mjuvix
-module E5;
-  positive
-  type T0 (A : Type) :=
-    c0 : (T0 A -> A) -> T0 A;
-end;
+--8<------ "docs/blog/posts/strictly-positive-data-types/Main.juvix:typeT1"
 ```
 
-## Examples of non-strictly data types
+In this example, the type `T0` is strictly positive, while the type `T1` is not.
+It is only after unfolding the type application `T0 (T1 A)` in the data
+constructor `c1` that we can determine `T1` occurs in a negative position due to
+`T0`. More specifically, the type parameter `A` of `T0` is negative.
 
-- `Bad` is not strictly positive because of the negative parameter
-  `A` of `Tree`.
+## Bypassing the Strict Positivity Condition
+
+To bypass the positivity check in a data type declaration, you can annotate it
+with the `positive` keyword. Alternatively, you can use the CLI global flag
+`--no-positivity` when type checking a `Juvix` file.
 
 ```juvix
-type Tree (A : Type) :=
-    leaf : Tree A
-  | node : (A -> Tree A) -> Tree A;
+--8<------ "docs/blog/posts/strictly-positive-data-types/Main.juvix:positive-keyword"
+```
 
-type Bad :=
-  bad : Tree Bad -> Bad;
+## Examples of Non-Strictly Positive Data Types
+
+- The `Bad` data type is not strictly positive due to the negative parameter `A`
+  of `Tree`.
+
+```juvix
+--8<------ "docs/blog/posts/strictly-positive-data-types/Main.juvix:Tree"
+```
+
+```juvix
+--8<------ "docs/blog/posts/strictly-positive-data-types/Main.juvix:Bad"
 ```
 
 - `A` is a negative parameter.
 
 ```juvix
-type B (A : Type) :=
-  b : (A -> B (B A -> A)) -> B A;
+--8<------ "docs/blog/posts/strictly-positive-data-types/Main.juvix:Bad2"
 ```

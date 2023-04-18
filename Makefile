@@ -1,4 +1,6 @@
 VERSION?=$(shell cat VERSION)
+# use this boolean to checkout the head of the juvix repo
+HEAD?=true
 
 PWD=$(CURDIR)
 UNAME := $(shell uname)
@@ -16,7 +18,8 @@ METAFILES:=README.md \
 
 clean: clean-juvix-build
 	@rm -rf site
-	@rm -rf juvix
+	@rm -rf .cache
+	@rm -rf juvix-src
 
 .PHONY: clean-hard
 clean-hard: clean clean-juvix-build
@@ -26,9 +29,9 @@ clean-hard: clean clean-juvix-build
 clean-juvix-build:
 	@find . -type d -name '.juvix-build' | xargs rm -rf
 
-# ------------------------------------------------------------------------------
-# -- MKDOCS installation
-# ------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
+# -- MkDocs installation
+# ----------------------------------------------------------------------------
 
 PYTHON := $(shell command -v python3 2> /dev/null)
 PIP := $(shell command -v pip3 2> /dev/null)
@@ -46,9 +49,9 @@ mkdocs: python-env
 	@source python-env/bin/activate && \
 		pip install -r requirements.txt
 
-# ------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # -- Juvix Compiler installation
-# ------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 
 .PHONY: juvix
 juvix:
@@ -57,7 +60,13 @@ juvix:
 	fi
 	@cd ${COMPILERSOURCES} && \
 		git fetch --all && \
-		git checkout v${VERSION} && \
+		if [ "${HEAD}" = true ]; then \
+			echo "[!] Use Juvix HEAD commit in main"; \
+			git checkout main; \
+		else \
+			echo "[!] Use Juvix ${VERSION}"; \
+			git checkout v${VERSION}; \
+		fi && \
 		${MAKE} install; \
 
 # The numeric version of the Juvix compiler must match the
@@ -68,9 +77,9 @@ checkout-juvix: juvix
 		exit 1; \
 	fi
 
-# ------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # -- Examples and other sources from the Juvix Compiler repo
-# ------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 
 EXAMPLEHTMLOUTPUT=docs/examples/html
 EXAMPLEMILESTONE=${COMPILERSOURCES}/examples/milestone
@@ -81,8 +90,6 @@ EXAMPLES= Collatz/Collatz.juvix \
 	PascalsTriangle/PascalsTriangle.juvix \
 	TicTacToe/CLI/TicTacToe.juvix \
 	Tutorial/Tutorial.juvix
-
-
 
 .PHONY: juvix-metafiles
 juvix-metafiles:
@@ -100,9 +107,9 @@ html-examples:
 					--output-dir=$(CURDIR)/$${OUTPUTDIR}; \
 	done
 
-# ------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # -- Building the documentation
-# ------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 
 PORT?=8000
 ALIAS?=latest
@@ -120,7 +127,8 @@ icons:
 			&& rm -rf bootstrap.zip \
 			&& mv bootstrap-icons-* bootstrap
 
-docs: 
+.PHONY: docs
+docs:
 	mkdocs build --config-file ${MKDOCSCONFIG}
 
 serve: docs
@@ -139,9 +147,9 @@ test: checkout-juvix  \
 			icons \
 			docs
 
-# ------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # -- Codebase Health and Quality
-# ------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 
 PRECOMMIT := $(shell command -v pre-commit 2> /dev/null)
 
