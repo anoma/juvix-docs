@@ -2125,7 +2125,6 @@ number one represented by <code>suc zero</code>, the number two represented by
 <pre><code class="language-juvix">type Nat :=
   | zero : Nat
   | suc : Nat -&gt; Nat;
-
 </code></pre>
 <p>Constructors can be used like normal functions or in patterns when
 defining functions by pattern matching. For example, here is a function
@@ -2134,7 +2133,6 @@ adding two natural numbers:</p>
 + : Nat -&gt; Nat -&gt; Nat;
 + zero b := b;
 + (suc a) b := suc (a + b);
-
 </code></pre>
 <p>A data type can possess type parameters. When a data type has a type parameter <code>A</code>, it is referred to as <em>polymorphic in</em> <code>A</code>. A classic example of this concept is the <code>List</code> type, which is polymorphic in the type of its list elements.</p>
 <pre><code class="language-juvix">  infixr 5 ::;

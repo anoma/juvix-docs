@@ -1487,7 +1487,7 @@
   <a href="#built-in-inductive-definitions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Built-in inductive definitions.
+        Built-in inductive definitions
       
     </span>
   </a>
@@ -1498,7 +1498,7 @@
   <a href="#builtin-function-definitions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Builtin function definitions.
+        Builtin function definitions
       
     </span>
   </a>
@@ -1509,7 +1509,7 @@
   <a href="#builtin-axiom-definitions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Builtin axiom definitions.
+        Builtin axiom definitions
       
     </span>
   </a>
@@ -2093,7 +2093,7 @@
   <a href="#built-in-inductive-definitions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Built-in inductive definitions.
+        Built-in inductive definitions
       
     </span>
   </a>
@@ -2104,7 +2104,7 @@
   <a href="#builtin-function-definitions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Builtin function definitions.
+        Builtin function definitions
       
     </span>
   </a>
@@ -2115,7 +2115,7 @@
   <a href="#builtin-axiom-definitions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Builtin axiom definitions.
+        Builtin axiom definitions
       
     </span>
   </a>
@@ -2217,20 +2217,20 @@
 <h1 id="built-ins">Built-ins<a class="headerlink" href="#built-ins" title="Permanent link">&para;</a></h1>
 <p>Juvix has support for the built-in natural type and a few functions that
 are compiled to efficient primitives.</p>
-<h2 id="built-in-inductive-definitions">Built-in inductive definitions.<a class="headerlink" href="#built-in-inductive-definitions" title="Permanent link">&para;</a></h2>
+<h2 id="built-in-inductive-definitions">Built-in inductive definitions<a class="headerlink" href="#built-in-inductive-definitions" title="Permanent link">&para;</a></h2>
 <pre><code class="language-juvix">builtin nat
 type Nat :=
   | zero : Nat
   | suc : Nat → Nat;
 </code></pre>
-<h2 id="builtin-function-definitions">Builtin function definitions.<a class="headerlink" href="#builtin-function-definitions" title="Permanent link">&para;</a></h2>
+<h2 id="builtin-function-definitions">Builtin function definitions<a class="headerlink" href="#builtin-function-definitions" title="Permanent link">&para;</a></h2>
 <pre><code class="language-juvix">infixl 6 +;
 builtin nat-plus
 + : Nat → Nat → Nat;
 + zero b := b;
 + (suc a) b := suc (a + b);
 </code></pre>
-<h2 id="builtin-axiom-definitions">Builtin axiom definitions.<a class="headerlink" href="#builtin-axiom-definitions" title="Permanent link">&para;</a></h2>
+<h2 id="builtin-axiom-definitions">Builtin axiom definitions<a class="headerlink" href="#builtin-axiom-definitions" title="Permanent link">&para;</a></h2>
 <pre><code class="language-juvix">open import Stdlib.System.IO;
 builtin nat-print
 axiom printNat : Nat → IO;

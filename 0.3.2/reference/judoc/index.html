@@ -2247,21 +2247,28 @@ blocks</em> to the following entities:</p>
 <p>In order to attach documentation to any of these entities, write <em>blocks</em> of
 documentation before them:</p>
 <ol>
-<li>For modules:
-   <code>--- This module is cool
-   module Cool;
-   ..</code></li>
-<li>For type definitions:
-   <code>--- Unary representation of natural numbers
-   type Nat : Type :=
-     | --- Nullary constructor representing number 0
-       zero : Nat
-     | --- Unary constructor representing the successor of a natural number
-       suc : Nat -&gt; Nat;</code></li>
+<li>For modules:</li>
+</ol>
+<pre><code class="language-juvix">--- This module is cool
+module Cool;
+..
+</code></pre>
+<ol>
+<li>For type definitions:</li>
+</ol>
+<pre><code class="language-juvix">--- Unary representation of natural numbers
+type Nat : Type :=
+  | --- Nullary constructor representing number 0
+    zero : Nat
+  | --- Unary constructor representing the successor of a natural number
+    suc : Nat -&gt; Nat;
+</code></pre>
+<ol>
 <li>For type signatures (and likewise for axioms):</li>
 </ol>
-<p><code>--- The polymorphic identity function
-   id : {A : Type} -&gt; A -&gt; A;</code></p>
+<pre><code class="language-juvix">--- The polymorphic identity function
+id : {A : Type} -&gt; A -&gt; A;
+</code></pre>
 <p>Next we define the syntax of Judoc <em>blocks</em>.</p>
 <h2 id="block">Block<a class="headerlink" href="#block" title="Permanent link">&para;</a></h2>
 <p>A <em>block</em> can be one of these:</p>
