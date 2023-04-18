@@ -128,7 +128,7 @@ icons:
 			&& unzip -o bootstrap.zip \
 			&& rm -rf bootstrap.zip \
 			&& mv bootstrap-icons-* bootstrap
-	@unzip -o codicons.zip
+	@cd docs/overrides/.icons && unzip -o codeicons.zip
 
 .PHONY: docs
 docs:
