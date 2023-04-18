@@ -1,5 +1,7 @@
 # Juvix tutorial
 
+![tara-teaching](./../assets/images/tara-teaching.svg){ align=left width="280" }
+
 Welcome to the Juvix tutorial! This concise guide will introduce you to essential language features, while also serving as an introduction to functional programming. By the end of this tutorial, you'll have a strong foundation in Juvix's core concepts, ready to explore its advanced capabilities. Let's get started on your Juvix journey!
 
 ## Juvix REPL
