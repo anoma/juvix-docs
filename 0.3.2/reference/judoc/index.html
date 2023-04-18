@@ -2278,31 +2278,31 @@ id : {A : Type} -&gt; A -&gt; A;
 </ol>
 <p><em>Blocks</em> are separated by a line with only <code>---</code>.
 For instance, this is a sequence of two <em>blocks</em>:</p>
-<pre><code>--- First block
+<pre><code class="language-juvix">--- First block
 ---
 --- Second block
 </code></pre>
 <p>Note that the following is a single block since it lacks the <code>---</code> separator:</p>
-<pre><code>--- First block
+<pre><code class="language-juvix">--- First block
 
 --- Still first block
 </code></pre>
 <h3 id="paragraph">Paragraph<a class="headerlink" href="#paragraph" title="Permanent link">&para;</a></h3>
 <p>A <em>paragraph</em> is a non-empty sequence of <em>lines</em>.</p>
 <p>For instance, the following is a paragraph with two <em>lines</em>:</p>
-<pre><code>--- First line
+<pre><code class="language-juvix">--- First line
 --- Second line
 </code></pre>
 <p>Note that a rendered paragraph will have have no line breaks. If you want to
 have line breaks, you will need to split the paragraph. Hence, the paragraph
 above will be rendered as</p>
-<pre><code>First line Second line
+<pre><code class="language-juvix">First line Second line
 </code></pre>
 <h5 id="line">line<a class="headerlink" href="#line" title="Permanent link">&para;</a></h5>
 <p>A <em>line</em> starts with <code>---</code> and is followed by a non-empty sequence of
 <em>atoms</em>.</p>
 <p>For instance, the following is a valid <em>line</em>:</p>
-<pre><code>--- A ;Pair Int Bool; contains an ;Int; and a ;Bool;
+<pre><code class="language-juvix">--- A ;Pair Int Bool; contains an ;Int; and a ;Bool;
 </code></pre>
 <h5 id="atom">Atom<a class="headerlink" href="#atom" title="Permanent link">&para;</a></h5>
 <p>An <em>atom</em> is either:</p>
@@ -2317,11 +2317,11 @@ above will be rendered as</p>
 </ol>
 <h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
 <p>An example is of the following form</p>
-<pre><code>--- &gt;&gt;&gt; someExpression ;
+<pre><code class="language-juvix">--- &gt;&gt;&gt; someExpression ;
 </code></pre>
 <p>The <code>someExpression</code> can span multiple lines and it must be ended with a <code>;</code>.
 For instance:</p>
-<pre><code>--- &gt;&gt;&gt; 1
+<pre><code class="language-juvix">--- &gt;&gt;&gt; 1
         + 2
         + 3;
 </code></pre>
