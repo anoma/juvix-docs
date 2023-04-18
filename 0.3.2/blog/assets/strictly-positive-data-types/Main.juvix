@@ -6,7 +6,7 @@ module first-example;
   axiom B : Type;
 
   positive
-  --8<-- [start:typeX]
+--8<-- [start:typeX]
   type X :=
     | c0 : (B -> X) -> X
     | c1 : (X -> A) -> X;
@@ -17,39 +17,39 @@ module second-example;
   --8<-- [start:typeT0]
   type T0 (A : Type) :=
     | c0 : (A -> T0 A) -> T0 A;
+  --8<-- [end:typeT0]
 
   positive
-  --8<-- [end:typeT0]
-  --8<-- [start:typeT1]
+--8<-- [start:typeT1]
   type T1 :=
     | c1 : T0 T1 -> T1;
 --8<-- [end:typeT1]
 end;
 
---8<-- [start:positive-keyword]
 module E5;
+--8<-- [start:positive-keyword]
   positive
   type T0 (A : Type) :=
     | c0 : (T0 A -> A) -> T0 A;
+--8<-- [end:positive-keyword]
 end;
 
---8<-- [end:positive-keyword]
 module E6;
   --8<-- [start:Tree]
   type Tree (A : Type) :=
     | leaf : Tree A
     | node : (A -> Tree A) -> Tree A;
+  --8<-- [end:Tree]
 
   positive
-  --8<-- [end:Tree]
   --8<-- [start:Bad]
   type Bad :=
     | bad : Tree Bad -> Bad;
+  --8<-- [end:Bad]
 
   positive
-  --8<-- [end:Bad]
   --8<-- [start:Bad2]
   type B (A : Type) :=
     | b : (A -> B (B A -> A)) -> B A;
---8<-- [end:Bad2]
+  --8<-- [end:Bad2]
 end;

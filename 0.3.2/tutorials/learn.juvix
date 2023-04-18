@@ -70,7 +70,7 @@ module max3-example;
 
   max3 : Nat -> Nat -> Nat -> Nat;
   max3 x y z := if (x > y) (max x z) (max y z);
---8<-- [end:max3]
+  --8<-- [end:max3]
 end;
 
 module let-example;
@@ -101,7 +101,7 @@ module let-even;
       odd' zero := false;
       odd' (suc n) := even' n;
     in even';
---8<-- [end:let-even]
+  --8<-- [end:let-even]
 end;
 
 module NList-example;
@@ -122,8 +122,7 @@ module NList-example;
   --8<-- [end:nlength]
 
   --8<-- [start:nmaximum]
-  open import Stdlib.Data.Nat.Ord;
-  -- for `max`
+  open import Stdlib.Data.Nat.Ord using {max}; 
   nmaximum : NList -> Nat;
   nmaximum nnil := 0;
   nmaximum (ncons x xs) := max x (nmaximum xs);
@@ -134,6 +133,7 @@ module NList-example;
   nmap _ nnil := nnil;
   nmap f (ncons x xs) := ncons (f x) (nmap f xs);
   --8<-- [end:NListMap]
+
   --8<-- [start:NListSum]
   sum : NList -> Nat;
   sum nnil := 0;
@@ -149,6 +149,7 @@ module Tree-example;
     | leaf : Nat -> Tree
     | node : Nat -> Tree -> Tree -> Tree;
   --8<-- [end:Tree]
+
   --8<-- [start:TreeMirror]
   mirror : Tree -> Tree;
   mirror (leaf x) := leaf x;
@@ -157,6 +158,7 @@ module Tree-example;
 end;
 
 module List-example;
+
   --8<-- [start:List]
   infixr 5 ::;
   type List (A : Type) :=
@@ -174,7 +176,7 @@ module List-example;
   tail : {A : Type} -> List A -> List A;
   tail (_ :: xs) := xs;
   tail nil := nil;
---8<-- [end:ListTail]
+  --8<-- [end:ListTail]
 end;
 
 module tail-recursion-example;
@@ -200,7 +202,7 @@ module tail-recursion-example;
         go cur _ zero := cur;
         go cur next (suc n) := go next (cur + next) n;
       in go 0 1;
-  --8<-- [end:FiboTail]
+    --8<-- [end:FiboTail]
   end;
 
   module fibo-exponential;
@@ -209,11 +211,10 @@ module tail-recursion-example;
     fib zero := 0;
     fib (suc zero) := 1;
     fib (suc (suc n)) := fib n + fib (suc n);
-  --8<-- [end:FiboNaive]
+    --8<-- [end:FiboNaive]
   end;
 end;
 
--- Totality checking
 module totality-example;
   open import Stdlib.Prelude;
   open import Stdlib.Data.Nat.Ord;
@@ -247,7 +248,7 @@ module totality-example;
     even : Nat -> Bool;
     even zero := true;
     even (suc (suc n)) := even n;
-  --8<-- [end:even-def-not-pass-coverage]
+    --8<-- [end:even-def-not-pass-coverage]
   end;
 end;
 

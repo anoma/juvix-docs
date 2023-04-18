@@ -2131,24 +2131,26 @@ page</a> and:</p>
 <li>
 <p>Extract the <code>libclang_rt.builtins-wasm32-wasi-*.tar.gz</code> archive in
     the <code>clang</code> installation root (for example <code>/usr/lib/clang/13</code> on
-    Ubuntu or <code>`brew --prefix llvm`</code> on macos).</p>
-<p>For example on macos with homebrew clang:</p>
-<p><code>shell
-cd `brew --prefix llvm`
-curl https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-15/libclang_rt.builtins-wasm32-wasi-15.0.tar.gz -OL
-tar xf libclang_rt.builtins-wasm32-wasi-15.0.tar.gz</code></p>
+    Ubuntu or <code>`brew --prefix llvm`</code> on macOS).</p>
+<p>For example on macOS with <code>homebrew clang</code>:</p>
 </li>
+</ol>
+<pre><code class="language-shell">cd `brew --prefix llvm`
+curl https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-15/libclang_rt.builtins-wasm32-wasi-15.0.tar.gz -OL
+tar xf libclang_rt.builtins-wasm32-wasi-15.0.tar.gz
+</code></pre>
+<ol>
 <li>
 <p>Extract the <code>wasi-sysroot-*.tar.gz</code> archive on your local system and
     set <code>WASI_SYSROOT_PATH</code> to its path.</p>
 <p>For example:</p>
-<p><code>shell
-cd ~
-curl https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-15/wasi-sysroot-15.0.tar.gz -OL
-tar xf wasi-sysroot-15.0.tar.gz
-export WASI_SYSROOT_PATH=~/wasi-sysroot</code></p>
 </li>
 </ol>
+<pre><code class="language-shell">cd ~
+curl https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-15/wasi-sysroot-15.0.tar.gz -OL
+tar xf wasi-sysroot-15.0.tar.gz
+export WASI_SYSROOT_PATH=~/wasi-sysroot
+</code></pre>
 
   
   
@@ -2216,7 +2218,7 @@ export WASI_SYSROOT_PATH=~/wasi-sysroot</code></p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2022 - Heliax AG
+      Made with :white_heart: 2022 - Heliax AG
     </div>
   
   

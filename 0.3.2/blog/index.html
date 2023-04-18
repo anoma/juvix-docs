@@ -2188,8 +2188,6 @@ types, as they might enable the definition of non-strictly positive data types.<
 <p>Let us consider another example:</p>
 <pre><code class="language-juvix">  type T0 (A : Type) :=
     | c0 : (A -&gt; T0 A) -&gt; T0 A;
-
-  positive
 </code></pre>
 <pre><code class="language-juvix">  type T1 :=
     | c1 : T0 T1 -&gt; T1;
@@ -2202,12 +2200,9 @@ constructor <code>c1</code> that we can determine <code>T1</code> occurs in a ne
 <p>To bypass the positivity check in a data type declaration, you can annotate it
 with the <code>positive</code> keyword. Alternatively, you can use the CLI global flag
 <code>--no-positivity</code> when type checking a <code>Juvix</code> file.</p>
-<pre><code class="language-juvix">module E5;
-  positive
+<pre><code class="language-juvix">  positive
   type T0 (A : Type) :=
     | c0 : (T0 A -&gt; A) -&gt; T0 A;
-end;
-
 </code></pre>
 <h3 id="examples-of-non-strictly-positive-data-types"><a class="toclink" href="2022/07/25/stay-positive-with-your-data-types/#examples-of-non-strictly-positive-data-types">Examples of Non-Strictly Positive Data Types</a></h3>
 <ul>
@@ -2217,13 +2212,9 @@ end;
 <pre><code class="language-juvix">  type Tree (A : Type) :=
     | leaf : Tree A
     | node : (A -&gt; Tree A) -&gt; Tree A;
-
-  positive
 </code></pre>
 <pre><code class="language-juvix">  type Bad :=
     | bad : Tree Bad -&gt; Bad;
-
-  positive
 </code></pre>
 <ul>
 <li><code>A</code> is a negative parameter.</li>
@@ -2303,7 +2294,7 @@ end;
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2022 - Heliax AG
+      Made with :white_heart: 2022 - Heliax AG
     </div>
   
   
