@@ -1,17 +1,11 @@
+VERSION?=$(shell cat VERSION)
+
 PWD=$(CURDIR)
 UNAME := $(shell uname)
 
-EXAMPLEMILESTONE=examples/milestone
-EXAMPLEHTMLOUTPUT=docs/examples/html
-EXAMPLES= Collatz/Collatz.juvix \
-	Fibonacci/Fibonacci.juvix \
-	Hanoi/Hanoi.juvix \
-	HelloWorld/HelloWorld.juvix \
-	PascalsTriangle/PascalsTriangle.juvix \
-	TicTacToe/CLI/TicTacToe.juvix \
-	Tutorial/Tutorial.juvix
-
-DEMO_EXAMPLE=examples/demo/Demo.juvix
+JUVIXBIN?=juvix
+JUVIXBINVERSION?=$(shell ${JUVIXBIN} --numeric-version)
+COMPILERSOURCES?=juvix-src
 
 MAKEAUXFLAGS?=-s
 MAKE=make ${MAKEAUXFLAGS}
@@ -20,11 +14,9 @@ METAFILES:=README.md \
 		   CONTRIBUTING.md \
 		   LICENSE.md
 
-JUVIXBIN?=juvix
-JUVIXVERSION?=$(shell ${JUVIXBIN} --numeric-version)
-
 clean: clean-juvix-build
 	@rm -rf site
+	@rm -rf juvix
 
 .PHONY: clean-hard
 clean-hard: clean clean-juvix-build
@@ -35,24 +27,82 @@ clean-juvix-build:
 	@find . -type d -name '.juvix-build' | xargs rm -rf
 
 # ------------------------------------------------------------------------------
-# -- The Juvix Examples
+# -- MKDOCS installation
 # ------------------------------------------------------------------------------
 
+PYTHON := $(shell command -v python3 2> /dev/null)
+PIP := $(shell command -v pip3 2> /dev/null)
+
+.PHONY: python-env
+python-env:
+	@$(if $(PYTHON),, \
+		echo "[!] Python3 is not installed. Please install it and try again.")
+	@$(if $(PIP),,\
+		echo "[!] Pip3 is not installed. Please install it and try again.")
+	${PYTHON} -m venv python-env
+
+.PHONY : mkdocs
+mkdocs: python-env
+	@source python-env/bin/activate && \
+		pip install -r requirements.txt
+
+# ------------------------------------------------------------------------------
+# -- Juvix Compiler installation
+# ------------------------------------------------------------------------------
+
+.PHONY: juvix
+juvix:
+	@if [ ! -d ${COMPILERSOURCES} ]; then \
+		git clone -b main git@github.com:anoma/juvix.git ${COMPILERSOURCES}; \
+	fi
+	@cd ${COMPILERSOURCES} && \
+		git fetch --all && \
+		git checkout v${VERSION} && \
+		${MAKE} install; \
+
+# The numeric version of the Juvix compiler must match the
+# version of the documentation specified in the VERSION file.
+checkout-juvix: juvix
+	@if [ "${JUVIXBINVERSION}" != "${VERSION}" ]; then \
+		echo "[!] Juvix version ${JUVIXBINVERSION} does not match the documentation version $(VERSION)."; \
+		exit 1; \
+	fi
+
+# ------------------------------------------------------------------------------
+# -- Examples and other sources from the Juvix Compiler repo
+# ------------------------------------------------------------------------------
+
+EXAMPLEHTMLOUTPUT=docs/examples/html
+EXAMPLEMILESTONE=${COMPILERSOURCES}/examples/milestone
+EXAMPLES= Collatz/Collatz.juvix \
+	Fibonacci/Fibonacci.juvix \
+	Hanoi/Hanoi.juvix \
+	HelloWorld/HelloWorld.juvix \
+	PascalsTriangle/PascalsTriangle.juvix \
+	TicTacToe/CLI/TicTacToe.juvix \
+	Tutorial/Tutorial.juvix
+
+
+
+.PHONY: juvix-metafiles
+juvix-metafiles:
+	@for file in $(METAFILES); do \
+		echo ${COMPILERSOURCES}/$$file; \
+		cp ${COMPILERSOURCES}/$$file docs/; \
+	done
+
 .PHONY: html-examples
-html-examples: $(EXAMPLES)
+html-examples:
+	@for file in $(EXAMPLES); do \
+			OUTPUTDIR=$(EXAMPLEHTMLOUTPUT)/$$(dirname $$file); \
+			mkdir -p $${OUTPUTDIR}; \
+			$(JUVIXBIN) html $(EXAMPLEMILESTONE)/$$file \
+					--output-dir=$(CURDIR)/$${OUTPUTDIR}; \
+	done
 
-$(EXAMPLES):
-	$(eval OUTPUTDIR=$(EXAMPLEHTMLOUTPUT)/$(dir $@))
-	@mkdir -p ${OUTPUTDIR}
-	@${JUVIXBIN} html $(EXAMPLEMILESTONE)/$@ --output-dir=$(CURDIR)/${OUTPUTDIR}
-
-.PHONY: demo-example
-demo-example:
-	$(eval OUTPUTDIR=$(EXAMPLEHTMLOUTPUT)/Demo)
-	@mkdir -p ${OUTPUTDIR}
-	@${JUVIXBIN} html $(DEMO_EXAMPLE) --output-dir=$(CURDIR)/${OUTPUTDIR}
-
-# -- Juvix MkDocs
+# ------------------------------------------------------------------------------
+# -- Building the documentation
+# ------------------------------------------------------------------------------
 
 PORT?=8000
 ALIAS?=latest
@@ -70,28 +120,40 @@ icons:
 			&& rm -rf bootstrap.zip \
 			&& mv bootstrap-icons-* bootstrap
 
-.PHONY: docs-extra-files
-docs-extra-files: html-examples
-	@cp $(METAFILES) docs/
-	@cp -r assets/ docs/
-
-docs: docs-extra-files
+docs: 
 	mkdocs build --config-file ${MKDOCSCONFIG}
 
-serve:
+serve: docs
 	mkdocs serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
+# For versioning, we use the mike tool.
 mike: docs
-	mike deploy ${JUVIXVERSION} --config-file ${MKDOCSCONFIG}
+	mike deploy ${VERSION} --config-file ${MKDOCSCONFIG}
 
-mike-serve: docs
+mike-serve: mike
 	mike serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
+test: checkout-juvix  \
+			html-examples  \
+			juvix-metafiles  \
+			icons \
+			docs
+
 # ------------------------------------------------------------------------------
-# -- Codebase Health
+# -- Codebase Health and Quality
 # ------------------------------------------------------------------------------
 
-JUVIXFILESTOFORMAT=$(shell find ./examples ./tests/positive -type d -name ".juvix-build" -prune -o -type f -name "*.juvix" -print)
+PRECOMMIT := $(shell command -v pre-commit 2> /dev/null)
+
+.PHONY : install-pre-commit
+install-pre-commit :
+	@$(if $(PRECOMMIT),, pip install pre-commit)
+
+.PHONY : pre-commit
+pre-commit :
+	@pre-commit run --all-files
+
+JUVIXFILESTOFORMAT=$(shell find ./docs -type d -name ".juvix-build" -prune -o -type f -name "*.juvix" -print)
 JUVIXFORMATFLAGS?=--in-place
 JUVIXTYPECHECKFLAGS?=--only-errors
 
@@ -106,7 +168,7 @@ check-format-juvix-files:
 	@export JUVIXFORMATFLAGS=--check
 	@make format-juvix-files
 
-JUVIXEXAMPLEFILES=$(shell find ./examples  -name "*.juvix" -print)
+JUVIXEXAMPLEFILES=$(shell find ./docs  -name "*.juvix" -print)
 
 .PHONY: typecheck-juvix-examples
 typecheck-juvix-examples:
@@ -114,13 +176,3 @@ typecheck-juvix-examples:
 		echo "Checking $$file"; \
 		${JUVIXBIN} typecheck "$$file" $(JUVIXTYPECHECKFLAGS); \
 	done
-
-PRECOMMIT := $(shell command -v pre-commit 2> /dev/null)
-
-.PHONY : install-pre-commit
-install-pre-commit :
-	@$(if $(PRECOMMIT),, pip install pre-commit)
-
-.PHONY : pre-commit
-pre-commit :
-	@pre-commit run --all-files
