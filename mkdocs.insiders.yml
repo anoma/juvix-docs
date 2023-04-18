@@ -1,17 +1,13 @@
 INHERIT: mkdocs.yml
 plugins:
+  - offline:
+      enabled: !ENV [OFFLINE, false]
   - privacy:
       enabled: !ENV [CI, false]
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - social
   - tags
-  # - optimize:
-  #     cache: false
-  #     concurrency: 1
-  #     optimize_png_strip: false
-  #     optimize_jpg_progressive: false
-  #     optimize_jpg_quality: 75
   - meta
   - blog:
       blog_toc: true
@@ -25,21 +21,20 @@ plugins:
       categories: true
       categories_name: Categories
       pagination: true
-      pagination_per_page: 1
+      # pagination_per_page: 1
       pagination_keep_content: true
-      
-  - git-committers:
-      enable: true
-      repository: anoma/juvix
-      branch: main
+
+  # - git-committers:
+  #     repository: anoma/juvix
+  #     branch: main
 
   - rss:
-      match_path: blog/posts/.* 
+      match_path: blog/posts/.*
       date_from_meta:
         as_creation: date
       categories:
         - categories
-        - tags 
+        - tags
 
   - mike:
       canonical_version: latest
@@ -48,6 +43,7 @@ plugins:
       javascript_dir: assets/javascripts
 
 extra:
+  homepage: https://docs.juvix.org
   generator: false
   version:
     provider: mike

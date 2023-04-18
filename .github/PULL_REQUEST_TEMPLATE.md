@@ -12,7 +12,7 @@ Related Issue: # (issue number, if applicable)
 - [ ] I have made corresponding changes to existing documentation.
 - [ ] My changes generate no new warnings or errors using `make pre-commit`.
 - [ ] If I have added or modified a code example, I have tested that the example
-  compiles and runs as expected with the latest version of Juvix.
+      compiles and runs as expected with the latest version of Juvix.
 
 ## Additional Information
 

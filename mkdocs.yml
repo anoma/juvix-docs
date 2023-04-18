@@ -1,5 +1,5 @@
 site_url: https://docs.juvix.org
-site_name: Juvix Documentation
+site_name: Juvix Docs
 site_description: The Official Documentation for Juvix
 site_author: The Juvix Team
 
@@ -10,17 +10,18 @@ edit_uri: edit/main/docs/
 copyright: "Copyright &copy; 2022 - Heliax AG"
 
 extra_javascript:
-  - javascripts/extra.js
-  - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js
-  - javascripts/highlight.js
+  - assets/js/highlight.js
   - https://cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.min.js
+  - assets/js/juvix-highlight.js
+  - assets/js/extra.js
+  # - assets/js/mathjax.js
 
 extra_css:
-  - stylesheets/extra.css
-  - stylesheets/juvix-highlight.css
+  - assets/css/extra.css
+  - assets/css/juvix-highlight.css
   - https://cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.css
 
 theme:
@@ -41,13 +42,6 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
-
-  favicon: assets/images/favicon/favicon.ico
-  icon:
-    logo: logo-juvix
-    repo: fontawesome/brands/github-alt
-    edit: material/pencil 
-    view: material/eye
 
   features:
     - content.action.edit
@@ -71,32 +65,40 @@ theme:
     text: Roboto
     code: Roboto Mono
 
+  favicon: assets/images/favicon/favicon.ico
+  logo: assets/logo-juvix.svg
+
+  icon:
+    repo: fontawesome/brands/github-alt
+    edit: material/pencil
+    view: material/eye
+
 markdown_extensions:
-  - pymdownx.snippets:
-      auto_append:
-      - includes/footer.md
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.highlight:
-      use_pygments: true
-  - pymdownx.inlinehilite
-  - tables
-  - admonition
-  - pymdownx.keys
   - abbr
+  - admonition
   - attr_list
-  - pymdownx.details
   - def_list
-  - pymdownx.tasklist:
-      custom_checkbox: true
+  - footnotes
+  - md_in_html
   - toc:
       permalink: true
+  - tables
+  - pymdownx.betterem
+  # - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
       options:
         custom_icons:
           - overrides/.icons
+  - pymdownx.highlight:
+      use_pygments: false
+  - pymdownx.keys
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 plugins:
   - search
@@ -109,54 +111,53 @@ plugins:
 
 nav:
   - Juvix:
-    - About: ./README.md
-    - Changelog: ./CHANGELOG.md
-    - Quick start: ./quick-start.md
-    - Contributing: ./CONTRIBUTING.md
-    - Community: ./about/community.md
-    - License: ./LICENSE.md
+      - About: ./index.md
+      - Overview: ./overview.md
+      - Changelog: ./CHANGELOG.md
+      - Contributing: ./CONTRIBUTING.md
+
+  - Blog:
+      - blog/index.md
 
   - Tutorials:
-    - Learn Juvix in minutes: ./tutorials/learn.md
-    - Structuring Juvix projects: ./tutorials/structure.md
-    - Juvix VSCode extension: ./tutorials/vscode.md
-    - Juvix Emacs mode: ./tutorials/emacs.md
-    - NodeJS Interop: ./tutorials/nodejs-interop.md
+      - Learn Juvix in minutes: ./tutorials/learn.md
+      - Structuring Juvix projects: ./tutorials/structure.md
+      - Juvix VSCode extension: ./tutorials/vscode.md
+      - Juvix Emacs mode: ./tutorials/emacs.md
+      - NodeJS Interop: ./tutorials/nodejs-interop.md
 
   - How-to guides:
-    - Installing Juvix: ./howto/installing.md
-    - Compiling Juvix programs: ./howto/compilation.md
-    - Judoc documentation tool: ./howto/judoc.md
+      - Installing Juvix: ./howto/installing.md
+      - Compiling Juvix programs: ./howto/compilation.md
+      - Judoc documentation tool: ./howto/judoc.md
 
   - Explanations:
-    # - Type theory: ./explanations/typetheory.md
-    - Totality checking:
-      - Termination: ./explanations/totality/termination.md
-      # - Strictly positive data types: ./explanations/totality/positive.md
-      # - Coverage checking: ./explanations/totality/coverage.md
+      # - Type theory: ./explanations/typetheory.md
+      - Totality checking:
+          - Termination: ./explanations/totality/termination.md
+        # - Strictly positive data types: ./explanations/totality/positive.md
+        # - Coverage checking: ./explanations/totality/coverage.md
 
   - Reference:
-    - Language reference: # ./reference/language/README.md
-      - Functions: ./reference/language/functions.md
-      - Builtins: ./reference/language/builtins.md
-      - Data types: ./reference/language/datatypes.md
-      - Modules: ./reference/language/modules.md
-      - Local definitions: ./reference/language/let.md
-      - Control structures: ./reference/language/control.md
-      - Comments: ./reference/language/comments.md
-      - Axioms: ./reference/language/axioms.md
-    - Standard library: ./reference/stdlib.md
-    - Example programs: ./reference/examples.md
-    - Benchmarks: ./reference/benchmarks.md
-    - Tooling: # ./reference/tooling/README.md
-      - Command line interface: ./reference/tooling/CLI.md
-      - Doctor: ./reference/tooling/doctor.md
-      - Emacs mode: ./reference/tooling/emacs.md
-      - Haskell test suite: ./reference/tooling/testing.md
-    - Judoc reference: ./reference/judoc.md
+      - Language reference: # ./reference/language/README.md
+          - Functions: ./reference/language/functions.md
+          - Builtins: ./reference/language/builtins.md
+          - Data types: ./reference/language/datatypes.md
+          - Modules: ./reference/language/modules.md
+          - Local definitions: ./reference/language/let.md
+          - Control structures: ./reference/language/control.md
+          - Comments: ./reference/language/comments.md
+          - Axioms: ./reference/language/axioms.md
+      - Standard library: ./reference/stdlib.md
+      - Example programs: ./reference/examples.md
+      - Benchmarks: ./reference/benchmarks.md
+      - Tooling: # ./reference/tooling/README.md
+          - Command line interface: ./reference/tooling/CLI.md
+          - Doctor: ./reference/tooling/doctor.md
+          - Emacs mode: ./reference/tooling/emacs.md
+          - Haskell test suite: ./reference/tooling/testing.md
+      - Judoc reference: ./reference/judoc.md
 
-  - Blog: 
-    - blog/index.md
   - Misc:
-    - notes/lsp.md
-    - notes/runtime-benchmark-results.md
+      - notes/lsp.md
+      - notes/runtime-benchmark-results.md

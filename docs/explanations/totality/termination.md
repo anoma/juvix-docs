@@ -10,7 +10,7 @@ methods for bypassing this check:
 Utilize the terminating keyword to annotate function type signatures as terminating. In the following example we mark the function `fun` as terminating.
 
 ```juvix
-terminating 
+terminating
 fun : A → B;
 ```
 

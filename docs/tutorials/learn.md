@@ -1,6 +1,4 @@
-
 # Juvix tutorial
-
 
 ## Juvix REPL
 
@@ -263,7 +261,10 @@ matching. One can use the `case` syntax to pattern match an expression
 directly.
 
 ```jrepl
-Stdlib.Prelude> case (1, 2) | (suc _, zero) := 0 | (suc _, suc x) := x | _ := 19
+Stdlib.Prelude> case (1, 2)
+  | (suc _, zero) := 0
+  | (suc _, suc x) := x
+  | _ := 19
 1
 ```
 
@@ -566,7 +567,7 @@ the result list.
 
 ## Totality checking
 
-By default, the Juvix compiler requires all functions to be *total*.
+By default, the Juvix compiler requires all functions to be _total_.
 Totality consists of:
 
 - [termination](../explanations/totality/termination.md) and [coverage](../explanations/totality/coverage.md) for function declarations, and
@@ -640,7 +641,6 @@ programs, see the
 [advanced tutorial](./../examples/html/Tutorial/Tutorial.html)
 and the [Juvix program examples](../reference/examples.md).
 
-
 <!-- Include solutions as details -->
 
 ### Exercise 1
@@ -649,8 +649,8 @@ Define a function `prime : Nat -> Nat` which checks if a given
 natural number is prime.
 
 !!! tip
-    A number is prime if it is greater than 1 and has no divisors
-    other than 1 and itself.
+A number is prime if it is greater than 1 and has no divisors
+other than 1 and itself.
 
 ### Exercise 2
 
@@ -672,11 +672,11 @@ list. What is the result of your function on the empty list?
 ### Exercise 4
 
 A _suffix_ of a list `l` is any list which can be obtained from `l`
-by removing some initial elements. For example, the suffixes of `1 :: 2 :: 3 :: nil` are: 
+by removing some initial elements. For example, the suffixes of `1 :: 2 :: 3 :: nil` are:
 
-- `1 :: 2 :: 3 :: nil`, 
+- `1 :: 2 :: 3 :: nil`,
 - `2 :: 3 :: nil`,
-- `3 :: nil`, and 
+- `3 :: nil`, and
 - `nil`.
 
 Define a function which computes the list of all suffixes of a given list,
@@ -700,7 +700,7 @@ which applies a function to all natural numbers stored in a tree.
 
 ### Exercise 6
 
-Modify the `Tree` type from [Exercise 5](#exercise-5) 
+Modify the `Tree` type from [Exercise 5](#exercise-5)
 to be polymorphic in the element type, and then repeat the previous exercise.
 
 ### Exercise 7
