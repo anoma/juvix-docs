@@ -1,0 +1,8 @@
+module builtins;
+
+--8<-- [start:builtin-nat]
+builtin nat
+type Nat :=
+  | zero : Nat
+  | suc : Nat → Nat;
+--8<-- [end:builtin-nat]

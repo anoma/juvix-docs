@@ -1495,17 +1495,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#builtin-function-definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Builtin function definitions.
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#builtin-axiom-definitions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2101,17 +2090,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#builtin-function-definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Builtin function definitions.
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#builtin-axiom-definitions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2223,8 +2201,11 @@ type Nat :=
   | zero : Nat
   | suc : Nat → Nat;
 </code></pre>
-<h2 id="builtin-function-definitions">Builtin function definitions.<a class="headerlink" href="#builtin-function-definitions" title="Permanent link">&para;</a></h2>
-<pre><code class="language-juvix">infixl 6 +;
+<pre><code>
+## Builtin function definitions.
+
+```juvix
+infixl 6 +;
 builtin nat-plus
 + : Nat → Nat → Nat;
 + zero b := b;

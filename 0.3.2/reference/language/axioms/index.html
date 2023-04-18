@@ -2109,17 +2109,14 @@
 example, let us imagine one wants to write a program that assumes <em>A</em> is
 a type, and there exists a term <em>x</em> that inhabits <em>A</em>. Then the program
 would look like the following.</p>
-<pre><code class="language-juvix">module Example;
-axiom
-A : Type;
+<pre><code class="language-juvix">module axioms;
 
-axiom
-x : A;
-end;
+axiom A : Type;
+
+axiom x : A;
 </code></pre>
-<p>Terms introduced by the <code>axiom</code> keyword lack any computational content.
-Programs containing axioms not marked as builtins cannot be compiled to
-most targets.</p>
+<p>Terms introduced by the <code>axiom</code> keyword lack any computational content. Programs
+containing axioms not marked as builtins cannot be compiled to most targets.</p>
 
   
   
