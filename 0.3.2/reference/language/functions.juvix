@@ -13,7 +13,7 @@ module short-definitons;
 open import Stdlib.Data.Nat;
 multiplyByTwo : Nat -> Nat := \{ n := 2 * n };
 --8<-- [end:shortDefinitions]
-end; 
+end;
 
 
 module example-negate-boolean;
@@ -61,4 +61,3 @@ even := \{
 };
 --8<-- [end:anonymousFunctions]
 end;
-
