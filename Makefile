@@ -137,19 +137,16 @@ docs:
 serve: docs
 	mkdocs serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
-# For versioning, we use the mike tool.
-mike: docs
-	mike deploy ${VERSION} --config-file ${MKDOCSCONFIG}
-
 mike-serve: mike
 	mike serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
 deploy: checkout-juvix  \
 			juvix-metafiles  \
 			html-examples  \
-			icons \
-			docs
+			icons
 	mike set-default ${VERSION} --config-file ${MKDOCSCONFIG}
+	mike alias ${VERSION} latest --config-file ${MKDOCSCONFIG}
+	mike deploy ${VERSION} --config-file ${MKDOCSCONFIG}
 
 # ----------------------------------------------------------------------------
 # -- Codebase Health and Quality
