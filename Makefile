@@ -56,7 +56,7 @@ mkdocs: python-env
 .PHONY: juvix
 juvix:
 	@if [ ! -d ${COMPILERSOURCES} ]; then \
-		git clone -b main git@github.com:anoma/juvix.git ${COMPILERSOURCES}; \
+		git clone -b main https://github.com/anoma/juvix.git ${COMPILERSOURCES}; \
 	fi
 	@cd ${COMPILERSOURCES} && \
 		git fetch --all && \
