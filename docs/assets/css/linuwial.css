@@ -1,6 +1,9 @@
 /* @group Fundamentals */
 
-* { margin: 0; padding: 0 }
+* {
+  margin: 0;
+  padding: 0;
+}
 
 /* Is this portable? */
 html {
@@ -31,7 +34,8 @@ p {
   margin: 0.8em 0;
 }
 
-ul, ol {
+ul,
+ol {
   margin: 0.8em 0 0.8em 2em;
 }
 
@@ -46,13 +50,26 @@ dd {
   margin-left: 2em;
 }
 
-a { text-decoration: none; }
-a[href]:link { color: #D54E54; }
-a[href]:visited {color: #802e31; }
-a[href]:hover { text-decoration:underline; }
+a {
+  text-decoration: none;
+}
+a[href]:link {
+  color: #d54e54;
+}
+a[href]:visited {
+  color: #802e31;
+}
+a[href]:hover {
+  text-decoration: underline;
+}
 
-a[href].def:link, a[href].def:visited { color: rgba(69, 59, 97, 0.8); }
-a[href].def:hover { color: rgb(78, 98, 114); }
+a[href].def:link,
+a[href].def:visited {
+  color: rgba(69, 59, 97, 0.8);
+}
+a[href].def:hover {
+  color: rgb(78, 98, 114);
+}
 
 /* @end */
 
@@ -63,7 +80,6 @@ body.js-enabled .hide-when-js-enabled {
 }
 
 /* @end */
-
 
 /* @group responsive */
 
@@ -100,11 +116,10 @@ body.js-enabled .hide-when-js-enabled {
   }
 
   #synopsis .show {
-    border: 1px solid #5E5184;
+    border: 1px solid #5e5184;
     padding: 0.7em;
     max-height: 65vh;
   }
-
 }
 
 @media only screen and (max-width: 1279px) {
@@ -127,7 +142,6 @@ body.js-enabled .hide-when-js-enabled {
   }
 }
 
-
 /* menu for wider screens
 
   Display the package name at the left and the menu links at the right,
@@ -136,15 +150,15 @@ body.js-enabled .hide-when-js-enabled {
 */
 @media only screen and (min-width: 1000px) {
   #package-header {
-      text-align: left;
-      white-space: nowrap;
-      height: 40px;
-      padding: 4px 1.5em 0px 1.5em;
-      overflow: visible;
+    text-align: left;
+    white-space: nowrap;
+    height: 40px;
+    padding: 4px 1.5em 0px 1.5em;
+    overflow: visible;
 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   #package-header .caption {
@@ -225,7 +239,6 @@ Display the package name on top of the menu links and center both elements:
 
 /* @end */
 
-
 /* @group Fonts & Sizes */
 
 /* Basic technique & IE workarounds from YUI 3
@@ -233,37 +246,47 @@ Display the package name on top of the menu links and center both elements:
       http://yui.yahooapis.com/3.1.1/build/cssfonts/fonts.css
  */
 
- body, button {
-   font: 400 14px/1.4 'PT Sans',
-     /* Fallback Font Stack */
-     -apple-system,
-	  BlinkMacSystemFont,
-     'Segoe UI',
-	  Roboto,
-	  Oxygen-Sans,
-	  Cantarell,
-	  'Helvetica Neue',
-     sans-serif;
-   *font-size: medium; /* for IE */
-   *font:x-small; /* for IE in quirks mode */
- }
+body,
+button {
+  font: 400 14px/1.4 "PT Sans", /* Fallback Font Stack */ -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Cantarell,
+    "Helvetica Neue", sans-serif;
+  *font-size: medium; /* for IE */
+  *font: x-small; /* for IE in quirks mode */
+}
 
-h1 { font-size: 146.5%; /* 19pt */ }
-h2 { font-size: 131%;   /* 17pt */ }
-h3 { font-size: 116%;   /* 15pt */ }
-h4 { font-size: 100%;   /* 13pt */ }
-h5 { font-size: 100%;   /* 13pt */ }
+h1 {
+  font-size: 146.5%; /* 19pt */
+}
+h2 {
+  font-size: 131%; /* 17pt */
+}
+h3 {
+  font-size: 116%; /* 15pt */
+}
+h4 {
+  font-size: 100%; /* 13pt */
+}
+h5 {
+  font-size: 100%; /* 13pt */
+}
 
 table {
-	font-size:inherit;
-	font:100%;
+  font-size: inherit;
+  font: 100%;
 }
 
-pre, code, kbd, samp, tt, .src {
-	font-family:monospace;
+pre,
+code,
+kbd,
+samp,
+tt,
+.src {
+  font-family: monospace;
 }
 
-.links, .link {
+.links,
+.link {
   font-size: 85%; /* 11pt */
 }
 
@@ -276,35 +299,51 @@ pre, code, kbd, samp, tt, .src {
   font-weight: normal;
 }
 
-#package-header #page-menu a:link, #package-header #page-menu a:visited { color: white; }
-
+#package-header #page-menu a:link,
+#package-header #page-menu a:visited {
+  color: white;
+}
 
 .info {
   font-size: 90%;
 }
 
-
 /* @end */
 
 /* @group Common */
 
-.caption, h1, h2, h3, h4, h5, h6, summary {
+.caption,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+summary {
   font-weight: bold;
-  color: #D84E53;
+  color: #d84e53;
   margin: 1.5em 0 1em 0;
 }
 
-
-* + h1, * + h2, * + h3, * + h4, * + h5, * + h6 {
+* + h1,
+* + h2,
+* + h3,
+* + h4,
+* + h5,
+* + h6 {
   margin-top: 2em;
 }
 
-h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6 {
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6 {
   margin-top: inherit;
 }
 
 ul li + li {
-	margin-top: 0.2rem;
+  margin-top: 0.2rem;
 }
 
 ul + p {
@@ -319,7 +358,8 @@ p {
   margin-top: 0.7rem;
 }
 
-ul, ol {
+ul,
+ol {
   margin: 0.8em 0 0.8em 2em;
 }
 
@@ -329,7 +369,8 @@ ul.links {
   font-size: 0.95em;
 }
 
-#package-header ul.links, #package-header ul.links button {
+#package-header ul.links,
+#package-header ul.links button {
   font-size: 1rem;
 }
 
@@ -340,40 +381,50 @@ ul.links li {
 }
 
 ul.links > li + li:before {
-  content: '\00B7';
+  content: "\00B7";
 }
 
 ul.links li a {
   padding: 0.2em 0.5em;
 }
 
-.hide { display: none; }
-.show { display: inherit; }
-.clear { clear: both; }
+.hide {
+  display: none;
+}
+.show {
+  display: inherit;
+}
+.clear {
+  clear: both;
+}
 
-.collapser:before, .expander:before, .noexpander:before {
+.collapser:before,
+.expander:before,
+.noexpander:before {
   font-size: 1.2em;
-  color: #9C5791;
+  color: #9c5791;
   display: inline-block;
   padding-right: 7px;
 }
 
 .collapser:before {
-  content: '▿';
+  content: "▿";
 }
 .expander:before {
-  content: '▹';
+  content: "▹";
 }
 .noexpander:before {
-  content: '▿';
+  content: "▿";
   visibility: hidden;
 }
 
-.collapser, .expander {
+.collapser,
+.expander {
   cursor: pointer;
 }
 
-.instance.collapser, .instance.expander {
+.instance.collapser,
+.instance.expander {
   margin-left: 0px;
   background-position: left center;
   min-width: 9px;
@@ -414,11 +465,17 @@ blockquote {
   padding: 0.2em 0.5em;
 }
 
-.keyword { font-weight: normal; }
-.def { font-weight: bold; }
+.keyword {
+  font-weight: normal;
+}
+.def {
+  font-weight: bold;
+}
 
 @media print {
-  #footer { display: none; }
+  #footer {
+    display: none;
+  }
 }
 
 /* @end */
@@ -456,7 +513,7 @@ table.info {
   float: right;
   padding: 0.5em 1em;
   border: 1px solid #ddd;
-  color: rgb(78,98,114);
+  color: rgb(78, 98, 114);
   background-color: #fff;
   max-width: 60%;
   border-spacing: 0;
@@ -471,9 +528,9 @@ table.info {
 }
 
 #style-menu li {
-	display: block;
-	border-style: none;
-	list-style-type: none;
+  display: block;
+  border-style: none;
+  list-style-type: none;
 }
 
 #footer {
@@ -502,7 +559,8 @@ table.info {
   font-size: 1rem;
 }
 
-#synopsis, #table-of-contents {
+#synopsis,
+#table-of-contents {
   font-size: 16px;
 }
 
@@ -536,7 +594,7 @@ table.info {
   display: block;
   float: right;
   width: 29px;
-  color: rgba(255,255,255,0);
+  color: rgba(255, 255, 255, 0);
   height: 110px;
   margin: 0;
   font-size: 1px;
@@ -561,7 +619,7 @@ table.info {
 
 #synopsis ul,
 #synopsis ul li.src {
-  background-color: rgb(250,247,224);
+  background-color: rgb(250, 247, 224);
   white-space: nowrap;
   list-style: none;
   margin-left: 0;
@@ -585,7 +643,7 @@ table.info {
 #interface h3 + div.top,
 #interface h4 + div.top,
 #interface h5 + div.top {
-	margin-top: 1em;
+  margin-top: 1em;
 }
 #interface .src .selflink,
 #interface .src .link {
@@ -613,7 +671,9 @@ table.info {
   margin: 0 0 0 1em;
 }
 
-#interface table { border-spacing: 2px; }
+#interface table {
+  border-spacing: 2px;
+}
 #interface td {
   vertical-align: top;
   padding-left: 0.5em;
@@ -649,7 +709,9 @@ table.info {
   visibility: hidden;
 }
 
-.subs, .top > .doc, .subs > .doc {
+.subs,
+.top > .doc,
+.subs > .doc {
   padding-left: 1em;
   border-left: 1px solid gainsboro;
   margin-bottom: 1em;
@@ -693,12 +755,12 @@ table.info {
 }
 
 .subs .subs .caption {
-  margin-top: 1em ;
+  margin-top: 1em;
   margin-bottom: 0px;
 }
 
 .subs p.caption {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .subs .subs .caption + .src {
@@ -717,7 +779,8 @@ table.info {
   margin: 0;
 }
 
-.inst, .inst li {
+.inst,
+.inst li {
   list-style: none;
   margin-left: 1em;
 }
@@ -744,11 +807,17 @@ table.info {
   display: none;
 }
 
-.fields { padding-left: 1em; }
+.fields {
+  padding-left: 1em;
+}
 
-.fields .caption { display: none; }
+.fields .caption {
+  display: none;
+}
 
-.fields p { margin: 0 0; }
+.fields p {
+  margin: 0 0;
+}
 
 /* this seems bulky to me
 .methods, .constructors {
@@ -761,10 +830,9 @@ table.info {
 
 /* @group Auxillary Pages */
 
-
 .extension-list {
-    list-style-type: none;
-    margin-left: 0;
+  list-style-type: none;
+  margin-left: 0;
 }
 
 #mini {
@@ -800,23 +868,25 @@ table.info {
 }
 
 #alphabet ul {
-	list-style: none;
-	padding: 0;
-	margin: 0.5em 0 0;
-	text-align: center;
+  list-style: none;
+  padding: 0;
+  margin: 0.5em 0 0;
+  text-align: center;
 }
 
 #alphabet li {
-	display: inline;
-	margin: 0 0.25em;
+  display: inline;
+  margin: 0 0.25em;
 }
 
 #alphabet a {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 #index .caption,
-#module-list .caption { font-size: 131%; /* 17pt */ }
+#module-list .caption {
+  font-size: 131%; /* 17pt */
+}
 
 #index table {
   margin-left: 2em;
@@ -858,26 +928,87 @@ p.directory {
 }
 
 :target {
-  background: -webkit-linear-gradient(top, transparent 0%, transparent 65%, #fbf36d 60%, #fbf36d 100%);
-  background: -moz-linear-gradient(top, transparent 0%, transparent 65%, #fbf36d 60%, #fbf36d 100%);
-  background: -o-linear-gradient(top, transparent 0%, transparent 65%, #fbf36d 60%, #fbf36d 100%);
-  background: -ms-linear-gradient(top, transparent 0%, transparent 65%, #fbf36d 60%, #fbf36d 100%);
-  background: linear-gradient(to bottom, transparent 0%, transparent 65%, #fbf36d 60%, #fbf36d 100%);
+  background: -webkit-linear-gradient(
+    top,
+    transparent 0%,
+    transparent 65%,
+    #fbf36d 60%,
+    #fbf36d 100%
+  );
+  background: -moz-linear-gradient(
+    top,
+    transparent 0%,
+    transparent 65%,
+    #fbf36d 60%,
+    #fbf36d 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    transparent 0%,
+    transparent 65%,
+    #fbf36d 60%,
+    #fbf36d 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    transparent 0%,
+    transparent 65%,
+    #fbf36d 60%,
+    #fbf36d 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 65%,
+    #fbf36d 60%,
+    #fbf36d 100%
+  );
 }
 
 :target:hover {
-  background: -webkit-linear-gradient(top, transparent 0%, transparent 0%, #fbf36d 0%, #fbf36d 100%);
-  background: -moz-linear-gradient(top, transparent 0%, transparent 0%, #fbf36d 0%, #fbf36d 100%);
-  background: -o-linear-gradient(top, transparent 0%, transparent 0%, #fbf36d 0%, #fbf36d 100%);
-  background: -ms-linear-gradient(top, transparent 0%, transparent 0%, #fbf36d 0%, #fbf36d 100%);
-  background: linear-gradient(to bottom, transparent 0%, transparent 0%, #fbf36d 0%, #fbf36d 100%);
+  background: -webkit-linear-gradient(
+    top,
+    transparent 0%,
+    transparent 0%,
+    #fbf36d 0%,
+    #fbf36d 100%
+  );
+  background: -moz-linear-gradient(
+    top,
+    transparent 0%,
+    transparent 0%,
+    #fbf36d 0%,
+    #fbf36d 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    transparent 0%,
+    transparent 0%,
+    #fbf36d 0%,
+    #fbf36d 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    transparent 0%,
+    transparent 0%,
+    #fbf36d 0%,
+    #fbf36d 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 0%,
+    #fbf36d 0%,
+    #fbf36d 100%
+  );
 }
 
 /* @end */
 
 /* @group Dropdown menus */
 
-#preferences-menu, #style-menu {
+#preferences-menu,
+#style-menu {
   width: 25em;
   overflow-y: auto;
 }

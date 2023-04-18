@@ -41,6 +41,7 @@ docs/CHANGELOG.md
 docs/CONTRIBUTING.md
 docs/LICENSE.md
 docs/README.md
+docs/overview.md
 .juvix-build
 
 # C Code generation

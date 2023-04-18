@@ -30,9 +30,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-python@v4
         with:
           python-version: "3.11"
+
       - uses: pre-commit/action@v3.0.0
 
   build:
@@ -44,7 +46,7 @@ jobs:
           path: main
           submodules: recursive
 
-        id: cache-llvm
+      - id: cache-llvm
         uses: actions/cache@v3
         with:
           path: |

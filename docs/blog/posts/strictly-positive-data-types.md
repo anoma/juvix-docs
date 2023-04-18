@@ -10,17 +10,16 @@ categories:
 
 In this blog post, we will investigate the notion of strictly positive inductive
 data types, which is a condition that Juvix mandates for a data type to be
-considered well-typed. 
+considered well-typed.
 
-
-An **inductive type** is considered *strictly positive* if it either:
+An **inductive type** is considered _strictly positive_ if it either:
 
 1. Does not appear within the argument types of its constructors, or
 2. Appears strictly positively within the argument types of its constructors.
 
 A name is considered strictly positive for an inductive type if it never appears
 in a negative position within the argument types of its constructors. The term
-*negative position* denotes instances located to the left of an arrow in a type
+_negative position_ denotes instances located to the left of an arrow in a type
 constructor argument.
 
 ## Example

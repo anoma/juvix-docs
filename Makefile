@@ -1,6 +1,6 @@
 VERSION?=$(shell cat VERSION)
 # use this boolean to checkout the head of the juvix repo
-HEAD?=true
+HEAD?=false
 
 PWD=$(CURDIR)
 UNAME := $(shell uname)
@@ -11,7 +11,7 @@ COMPILERSOURCES?=juvix-src
 
 MAKEAUXFLAGS?=-s
 MAKE=make ${MAKEAUXFLAGS}
-METAFILES:=README.md \
+METAFILES:= \
 		   CHANGELOG.md \
 		   CONTRIBUTING.md \
 		   LICENSE.md
@@ -97,6 +97,7 @@ juvix-metafiles:
 		echo ${COMPILERSOURCES}/$$file; \
 		cp ${COMPILERSOURCES}/$$file docs/; \
 	done
+	cp ${COMPILERSOURCES}/README.md docs/overview.md
 
 .PHONY: html-examples
 html-examples: juvix
@@ -127,7 +128,7 @@ icons:
 			&& unzip -o bootstrap.zip \
 			&& rm -rf bootstrap.zip \
 			&& mv bootstrap-icons-* bootstrap
-	@unzip -o codicons.zip 
+	@unzip -o codicons.zip
 
 .PHONY: docs
 docs:

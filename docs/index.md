@@ -1,11 +1,80 @@
-Juvix is an open-source, constantly evolving functional programming language
-designed for writing privacy-preserving decentralized applications. Using Juvix, developers can write high-level programs which can be compiled to WASM directly, or through [VampIR][vampir] to circuits for private execution with [Taiga][taiga] on [Anoma][anoma] or Ethereum.
+# Welcome to the Juvix documentation!
+
+![Image title](assets/images/tara-smiling.svg){ align=right width="300"  }
+
+Juvix is an open-source, ever-evolving functional language for creating
+privacy-focused decentralized apps. It allows developers to write high-level
+programs that compile to WASM or, via [VampIR][vampir], to circuits for private
+execution using [Taiga][taiga] on [Anoma][anoma] or Ethereum.
+
+This documentation covers various topics, including a concise introduction to
+the Juvix ecosystem, which can be found in the [overview
+section](./overview.md).
+
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-computer:{ .lg .middle } __How-to guides__
+
+    ---
+
+    Learn how to [install Juvix](#) on macOS or Linux, as well as compile and
+   document your Juvix projects.
+
+    [:octicons-arrow-right-24: Quick start ](./quick-start.md)
+
+    [:octicons-arrow-right-24: How-to guides ](./howto/installing.md)
+
+-   :material-clock-fast:{ .lg .middle } __Tutorials__
+
+    ---
+
+    Master the essentials of Juvix's programming language though a series of
+    tailored examples, tutorials and technical explanations.
+
+    [:octicons-arrow-right-24: Learn Juvix in 5 minutes](./tutorials/learn)
+
+-  :fontawesome-solid-book-open:{ .lg .middle } __Explanations__
+
+    ---
+
+    Comprehensive technical explanations' series.
+
+    [:octicons-arrow-right-24: Read the book](https://docs.juvix.org)
+
+-   :fontawesome-solid-lines-leaning:{ .lg .middle } __Reference__
+
+    ---
+
+    Explore the Language reference, milestone examples, and tooling
+    Documentation!
+
+    [:octicons-arrow-right-24: Reference](./reference/language.md)
+
+-   :material-account-group:{ .lg .middle } __Blog__
+
+    ---
+
+    Check out our blog to discover new features in the upcoming release, along
+    with helpful examples and more. And, don't forget to join us on [Discord].
+
+    [:octicons-arrow-right-24: Join us](./about/community.md)
+
+-   :material-scale-balance:{ .lg .middle } __Open Source, GPL3.0__
+
+    ---
+
+    Juvix is licensed under GPL3 and available on [GitHub].
+
+    [:octicons-arrow-right-24: License](./LICENSE.md)
+
+</div>
 
 
 [anoma]: https://anoma.net
 [changelog]: https://anoma.github.io/juvix/changelog.html
-[discord]: https://discord.gg/PfaaFVErHt
+[Discord]: https://discord.gg/PfaaFVErHt
 [geb]: https://github.com/anoma/geb
+[GitHub]: https://github.com/anoma/juvix
 [homebrew]: https://brew.sh
 [juvix-book]: https://docs.juvix.org
 [juvix-formula]: https://github.com/anoma/homebrew-juvix

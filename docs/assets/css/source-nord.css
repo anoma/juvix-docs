@@ -1,62 +1,64 @@
 /* Color palette based on https://www.nordtheme.com/ */
 body {
-    background-color: #2e3440;
+  background-color: #2e3440;
 }
 
 .ju-inductive {
-    color: #a3be8c;
+  color: #a3be8c;
 }
 
 .ju-constructor {
-    color: #b48ead;
+  color: #b48ead;
 }
 
 .ju-function {
-    color: #ebcb8b;
+  color: #ebcb8b;
 }
 
 .ju-axiom {
-    color: #bf616a;
+  color: #bf616a;
 }
 
 .ju-string {
-    color: #bf616a;
+  color: #bf616a;
 }
 
 .ju-keyword {
-    color: #81a1c1;
+  color: #81a1c1;
 }
 
 .ju-delimiter {
-    color: #5e81ac;
+  color: #5e81ac;
 }
 
 .ju-var {
-    color: #d8dee9
+  color: #d8dee9;
 }
 
 .ju-number {
-    color: #d8dee9
+  color: #d8dee9;
 }
 
 .ju-defined {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-a:link, a:visited {
+a:link,
+a:visited {
   text-decoration: none;
 }
 
-a:hover, a.hover-highlight {
+a:hover,
+a.hover-highlight {
   background-color: #4c566a;
 }
 
 footer {
-    color: gray
+  color: gray;
 }
 
 footer a {
-    color: gray;
-    font-size: small;
-    font-weight: bold;
+  color: gray;
+  font-size: small;
+  font-weight: bold;
 }

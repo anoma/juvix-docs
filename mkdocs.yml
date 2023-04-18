@@ -1,5 +1,5 @@
 site_url: https://docs.juvix.org
-site_name: Juvix Documentation
+site_name: Juvix Docs
 site_description: The Official Documentation for Juvix
 site_author: The Juvix Team
 
@@ -42,7 +42,6 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
-
 
   features:
     - content.action.edit
@@ -111,14 +110,11 @@ plugins:
       enable_creation_date: true
 
 nav:
-  - Home: ./index.md
   - Juvix:
-      - About: ./README.md
+      - About: ./index.md
+      - Overview: ./overview.md
       - Changelog: ./CHANGELOG.md
-      - Quick start: ./quick-start.md
       - Contributing: ./CONTRIBUTING.md
-      - Community: ./about/community.md
-      - License: ./LICENSE.md
 
   - Blog:
       - blog/index.md
@@ -161,7 +157,6 @@ nav:
           - Emacs mode: ./reference/tooling/emacs.md
           - Haskell test suite: ./reference/tooling/testing.md
       - Judoc reference: ./reference/judoc.md
-
 
   - Misc:
       - notes/lsp.md
