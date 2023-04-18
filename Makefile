@@ -149,6 +149,7 @@ deploy: checkout-juvix  \
 			html-examples  \
 			icons \
 			docs
+	mike set-default ${VERSION} --config-file ${MKDOCSCONFIG}
 
 # ----------------------------------------------------------------------------
 # -- Codebase Health and Quality
