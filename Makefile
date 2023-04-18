@@ -134,10 +134,14 @@ icons:
 docs:
 	mkdocs build --config-file ${MKDOCSCONFIG}
 
+.PHONY: serve
 serve: docs
 	mkdocs serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
-mike-serve: mike
+mike:
+	mike deploy ${VERSION} --config-file ${MKDOCSCONFIG}
+
+mike-serve: docs
 	mike serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
 deploy: checkout-juvix  \
@@ -146,7 +150,7 @@ deploy: checkout-juvix  \
 			icons
 	mike set-default ${VERSION} --config-file ${MKDOCSCONFIG}
 	mike alias ${VERSION} latest --config-file ${MKDOCSCONFIG}
-	mike deploy ${VERSION} --config-file ${MKDOCSCONFIG}
+	${MAKE} mike
 
 # ----------------------------------------------------------------------------
 # -- Codebase Health and Quality

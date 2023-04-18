@@ -37,7 +37,7 @@ section](./overview.md).
 
     ---
 
-    Comprehensive technical explanations' series.
+    A series dedicated to delivering more in-depth technical explanations of Juvix.
 
     [:octicons-arrow-right-24: Read the book](https://docs.juvix.org)
 
@@ -46,7 +46,7 @@ section](./overview.md).
     ---
 
     Explore the Language reference, milestone examples, and tooling
-    Documentation!
+    documentation!
 
     [:octicons-arrow-right-24: Reference](./reference/language.md)
 

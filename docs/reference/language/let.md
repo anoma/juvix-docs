@@ -3,16 +3,7 @@
 Local definitions are introduced with the `let` construct.
 
 ```juvix
-sum : NList -> Nat;
-sum lst :=
-  let
-    go : Nat -> NList -> Nat;
-    go acc nnil := acc;
-    go acc (ncons x xs) := go (acc + x) xs;
-  in
-  go 0 lst;
+--8<-- "docs/reference/language/lets.juvix:let-sum"
 ```
 
-The declaractions in a `let` have the same syntax as declarations inside
-a module, but they are visible only in the expression following the `in`
-keyword.
+The declarations within a `let` statement share the same syntax as those inside a module. However, their visibility is limited to the expression that follows the `in` keyword.

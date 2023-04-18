@@ -22,9 +22,7 @@ number one represented by `suc zero`, the number two represented by
 `suc (suc zero)`, etc.
 
 ```juvix
-type Nat :=
-    zero : Nat
-  | suc : Nat -> Nat;
+--8<------ "docs/reference/language/datatypes.juvix:typeNat"
 ```
 
 Constructors can be used like normal functions or in patterns when
@@ -32,25 +30,19 @@ defining functions by pattern matching. For example, here is a function
 adding two natural numbers:
 
 ```juvix
-infixl 6 +;
-+ : Nat -> Nat -> Nat;
-+ zero b := b;
-+ (suc a) b := suc (a + b);
+--8<------ "docs/reference/language/datatypes.juvix:addNat"
 ```
 
-A data type may have type parameters. A data type with a type parameter
-`A` is called _polymorphic in_ `A`. A canonical example is the type
-`List` polymorphic in the type of list elements.
+A data type can possess type parameters. When a data type has a type parameter `A`, it is referred to as _polymorphic in_ `A`. A classic example of this concept is the `List` type, which is polymorphic in the type of its list elements.
 
 ```juvix
-infixr 5 ::;
-type List (A : Type) :=
-    nil : List A
-  | :: : A -> List A -> List A;
+--8<------ "docs/reference/language/datatypes.juvix:typeList"
+```
 
-elem : {A : Type} -> (A -> A -> Bool) -> A -> List A -> Bool;
-elem _ _ nil := false;
-elem eq s (x :: xs) := eq s x || elem eq s xs;
+The following function determines whether an element is in a list or not.
+
+```juvix
+--8<------ "docs/reference/language/datatypes.juvix:elemList"
 ```
 
 For more examples of inductive types and how to use them, see [the Juvix

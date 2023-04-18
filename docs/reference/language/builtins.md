@@ -6,25 +6,17 @@ are compiled to efficient primitives.
 ## Built-in inductive definitions.
 
 ```juvix
-builtin nat
-type Nat :=
-  | zero : Nat
-  | suc : Nat → Nat;
+--8<-- "docs/reference/language/builtins.juvix:builtin-nat"
 ```
 
 ## Builtin function definitions.
 
 ```juvix
-infixl 6 +;
-builtin nat-plus
-+ : Nat → Nat → Nat;
-+ zero b := b;
-+ (suc a) b := suc (a + b);
+--8<-- "docs/reference/language/builtins.juvix:builtin-nat-plus"
 ```
 
 ## Builtin axiom definitions.
 
 ```juvix
-builtin nat-print
-axiom printNat : Nat → Action;
+--8<-- "docs/reference/language/builtins.juvix:builtin-nat-print"
 ```
