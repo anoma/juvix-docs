@@ -18,7 +18,7 @@
         <link rel="prev" href="../../blog/category/implementation-notes/">
       
       
-        <link rel="next" href="../structure/">
+        <link rel="next" href="../vscode/">
       
       
         
@@ -1218,32 +1218,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../structure/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    
-  
-    Structuring Juvix projects
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -3299,6 +3273,53 @@ to be polymorphic in the element type, and then repeat the previous exercise.</p
 
 <!-- Comment system -->
 
+  <h2 id="__comments">Comments</h2>
+  <!-- Insert generated snippet https://giscus.app/ here -->
+  <script src="https://giscus.app/client.js"
+  data-repo="anoma/juvix-docs"
+  data-repo-id="R_kgDOJXy1bw"
+  data-category="General"
+  data-category-id="DIC_kwDOJXy1b84CV1X1"
+  data-mapping="pathname"
+  data-strict="1"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="light"
+  data-lang="en"
+  crossorigin="anonymous"
+  async>
+</script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme)
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
                 
 
               </article>
@@ -3333,13 +3354,13 @@ to be polymorphic in the element type, and then repeat the previous exercise.</p
         
         
           
-          <a href="../structure/" class="md-footer__link md-footer__link--next" aria-label="Next: Structuring Juvix projects" rel="next">
+          <a href="../vscode/" class="md-footer__link md-footer__link--next" aria-label="Next: Juvix VSCode extension" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Structuring Juvix projects
+                Juvix VSCode extension
               </div>
             </div>
             <div class="md-footer__button md-icon">
