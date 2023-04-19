@@ -3,8 +3,6 @@ icon: material/label-outline
 comments: true
 ---
 
-## Language reference
-
 Juvix is designed with a focus on safety. The Juvix compiler runs several
 static analyses which guarantee the absence of runtime errors. Analyses
 performed include termination and type checking. As a result, functional
@@ -31,3 +29,4 @@ our [latest updates][changelog].
 [changelog]: https://anoma.github.io/juvix/changelog.html
 [homebrew]: https://brew.sh
 [juvix-book]: https://docs.juvix.org
+[stdlib]: https://github.com/anoma/juvix-stdlib
