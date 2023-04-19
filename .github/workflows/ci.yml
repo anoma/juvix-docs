@@ -1,4 +1,4 @@
-name: The Juvix compiler CI
+name: Juvix Docs CI
 "on":
   workflow_dispatch:
     inputs:
