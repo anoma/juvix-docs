@@ -163,11 +163,11 @@ mike-serve: docs
 	mike serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
 .PHONY: dev
-dev: 
+dev:
 	mike delete ${DEVALIAS} --config-file ${MKDOCSCONFIG} > /dev/null 2>&1 || true
 	VERSION=${DEVALIAS} ${MAKE} mike
 
-release: 
+release:
 	mike delete ${VERSION} --config-file ${MKDOCSCONFIG} > /dev/null 2>&1 || true
 	${MAKE} mike
 	mike alias ${VERSION} latest --config-file ${MKDOCSCONFIG}
