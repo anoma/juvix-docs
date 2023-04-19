@@ -122,13 +122,6 @@ nav:
       - Compiling Juvix programs: ./howto/compilation.md
     # - Judoc documentation tool: ./howto/judoc.md
 
-  - Explanations:
-      # - Type theory: ./explanations/typetheory.md
-      - Totality checking:
-          - Termination: ./explanations/totality/termination.md
-        # - Strictly positive data types: ./explanations/totality/positive.md
-        # - Coverage checking: ./explanations/totality/coverage.md
-
   - Reference:
       - Language reference:
           - About: ./reference/language/README.md
@@ -152,6 +145,13 @@ nav:
       - Misc:
           - notes/lsp.md
           - notes/runtime-benchmark-results.md
+
+  - Explanations:
+      # - Type theory: ./explanations/typetheory.md
+      - Totality checking:
+          - Termination: ./explanations/totality/termination.md
+        # - Strictly positive data types: ./explanations/totality/positive.md
+        # - Coverage checking: ./explanations/totality/coverage.md
 
   - Blog:
       - blog/index.md

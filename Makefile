@@ -3,7 +3,7 @@ VERSION?=$(shell cat VERSION)
 # The documention also contains descriptions of features that are not yet
 # released. This flag enables the documentation of these features.
 # By default, dev is shown as the version number.
-DEV?=true
+DEV?=false
 DEVALIAS?="dev"
 
 PWD=$(CURDIR)
@@ -159,7 +159,7 @@ pre-build:
 		${MAKE} icons &&  \
 		${MAKE} pre-commit
 
-mike: pre-build
+mike:
 	mike deploy ${VERSION} --config-file ${MKDOCSCONFIG}
 
 mike-serve: docs
@@ -171,6 +171,9 @@ dev:
 	mike delete ${DEVALIAS} --config-file ${MKDOCSCONFIG} > /dev/null 2>&1 || true
 	VERSION=${DEVALIAS} ${MAKE} mike
 
+# Call this with `DEV=true make release` if you want to use
+# the latest overview/change log from the main branch.
+.PHONY: release
 release:
 	mike delete ${VERSION} --config-file ${MKDOCSCONFIG} > /dev/null 2>&1 || true
 	${MAKE} mike
