@@ -6,26 +6,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.juvix.org/latest/CHANGELOG/</loc>
-         <lastmod>2023-04-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.juvix.org/latest/CONTRIBUTING/</loc>
-         <lastmod>2023-04-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.juvix.org/latest/LICENSE/</loc>
-         <lastmod>2023-04-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.juvix.org/latest/overview/</loc>
-         <lastmod>2023-04-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://docs.juvix.org/latest/quick-start/</loc>
          <lastmod>2023-04-19</lastmod>
          <changefreq>daily</changefreq>
