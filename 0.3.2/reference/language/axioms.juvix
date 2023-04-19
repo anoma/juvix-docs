@@ -1,5 +1,0 @@
-module axioms;
-
-axiom A : Type;
-
-axiom x : A;
