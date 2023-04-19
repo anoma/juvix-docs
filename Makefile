@@ -1,6 +1,10 @@
+# Last official Juvix release
 VERSION?=$(shell cat VERSION)
-# use this boolean to checkout the head of the juvix repo
-HEAD?=false
+# The documention also contains descriptions of features that are not yet
+# released. This flag enables the documentation of these features.
+# By default, dev is shown as the version number.
+DEV?=true
+DEVALIAS?="dev"
 
 PWD=$(CURDIR)
 UNAME := $(shell uname)
@@ -16,14 +20,30 @@ METAFILES:= \
 		   CONTRIBUTING.md \
 		   LICENSE.md
 
+PORT?=8000
+MKDOCSCONFIG?=mkdocs.insiders.yml
+
+EXAMPLEHTMLOUTPUT=docs/examples/html
+EXAMPLEMILESTONE=${COMPILERSOURCES}/examples/milestone
+EXAMPLES= Collatz/Collatz.juvix \
+	Fibonacci/Fibonacci.juvix \
+	Hanoi/Hanoi.juvix \
+	HelloWorld/HelloWorld.juvix \
+	PascalsTriangle/PascalsTriangle.juvix \
+	TicTacToe/CLI/TicTacToe.juvix \
+	Tutorial/Tutorial.juvix
+
+# ----------------------------------------------------------------------------
+
 clean: clean-juvix-build
 	@rm -rf site
 	@rm -rf .cache
-	@rm -rf juvix-src
+	@cd juvix-src && ${MAKE} clean
 
 .PHONY: clean-hard
 clean-hard: clean clean-juvix-build
 	@git clean -fdx
+	@rm -rf juvix-src
 
 .PHONY: clean-juvix-build
 clean-juvix-build:
@@ -60,8 +80,8 @@ juvix:
 	fi
 	@cd ${COMPILERSOURCES} && \
 		git fetch --all && \
-		if [ "${HEAD}" = true ]; then \
-			echo "[!] Use Juvix HEAD commit in main"; \
+		if [ "${DEV}" = true ]; then \
+			echo "[!] Use Juvix DEV commit in main"; \
 			git checkout main; \
 		else \
 			echo "[!] Use Juvix ${VERSION}"; \
@@ -81,16 +101,6 @@ checkout-juvix: juvix
 # -- Examples and other sources from the Juvix Compiler repo
 # ----------------------------------------------------------------------------
 
-EXAMPLEHTMLOUTPUT=docs/examples/html
-EXAMPLEMILESTONE=${COMPILERSOURCES}/examples/milestone
-EXAMPLES= Collatz/Collatz.juvix \
-	Fibonacci/Fibonacci.juvix \
-	Hanoi/Hanoi.juvix \
-	HelloWorld/HelloWorld.juvix \
-	PascalsTriangle/PascalsTriangle.juvix \
-	TicTacToe/CLI/TicTacToe.juvix \
-	Tutorial/Tutorial.juvix
-
 .PHONY: juvix-metafiles
 juvix-metafiles:
 	@for file in $(METAFILES); do \
@@ -101,6 +111,7 @@ juvix-metafiles:
 
 .PHONY: html-examples
 html-examples: juvix
+	@cp -r ${COMPILERSOURCES}/examples docs/
 	@for file in $(EXAMPLES); do \
 			OUTPUTDIR=$(EXAMPLEHTMLOUTPUT)/$$(dirname $$file); \
 			mkdir -p $${OUTPUTDIR}; \
@@ -111,10 +122,6 @@ html-examples: juvix
 # ----------------------------------------------------------------------------
 # -- Building the documentation
 # ----------------------------------------------------------------------------
-
-PORT?=8000
-ALIAS?=latest
-MKDOCSCONFIG?=mkdocs.insiders.yml
 
 icons:
 	rm -rf docs/overrides/.icons/bootstrap
@@ -144,11 +151,18 @@ mike:
 mike-serve: docs
 	mike serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
-deploy: checkout-juvix  \
+.PHONY: dev
+dev: juvix \
+		juvix-metafiles \
+		html-examples \
+		icons
+	VERSION=${DEVALIAS} ${MAKE} mike
+	mike set-default ${DEVALIAS} --config-file ${MKDOCSCONFIG}
+
+release: checkout-juvix  \
 			juvix-metafiles  \
 			html-examples  \
 			icons
-	mike set-default ${VERSION} --config-file ${MKDOCSCONFIG}
 	mike alias ${VERSION} latest --config-file ${MKDOCSCONFIG}
 	${MAKE} mike
 

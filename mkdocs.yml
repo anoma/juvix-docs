@@ -5,9 +5,9 @@ site_author: The Juvix Team
 
 repo_name: anoma/juvix
 repo_url: https://github.com/anoma/juvix
-edit_uri: edit/main/docs/
+edit_uri: https://github.com/anoma/juvix-docs/edit/main/docs
 
-copyright: "Made with :white_heart: 2022 - Heliax AG"
+copyright: "Made with 🤍 by the Juvix Team - Copyright © 2022- Heliax AG"
 
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
@@ -103,11 +103,6 @@ markdown_extensions:
 plugins:
   - search
   - mkdocstrings
-  - git-revision-date
-  - git-revision-date-localized:
-      type: date
-      enabled: !ENV [CI, false]
-      enable_creation_date: true
 
 nav:
   - Juvix:
@@ -124,7 +119,6 @@ nav:
       - Structuring Juvix projects: ./tutorials/structure.md
       - Juvix VSCode extension: ./tutorials/vscode.md
       - Juvix Emacs mode: ./tutorials/emacs.md
-      - NodeJS Interop: ./tutorials/nodejs-interop.md
 
   - How-to guides:
       - Installing Juvix: ./howto/installing.md

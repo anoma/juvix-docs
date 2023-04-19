@@ -1,6 +1,10 @@
+---
+nobuttons: true
+---
+
 # Welcome to the Juvix documentation!
 
-![Image title](assets/images/tara-smiling.svg){ align=right width="300"  }
+![Tara](assets/images/tara-smiling.svg){ align=right width="300" }
 
 Juvix is an open-source, ever-evolving functional language for creating
 privacy-focused decentralized apps. It allows developers to write high-level
@@ -48,7 +52,7 @@ section](./overview.md).
     Explore the Language reference, milestone examples, and tooling
     documentation!
 
-    [:octicons-arrow-right-24: Reference](./reference/language.md)
+    [:octicons-arrow-right-24: Reference](./reference/language/functions.md)
 
 -   :material-account-group:{ .lg .middle } __Blog__
 

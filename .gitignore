@@ -61,7 +61,10 @@ examples/milestone/HelloWorld/HelloWorld
 hie.yaml
 /.shake/
 /.benchmark-results/
-# docs/assets/**
+docs/examples/html/
+docs/examples/demo/
+docs/examples/milestone/
+docs/examples/midsquare/
 docs/overrides/.icons/bootstrap**
 docs/overrides/.icons/codeicons/**
 juvix-src/

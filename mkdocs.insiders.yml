@@ -22,11 +22,27 @@ plugins:
       categories_name: Categories
       pagination: true
       # pagination_per_page: 1
-      pagination_keep_content: true
+      pagination_keep_content: false
 
-  # - git-committers:
-  #     repository: anoma/juvix
-  #     branch: main
+  - git-revision-date-localized:
+      type: timeago
+      custom_format: "%d. %B %Y"
+      timezone: Europe/Oslo
+      locale: en
+      fallback_to_build_date: false
+      enable_creation_date: true
+      exclude:
+        - index.md
+        - overview.md
+        - CHANGELOG.md
+        - CONTRIBUTING.md
+        - LICENSE.md
+      enabled: true
+      strict: true
+
+  - git-committers:
+      repository: anoma/juvix-docs
+      branch: main
 
   - rss:
       match_path: blog/posts/.*
@@ -39,8 +55,8 @@ plugins:
   - mike:
       canonical_version: latest
       version_selector: true
-      css_dir: assets/stylesheets
-      javascript_dir: assets/javascripts
+      css_dir: assets/css
+      javascript_dir: assets/js
 
 extra:
   homepage: https://docs.juvix.org
@@ -55,4 +71,4 @@ extra:
 
   analytics:
     provider: google
-    property: !ENV GOOGLE_ANALYTICS_KEY
+    property: G-9R2Q766R16

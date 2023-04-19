@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Function declarations
 
 A function declaration consists of a type signature and a group of
