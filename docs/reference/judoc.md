@@ -1,3 +1,8 @@
+---
+icon: material/file-document-multiple-outline
+comments: true
+---
+
 # Judoc syntax reference
 
 Judoc is used to document parts of your code. You can attach _Judoc

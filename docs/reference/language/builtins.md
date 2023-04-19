@@ -1,3 +1,8 @@
+---
+icon: material/office-building-plus-outline
+comments: true
+---
+
 # Built-ins
 
 Juvix has support for the built-in natural type and a few functions that

@@ -111,19 +111,16 @@ nav:
       - Changelog: ./CHANGELOG.md
       - Contributing: ./CONTRIBUTING.md
 
-  - Blog:
-      - blog/index.md
-
   - Tutorials:
       - Learn Juvix in minutes: ./tutorials/learn.md
-      - Structuring Juvix projects: ./tutorials/structure.md
+      # - Structuring Juvix projects: ./tutorials/structure.md
       - Juvix VSCode extension: ./tutorials/vscode.md
       - Juvix Emacs mode: ./tutorials/emacs.md
 
   - How-to guides:
       - Installing Juvix: ./howto/installing.md
       - Compiling Juvix programs: ./howto/compilation.md
-      - Judoc documentation tool: ./howto/judoc.md
+    # - Judoc documentation tool: ./howto/judoc.md
 
   - Explanations:
       # - Type theory: ./explanations/typetheory.md
@@ -133,7 +130,8 @@ nav:
         # - Coverage checking: ./explanations/totality/coverage.md
 
   - Reference:
-      - Language reference: # ./reference/language/README.md
+      - Language reference:
+          - About: ./reference/language/README.md
           - Functions: ./reference/language/functions.md
           - Builtins: ./reference/language/builtins.md
           - Data types: ./reference/language/datatypes.md
@@ -151,7 +149,9 @@ nav:
           - Emacs mode: ./reference/tooling/emacs.md
           - Haskell test suite: ./reference/tooling/testing.md
       - Judoc reference: ./reference/judoc.md
+      - Misc:
+          - notes/lsp.md
+          - notes/runtime-benchmark-results.md
 
-  - Misc:
-      - notes/lsp.md
-      - notes/runtime-benchmark-results.md
+  - Blog:
+      - blog/index.md

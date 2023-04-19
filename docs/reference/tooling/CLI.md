@@ -1,3 +1,8 @@
+---
+icon: material/powershell
+comments: true
+---
+
 # CLI
 
 ## Usage

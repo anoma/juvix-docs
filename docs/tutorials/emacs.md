@@ -1,3 +1,8 @@
+---
+icon: simple/gnuemacs
+comments: true
+---
+
 # Juvix Emacs mode tutorial
 
 First, follow the instructions in the [Emacs Mode
@@ -6,7 +11,7 @@ mode. Once you've successfully set it up, create a file `Hello.juvix`
 with the following content.
 
 ```juvix
---8<------ "examples/milestone/HelloWorld/HelloWorld.juvix"
+--8<-- "docs/examples/milestone/HelloWorld/HelloWorld.juvix"
 ```
 
 Type ++ctrl+c+ctrl+l++ to run the scoper and highlight the syntax.
@@ -37,17 +42,7 @@ mode turned on. It should be turned on automatically when loading
 Let's extend our program with another definition.
 
 ```juvix
-module Hello;
-
-open import Stdlib.Prelude;
-
-print : IO;
-print := printStringLn "Hello world!";
-
-main : IO;
-main := print;
-
-end;
+--8<-- "docs/tutorials/emacs.juvix:Hello"
 ```
 
 Place the cursor on the `print` call in the function clause of `main`
@@ -57,16 +52,4 @@ standard library. You can try using `M-.` to jump to the definition of
 `printStringLn`.
 
 One more feature of the Juvix Emacs mode is code formatting. To format
-the content of the current buffer, type ++ctrl+c+ctrl+f++. Here is the result.
-
-```juvix
-module Hello;
-  open import Stdlib.Prelude;
-
-  print : IO;
-  print := printStringLn "Hello world!";
-
-  main : IO;
-  main := print;
-end;
-```
+the content of the current buffer, type ++ctrl+c+ctrl+f++.

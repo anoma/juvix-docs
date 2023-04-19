@@ -1,3 +1,8 @@
+---
+icon: material/doctor
+comments: true
+---
+
 # Juvix Doctor
 
 The `juvix doctor` command can help you to troubleshoot problems with

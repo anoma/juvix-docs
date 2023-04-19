@@ -1,3 +1,8 @@
+---
+icon: material/notebook-heart
+comments: true
+---
+
 # Juvix tutorial
 
 ![tara-teaching](./../assets/images/tara-teaching.svg){ align=left width="280" }

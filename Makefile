@@ -15,7 +15,7 @@ COMPILERSOURCES?=juvix-src
 
 MAKEAUXFLAGS?=-s
 MAKE=make ${MAKEAUXFLAGS}
-METAFILES:= \
+METAFILES:= README.md \
 		   CHANGELOG.md \
 		   CONTRIBUTING.md \
 		   LICENSE.md
@@ -101,13 +101,17 @@ checkout-juvix: juvix
 # -- Examples and other sources from the Juvix Compiler repo
 # ----------------------------------------------------------------------------
 
+HEADER := "---\\nnobuttons: true\\n---\\n"
+
 .PHONY: juvix-metafiles
 juvix-metafiles:
 	@for file in $(METAFILES); do \
-		echo ${COMPILERSOURCES}/$$file; \
-		cp ${COMPILERSOURCES}/$$file docs/; \
+		echo -e "$(HEADER)" | \
+			cat - ${COMPILERSOURCES}/$$file > temp  \
+			&& mv temp docs/$$file; \
 	done
-	cp ${COMPILERSOURCES}/README.md docs/overview.md
+	@mv docs/README.md docs/overview.md
+
 
 .PHONY: html-examples
 html-examples: juvix
@@ -145,26 +149,25 @@ docs:
 serve: docs
 	mkdocs serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
-mike:
+.PHONY: pre-build
+pre-build: checkout-juvix  \
+			juvix-metafiles  \
+			html-examples  \
+			icons  \
+			pre-commit
+
+mike: pre-build
 	mike deploy ${VERSION} --config-file ${MKDOCSCONFIG}
 
 mike-serve: docs
 	mike serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
 .PHONY: dev
-dev: checkout-juvix  \
-			juvix-metafiles  \
-			html-examples  \
-			icons  \
-			pre-commit
+dev: 
 	mike delete ${DEVALIAS} --config-file ${MKDOCSCONFIG} > /dev/null 2>&1 || true
 	VERSION=${DEVALIAS} ${MAKE} mike
 
-release: checkout-juvix  \
-			juvix-metafiles  \
-			html-examples  \
-			icons  \
-			pre-commit
+release: 
 	mike delete ${VERSION} --config-file ${MKDOCSCONFIG} > /dev/null 2>&1 || true
 	${MAKE} mike
 	mike alias ${VERSION} latest --config-file ${MKDOCSCONFIG}

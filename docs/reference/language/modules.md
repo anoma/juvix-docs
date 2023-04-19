@@ -1,3 +1,8 @@
+---
+icon: material/view-module
+comments: true
+---
+
 # Module system
 
 ## Defining a module

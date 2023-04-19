@@ -1,3 +1,8 @@
+---
+icon: material/axe
+comments: true
+---
+
 # Axiom
 
 Axioms or postulates can be introduced by using the `axiom` keyword. For

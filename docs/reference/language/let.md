@@ -1,3 +1,8 @@
+---
+icon: material/equal
+comments: true
+---
+
 # Local definitions
 
 Local definitions are introduced with the `let` construct.

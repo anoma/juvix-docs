@@ -1,3 +1,8 @@
+---
+icon: material/toy-brick-outline
+comments: true
+---
+
 # Data types
 
 A data type declaration consists of:

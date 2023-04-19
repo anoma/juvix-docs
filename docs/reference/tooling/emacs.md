@@ -1,3 +1,8 @@
+---
+icon: simple/gnuemacs
+comments: true
+---
+
 ## Emacs Mode
 
 There is an Emacs mode available for Juvix. Currently, it supports

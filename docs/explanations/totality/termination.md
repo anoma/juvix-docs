@@ -1,3 +1,8 @@
+---
+icon: material/function-variant
+comments: true
+---
+
 # Termination
 
 To prevent inconsistencies arising from function declarations, Juvix mandates

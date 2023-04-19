@@ -1,3 +1,8 @@
+---
+icon: material/language-haskell
+comments: true
+---
+
 # Testing
 
 ### Dependencies

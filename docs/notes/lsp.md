@@ -1,3 +1,8 @@
+---
+icon: material/language-haskell
+comments: true
+---
+
 # LSP support
 
 We provide a sample `hie.yaml` configuration file for both `cabal` and

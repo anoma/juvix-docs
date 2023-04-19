@@ -1,3 +1,8 @@
+---
+icon: material/chart-bar
+comments: true
+---
+
 # Benchmarks of the new Juvix runtime
 
 Benchmarked version: commit 148ececb4d4259eacbb980f5992073a3ac611d82

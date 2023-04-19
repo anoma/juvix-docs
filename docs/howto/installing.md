@@ -1,3 +1,8 @@
+---
+icon: material/laptop
+comments: true
+---
+
 # Dependencies
 
 You need [Clang / LLVM](https://releases.llvm.org/download.html) version

@@ -1,3 +1,8 @@
+---
+icon: octicons/terminal-16
+comments: true
+---
+
 # Compiling simple programs
 
 A Juvix file must declare a module whose name corresponds exactly to the

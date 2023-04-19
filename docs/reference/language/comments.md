@@ -1,3 +1,8 @@
+---
+icon: material/comment-text
+comments: true
+---
+
 # Comments
 
 Comments follow the same syntax as in `Haskell` and `Agda`. Be aware, Juvix has no support for nested comments.
