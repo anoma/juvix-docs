@@ -4,8 +4,10 @@
 {% endif %}
 
 <!-- Actions -->
-{% if page.actions %}
-  {% include "partials/actions.html" %}
+{% if page.meta.nobuttons %}
+
+{% else %}
+{% include "partials/actions.html" %}
 {% endif %}
 
 <!--
