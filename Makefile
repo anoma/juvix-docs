@@ -38,7 +38,9 @@ EXAMPLES= Collatz/Collatz.juvix \
 clean: clean-juvix-build
 	@rm -rf site
 	@rm -rf .cache
-	@cd juvix-src && ${MAKE} clean
+	@if [ -d ${COMPILERSOURCES} ]; then \
+		cd ${COMPILERSOURCES} && ${MAKE} clean; \
+	fi
 
 .PHONY: clean-hard
 clean-hard: clean clean-juvix-build
