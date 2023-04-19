@@ -152,12 +152,12 @@ mike-serve: docs
 	mike serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
 .PHONY: dev
-dev: juvix \
-		juvix-metafiles \
-		html-examples \
-		icons \
-		pre-commit \
-	mike set-default ${VERSION} --config-file ${MKDOCSCONFIG}
+dev: checkout-juvix  \
+			juvix-metafiles  \
+			html-examples  \
+			icons  \
+			pre-commit
+	mike delete ${DEVALIAS} --config-file ${MKDOCSCONFIG} > /dev/null 2>&1 || true
 	VERSION=${DEVALIAS} ${MAKE} mike
 
 release: checkout-juvix  \
@@ -165,8 +165,12 @@ release: checkout-juvix  \
 			html-examples  \
 			icons  \
 			pre-commit
-	mike alias ${VERSION} latest --config-file ${MKDOCSCONFIG}
+	mike delete ${VERSION} --config-file ${MKDOCSCONFIG} > /dev/null 2>&1 || true
 	${MAKE} mike
+	mike alias ${VERSION} latest --config-file ${MKDOCSCONFIG}
+	mike set-default ${VERSION} --config-file ${MKDOCSCONFIG}
+	git tag -d v${VERSION} > /dev/null 2>&1 || true
+	git tag -a v${VERSION} -m "Release v${VERSION}"
 
 # ----------------------------------------------------------------------------
 # -- Codebase Health and Quality
