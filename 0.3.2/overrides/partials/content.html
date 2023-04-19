@@ -4,7 +4,9 @@
 {% endif %}
 
 <!-- Actions -->
-{% include "partials/actions.html" %}
+{% if page.meta.actions %}
+  {% include "partials/actions.html" %}
+{% endif %}
 
 <!--
   Hack: check whether the content contains a h1 headline. If it doesn't, the
