@@ -92,9 +92,11 @@ juvix:
 # The numeric version of the Juvix compiler must match the
 # version of the documentation specified in the VERSION file.
 checkout-juvix: juvix
-	@if [ "${JUVIXBINVERSION}" != "${VERSION}" ]; then \
-		echo "[!] Juvix version ${JUVIXBINVERSION} does not match the documentation version $(VERSION)."; \
-		exit 1; \
+	@if [ "${DEV}" != true ]; then \
+		if [ "${JUVIXBINVERSION}" != "${VERSION}" ]; then \
+			echo "[!] Juvix version ${JUVIXBINVERSION} does not match the documentation version $(VERSION)."; \
+			exit 1; \
+		fi; \
 	fi
 
 # ----------------------------------------------------------------------------
@@ -150,11 +152,12 @@ serve: docs
 	mkdocs serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
 .PHONY: pre-build
-pre-build: checkout-juvix  \
-			juvix-metafiles  \
-			html-examples  \
-			icons  \
-			pre-commit
+pre-build:
+	${MAKE} checkout-juvix && \
+		${MAKE} juvix-metafiles && \
+		${MAKE} html-examples && \
+		${MAKE} icons &&  \
+		${MAKE} pre-commit
 
 mike: pre-build
 	mike deploy ${VERSION} --config-file ${MKDOCSCONFIG}
@@ -164,6 +167,7 @@ mike-serve: docs
 
 .PHONY: dev
 dev:
+	export DEV=true
 	mike delete ${DEVALIAS} --config-file ${MKDOCSCONFIG} > /dev/null 2>&1 || true
 	VERSION=${DEVALIAS} ${MAKE} mike
 
