@@ -8,7 +8,6 @@ plugins:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - social
   - tags
-  - meta
   - blog:
       blog_toc: true
       draft: false
@@ -72,3 +71,16 @@ extra:
   analytics:
     provider: google
     property: G-9R2Q766R16
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/heart
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/heart-broken
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback! Help us improve this page by opening an issue on GitHub.

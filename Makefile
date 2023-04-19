@@ -155,14 +155,16 @@ mike-serve: docs
 dev: juvix \
 		juvix-metafiles \
 		html-examples \
-		icons
+		icons \
+		pre-commit \
+	mike set-default ${VERSION} --config-file ${MKDOCSCONFIG}
 	VERSION=${DEVALIAS} ${MAKE} mike
-	mike set-default ${DEVALIAS} --config-file ${MKDOCSCONFIG}
 
 release: checkout-juvix  \
 			juvix-metafiles  \
 			html-examples  \
-			icons
+			icons  \
+			pre-commit
 	mike alias ${VERSION} latest --config-file ${MKDOCSCONFIG}
 	${MAKE} mike
 
