@@ -1,6 +1,7 @@
 ---
 icon: material/view-module
 comments: true
+status: deprecated
 ---
 
 :construction: This page is in progress and may be incomplete or inaccurate :construction:
