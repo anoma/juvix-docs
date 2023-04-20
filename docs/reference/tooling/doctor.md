@@ -3,6 +3,8 @@ icon: material/doctor
 comments: true
 ---
 
+![Tara doctor](./../../assets/images/tara-doctor.svg){align=right width="300"}
+
 # Juvix Doctor
 
 The `juvix doctor` command can help you to troubleshoot problems with

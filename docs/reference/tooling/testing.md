@@ -8,7 +8,7 @@ comments: true
 ### Dependencies
 
 See [Installing dependencies](./doctor.md) for instructions on how to
-setup the testing environment for the WASM compiler tests.
+set up the testing environment for the WASM compiler tests.
 
 ### Running
 

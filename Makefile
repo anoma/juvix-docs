@@ -22,6 +22,10 @@ METAFILES:= README.md \
 
 PORT?=8000
 MKDOCSCONFIG?=mkdocs.insiders.yml
+MIKEFLAGS?=--push  \
+	--remote origin  \
+	--branch gh-pages  \
+	--config-file ${MKDOCSCONFIG}
 
 EXAMPLEHTMLOUTPUT=docs/examples/html
 EXAMPLEMILESTONE=${COMPILERSOURCES}/examples/milestone
@@ -162,7 +166,7 @@ pre-build:
 		${MAKE} pre-commit
 
 mike:
-	mike deploy ${VERSION} --config-file ${MKDOCSCONFIG}
+	mike deploy ${VERSION} ${MIKEFLAGS}
 
 mike-serve: docs
 	mike serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
@@ -170,17 +174,17 @@ mike-serve: docs
 .PHONY: dev
 dev:
 	export DEV=true
-	mike delete ${DEVALIAS} --config-file ${MKDOCSCONFIG} > /dev/null 2>&1 || true
+	mike delete ${DEVALIAS} ${MIKEFLAGS} > /dev/null 2>&1 || true
 	VERSION=${DEVALIAS} ${MAKE} mike
 
 # Call this with `DEV=true make release` if you want to use
 # the latest overview/change log from the main branch.
 .PHONY: release
 release:
-	mike delete ${VERSION} --config-file ${MKDOCSCONFIG} > /dev/null 2>&1 || true
+	mike delete ${VERSION} ${MIKEFLAGS} > /dev/null 2>&1 || true
 	${MAKE} mike
-	mike alias ${VERSION} latest --config-file ${MKDOCSCONFIG}
-	mike set-default ${VERSION} --config-file ${MKDOCSCONFIG}
+	mike alias ${VERSION} latest ${MIKEFLAGS}
+	mike set-default ${VERSION} ${MIKEFLAGS}
 	git tag -d v${VERSION} > /dev/null 2>&1 || true
 	git tag -a v${VERSION} -m "Release v${VERSION}"
 
