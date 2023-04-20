@@ -1,10 +1,12 @@
 ---
 nobuttons: true
+title: Welcome to the Juvix documentation!
+description: Juvix is a high-level programming language for writing privacy-preserving decentralised applications.
 ---
 
 # Welcome to the Juvix documentation!
 
-![Tara](assets/images/tara-smiling.svg){ align=right width="300" }
+![Tara](assets/images/tara-smiling.svg){align=right width="300"}
 
 Juvix is an open-source, ever-evolving functional language for creating
 privacy-focused decentralized apps. It allows developers to write high-level
@@ -75,7 +77,7 @@ section](./overview.md).
 
 
 [anoma]: https://anoma.net
-[changelog]: https://anoma.github.io/juvix/changelog.html
+[changelog]: https://docs.juvix.org/changelog.html
 [Discord]: https://discord.gg/PfaaFVErHt
 [geb]: https://github.com/anoma/geb
 [GitHub]: https://github.com/anoma/juvix

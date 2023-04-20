@@ -3,6 +3,8 @@ icon: material/view-module
 comments: true
 ---
 
+:construction: This page is in progress and may be incomplete or inaccurate :construction:
+
 # Module system
 
 ## Defining a module
