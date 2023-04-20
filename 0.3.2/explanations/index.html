@@ -12,34 +12,34 @@
         <meta name="author" content="The Juvix Team">
       
       
-        <link rel="canonical" href="https://docs.juvix.org/latest/reference/language/functions/">
+        <link rel="canonical" href="https://docs.juvix.org/latest/explanations/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../notes/runtime-benchmark-results/">
       
       
-        <link rel="next" href="../builtins/">
+        <link rel="next" href="totality/termination/">
       
       
         
       
       
-        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../../feed_rss_created.xml">
-        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../../feed_rss_updated.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../feed_rss_updated.xml">
       
-      <link rel="icon" href="../../../assets/images/favicon/favicon.ico">
+      <link rel="icon" href="../assets/images/favicon/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6+insiders-4.32.5">
     
     
       
-        <title>Functions - Juvix Docs</title>
+        <title>About - Juvix Docs</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.dc5b59cc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.dc5b59cc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.6932e648.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.6932e648.min.css">
       
       
 
@@ -55,15 +55,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../css/timeago.css">
+      <link rel="stylesheet" href="../css/timeago.css">
     
-      <link rel="stylesheet" href="../../../assets/css/extra.css">
+      <link rel="stylesheet" href="../assets/css/extra.css">
     
-      <link rel="stylesheet" href="../../../assets/css/juvix-highlight.css">
+      <link rel="stylesheet" href="../assets/css/juvix-highlight.css">
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -84,11 +84,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Functions - Juvix Docs" >
+        <meta  property="og:title"  content="About - Juvix Docs" >
       
         <meta  property="og:description"  content="The Official Documentation for Juvix" >
       
-        <meta  property="og:image"  content="https://docs.juvix.org/latest/assets/images/social/reference/language/functions.png" >
+        <meta  property="og:image"  content="https://docs.juvix.org/latest/assets/images/social/explanations/README.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -96,15 +96,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://docs.juvix.org/latest/reference/language/functions/" >
+        <meta  property="og:url"  content="https://docs.juvix.org/latest/explanations/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Functions - Juvix Docs" >
+        <meta  name="twitter:title"  content="About - Juvix Docs" >
       
         <meta  name="twitter:description"  content="The Official Documentation for Juvix" >
       
-        <meta  name="twitter:image"  content="https://docs.juvix.org/latest/assets/images/social/reference/language/functions.png" >
+        <meta  name="twitter:image"  content="https://docs.juvix.org/latest/assets/images/social/explanations/README.png" >
       
     
     
@@ -126,11 +126,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#function-declarations" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -142,7 +137,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the latest version.
-  <a href="../../../..">
+  <a href="../..">
     <strong>Click here to go to latest.</strong>
   </a>
 
@@ -161,7 +156,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="https://docs.juvix.org" title="Juvix Docs" class="md-header__button md-logo" aria-label="Juvix Docs" data-md-component="logo">
       
-  <img src="../../../assets/logo-juvix.svg" alt="logo">
+  <img src="../assets/logo-juvix.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -177,7 +172,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Functions
+              About
             
           </span>
         </div>
@@ -272,7 +267,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+        <a href=".." class="md-tabs__link">
           
   
   Juvix
@@ -290,7 +285,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../tutorials/learn/" class="md-tabs__link">
+        <a href="../tutorials/learn/" class="md-tabs__link">
           
   
   Tutorials
@@ -308,7 +303,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../howto/installing/" class="md-tabs__link">
+        <a href="../howto/installing/" class="md-tabs__link">
           
   
   How-to guides
@@ -322,21 +317,17 @@
         
   
   
-    
-  
   
     
     
       
   
   
-    
-  
   
     
     
       <li class="md-tabs__item">
-        <a href="../" class="md-tabs__link md-tabs__link--active">
+        <a href="../reference/language/" class="md-tabs__link">
           
   
   Reference
@@ -353,11 +344,13 @@
         
   
   
+    
+  
   
     
     
       <li class="md-tabs__item">
-        <a href="../../../explanations/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link md-tabs__link--active">
           
   
   Explanations
@@ -375,7 +368,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../blog/" class="md-tabs__link">
+        <a href="../blog/" class="md-tabs__link">
           
   
   Blog
@@ -416,7 +409,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="https://docs.juvix.org" title="Juvix Docs" class="md-nav__button md-logo" aria-label="Juvix Docs" data-md-component="logo">
       
-  <img src="../../../assets/logo-juvix.svg" alt="logo">
+  <img src="../assets/logo-juvix.svg" alt="logo">
 
     </a>
     Juvix Docs
@@ -488,7 +481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -514,7 +507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -540,7 +533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CHANGELOG/" class="md-nav__link">
+      <a href="../CHANGELOG/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -566,7 +559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+      <a href="../CONTRIBUTING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -645,7 +638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorials/learn/" class="md-nav__link">
+      <a href="../tutorials/learn/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 23.3-.6-.5c-2-1.9-3.4-3.1-3.4-4.6 0-1.2 1-2.2 2.2-2.2.7 0 1.4.3 1.8.8.4-.5 1.1-.8 1.8-.8 1.2 0 2.2.9 2.2 2.2 0 1.5-1.4 2.7-3.4 4.6l-.6.5M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v9.34A6.005 6.005 0 0 0 13.8 22H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2Z"/></svg>
@@ -673,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorials/vscode/" class="md-nav__link">
+      <a href="../tutorials/vscode/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 16.47V7.39l-6 4.54M2.22 9.19a.858.858 0 0 1-.02-1.15l1.2-1.11c.2-.18.69-.26 1.05 0l3.42 2.61 7.93-7.25c.32-.32.87-.45 1.5-.12l4 1.91c.36.21.7.54.7 1.15v13.5c0 .4-.29.83-.6 1l-4.4 2.1c-.32.13-.92.01-1.13-.2l-8.02-7.3-3.4 2.6c-.38.26-.85.19-1.05 0l-1.2-1.1c-.32-.33-.28-.87.05-1.2l3-2.7"/></svg>
@@ -701,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorials/emacs/" class="md-nav__link">
+      <a href="../tutorials/emacs/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 24C5.448 24 .118 18.617.118 12S5.448 0 12 0s11.882 5.383 11.882 12S18.552 24 12 24zM12 .661C5.813.661.779 5.748.779 12S5.813 23.339 12 23.339 23.221 18.253 23.221 12 18.187.661 12 .661zM8.03 20.197s.978.069 2.236-.042c.51-.045 2.444-.235 3.891-.552 0 0 1.764-.377 2.707-.725.987-.364 1.524-.673 1.766-1.11-.011-.09.074-.408-.381-.599-1.164-.488-2.514-.4-5.185-.457-2.962-.102-3.948-.598-4.472-.997-.503-.405-.25-1.526 1.907-2.513 1.086-.526 5.345-1.496 5.345-1.496-1.434-.709-4.109-1.955-4.659-2.224-.482-.236-1.254-.591-1.421-1.021-.19-.413.448-.768.804-.87 1.147-.331 2.766-.536 4.24-.56.741-.012.861-.059.861-.059 1.022-.17 1.695-.869 1.414-1.976-.252-1.13-1.579-1.795-2.84-1.565-1.188.217-4.05 1.048-4.05 1.048 3.539-.031 4.131.028 4.395.398.156.218-.071.518-1.015.672-1.027.168-3.163.37-3.163.37-2.049.122-3.492.13-3.925 1.046-.283.599.302 1.129.558 1.46 1.082 1.204 2.646 1.853 3.652 2.331.379.18 1.49.52 1.49.52-3.265-.18-5.619.823-7.001 1.977-1.562 1.445-.871 3.168 2.33 4.228 1.891.626 2.828.921 5.648.667 1.661-.09 1.923-.036 1.939.1.023.192-1.845.669-2.355.816-1.298.374-4.699 1.129-4.716 1.133z"/></svg>
@@ -782,7 +775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../howto/installing/" class="md-nav__link">
+      <a href="../howto/installing/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16v10H4m16 2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4c-1.11 0-2 .89-2 2v10a2 2 0 0 0 2 2H0v2h24v-2h-4Z"/></svg>
@@ -810,7 +803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../howto/compilation/" class="md-nav__link">
+      <a href="../howto/compilation/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25Zm1.75-.25a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25ZM7.25 8a.749.749 0 0 1-.22.53l-2.25 2.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L5.44 8 3.72 6.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.25 2.25c.141.14.22.331.22.53Zm1.5 1.5h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1 0-1.5Z"/></svg>
@@ -843,19 +836,19 @@
       
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
@@ -874,7 +867,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -889,19 +882,19 @@
                 
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
         
           <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
             
@@ -920,7 +913,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -937,7 +930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../reference/language/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 17H5V7h11l3.55 5m-1.92-6.16C17.27 5.33 16.67 5 16 5H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h11c.67 0 1.27-.34 1.63-.85L22 12l-4.37-6.16Z"/></svg>
@@ -963,37 +956,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.42 5.29c-1.1-.1-2.07.71-2.17 1.82L10 10h2.82v2h-3l-.44 5.07A4.001 4.001 0 0 1 2 18.83l1.5-1.5c.33 1.05 1.46 1.64 2.5 1.3.78-.24 1.33-.93 1.4-1.74L7.82 12h-3v-2H8l.27-3.07a4.01 4.01 0 0 1 4.33-3.65c1.26.11 2.4.81 3.06 1.89l-1.5 1.5c-.25-.77-.93-1.31-1.74-1.38M22 13.65l-1.41-1.41-2.83 2.83-2.83-2.83-1.43 1.41 2.85 2.85-2.85 2.81 1.43 1.41 2.83-2.83 2.83 2.83L22 19.31l-2.83-2.81L22 13.65Z"/></svg>
-  
-  <span class="md-ellipsis">
-    
-  
-    Functions
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../reference/language/functions/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.42 5.29c-1.1-.1-2.07.71-2.17 1.82L10 10h2.82v2h-3l-.44 5.07A4.001 4.001 0 0 1 2 18.83l1.5-1.5c.33 1.05 1.46 1.64 2.5 1.3.78-.24 1.33-.93 1.4-1.74L7.82 12h-3v-2H8l.27-3.07a4.01 4.01 0 0 1 4.33-3.65c1.26.11 2.4.81 3.06 1.89l-1.5 1.5c-.25-.77-.93-1.31-1.74-1.38M22 13.65l-1.41-1.41-2.83 2.83-2.83-2.83-1.43 1.41 2.85 2.85-2.85 2.81 1.43 1.41 2.83-2.83 2.83 2.83L22 19.31l-2.83-2.81L22 13.65Z"/></svg>
@@ -1010,59 +975,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#mutually-recursive-functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mutually recursive functions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#anonymous-functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Anonymous functions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#short-definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Short definitions
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1074,7 +986,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../builtins/" class="md-nav__link">
+      <a href="../reference/language/builtins/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 11h-2V9h2v2m2 0h2V9h-2v2m-.6 10H12v-3.5h-2V21H4V3h14v10.1c.3-.1.7-.1 1-.1.3 0 .7 0 1 .1V1H2v22h12.5c-.5-.6-.9-1.3-1.1-2M14 7h2V5h-2v2m2 6.8V13h-2v2h.5c.5-.5 1-.9 1.5-1.2M8 5H6v2h2V5m0 4H6v2h2V9M6 19h2v-2H6v2m6-14h-2v2h2V5m-2 10h2v-2h-2v2m-2-2H6v2h2v-2m10 2v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
@@ -1102,7 +1014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datatypes/" class="md-nav__link">
+      <a href="../reference/language/datatypes/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6V5a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v1h-2V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v1H3v14h18V6m-2 12H5V8h14Z"/></svg>
@@ -1130,7 +1042,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modules/" class="md-nav__link">
+      <a href="../reference/language/modules/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 5v6h5V5m-11 6h5V5h-5m6 13h5v-6h-5m-6 6h5v-6h-5m-6 6h5v-6H4m0-1h5V5H4v6Z"/></svg>
@@ -1158,7 +1070,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../let/" class="md-nav__link">
+      <a href="../reference/language/let/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 10H5V8h14v2m0 6H5v-2h14v2Z"/></svg>
@@ -1186,7 +1098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../control/" class="md-nav__link">
+      <a href="../reference/language/control/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 11h1c.3 0 .5-.2.5-.5V9h8v1.5c0 .3.2.5.5.5h1c.3 0 .5-.2.5-.5V6l-1.4-4.3c-.1-.4-.5-.7-.9-.7h-7.3c-.4 0-.8.3-.9.7L9 6v4.5c0 .3.2.5.5.5m1.8-9h7.3l.9 3h-9.1l.9-3m.7 21h-2c0-.8-1.9-1.5-3.4-2.1C4.5 20.1 2 19.2 2 17c0-2.3 2.3-2.9 4.2-3.5C7.9 13.1 9 12.7 9 12h2c0 2.3-2.3 2.9-4.2 3.5-1.7.4-2.8.8-2.8 1.5 0 .8 1.9 1.5 3.4 2.1 2.1.8 4.6 1.7 4.6 3.9m10 0h-2c0-.8-1.9-1.5-3.4-2.1-2.1-.8-4.6-1.7-4.6-3.9 0-2.3 2.3-2.9 4.2-3.5 1.6-.5 2.8-.8 2.8-1.5h2c0 2.3-2.3 2.9-4.2 3.5-1.6.4-2.8.8-2.8 1.5 0 .8 1.9 1.5 3.4 2.1 2.1.8 4.6 1.7 4.6 3.9Z"/></svg>
@@ -1214,7 +1126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../comments/" class="md-nav__link">
+      <a href="../reference/language/comments/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 22a1 1 0 0 1-1-1v-3H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6.1l-3.7 3.71c-.2.19-.45.29-.7.29H9M5 5v2h14V5H5m0 4v2h8V9H5m0 4v2h10v-2H5Z"/></svg>
@@ -1242,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../axioms/" class="md-nav__link">
+      <a href="../reference/language/axioms/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 2 10 6c0 4-2 6-6 7l-3-5-4-4 3-4M4.11 19.84l-1.99-1.51L9.19 9 11 10.81l-6.89 9.03Z"/></svg>
@@ -1278,7 +1190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../stdlib/" class="md-nav__link">
+      <a href="../reference/stdlib/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3H9m3 2 4 13 3-1-4-13-3 1M5 5v13h3V5H5M3 19v2h18v-2H3Z"/></svg>
@@ -1306,7 +1218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/" class="md-nav__link">
+      <a href="../reference/examples/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9.37 4 1.41 2.5L9.37 9H6.63l-1.4-2.5L6.63 4h2.74m.88-2h-4.5c-.19 0-.36.11-.44.26L3.09 6.22 3 6.5l.09.28 2.22 3.96c.08.15.25.26.44.26h4.5c.19 0 .36-.11.44-.26l2.22-3.96.09-.28-.09-.28-2.22-3.96a.505.505 0 0 0-.44-.26m8.37 7.5L20 12l-1.38 2.5h-2.74L14.5 12l1.38-2.5h2.74m.88-2H15c-.19 0-.36.11-.44.26l-2.22 3.96-.09.28.09.28 2.22 3.96c.08.15.25.26.44.26h4.5c.19 0 .36-.11.44-.26l2.22-3.96.09-.28-.09-.28-2.22-3.96a.505.505 0 0 0-.44-.26M9.37 15l1.41 2.5L9.37 20H6.63l-1.4-2.5 1.4-2.5h2.74m.88-2h-4.5c-.19 0-.36.11-.44.26l-2.22 3.96-.09.28.09.28 2.22 3.96c.08.15.25.26.44.26h4.5c.19 0 .36-.11.44-.26l2.22-3.96.09-.28-.09-.28-2.22-3.96a.505.505 0 0 0-.44-.26Z"/></svg>
@@ -1334,7 +1246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../benchmarks/" class="md-nav__link">
+      <a href="../reference/benchmarks/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 21H2V3h2v16h2v-9h4v9h2V6h4v13h2v-5h4v7Z"/></svg>
@@ -1408,7 +1320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tooling/CLI/" class="md-nav__link">
+      <a href="../reference/tooling/CLI/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.83 4c.49 0 .8.4.67.89l-3.16 14.22c-.11.49-.59.89-1.08.89H2.17c-.49 0-.8-.4-.67-.89L4.66 4.89C4.77 4.4 5.25 4 5.74 4h16.09m-6 12h-4c-.46 0-.83.38-.83.84 0 .47.37.85.83.85h4c.47 0 .85-.38.85-.85 0-.46-.38-.84-.85-.84m-10.05.28a.87.87 0 0 0-.21 1.22c.28.42.84.5 1.24.23 7.35-5.17 7.4-5.23 7.45-5.26.18-.16.27-.38.28-.6.01-.2-.04-.37-.16-.56L9.46 6.03A.867.867 0 0 0 8.21 6c-.36.32-.38.88-.05 1.24l4.15 4.44-6.53 4.6Z"/></svg>
@@ -1436,7 +1348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tooling/doctor/" class="md-nav__link">
+      <a href="../reference/tooling/doctor/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.84 16.26C17.86 16.83 20 18.29 20 20v2H4v-2c0-1.71 2.14-3.17 5.16-3.74L12 21l2.84-4.74M8 8h8v2a4 4 0 0 1-4 4 4 4 0 0 1-4-4V8m0-1 .41-4.1a1 1 0 0 1 1-.9h5.19c.51 0 .94.39.99.9L16 7H8m4-4h-1v1h-1v1h1v1h1V5h1V4h-1V3Z"/></svg>
@@ -1464,7 +1376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tooling/emacs/" class="md-nav__link">
+      <a href="../reference/tooling/emacs/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 24C5.448 24 .118 18.617.118 12S5.448 0 12 0s11.882 5.383 11.882 12S18.552 24 12 24zM12 .661C5.813.661.779 5.748.779 12S5.813 23.339 12 23.339 23.221 18.253 23.221 12 18.187.661 12 .661zM8.03 20.197s.978.069 2.236-.042c.51-.045 2.444-.235 3.891-.552 0 0 1.764-.377 2.707-.725.987-.364 1.524-.673 1.766-1.11-.011-.09.074-.408-.381-.599-1.164-.488-2.514-.4-5.185-.457-2.962-.102-3.948-.598-4.472-.997-.503-.405-.25-1.526 1.907-2.513 1.086-.526 5.345-1.496 5.345-1.496-1.434-.709-4.109-1.955-4.659-2.224-.482-.236-1.254-.591-1.421-1.021-.19-.413.448-.768.804-.87 1.147-.331 2.766-.536 4.24-.56.741-.012.861-.059.861-.059 1.022-.17 1.695-.869 1.414-1.976-.252-1.13-1.579-1.795-2.84-1.565-1.188.217-4.05 1.048-4.05 1.048 3.539-.031 4.131.028 4.395.398.156.218-.071.518-1.015.672-1.027.168-3.163.37-3.163.37-2.049.122-3.492.13-3.925 1.046-.283.599.302 1.129.558 1.46 1.082 1.204 2.646 1.853 3.652 2.331.379.18 1.49.52 1.49.52-3.265-.18-5.619.823-7.001 1.977-1.562 1.445-.871 3.168 2.33 4.228 1.891.626 2.828.921 5.648.667 1.661-.09 1.923-.036 1.939.1.023.192-1.845.669-2.355.816-1.298.374-4.699 1.129-4.716 1.133z"/></svg>
@@ -1492,7 +1404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tooling/testing/" class="md-nav__link">
+      <a href="../reference/tooling/testing/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m2.08 19 4.67-7-4.67-7h3.5l4.67 7-4.67 7h-3.5m4.67 0 4.67-7-4.67-7h3.5l9.34 14h-3.5l-2.92-4.37L10.25 19h-3.5m11.28-4.08-1.53-2.34h5.42v2.34h-3.89m-2.33-3.5-1.56-2.34h7.78v2.34H15.7Z"/></svg>
@@ -1528,7 +1440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../judoc/" class="md-nav__link">
+      <a href="../reference/judoc/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 0H8C6.9 0 6 .9 6 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6m4 18H8V2h7v5h5v11M4 4v18h16v2H4c-1.1 0-2-.9-2-2V4h2m6 6v2h8v-2h-8m0 4v2h5v-2h-5Z"/></svg>
@@ -1602,7 +1514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../notes/lsp/" class="md-nav__link">
+      <a href="../notes/lsp/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m2.08 19 4.67-7-4.67-7h3.5l4.67 7-4.67 7h-3.5m4.67 0 4.67-7-4.67-7h3.5l9.34 14h-3.5l-2.92-4.37L10.25 19h-3.5m11.28-4.08-1.53-2.34h5.42v2.34h-3.89m-2.33-3.5-1.56-2.34h7.78v2.34H15.7Z"/></svg>
@@ -1630,7 +1542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../notes/runtime-benchmark-results/" class="md-nav__link">
+      <a href="../notes/runtime-benchmark-results/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 21H2V3h2v16h2v-9h4v9h2V6h4v13h2v-5h4v7Z"/></svg>
@@ -1671,19 +1583,19 @@
       
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
@@ -1702,7 +1614,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1717,9 +1629,16 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../explanations/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1734,6 +1653,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1791,7 +1711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../explanations/totality/termination/" class="md-nav__link">
+      <a href="totality/termination/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.42 5.29c-1.1-.1-2.07.71-2.17 1.82L10 10h2.82v2h-3l-.44 5.07A4.001 4.001 0 0 1 2 18.83l1.5-1.5c.33 1.05 1.46 1.64 2.5 1.3.78-.24 1.33-.93 1.4-1.74L7.82 12h-3v-2H8l.27-3.07a4.01 4.01 0 0 1 4.33-3.65c1.26.11 2.4.81 3.06 1.89l-1.5 1.5c-.25-.77-.93-1.31-1.74-1.38M22 13.65l-1.41-1.41-2.83 2.83-2.83-2.83-1.43 1.41 2.85 2.85-2.85 2.81 1.43 1.41 2.83-2.83 2.83 2.83L22 19.31l-2.83-2.81L22 13.65Z"/></svg>
@@ -1880,7 +1800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/" class="md-nav__link">
+      <a href="../blog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1952,7 +1872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/archive/2022/" class="md-nav__link">
+      <a href="../blog/archive/2022/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2032,7 +1952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/category/implementation-notes/" class="md-nav__link">
+      <a href="../blog/category/implementation-notes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2084,49 +2004,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#mutually-recursive-functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mutually recursive functions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#anonymous-functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Anonymous functions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#short-definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Short definitions
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -2141,54 +2018,6 @@
 
 
 
-
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-      
-        
-  
-    
-    
-      
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Reference
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-    
-  
-
-      
-        
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Language reference
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
 
               
               <article class="md-content__inner md-typeset">
@@ -2206,7 +2035,7 @@
 
 
   
-    <a href="https://github.com/anoma/juvix-docs/edit/main/docs/reference/language/functions.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/anoma/juvix-docs/edit/main/docs/explanations/README.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
     </a>
@@ -2215,7 +2044,7 @@
     
       
     
-    <a href="https://github.com/anoma/juvix-docs/raw/main/docs/reference/language/functions.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/anoma/juvix-docs/raw/main/docs/explanations/README.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
     </a>
@@ -2228,78 +2057,11 @@
   page title (or respectively site name) is used as the main headline.
 -->
 
+  <h1>About</h1>
+
 
 <!-- Page content -->
-<h1 id="function-declarations">Function declarations<a class="headerlink" href="#function-declarations" title="Permanent link">&para;</a></h1>
-<p>A function declaration consists of a type signature and a group of
-<em>function clauses</em>.</p>
-<p>In the following example, we define a function <code>multiplyByTwo</code>. The
-first line <code>multiplyByTwo : Nat -&gt; Nat;</code> is the type signature and the
-second line <code>multiplyByTwo n := 2 * n;</code> is a function clause.</p>
-<pre><code class="language-juvix">open import Stdlib.Data.Nat;
-multiplyByTwo : Nat -&gt; Nat;
-multiplyByTwo n := 2 * n;
-</code></pre>
-<p>A function may have more than one function clause. When a function is
-called, the first clause that matches the arguments is used.</p>
-<p>The following function has two clauses.</p>
-<pre><code class="language-juvix">open import Stdlib.Data.Bool;
-neg : Bool -&gt; Bool;
-neg true := false;
-neg false := true;
-</code></pre>
-<p>When <code>neg</code> is called with <code>true</code>, the first clause is used and the function
-returns <code>false</code>. Similarly, when <code>neg</code> is called with <code>false</code>, the second clause
-is used and the function returns <code>true</code>.</p>
-<h2 id="mutually-recursive-functions">Mutually recursive functions<a class="headerlink" href="#mutually-recursive-functions" title="Permanent link">&para;</a></h2>
-<p>Function declarations can depend on each other recursively. In the
-following example, we define a function that checks if a number is
-<code>even</code> by calling a function that checks if a number is <code>odd</code>.</p>
-<pre><code class="language-juvix">open import Stdlib.Data.Nat;
-open import Stdlib.Data.Bool;
-
-open import Stdlib.Prelude;
-
-odd : Nat -&gt; Bool;
-even : Nat -&gt; Bool;
-
-odd zero := false;
-odd (suc n) := even n;
-
-even zero := true;
-even (suc n) := odd n;
-</code></pre>
-<h2 id="anonymous-functions">Anonymous functions<a class="headerlink" href="#anonymous-functions" title="Permanent link">&para;</a></h2>
-<p>Anonymous functions, or <em>lambdas</em>, are introduced with the syntax:</p>
-<pre><code class="language-juvix">\{| pat1 .. patN_1 := clause1
-  | ..
-  | pat1 .. patN_M := clauseM }
-</code></pre>
-<p>The first pipe <code>|</code> is optional. Instead of <code>\</code> one can also use <code>λ</code>.</p>
-<p>An anonymous function just lists all clauses of a function without
-naming it. Any function declaration can be converted to use anonymous
-functions:</p>
-<pre><code class="language-juvix">open import Stdlib.Prelude;
-
-odd : Nat -&gt; Bool;
-even : Nat -&gt; Bool;
-
-odd := \{
-  | zero := false
-  | (suc n) := even n
-};
-
-even := \{
-  | zero := true
-  | (suc n) := odd n
-};
-</code></pre>
-<h2 id="short-definitions">Short definitions<a class="headerlink" href="#short-definitions" title="Permanent link">&para;</a></h2>
-<p>A function definition can be written in one line, with the body
-immediately following the signature:</p>
-<pre><code class="language-juvix">open import Stdlib.Data.Nat;
-multiplyByTwo : Nat -&gt; Nat := \{ n := 2 * n };
-</code></pre>
+<p>Welcome to the Explanations section! In this part, we will dive into various coding concepts and techniques that are essential for every developer. We will cover a wide range of topics, from basic programming principles to more advanced subjects.</p>
 
 <!-- Source file information -->
 
@@ -2318,7 +2080,7 @@ multiplyByTwo : Nat -&gt; Nat := \{ n := 2 * n };
         <span class="md-icon" title="Last update">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
         </span>
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-19T15:11:14+02:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-19</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-20T12:04:08+02:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-20</span>
       </span>
     
     
@@ -2326,7 +2088,7 @@ multiplyByTwo : Nat -&gt; Nat := \{ n := 2 * n };
         <span class="md-icon" title="Created">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
         </span>
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-17T12:59:20+02:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-17</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-20T12:04:08+02:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-20</span>
       </span>
     
     
@@ -2341,21 +2103,6 @@ multiplyByTwo : Nat -&gt; Nat := \{ n := 2 * n };
             <a href="https://github.com/jonaprieto" class="md-author" title="@jonaprieto">
               
               <img src="https://avatars.githubusercontent.com/u/1428088?size=72" alt="jonaprieto">
-            </a>
-          
-            <a href="https://github.com/lukaszcz" class="md-author" title="@lukaszcz">
-              
-              <img src="https://avatars.githubusercontent.com/u/62751?size=72" alt="lukaszcz">
-            </a>
-          
-            <a href="https://github.com/janmasrovira" class="md-author" title="@janmasrovira">
-              
-              <img src="https://avatars.githubusercontent.com/u/5511599?size=72" alt="janmasrovira">
-            </a>
-          
-            <a href="https://github.com/paulcadman" class="md-author" title="@paulcadman">
-              
-              <img src="https://avatars.githubusercontent.com/u/92877?size=72" alt="paulcadman">
             </a>
           
           
@@ -2416,53 +2163,6 @@ multiplyByTwo : Nat -&gt; Nat := \{ n := 2 * n };
 
 <!-- Comment system -->
 
-  <h2 id="__comments">Comments</h2>
-  <!-- Insert generated snippet https://giscus.app/ here -->
-  <script src="https://giscus.app/client.js"
-  data-repo="anoma/juvix-docs"
-  data-repo-id="R_kgDOJXy1bw"
-  data-category="General"
-  data-category-id="DIC_kwDOJXy1b84CV1X1"
-  data-mapping="pathname"
-  data-strict="1"
-  data-reactions-enabled="1"
-  data-emit-metadata="0"
-  data-input-position="top"
-  data-theme="light"
-  data-lang="en"
-  crossorigin="anonymous"
-  async>
-</script>
-  <!-- Synchronize Giscus theme with palette -->
-  <script>
-    var giscus = document.querySelector("script[src*=giscus]")
-
-    /* Set palette on initial load */
-    var palette = __md_get("__palette")
-    if (palette && typeof palette.color === "object") {
-      var theme = palette.color.scheme === "slate" ? "dark" : "light"
-      giscus.setAttribute("data-theme", theme)
-    }
-
-    /* Register event handlers after documented loaded */
-    document.addEventListener("DOMContentLoaded", function() {
-      var ref = document.querySelector("[data-md-component=palette]")
-      ref.addEventListener("change", function() {
-        var palette = __md_get("__palette")
-        if (palette && typeof palette.color === "object") {
-          var theme = palette.color.scheme === "slate" ? "dark" : "light"
-
-          /* Instruct Giscus to change theme */
-          var frame = document.querySelector(".giscus-frame")
-          frame.contentWindow.postMessage(
-            { giscus: { setConfig: { theme } } },
-            "https://giscus.app"
-          )
-        }
-      })
-    })
-  </script>
-
                 
 
               </article>
@@ -2481,7 +2181,7 @@ multiplyByTwo : Nat -&gt; Nat := \{ n := 2 * n };
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: About" rel="prev">
+          <a href="../notes/runtime-benchmark-results/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Benchmarks of the new Juvix runtime" rel="prev">
             <div class="md-footer__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
             </div>
@@ -2490,20 +2190,20 @@ multiplyByTwo : Nat -&gt; Nat := \{ n := 2 * n };
                 Previous
               </span>
               <div class="md-ellipsis">
-                About
+                Benchmarks of the new Juvix runtime
               </div>
             </div>
           </a>
         
         
           
-          <a href="../builtins/" class="md-footer__link md-footer__link--next" aria-label="Next: Builtins" rel="next">
+          <a href="totality/termination/" class="md-footer__link md-footer__link--next" aria-label="Next: Termination" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Builtins
+                Termination
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2560,14 +2260,14 @@ multiplyByTwo : Nat -&gt; Nat := \{ n := 2 * n };
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.path", "navigation.footer", "search.highlight", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.path", "navigation.footer", "search.highlight", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.803ed251.min.js"></script>
+      <script src="../assets/javascripts/bundle.803ed251.min.js"></script>
       
-        <script src="../../../js/timeago.min.js"></script>
+        <script src="../js/timeago.min.js"></script>
       
-        <script src="../../../js/timeago_mkdocs_material.js"></script>
+        <script src="../js/timeago_mkdocs_material.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
@@ -2575,13 +2275,13 @@ multiplyByTwo : Nat -&gt; Nat := \{ n := 2 * n };
       
         <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
       
-        <script src="../../../assets/js/highlight.js"></script>
+        <script src="../assets/js/highlight.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.min.js"></script>
       
-        <script src="../../../assets/js/juvix-highlight.js"></script>
+        <script src="../assets/js/juvix-highlight.js"></script>
       
-        <script src="../../../assets/js/extra.js"></script>
+        <script src="../assets/js/extra.js"></script>
       
     
   </body>
