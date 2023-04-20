@@ -147,6 +147,7 @@ nav:
           - notes/runtime-benchmark-results.md
 
   - Explanations:
+      - About: ./explanations/README.md
       # - Type theory: ./explanations/typetheory.md
       - Totality checking:
           - Termination: ./explanations/totality/termination.md

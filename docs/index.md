@@ -21,7 +21,7 @@ section](./overview.md).
 
     ---
 
-    Learn how to [install Juvix](#) on macOS or Linux, as well as compile and
+    Learn how to [install Juvix](./howto/installing.md) on macOS or Linux, as well as compile and
    document your Juvix projects.
 
     [:octicons-arrow-right-24: Quick start ](./quick-start.md)
@@ -43,7 +43,7 @@ section](./overview.md).
 
     A series dedicated to delivering more in-depth technical explanations of Juvix.
 
-    [:octicons-arrow-right-24: Read the book](https://docs.juvix.org)
+    [:octicons-arrow-right-24: Read the book](./explanations/README.md)
 
 -   :fontawesome-solid-lines-leaning:{ .lg .middle } __Reference__
 
