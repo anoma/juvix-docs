@@ -11,4 +11,3 @@ sum lst :=
     go acc (x :: xs) := go (acc + x) xs;
   in go zero lst;
 --8<-- [end:let-sum]
-
