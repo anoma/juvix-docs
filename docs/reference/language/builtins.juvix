@@ -24,4 +24,3 @@ module example-print-nat;
   axiom printNat : Nat → IO;
 --8<-- [end:builtin-nat-print]
 end;
-

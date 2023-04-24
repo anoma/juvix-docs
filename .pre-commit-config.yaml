@@ -12,7 +12,7 @@ repos:
       - id: mixed-line-ending
         exclude: tests/
       - id: trailing-whitespace
-        exclude: tests/
+        exclude: tests/|.*juvix
       - id: end-of-file-fixer
         exclude: tests/|assets/
 
