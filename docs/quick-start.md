@@ -78,7 +78,7 @@ You should see the output: `hello world!`
 
 The source code can also be compiled to a WebAssembly binary. This
 requires some additional setup. See the [Installation
-How-to](https://anoma.github.io/juvix/howto/installing.html) for more
+How-to](./howto/installing.md) for more
 information. You can also run `juvix doctor` to check your setup.
 
 ```shell
