@@ -22,8 +22,8 @@ module List;
   --8<-- [end:typeList]
 
   --8<-- [start:elemList]
-  open import Stdlib.Data.Bool using {Bool; false; ||};
-
+  open import Stdlib.Data.Bool using {Bool;false;||};
+  
   elem :
     {A : Type} -> (A -> A -> Bool) -> A -> List A -> Bool;
   elem _ _ nil := false;

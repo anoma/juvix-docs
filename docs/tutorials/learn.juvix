@@ -5,7 +5,7 @@ module learn;
 module Hello;
   -- Import the standard library prelude, including the 'String' type
   open import Stdlib.Prelude;
-
+  
   main : String;
   main := "Hello world!";
 end;
@@ -22,7 +22,7 @@ module Bool-example;
   not : Bool -> Bool;
   not true := false;
   not false := true;
-  --8<-- [end:BoolNot]
+--8<-- [end:BoolNot]
 end;
 
 module Nat-example;
@@ -40,7 +40,7 @@ module Nat-example;
   --8<-- [end:NatAdd]
 
   open Bool-example;
-
+  
   --8<-- [start:NatEven]
   even : Nat -> Bool;
   even zero := true;
@@ -67,15 +67,15 @@ module max3-example;
   --8<-- [start:max3]
   open import Stdlib.Prelude;
   open import Stdlib.Data.Nat.Ord;
-
+  
   max3 : Nat -> Nat -> Nat -> Nat;
   max3 x y z := if (x > y) (max x z) (max y z);
-  --8<-- [end:max3]
+--8<-- [end:max3]
 end;
 
 module let-example;
   open import Stdlib.Prelude;
-
+  
   --8<-- [start:let]
   f : Nat -> Nat;
   f a :=
@@ -83,13 +83,13 @@ module let-example;
       x : Nat := a + 5;
       y : Nat := a * 7 + x;
     in x * y;
-  --8<-- [end:let]
+--8<-- [end:let]
 end;
 
 module let-even;
   open Nat-example;
   open Bool-example;
-
+  
   --8<-- [start:let-even]
   even : Nat -> Bool;
   even :=
@@ -101,7 +101,7 @@ module let-even;
       odd' zero := false;
       odd' (suc n) := even' n;
     in even';
-  --8<-- [end:let-even]
+--8<-- [end:let-even]
 end;
 
 module NList-example;
@@ -123,6 +123,7 @@ module NList-example;
 
   --8<-- [start:nmaximum]
   open import Stdlib.Data.Nat.Ord using {max};
+  
   nmaximum : NList -> Nat;
   nmaximum nnil := 0;
   nmaximum (ncons x xs) := max x (nmaximum xs);
@@ -158,7 +159,7 @@ module Tree-example;
 end;
 
 module List-example;
-
+  
   --8<-- [start:List]
   infixr 5 ::;
   type List (A : Type) :=
@@ -176,13 +177,13 @@ module List-example;
   tail : {A : Type} -> List A -> List A;
   tail (_ :: xs) := xs;
   tail nil := nil;
-  --8<-- [end:ListTail]
+--8<-- [end:ListTail]
 end;
 
 module tail-recursion-example;
   open import Stdlib.Prelude;
   open NList-example using {NList;nnil;ncons};
-
+  
   --8<-- [start:NListSumTail]
   sum : NList -> Nat;
   sum lst :=
@@ -202,7 +203,7 @@ module tail-recursion-example;
         go cur _ zero := cur;
         go cur next (suc n) := go next (cur + next) n;
       in go 0 1;
-    --8<-- [end:FiboTail]
+  --8<-- [end:FiboTail]
   end;
 
   module fibo-exponential;
@@ -211,7 +212,7 @@ module tail-recursion-example;
     fib zero := 0;
     fib (suc zero) := 1;
     fib (suc (suc n)) := fib n + fib (suc n);
-    --8<-- [end:FiboNaive]
+  --8<-- [end:FiboNaive]
   end;
 end;
 
@@ -224,7 +225,7 @@ module totality-example;
     --8<-- [start:fact-not-terminating]
     fact : Nat -> Nat;
     fact x := if (x == 0) 1 (x * fact (sub x 1));
-    --8<-- [end:fact-not-terminating]
+  --8<-- [end:fact-not-terminating]
   end;
 
   module fact-terminating-example;
@@ -232,7 +233,7 @@ module totality-example;
     fact : Nat -> Nat;
     fact zero := 1;
     fact x@(suc n) := x * fact n;
-    --8<-- [end:fact-terminating]
+  --8<-- [end:fact-terminating]
   end;
 
   --8<-- [start:log2-terminating]
@@ -248,7 +249,7 @@ module totality-example;
     even : Nat -> Bool;
     even zero := true;
     even (suc (suc n)) := even n;
-    --8<-- [end:even-def-not-pass-coverage]
+  --8<-- [end:even-def-not-pass-coverage]
   end;
 end;
 
@@ -266,6 +267,6 @@ module Maybe-example;
     tail' : {A : Type} -> List A -> Maybe (List A);
     tail' (_ :: xs) := just xs;
     tail' nil := nothing;
-    --8<-- [end:tailMaybe]
+  --8<-- [end:tailMaybe]
   end;
 end;
