@@ -9,8 +9,6 @@ sum lst :=
     go : Nat -> List Nat -> Nat;
     go acc nnil := acc;
     go acc (x :: xs) := go (acc + x) xs;
-  in
-  go zero lst;
+  in go zero lst;
 --8<-- [end:let-sum]
 
-end;

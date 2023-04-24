@@ -7,7 +7,6 @@ type Nat :=
   | suc : Nat → Nat;
 --8<-- [end:builtin-nat]
 
-
 --8<-- [start:builtin-nat-plus]
 infixl 6 +;
 builtin nat-plus
@@ -17,12 +16,12 @@ builtin nat-plus
 --8<-- [end:builtin-nat-plus]
 
 module example-print-nat;
+  
+  --8<-- [start:builtin-nat-print]
+  open import Stdlib.System.IO;
 
---8<-- [start:builtin-nat-print]
-open import Stdlib.System.IO;
-builtin nat-print
-axiom printNat : Nat → IO;
+  builtin nat-print
+  axiom printNat : Nat → IO;
 --8<-- [end:builtin-nat-print]
 end;
 
-end;
