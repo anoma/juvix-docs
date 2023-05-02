@@ -135,7 +135,7 @@ Local modules inherit the scope of the parent module. Some shadowing rules
 apply, and they probably follow your intuition:
 
 1. Opening or defining a symbol shadows inherited instances of that symbol.
-2. Opening a symbol does _not_ shadow a defined instanance of that symbol in the
+2. Opening a symbol does _not_ shadow a defined instance of that symbol in the
    current module.
 3. Conversely, defining a symbol in the current module does _not_ shadow an
    opened instance of that symbol.
