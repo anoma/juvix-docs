@@ -42,7 +42,7 @@ import Data.List;
 Now, we can access the definitions in the imported module using _qualified
 names_. E.g., `Data.List.sort`.
 
-It is possible to import modules and give them a more convinent way thus:
+It is possible to import modules and give them a more convenient name thus:
 
 ```juvix
 import Data.List as List;
