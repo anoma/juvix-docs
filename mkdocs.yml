@@ -156,3 +156,5 @@ nav:
 
   - Blog:
       - blog/index.md
+
+  - Packages and Projects: ./juvix-packages.md
