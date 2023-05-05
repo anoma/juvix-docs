@@ -9,7 +9,7 @@ title: Juvix Packages and Projects
 Immutable container types for Juvix.
 
 - [x] BinaryTree, Map, Queue, Set, Tree, UnbalancedSet, and much more to come.
-- [x] Tests using #anoma/juvix-quickcheck.
+- [x] Tests using [anoma/juvix-quickcheck](#anomajuvix-quickcheck).
 
 ### [`anoma/juvix-quickcheck`](https://github.com/anoma/juvix-quickcheck)
 
