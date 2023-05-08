@@ -112,7 +112,7 @@ checkout-juvix: juvix
 HEADER := "---\\nnobuttons: true\\n---\\n"
 
 .PHONY: juvix-metafiles
-juvix-metafiles:
+juvix-metafiles: juvix
 	@for file in $(METAFILES); do \
 		echo -e "$(HEADER)" | \
 			cat - ${COMPILERSOURCES}/$$file > temp  \
@@ -180,7 +180,7 @@ dev:
 # Call this with `DEV=true make release` if you want to use
 # the latest overview/change log from the main branch.
 .PHONY: release
-release:
+release: pre-build juvix
 	mike delete ${VERSION} ${MIKEFLAGS} > /dev/null 2>&1 || true
 	${MAKE} mike
 	mike alias ${VERSION} latest -u --no-redirect ${MIKEFLAGS}
