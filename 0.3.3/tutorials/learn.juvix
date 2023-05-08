@@ -1,0 +1,272 @@
+module learn;
+
+--8<-- [start:HelloWorld]
+-- Hello world example. This is a comment.
+module Hello;
+  -- Import the standard library prelude, including the 'String' type
+  open import Stdlib.Prelude;
+  
+  main : String;
+  main := "Hello world!";
+end;
+--8<-- [end:HelloWorld]
+
+module Bool-example;
+  --8<-- [start:Bool]
+  type Bool :=
+    | true : Bool
+    | false : Bool;
+  --8<-- [end:Bool]
+
+  --8<-- [start:BoolNot]
+  not : Bool -> Bool;
+  not true := false;
+  not false := true;
+--8<-- [end:BoolNot]
+end;
+
+module Nat-example;
+  --8<-- [start:Nat]
+  type Nat :=
+    | zero : Nat
+    | suc : Nat -> Nat;
+  --8<-- [end:Nat]
+
+  --8<-- [start:NatAdd]
+  infixl 6 +;
+  + : Nat -> Nat -> Nat;
+  + zero b := b;
+  + (suc a) b := suc (a + b);
+  --8<-- [end:NatAdd]
+
+  open Bool-example;
+  
+  --8<-- [start:NatEven]
+  even : Nat -> Bool;
+  even zero := true;
+  even (suc zero) := false;
+  even (suc (suc n)) := even n;
+  --8<-- [end:NatEven]
+
+  --8<-- [start:isPositive]
+  isPositive : Nat -> Bool;
+  isPositive zero := false;
+  isPositive (suc _) := true;
+  --8<-- [end:isPositive]
+
+  module anotherPositive;
+    --8<-- [start:isPositive2]
+    isPositive : Nat -> Bool;
+    isPositive zero := false;
+    isPositive _ := true;
+  --8<-- [end:isPositive2]
+  end;
+end;
+
+module max3-example;
+  --8<-- [start:max3]
+  open import Stdlib.Prelude;
+  open import Stdlib.Data.Nat.Ord;
+  
+  max3 : Nat -> Nat -> Nat -> Nat;
+  max3 x y z := if (x > y) (max x z) (max y z);
+--8<-- [end:max3]
+end;
+
+module let-example;
+  open import Stdlib.Prelude;
+  
+  --8<-- [start:let]
+  f : Nat -> Nat;
+  f a :=
+    let
+      x : Nat := a + 5;
+      y : Nat := a * 7 + x;
+    in x * y;
+--8<-- [end:let]
+end;
+
+module let-even;
+  open Nat-example;
+  open Bool-example;
+  
+  --8<-- [start:let-even]
+  even : Nat -> Bool;
+  even :=
+    let
+      even' : Nat -> Bool;
+      odd' : Nat -> Bool;
+      even' zero := true;
+      even' (suc n) := odd' n;
+      odd' zero := false;
+      odd' (suc n) := even' n;
+    in even';
+--8<-- [end:let-even]
+end;
+
+module NList-example;
+  open import Stdlib.Prelude;
+
+  --8<-- [start:NList]
+  type NList :=
+    | nnil : NList
+    | ncons : Nat -> NList -> NList;
+  --8<-- [end:NList]
+
+  --8<-- [start:nlength]
+  -- Nat here is the built-in type for natural numbers
+  -- coming from the standard library
+  nlength : NList -> Nat;
+  nlength nnil := 0;
+  nlength (ncons _ xs) := nlength xs + 1;
+  --8<-- [end:nlength]
+
+  --8<-- [start:nmaximum]
+  open import Stdlib.Data.Nat.Ord using {max};
+  
+  nmaximum : NList -> Nat;
+  nmaximum nnil := 0;
+  nmaximum (ncons x xs) := max x (nmaximum xs);
+  --8<-- [end:nmaximum]
+
+  --8<-- [start:NListMap]
+  nmap : (Nat -> Nat) -> NList -> NList;
+  nmap _ nnil := nnil;
+  nmap f (ncons x xs) := ncons (f x) (nmap f xs);
+  --8<-- [end:NListMap]
+
+  --8<-- [start:NListSum]
+  sum : NList -> Nat;
+  sum nnil := 0;
+  sum (ncons x xs) := x + sum xs;
+--8<-- [end:NListSum]
+end;
+
+module Tree-example;
+  open Nat-example;
+
+  --8<-- [start:Tree]
+  type Tree :=
+    | leaf : Nat -> Tree
+    | node : Nat -> Tree -> Tree -> Tree;
+  --8<-- [end:Tree]
+
+  --8<-- [start:TreeMirror]
+  mirror : Tree -> Tree;
+  mirror (leaf x) := leaf x;
+  mirror (node x l r) := node x (mirror r) (mirror l);
+--8<-- [end:TreeMirror]
+end;
+
+module List-example;
+  
+  --8<-- [start:List]
+  infixr 5 ::;
+  type List (A : Type) :=
+    | nil : List A
+    | :: : A -> List A -> List A;
+  --8<-- [end:List]
+
+  --8<-- [start:ListMap]
+  map : {A B : Type} -> (A -> B) -> List A -> List B;
+  map f nil := nil;
+  map f (h :: hs) := f h :: map f hs;
+  --8<-- [end:ListMap]
+
+  --8<-- [start:ListTail]
+  tail : {A : Type} -> List A -> List A;
+  tail (_ :: xs) := xs;
+  tail nil := nil;
+--8<-- [end:ListTail]
+end;
+
+module tail-recursion-example;
+  open import Stdlib.Prelude;
+  open NList-example using {NList;nnil;ncons};
+  
+  --8<-- [start:NListSumTail]
+  sum : NList -> Nat;
+  sum lst :=
+    let
+      go : Nat -> NList -> Nat;
+      go acc nnil := acc;
+      go acc (ncons x xs) := go (acc + x) xs;
+    in go 0 lst;
+  --8<-- [end:NListSumTail]
+
+  module fibo-example;
+    --8<-- [start:FiboTail]
+    fib : Nat -> Nat;
+    fib :=
+      let
+        go : Nat -> Nat -> Nat -> Nat;
+        go cur _ zero := cur;
+        go cur next (suc n) := go next (cur + next) n;
+      in go 0 1;
+  --8<-- [end:FiboTail]
+  end;
+
+  module fibo-exponential;
+    --8<-- [start:FiboNaive]
+    fib : Nat -> Nat;
+    fib zero := 0;
+    fib (suc zero) := 1;
+    fib (suc (suc n)) := fib n + fib (suc n);
+  --8<-- [end:FiboNaive]
+  end;
+end;
+
+module totality-example;
+  open import Stdlib.Prelude;
+  open import Stdlib.Data.Nat.Ord;
+
+  module fact-not-terminating-example;
+    terminating
+    --8<-- [start:fact-not-terminating]
+    fact : Nat -> Nat;
+    fact x := if (x == 0) 1 (x * fact (sub x 1));
+  --8<-- [end:fact-not-terminating]
+  end;
+
+  module fact-terminating-example;
+    --8<-- [start:fact-terminating]
+    fact : Nat -> Nat;
+    fact zero := 1;
+    fact x@(suc n) := x * fact n;
+  --8<-- [end:fact-terminating]
+  end;
+
+  --8<-- [start:log2-terminating]
+  terminating
+  log2 : Nat -> Nat;
+  log2 n := if (n <= 1) 0 (suc (log2 (div n 2)));
+  --8<-- [end:log2-terminating]
+
+  -- TODO: open issue about this
+  -- The following definition should be rejected.
+  module coverage-examples;
+    --8<-- [start:even-def-not-pass-coverage]
+    even : Nat -> Bool;
+    even zero := true;
+    even (suc (suc n)) := even n;
+  --8<-- [end:even-def-not-pass-coverage]
+  end;
+end;
+
+module Maybe-example;
+  --8<-- [start:Maybe]
+  type Maybe (A : Type) :=
+    | nothing : Maybe A
+    | just : A -> Maybe A;
+  --8<-- [end:Maybe]
+
+  open List-example using {List;nil;::};
+
+  module tail-list-example;
+    --8<-- [start:tailMaybe]
+    tail' : {A : Type} -> List A -> Maybe (List A);
+    tail' (_ :: xs) := just xs;
+    tail' nil := nothing;
+  --8<-- [end:tailMaybe]
+  end;
+end;
