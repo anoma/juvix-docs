@@ -46,9 +46,9 @@ Helpful information can also be obtained by running:
 brew info juvix
 ```
 
-### Linux x86<sub>64</sub>
+### Linux x86_64
 
-A Juvix compiler binary executable for Linux x86<sub>64</sub> is
+A Juvix compiler binary executable for Linux x86_64 is
 available on the [Juvix release
 page](https://github.com/anoma/juvix/releases/latest).
 
@@ -60,9 +60,12 @@ Juvix as follows:
 
 ```shell
 cd /tmp
-curl -OL https://github.com/anoma/juvix/releases/download/v0.3.1/juvix-linux_x86_64-v0.3.1.zip
-unzip juvix-linux_x86_64-v0.3.1.zip
-mv juvix-linux_x86_64-v0.3.1 ~/.local/bin/juvix
+curl https://api.github.com/repos/anoma/juvix/releases/latest \
+  | grep "browser_download_url.*linux" \
+  | cut -d : -f2,3 | tr -d \" \
+  | xargs curl -L -o linux_release.zip
+unzip linux_release.zip
+mv juvix ~/.local/bin/juvix
 ```
 
 ### Building Juvix from source
