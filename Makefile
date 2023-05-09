@@ -70,10 +70,13 @@ python-env:
 		echo "[!] Pip3 is not installed. Please install it and try again.")
 	${PYTHON} -m venv python-env
 
+
+active-python-env:
+	@source python-env/bin/activate
+
 .PHONY : mkdocs
-mkdocs: python-env
-	@source python-env/bin/activate && \
-		pip3 install -r requirements.txt
+mkdocs: python-env active-python-env
+	@pip3 install -r requirements.txt
 
 # ----------------------------------------------------------------------------
 # -- Juvix Compiler installation
@@ -87,14 +90,11 @@ juvix-sources:
 	@cd ${COMPILERSOURCES} && \
 		git fetch --all && \
 		if [ "${DEV}" = true ]; then \
-			echo "[!] Using HEAD commit in Juvix sources"; \
-			git checkout main; \
+			git checkout main > /dev/null 2>&1; \
 		else \
-			echo "[!] Use Juvix ${VERSION}"; \
-			git checkout v${VERSION}; \
+			git checkout v${VERSION} > /dev/null 2>&1; \
 		fi;
 
-.PHONY: install-juvix
 install-juvix: juvix-sources
 	@cd ${COMPILERSOURCES} && ${MAKE} install
 
@@ -102,11 +102,8 @@ CHECKJUVIX:= $(shell command -v ${JUVIXBIN} 2> /dev/null)
 
 .PHONY: juvix-bin
 juvix-bin:
-	@$(if $(CHECKJUVIX), \
-		echo "Juvix location: $(CHECKJUVIX)" \
-		, \
-		echo "[!] Juvix is not installed. Please install it and try again. Try make install-juvix")
-	
+	@$(if $(CHECKJUVIX) , \
+		, echo "[!] Juvix is not installed. Please install it and try again. Try make install-juvix")
 
 # The numeric version of the Juvix compiler must match the
 # version of the documentation specified in the VERSION file.
@@ -160,7 +157,7 @@ icons:
 			&& unzip -o bootstrap.zip \
 			&& rm -rf bootstrap.zip \
 			&& mv bootstrap-icons-* bootstrap
-	@cd docs/overrides/.icons && unzip -o codeicons.zip
+	@cd docs/overrides/.icons && unzip -q -o codeicons.zip > /dev/null 2>&1
 
 .PHONY: pre-build
 pre-build:
@@ -171,8 +168,8 @@ pre-build:
 		${MAKE} pre-commit
 
 .PHONY: docs
-docs: pre-build
-	mkdocs build --config-file ${MKDOCSCONFIG}
+docs: pre-build active-python-env
+	@mkdocs build --config-file ${MKDOCSCONFIG}
 
 .PHONY: serve
 serve: docs
@@ -256,10 +253,10 @@ format-juvix-files: juvix-bin
 check-format-juvix-files:
 	@JUVIXFORMATFLAGS=--check	${MAKE} format-juvix-files
 
-JUVIXEXAMPLEFILES=$(shell find ./docs  -name "*.juvix" -print)
+JUVIXEXAMPLEFILES=$(shell find ./docs  -type d -name ".juvix-build" -prune -o -type f -name "*.juvix" -print)
 
 .PHONY: typecheck-juvix-examples
-typecheck-juvix-examples:
+typecheck-juvix-examples: juvix-bin
 	@set -e; \
 	for file in $(JUVIXEXAMPLEFILES); do \
 		echo "Checking $$file"; \
