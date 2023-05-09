@@ -9,7 +9,7 @@ title: Juvix Packages and Projects
 Immutable container types for Juvix.
 
 - [x] BinaryTree, Map, Queue, Set, Tree, UnbalancedSet, and much more to come.
-- [x] Tests using [anoma/juvix-quickcheck](#anomajuvix-quickcheck).
+- [x] Tests using [anoma/juvix-test](#anomajuvix-test).
 
 ### [`anoma/juvix-quickcheck`](https://github.com/anoma/juvix-quickcheck)
 
@@ -21,6 +21,10 @@ This package provides property-based testing for the Juvix programming language 
 
 Shipped with Juvix, the standard library provides a set of useful functions
 and types for writing Juvix programs.
+
+### [`anoma/juvix-test`](https://github.com/anoma/juvix-test)
+
+A unit testing framework for Juvix programs.
 
 ## Projects using Juvix
 
