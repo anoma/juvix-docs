@@ -34,7 +34,7 @@ section](./overview.md).
 
     ---
 
-    Master the essentials of Juvix's programming language though a series of
+    Master the essentials of Juvix through a series of
     tailored examples, tutorials and technical explanations.
 
     [:octicons-arrow-right-24: Learn Juvix in 5 minutes](./tutorials/learn)
