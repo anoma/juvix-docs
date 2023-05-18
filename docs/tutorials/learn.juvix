@@ -114,8 +114,6 @@ module NList-example;
   --8<-- [end:NList]
 
   --8<-- [start:nlength]
-  -- Nat here is the built-in type for natural numbers
-  -- coming from the standard library
   nlength : NList -> Nat;
   nlength nnil := 0;
   nlength (ncons _ xs) := nlength xs + 1;
