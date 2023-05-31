@@ -673,8 +673,8 @@ and the [Juvix program examples](../reference/examples.md).
 Define a function `prime : Nat -> Nat` which checks if a given
 natural number is prime.
 
-!!! tip A number is prime if it is greater than 1 and has no divisors
-other than 1 and itself.
+!!! tip
+A number is prime if it is greater than 1 and has no divisors other than 1 and itself.
 
 ### Exercise 2
 
