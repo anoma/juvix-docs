@@ -587,8 +587,8 @@ actually decreases performance.
 
 ### Conclusion
 
-* Use tail recursion to eliminate stack allocation.
-* Do not use tail recursion to replace stack allocation with heap allocation.
+- Use tail recursion to eliminate stack allocation.
+- Do not use tail recursion to replace stack allocation with heap allocation.
 
 ## Totality checking
 
