@@ -455,8 +455,10 @@ polymorphic definition of lists from the standard library:
 ```
 
 The constructor `::` is declared as a right-associative infix operator
-with priority 5. The definition has a parameter `A` which is the element
-type.
+with priority 5. The definition has a parameter `A` which is the
+element type. Then `List Ty` is the type of lists with elements of
+type `Ty`. For example, `List Nat` is the type of lists of natural
+numbers, isomorphic to the type `NList` defined above.
 
 Now one can define the `map` function polymorphically:
 
@@ -494,15 +496,15 @@ an additional amount of memory proportional to the length of the
 processed list:
 
 ```juvix
---8<------ "docs/tutorials/learn.juvix:NListSum"
+--8<------ "docs/tutorials/learn.juvix:ListSum"
 ```
 
 This is not acceptable if you care about performance. In an imperative
 language, one would use a simple loop going over the list without any
 memory allocation. In pseudocode:
 
-```pascal
-sum : Nat := 0;
+```delphi
+var sum : Nat := 0;
 
 while (lst /= nil) do
 begin
@@ -525,7 +527,7 @@ is reused.
 The following implementation of `sum` uses tail recursion.
 
 ```juvix
---8<------ "docs/tutorials/learn.juvix:NListSumTail"
+--8<------ "docs/tutorials/learn.juvix:ListSumTail"
 ```
 
 The first argument of `go` is an _accumulator_ which holds the sum
@@ -541,9 +543,9 @@ imperative pseudocode for computing the nth Fibonacci number in linear
 time. The variables `cur` and `next` hold the last two computed
 Fibonacci numbers.
 
-```pascal
-cur : Nat := 0;
-next : Nat := 1;
+```delphi
+var cur : Nat := 0;
+var next : Nat := 1;
 
 while (n /= 0) do
 begin
@@ -568,11 +570,25 @@ A naive definition of the Fibonacci function runs in exponential time:
 --8<------ "docs/tutorials/learn.juvix:FiboNaive"
 ```
 
-Tail recursion is less useful when the function needs to allocate memory
-anyway. For example, one could make the `map` function from the previous
-section tail recursive, but the time and memory use would still be
-proportional to the length of the input because of the need to allocate
-the result list.
+Tail recursion is less useful when the function needs to allocate
+memory anyway. For example, one could make the `map` function from the
+previous section tail recursive, but the time and memory use would
+still be proportional to the length of the input because of the need
+to allocate the result list. In fact, a tail recursive `map`
+needs to allocate and discard an intermediate list which is
+reversed in the end to preserve the original element order:
+
+```juvix
+--8<------ "docs/tutorials/learn.juvix:ListMapTail"
+```
+
+So we have replaced stack allocation with heap allocation. This
+actually decreases performance.
+
+### Conclusion
+
+* Use tail recursion to eliminate stack allocation.
+* Do not use tail recursion to replace stack allocation with heap allocation.
 
 ## Totality checking
 
