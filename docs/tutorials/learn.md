@@ -673,8 +673,7 @@ and the [Juvix program examples](../reference/examples.md).
 Define a function `prime : Nat -> Nat` which checks if a given
 natural number is prime.
 
-!!! tip
-A number is prime if it is greater than 1 and has no divisors
+!!! tip A number is prime if it is greater than 1 and has no divisors
 other than 1 and itself.
 
 ### Exercise 2
@@ -683,7 +682,7 @@ What is wrong with the following definition?
 
 ```juvix
 half : Nat -> Nat;
-half n := if (n < 2) 0 (half (n - 2) + 1);
+half n := if (n < 2) 0 (half (sub n 2) + 1);
 ```
 
 How can you reformulate this definition so that it is accepted by
