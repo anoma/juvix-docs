@@ -220,7 +220,7 @@ module tail-recursion-example;
         go : List B -> List A -> List B;
         go acc nil := reverse acc;
         go acc (x :: xs) := go (f x :: acc) xs;
-      in go;
+      in go nil;
   --8<-- [end:ListMapTail]
   end;
 end;
