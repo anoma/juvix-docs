@@ -624,10 +624,13 @@ recursive. For example, one can implement `map` using `rfor`:
 The iterators are just ordinary Juvix functions which can be used with
 the iterator syntax. In fact, the `map` function from the
 standard library can also be used with the iterator syntax. The expression
+
 ```juvix
 map (x in l) body
 ```
+
 is equivalent to
+
 ```juvix
 map \{x := body} l
 ```
