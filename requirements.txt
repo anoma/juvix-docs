@@ -14,4 +14,3 @@ lxml
 pillow
 cairosvg
 pre-commit
-git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
