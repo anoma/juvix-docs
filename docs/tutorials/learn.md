@@ -197,7 +197,7 @@ constructors:
 --8<------ "docs/tutorials/learn.juvix:NatAdd"
 ```
 
-The `infixl 6 +` declares `+` to be an infix left-associative operator
+The `syntax infixl 6 +` declares `+` to be an infix left-associative operator
 with priority 6. The `+` is an ordinary function, except that function
 application for `+` is written in infix notation. The definitions of the
 clauses of `+` still need the prefix notation on the left-hand sides.

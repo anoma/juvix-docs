@@ -33,7 +33,7 @@ module Nat-example;
   --8<-- [end:Nat]
 
   --8<-- [start:NatAdd]
-  infixl 6 +;
+  syntax infixl 6 +;
   + : Nat -> Nat -> Nat;
   + zero b := b;
   + (suc a) b := suc (a + b);
@@ -153,7 +153,7 @@ end;
 module List-example;
 
   --8<-- [start:List]
-  infixr 5 ::;
+  syntax infixr 5 ::;
   type List (A : Type) :=
     | nil : List A
     | :: : A -> List A -> List A;
@@ -173,16 +173,11 @@ module List-example;
 end;
 
 module tail-recursion-example;
-  import Stdlib.Prelude open hiding {map};
+  open import Stdlib.Prelude;
+  open NList-example using {NList;nnil;ncons};
 
-  --8<-- [start:ListSum]
-  sum : List Nat -> Nat;
-  sum nil := 0;
-  sum (x :: xs) := x + sum xs;
-  --8<-- [end:ListSum]
-
-  --8<-- [start:ListSumTail]
-  sum : List Nat -> Nat;
+  --8<-- [start:NListSumTail]
+  sum : NList -> Nat;
   sum lst :=
     let
       go : Nat -> List Nat -> Nat;
