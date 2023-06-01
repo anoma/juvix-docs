@@ -141,4 +141,5 @@ apply, and they probably follow your intuition:
    opened instance of that symbol.
 
 As a consequence of 2 and 3, using a symbol that is both defined and opened
-locally will result in an ambiguity error.
+locally will result in an ambiguity error. In order to solve that, the symbol
+that was opened, would need to be used qualified instead.
