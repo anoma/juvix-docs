@@ -270,10 +270,7 @@ matching. One can use the `case` syntax to pattern match an expression
 directly.
 
 ```jrepl
-Stdlib.Prelude> case (1, 2)
-  | (suc _, zero) := 0
-  | (suc _, suc x) := x
-  | _ := 19
+Stdlib.Prelude> case (1, 2) | (suc _, zero) := 0 | (suc _, suc x) := x | _ := 19
 1
 ```
 
