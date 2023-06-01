@@ -22,6 +22,12 @@ concurrency:
   group: "${{ github.workflow }}-${{ github.head_ref || github.run_id }}"
   cancel-in-progress: true
 
+env:
+  GIT_COMMITTER_NAME: GitHub Actions
+  GIT_COMMITTER_EMAIL: juvix@heliax.dev
+  GIT_AUTHOR_NAME: GitHub Actions
+  GIT_AUTHOR_EMAIL: juvix@heliax.dev
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -30,10 +36,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - run: git init
-      - name: test
-        run: |
-          git status
 
       - name: Install the latest Juvix compiler
         uses: jaxxstorm/action-install-gh-release@v1.10.0
