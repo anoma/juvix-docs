@@ -37,6 +37,8 @@ EXAMPLES= Collatz/Collatz.juvix \
 	TicTacToe/CLI/TicTacToe.juvix \
 	Tutorial/Tutorial.juvix
 
+all: dev
+
 # ----------------------------------------------------------------------------
 
 clean: clean-juvix-build
@@ -72,32 +74,38 @@ python-env:
 
 .PHONY : mkdocs
 mkdocs: python-env
-	@source python-env/bin/activate && \
-		pip install -r requirements.txt
+	@pip3 install -r requirements.txt
 
 # ----------------------------------------------------------------------------
 # -- Juvix Compiler installation
 # ----------------------------------------------------------------------------
 
-.PHONY: juvix
-juvix:
+.PHONY: juvix-sources
+juvix-sources:
 	@if [ ! -d ${COMPILERSOURCES} ]; then \
 		git clone -b main https://github.com/anoma/juvix.git ${COMPILERSOURCES}; \
 	fi
 	@cd ${COMPILERSOURCES} && \
 		git fetch --all && \
 		if [ "${DEV}" = true ]; then \
-			echo "[!] Use Juvix DEV commit in main"; \
-			git checkout main; \
+			git checkout main > /dev/null 2>&1; \
 		else \
-			echo "[!] Use Juvix ${VERSION}"; \
-			git checkout v${VERSION}; \
-		fi && \
-		${MAKE} install; \
+			git checkout v${VERSION} > /dev/null 2>&1; \
+		fi;
+
+install-juvix: juvix-sources
+	@cd ${COMPILERSOURCES} && ${MAKE} install
+
+CHECKJUVIX:= $(shell command -v ${JUVIXBIN} 2> /dev/null)
+
+.PHONY: juvix-bin
+juvix-bin:
+	@$(if $(CHECKJUVIX) , \
+		, echo "[!] Juvix is not installed. Please install it and try again. Try make install-juvix")
 
 # The numeric version of the Juvix compiler must match the
 # version of the documentation specified in the VERSION file.
-checkout-juvix: juvix
+checkout-juvix: juvix-sources juvix-bin
 	@if [ "${DEV}" != true ]; then \
 		if [ "${JUVIXBINVERSION}" != "${VERSION}" ]; then \
 			echo "[!] Juvix version ${JUVIXBINVERSION} does not match the documentation version $(VERSION)."; \
@@ -112,7 +120,7 @@ checkout-juvix: juvix
 HEADER := "---\\nnobuttons: true\\n---\\n"
 
 .PHONY: juvix-metafiles
-juvix-metafiles: juvix
+juvix-metafiles: juvix-sources
 	@for file in $(METAFILES); do \
 		echo -e "$(HEADER)" | \
 			cat - ${COMPILERSOURCES}/$$file > temp  \
@@ -122,7 +130,7 @@ juvix-metafiles: juvix
 
 
 .PHONY: html-examples
-html-examples: juvix
+html-examples: juvix-sources juvix-bin
 	@cp -r ${COMPILERSOURCES}/examples docs/
 	@for file in $(EXAMPLES); do \
 			OUTPUTDIR=$(EXAMPLEHTMLOUTPUT)/$$(dirname $$file); \
@@ -147,15 +155,7 @@ icons:
 			&& unzip -o bootstrap.zip \
 			&& rm -rf bootstrap.zip \
 			&& mv bootstrap-icons-* bootstrap
-	@cd docs/overrides/.icons && unzip -o codeicons.zip
-
-.PHONY: docs
-docs:
-	mkdocs build --config-file ${MKDOCSCONFIG}
-
-.PHONY: serve
-serve: docs
-	mkdocs serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
+	@cd docs/overrides/.icons && unzip -q -o codeicons.zip > /dev/null 2>&1
 
 .PHONY: pre-build
 pre-build:
@@ -165,6 +165,20 @@ pre-build:
 		${MAKE} icons &&  \
 		${MAKE} pre-commit
 
+.PHONY: docs
+docs: pre-build
+	@mkdocs build --config-file ${MKDOCSCONFIG}
+
+.PHONY: serve
+serve: docs
+	@mkdocs serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
+
+# In case you want to serve the docs using Python's built-in server.
+.PHONY: serve-python
+serve-python: docs
+	@echo "Serving docs at http://localhost:${PORT}"
+	@cd site && python3 -m http.server ${PORT}
+
 mike:
 	mike deploy ${VERSION} ${MIKEFLAGS}
 
@@ -172,7 +186,7 @@ mike-serve: docs
 	mike serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
 .PHONY: dev
-dev:
+dev: pre-build
 	export DEV=true
 	mike delete ${DEVALIAS} ${MIKEFLAGS} > /dev/null 2>&1 || true
 	VERSION=${DEVALIAS} ${MAKE} mike
@@ -180,7 +194,7 @@ dev:
 # Call this with `DEV=true make release` if you want to use
 # the latest overview/change log from the main branch.
 .PHONY: release
-release: pre-build juvix
+release: pre-build
 	mike delete ${VERSION} ${MIKEFLAGS} > /dev/null 2>&1 || true
 	${MAKE} mike
 	mike alias ${VERSION} latest -u --no-redirect ${MIKEFLAGS}
@@ -207,21 +221,35 @@ JUVIXFORMATFLAGS?=--in-place
 JUVIXTYPECHECKFLAGS?=--only-errors
 
 .PHONY: format-juvix-files
-format-juvix-files:
+format-juvix-files: juvix-bin
 	@for file in $(JUVIXFILESTOFORMAT); do \
-		juvix format $(JUVIXFORMATFLAGS) "$$file"; \
-	done
+		${JUVIXBIN} format $(JUVIXFORMATFLAGS) "$$file" > /dev/null 2>&1; \
+		exit_code=$$?; \
+		if [ $$exit_code -eq 0 ]; then \
+			echo "[OK] $$file"; \
+      	elif [[ $$exit_code -ne 0 && "$$file" == *"tests/"* ]]; then \
+			echo "[CONTINUE] $$file is in tests directory."; \
+      	else \
+ 			echo "[FAIL] $$file formatting failed" && exit 1; \
+      	fi; \
+      	done;
 
 .PHONY: check-format-juvix-files
-check-format-juvix-files:
-	@export JUVIXFORMATFLAGS=--check
-	@make format-juvix-files
+check-format-juvix-files: juvix-bin
+	@JUVIXFORMATFLAGS=--check ${MAKE} format-juvix-files
 
-JUVIXEXAMPLEFILES=$(shell find ./docs  -name "*.juvix" -print)
+JUVIXEXAMPLEFILES=$(shell find ./docs \
+	-type d \( -name ".juvix-build" \) -prune -o \
+	-name "*.juvix" -print)
 
 .PHONY: typecheck-juvix-examples
-typecheck-juvix-examples:
+typecheck-juvix-examples: juvix-bin
 	@for file in $(JUVIXEXAMPLEFILES); do \
-		echo "Checking $$file"; \
 		${JUVIXBIN} typecheck "$$file" $(JUVIXTYPECHECKFLAGS); \
+		exit_code=$$?; \
+		if [ $$exit_code -eq 0 ]; then \
+			echo "[OK] $$file typechecks"; \
+		else \
+ 			echo "[FAIL] Typecking failed for $$file" && exit 1; \
+      	fi; \
 	done
