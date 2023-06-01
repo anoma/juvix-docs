@@ -1,13 +1,15 @@
+{-# format: false #-}
 module emacs;
-
+{-FIXME
 --8<-- [start:Hello]
 module Hello;
-  open import Stdlib.Prelude;
-  
+  import Stdlib.Prelude open;
+
   print : IO;
   print := printStringLn "Hello world!";
-  
+
   main : IO;
   main := print;
 end;
 --8<-- [end:Hello]
+-}

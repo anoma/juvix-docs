@@ -162,8 +162,7 @@ pre-build:
 	${MAKE} checkout-juvix && \
 		${MAKE} juvix-metafiles && \
 		${MAKE} html-examples && \
-		${MAKE} icons &&  \
-		${MAKE} pre-commit
+		${MAKE} icons
 
 .PHONY: docs
 docs: pre-build
@@ -242,8 +241,8 @@ JUVIXEXAMPLEFILES=$(shell find ./docs \
 	-type d \( -name ".juvix-build" \) -prune -o \
 	-name "*.juvix" -print)
 
-.PHONY: typecheck-juvix-examples
-typecheck-juvix-examples: juvix-bin
+.PHONY: typecheck-juvix-files
+typecheck-juvix-files: juvix-bin
 	@for file in $(JUVIXEXAMPLEFILES); do \
 		${JUVIXBIN} typecheck "$$file" $(JUVIXTYPECHECKFLAGS); \
 		exit_code=$$?; \

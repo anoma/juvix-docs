@@ -32,15 +32,15 @@ repos:
   - repo: local
     hooks:
       - id: format-juvix-files
-        name: format Juvix examples
+        name: format Juvix files
         entry: make -s format-juvix-files
         language: system
         verbose: false
         pass_filenames: false
 
-      - id: typecheck-juvix-examples
-        name: typecheck Juvix examples
-        entry: make -s typecheck-juvix-examples
+      - id: typecheck-juvix-files
+        name: typecheck Juvix files
+        entry: make -s typecheck-juvix-files
         language: system
         verbose: false
         pass_filenames: false

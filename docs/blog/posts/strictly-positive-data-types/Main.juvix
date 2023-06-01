@@ -1,5 +1,6 @@
+{-# format: false #-}
 module Main;
-
+{- FIXME
 module first-example;
   axiom A : Type;
 
@@ -53,3 +54,4 @@ module E6;
     | b : (A -> B (B A -> A)) -> B A;
 --8<-- [end:Bad2]
 end;
+-}

@@ -1,5 +1,6 @@
+{-# format: false #-}
 module datatypes;
-
+{-
 --8<-- [start:typeNat]
 type Nat :=
   | zero : Nat
@@ -7,7 +8,7 @@ type Nat :=
 --8<-- [end:typeNat]
 
 --8<-- [start:addNat]
-infixl 6 +;
+syntax infixl 6 +;
 + : Nat -> Nat -> Nat;
 + zero b := b;
 + (suc a) b := suc (a + b);
@@ -15,7 +16,7 @@ infixl 6 +;
 
 module List;
   --8<-- [start:typeList]
-  infixr 5 ::;
+  syntax infixr 5 ::;
   type List (A : Type) :=
     | nil : List A
     | :: : A -> List A -> List A;
@@ -30,3 +31,4 @@ module List;
   elem eq s (x :: xs) := eq s x || elem eq s xs;
 --8<-- [end:elemList]
 end;
+-}

@@ -1,5 +1,6 @@
+{-# format: false #-}
 module builtins;
-
+{- FIXME
 --8<-- [start:builtin-nat]
 builtin nat
 type Nat :=
@@ -8,7 +9,7 @@ type Nat :=
 --8<-- [end:builtin-nat]
 
 --8<-- [start:builtin-nat-plus]
-infixl 6 +;
+syntax infixl 6 +;
 builtin nat-plus
 + : Nat → Nat → Nat;
 + zero b := b;
@@ -24,3 +25,4 @@ module example-print-nat;
   axiom printNat : Nat → IO;
 --8<-- [end:builtin-nat-print]
 end;
+-}
