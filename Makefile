@@ -37,6 +37,8 @@ EXAMPLES= Collatz/Collatz.juvix \
 	TicTacToe/CLI/TicTacToe.juvix \
 	Tutorial/Tutorial.juvix
 
+all: dev
+
 # ----------------------------------------------------------------------------
 
 clean: clean-juvix-build
@@ -70,12 +72,8 @@ python-env:
 		echo "[!] Pip3 is not installed. Please install it and try again.")
 	${PYTHON} -m venv python-env
 
-
-active-python-env:
-	@source python-env/bin/activate
-
 .PHONY : mkdocs
-mkdocs: python-env active-python-env
+mkdocs: python-env
 	@pip3 install -r requirements.txt
 
 # ----------------------------------------------------------------------------
@@ -223,43 +221,36 @@ JUVIXFORMATFLAGS?=--in-place
 JUVIXTYPECHECKFLAGS?=--only-errors
 
 .PHONY: format-juvix-files
-format-juvix-files: juvix-bin
-	@exit_codes=; \
-		for file in $(JUVIXFILESTOFORMAT); do \
-			dirname=$$(dirname "$$file"); \
-			filename=$$(basename "$$file"); \
-			cd $$dirname && \
-				if [ -z "$(DEBUG)" ]; then \
-					${JUVIXBIN} format $(JUVIXFORMATFLAGS) "$$filename"; \
-				else \
-					${JUVIXBIN} format $(JUVIXFORMATFLAGS) "$$filename" > /dev/null 2>&1; \
-				fi; \
-			exit_code=$$?; \
-			if [ $$exit_code -eq 0 ]; then \
-				echo "[OK] $$file"; \
-				exit_codes+=0; \
-			elif [[ "$$file" =~ ^\./tests/ ]]; then \
-				echo "[-] $$file"; \
-				exit_codes+=0; \
-			else \
-				exit_codes+=1; \
-				echo "[ERROR] $$file"; \
-			fi; \
-			cd - > /dev/null; \
-			done; \
-		echo "$$exit_codes" | grep -q '1' && exit 1 || exit 0
+format-juvix-files:
+	@for file in $(JUVIXFILESTOFORMAT); do \
+		${JUVIXBIN} format $(JUVIXFORMATFLAGS) "$$file" > /dev/null 2>&1; \
+		exit_code=$$?; \
+		if [ $$exit_code -eq 0 ]; then \
+			echo "[OK] $$file"; \
+      	elif [[ $$exit_code -ne 0 && "$$file" == *"tests/"* ]]; then \
+			echo "[CONTINUE] $$file is in tests directory."; \
+      	else \
+ 			echo "[FAIL] $$file formatting failed" && exit 1; \
+      	fi; \
+      	done;
 
 .PHONY: check-format-juvix-files
 check-format-juvix-files:
-	@JUVIXFORMATFLAGS=--check	${MAKE} format-juvix-files
+	@JUVIXFORMATFLAGS=--check ${MAKE} format-juvix-files
 
-JUVIXEXAMPLEFILES=$(shell find ./docs  -type d -name ".juvix-build" -prune -o -type f -name "*.juvix" -print)
+JUVIXEXAMPLEFILES=$(shell find ./docs \
+	-type d \( -name ".juvix-build" \) -prune -o \
+	-name "*.juvix" -print)
+
 
 .PHONY: typecheck-juvix-examples
-typecheck-juvix-examples: juvix-bin
-	@set -e; \
-	for file in $(JUVIXEXAMPLEFILES); do \
-		echo "Checking $$file"; \
+typecheck-juvix-examples:
+	@for file in $(JUVIXEXAMPLEFILES); do \
 		${JUVIXBIN} typecheck "$$file" $(JUVIXTYPECHECKFLAGS); \
-	done; \
-	set +e
+		exit_code=$$?; \
+		if [ $$exit_code -eq 0 ]; then \
+			echo "[OK] $$file typechecks"; \
+		else \
+ 			echo "[FAIL] Typecking failed for $$file" && exit 1; \
+      	fi; \
+	done
