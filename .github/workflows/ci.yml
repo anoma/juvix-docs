@@ -33,7 +33,7 @@ jobs:
       - run: git init
       - name: test
         run: |
-           git status 
+          git status
 
       - name: Install the latest Juvix compiler
         uses: jaxxstorm/action-install-gh-release@v1.10.0
