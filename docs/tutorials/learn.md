@@ -587,6 +587,58 @@ actually decreases performance.
 - Use tail recursion to eliminate stack allocation.
 - Do not use tail recursion to replace stack allocation with heap allocation.
 
+## Iteration over data structures
+
+A common use of recursion is to traverse a data structure in a
+specified order accumulating some values. For example, the tail
+recursive `sum` function fits this pattern.
+
+Juvix provides special support for data structure traversals with the
+iterator syntax. The standard library defines several list iterators,
+among them `for` and `rfor`. We can implement the `sum` function using
+`for`:
+
+```juvix
+--8<------ "docs/tutorials/learn.juvix:sum-for"
+```
+
+The above `for` iteration starts with the accumulator `acc` equal to
+`0` and goes through the list `l` from left to right (from beginning
+to end), at each step updating the accumulator to `x + acc` where `x`
+is the current list element and `acc` is the previous accumulator
+value. The final value of the iteration is the final value of the
+accumulator. The `for` iterator is tail recursive, i.e., no stack
+memory is allocated and the whole iteration is compiled to a loop.
+
+The `rfor` iterator is analogous to `for` except that it goes through
+the list from right to left (from end to beginning) and is not tail
+recursive. For example, one can implement `map` using `rfor`:
+
+```juvix
+--8<------ "docs/tutorials/learn.juvix:map-rfor"
+```
+
+The iterators are just ordinary higher-order Juvix functions which can
+be used with the iterator syntax. In fact, the `map` function from the
+standard library can also be used with the iterator syntax. The
+expression
+
+```juvix
+map (x in l) body
+```
+
+is equivalent to
+
+```juvix
+map \{x := body} l
+```
+
+Whenever possible, it is advised to use the standard library iterators
+instead of manually writing recursive functions. When reasonable,
+`for` should be preferred to `rfor`. The iterators provide a readable
+syntax and the compiler might be able to optimize them better than
+manually written recursion.
+
 ## Totality checking
 
 By default, the Juvix compiler requires all functions to be _total_.
@@ -727,7 +779,10 @@ to be polymorphic in the element type, and then repeat the previous exercise.
 
 ### Exercise 7
 
-Write a tail recursive function which reverses a list.
+Write a function which reverses a list:
+
+- using the `for` iterator,
+- using tail recursion.
 
 ### Exercise 8
 

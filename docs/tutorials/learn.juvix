@@ -220,6 +220,20 @@ module tail-recursion-example;
   end;
 end;
 
+module iterators-example;
+  import Stdlib.Prelude open hiding {map};
+
+  --8<-- [start:sum-for]
+  sum : List Nat -> Nat;
+  sum l := for (acc := 0) (x in l) x + acc;
+  --8<-- [end:sum-for]
+
+  --8<-- [start:map-rfor]
+  map : {A B : Type} -> (A -> B) -> List A -> List B;
+  map f l := rfor (acc := nil) (x in l) f x :: acc;
+  --8<-- [end:map-rfor]
+end;
+
 module totality-example;
   open import Stdlib.Prelude;
   open import Stdlib.Data.Nat.Ord;
