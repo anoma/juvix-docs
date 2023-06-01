@@ -33,14 +33,14 @@ repos:
     hooks:
       - id: format-juvix-files
         name: format Juvix files
-        entry: make -s format-juvix-files
+        entry: make format-juvix-files
         language: system
-        verbose: false
+        verbose: true
         pass_filenames: false
 
       - id: typecheck-juvix-files
         name: typecheck Juvix files
-        entry: make -s typecheck-juvix-files
+        entry: make typecheck-juvix-files
         language: system
-        verbose: false
+        verbose: true
         pass_filenames: false
