@@ -63,7 +63,7 @@ Since importing and opening a module is done often, there is special syntax for
 that. The following statement:
 
 ```juvix
-open import Data.List;
+import Data.List open;
 ```
 
 Is equivalent to this:
@@ -80,8 +80,13 @@ we must use the `using` keyword thus:
 open Data.List using {List; sort; reverse}
 ```
 
+We can also rename symbols in an open statement thus:
+```juvix
+open Data.List using {List; sort as listSort; reverse as reverseList}
+```
+
 If we want to open all definitions of a module minus a subset, we
-must use the `hiding` keyword thus:
+use the `hiding` keyword thus:
 
 ```juvix
 open Data.List hiding {head; tail}
@@ -96,7 +101,7 @@ must use the `public` keyword thus:
 ```
 module Prelude;
 
-open import Data.List public;
+import Data.List open public;
 ```
 
 Now, from another module we can access definitions in `Data.List` through the
@@ -105,7 +110,7 @@ Now, from another module we can access definitions in `Data.List` through the
 ```
 module MyModule;
 
-open import Prelude;
+import Prelude open;
 
 -- List, sort, reverse, etc. are now in scope
 ```
@@ -122,10 +127,12 @@ The syntax for local modules is as follows:
 ```
 module Path.To.TopModule;
 
-module Loc;
+module ModuleName;
   <body>
 end;
 ```
+
+Note that local module names cannot contain the `.` character.
 
 After the definition of a local module, we can access its definitions by using
 qualified names. Local modules can be opened by open statements in the same way
