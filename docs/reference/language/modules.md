@@ -73,8 +73,9 @@ import Data.List;
 open Data.List;
 ```
 
-In general, we can combine any import statement with an open statement. The
-syntax is `<import statement> <open statement wihout module name>`.
+In general, we can combine any import statement and open statement that refer to
+the same module. The syntax is `<import statement> <open statement wihout module
+name>`.
 
 When opening a module, if we want to open an explicit subset of its definitions,
 we must use the `using` keyword thus:
