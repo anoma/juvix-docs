@@ -23,10 +23,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  GIT_COMMITTER_NAME: GitHub Actions
+  GIT_COMMITTER_NAME: juvix-docs-ci
   GIT_COMMITTER_EMAIL: juvix@heliax.dev
-  GIT_AUTHOR_NAME: GitHub Actions
-  GIT_AUTHOR_EMAIL: juvix@heliax.dev
 
 jobs:
   build-and-deploy:
@@ -67,6 +65,9 @@ jobs:
 
       - name: deploy documentation (dev)
         run: |
+          git fetch origin gh-pages --depth=1
+          git config user.name juvix-docs-ci
+          git config user.email juvix@heliax.dev
           make dev
         env:
           RUN_GITHUB_ACTION: ${{ secrets.RUN_GITHUB_ACTION }}
