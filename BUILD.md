@@ -1,4 +1,3 @@
-
 # Build
 
 To deploy the documentation locally, you need to set up a virtual environment
