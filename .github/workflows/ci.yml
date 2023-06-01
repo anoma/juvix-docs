@@ -29,8 +29,11 @@ jobs:
       - name: Checkout our repository
         uses: actions/checkout@v3
         with:
-          path: main
-          submodules: recursive
+          fetch-depth: 0
+      - run: git init
+      - name: test
+        run: |
+           git status 
 
       - name: Install the latest Juvix compiler
         uses: jaxxstorm/action-install-gh-release@v1.10.0
@@ -52,7 +55,6 @@ jobs:
 
       - name: Generate HTML files from examples
         run: |
-          cd main
           make html-examples
 
       - name: Install Python dependencies
@@ -63,7 +65,6 @@ jobs:
 
       - name: deploy documentation (dev)
         run: |
-          cd main
           make dev
         env:
           RUN_GITHUB_ACTION: ${{ secrets.RUN_GITHUB_ACTION }}
