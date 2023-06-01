@@ -3,17 +3,17 @@
 <span class="ju-var">---</span> <span class="ju-var">The disks are stacked ontop of each other through the first rod.</span>
 <span class="ju-var">---</span> <span class="ju-var">The aim of the game is to move the stack of disks to another rod while</span>
 <span class="ju-var">---</span> <span class="ju-var">following these rules:</span>
----
+<span class="ju-var">---</span>
 <span class="ju-var">---</span> <span class="ju-var">1. Only one disk can be moved at a time</span>
----
+<span class="ju-var">---</span>
 <span class="ju-var">---</span> <span class="ju-var">2. You may only move a disk from the top of one of the stacks to the top of another stack</span>
----
+<span class="ju-var">---</span>
 <span class="ju-var">---</span> <span class="ju-var">3. No disk may be moved on top of a smaller disk</span>
----
+<span class="ju-var">---</span>
 <span class="ju-var">---</span> <span class="ju-var">The function </span><span class="ju-var">;</span><span class="annot"><a href="Hanoi-src.html#623"><span class="ju-function">hanoi</span></a></span><span class="ju-var">;</span><span class="ju-var"> computes the sequence of moves to solve puzzle.</span>
 <span class="ju-keyword">module</span> <span id="0"><span class="annot"><a href="Hanoi-src.html#0"><span class="annot"><a href="Hanoi-src.html#0"><span class="ju-var">Hanoi</span></a></span></a></span></span><span class="ju-keyword">;</span>
 
-<span class="ju-keyword">open</span> <span class="ju-keyword">import</span> <span class="annot"><a href="Stdlib.Prelude-src.html#1"><span class="ju-var">Stdlib<span class="ju-delimiter">.</span>Prelude</span></a></span><span class="ju-delimiter">;</span>
+<span class="ju-keyword">import</span> <span class="annot"><a href="Stdlib.Prelude-src.html#1"><span class="ju-var">Stdlib<span class="ju-delimiter">.</span>Prelude</span></a></span> <span class="ju-keyword">open</span><span class="ju-delimiter">;</span>
 
 <span class="ju-var">---</span> <span class="ju-var">Concatenates a list of strings</span>
 <span class="ju-var">---</span> <span class="ju-var">;</span><span class="annot"><a href="Hanoi-src.html#604"><span class="ju-function">concat</span></a></span> <span class="ju-delimiter">(</span><span class="ju-delimiter">(</span><span class="ju-string">&quot;a&quot;</span> <span class="annot"><a href="Stdlib.Data.List.Base-src.html#180"><span class="ju-constructor">::</span></a></span> <span class="annot"><a href="Stdlib.Data.List.Base-src.html#179"><span class="ju-constructor">nil</span></a></span><span class="ju-delimiter">)</span> <span class="annot"><a href="Stdlib.Data.List.Base-src.html#180"><span class="ju-constructor">::</span></a></span> <span class="ju-string">&quot;b&quot;</span> <span class="annot"><a href="Stdlib.Data.List.Base-src.html#180"><span class="ju-constructor">::</span></a></span> <span class="annot"><a href="Stdlib.Data.List.Base-src.html#179"><span class="ju-constructor">nil</span></a></span><span class="ju-delimiter">)</span><span class="ju-var">;</span><span class="ju-var"> evaluates to </span><span class="ju-var">;</span><span class="ju-string">&quot;a&quot;</span> <span class="annot"><a href="Stdlib.Data.List.Base-src.html#180"><span class="ju-constructor">::</span></a></span> <span class="ju-string">&quot;b&quot;</span> <span class="annot"><a href="Stdlib.Data.List.Base-src.html#180"><span class="ju-constructor">::</span></a></span> <span class="annot"><a href="Stdlib.Data.List.Base-src.html#179"><span class="ju-constructor">nil</span></a></span><span class="ju-var">;</span>
@@ -57,4 +57,4 @@
 <span id="628"><span class="annot"><a href="Hanoi-src.html#628">
 <span class="annot"><a href="Hanoi-src.html#628"><span class="ju-function">main</span></a></span></a></span></span> <span class="ju-keyword">:</span> <span class="annot"><a href="Stdlib.System.IO-src.html#589"><span class="ju-axiom">IO</span></a></span><span class="ju-delimiter">;</span>
 <span class="annot"><a href="Hanoi-src.html#628"><span class="ju-function">main</span></a></span> <span class="ju-keyword">:=</span> <span class="annot"><a href="Stdlib.System.IO-src.html#598"><span class="ju-function">printStringLn</span></a></span> <span class="ju-delimiter">(</span><span class="annot"><a href="Stdlib.Data.String.Base-src.html#362"><span class="ju-function">unlines</span></a></span> <span class="ju-delimiter">(</span><span class="annot"><a href="Stdlib.Data.List.Base-src.html#206"><span class="ju-function">map</span></a></span> <span class="annot"><a href="Hanoi-src.html#620"><span class="ju-function">showMove</span></a></span> <span class="ju-delimiter">(</span><span class="annot"><a href="Hanoi-src.html#623"><span class="ju-function">hanoi</span></a></span> <span class="ju-number">5</span> <span class="annot"><a href="Hanoi-src.html#614"><span class="ju-constructor">left</span></a></span> <span class="annot"><a href="Hanoi-src.html#615"><span class="ju-constructor">middle</span></a></span> <span class="annot"><a href="Hanoi-src.html#616"><span class="ju-constructor">right</span></a></span><span class="ju-delimiter">)</span><span class="ju-delimiter">)</span><span class="ju-delimiter">)</span><span class="ju-delimiter">;</span>
-</pre><footer><pre>Powered by <a href="https://juvix.org">Juvix </a><a href="https://github.com/anoma/juvix/commit/c2d8fa4">0.3.3-c2d8fa4</a></pre></footer><span>Last modified on 2023-05-08 11:40 UTC</span></html>
+</pre><footer><pre>Powered by <a href="https://juvix.org">Juvix </a><a href="https://github.com/anoma/juvix/commit/d08d8ce">0.3.4-d08d8ce</a></pre></footer><span>Last modified on 2023-06-01 7:21 UTC</span></html>

@@ -5,7 +5,7 @@ module learn;
 module Hello;
   -- Import the standard library prelude, including the 'String' type
   open import Stdlib.Prelude;
-  
+
   main : String;
   main := "Hello world!";
 end;
@@ -40,7 +40,7 @@ module Nat-example;
   --8<-- [end:NatAdd]
 
   open Bool-example;
-  
+
   --8<-- [start:NatEven]
   even : Nat -> Bool;
   even zero := true;
@@ -67,7 +67,7 @@ module max3-example;
   --8<-- [start:max3]
   open import Stdlib.Prelude;
   open import Stdlib.Data.Nat.Ord;
-  
+
   max3 : Nat -> Nat -> Nat -> Nat;
   max3 x y z := if (x > y) (max x z) (max y z);
 --8<-- [end:max3]
@@ -75,7 +75,7 @@ end;
 
 module let-example;
   open import Stdlib.Prelude;
-  
+
   --8<-- [start:let]
   f : Nat -> Nat;
   f a :=
@@ -89,7 +89,7 @@ end;
 module let-even;
   open Nat-example;
   open Bool-example;
-  
+
   --8<-- [start:let-even]
   even : Nat -> Bool;
   even :=
@@ -114,8 +114,6 @@ module NList-example;
   --8<-- [end:NList]
 
   --8<-- [start:nlength]
-  -- Nat here is the built-in type for natural numbers
-  -- coming from the standard library
   nlength : NList -> Nat;
   nlength nnil := 0;
   nlength (ncons _ xs) := nlength xs + 1;
@@ -123,7 +121,7 @@ module NList-example;
 
   --8<-- [start:nmaximum]
   open import Stdlib.Data.Nat.Ord using {max};
-  
+
   nmaximum : NList -> Nat;
   nmaximum nnil := 0;
   nmaximum (ncons x xs) := max x (nmaximum xs);
@@ -134,12 +132,6 @@ module NList-example;
   nmap _ nnil := nnil;
   nmap f (ncons x xs) := ncons (f x) (nmap f xs);
   --8<-- [end:NListMap]
-
-  --8<-- [start:NListSum]
-  sum : NList -> Nat;
-  sum nnil := 0;
-  sum (ncons x xs) := x + sum xs;
---8<-- [end:NListSum]
 end;
 
 module Tree-example;
@@ -159,7 +151,7 @@ module Tree-example;
 end;
 
 module List-example;
-  
+
   --8<-- [start:List]
   infixr 5 ::;
   type List (A : Type) :=
@@ -181,18 +173,23 @@ module List-example;
 end;
 
 module tail-recursion-example;
-  open import Stdlib.Prelude;
-  open NList-example using {NList;nnil;ncons};
-  
-  --8<-- [start:NListSumTail]
-  sum : NList -> Nat;
+  import Stdlib.Prelude open hiding {map};
+
+  --8<-- [start:ListSum]
+  sum : List Nat -> Nat;
+  sum nil := 0;
+  sum (x :: xs) := x + sum xs;
+  --8<-- [end:ListSum]
+
+  --8<-- [start:ListSumTail]
+  sum : List Nat -> Nat;
   sum lst :=
     let
-      go : Nat -> NList -> Nat;
-      go acc nnil := acc;
-      go acc (ncons x xs) := go (acc + x) xs;
+      go : Nat -> List Nat -> Nat;
+      go acc nil := acc;
+      go acc (x :: xs) := go (acc + x) xs;
     in go 0 lst;
-  --8<-- [end:NListSumTail]
+  --8<-- [end:ListSumTail]
 
   module fibo-example;
     --8<-- [start:FiboTail]
@@ -213,6 +210,18 @@ module tail-recursion-example;
     fib (suc zero) := 1;
     fib (suc (suc n)) := fib n + fib (suc n);
   --8<-- [end:FiboNaive]
+  end;
+
+  module list-map;
+    --8<-- [start:ListMapTail]
+    map : {A B : Type} -> (A -> B) -> List A -> List B;
+    map {A} {B} f :=
+      let
+        go : List B -> List A -> List B;
+        go acc nil := reverse acc;
+        go acc (x :: xs) := go (f x :: acc) xs;
+      in go nil;
+  --8<-- [end:ListMapTail]
   end;
 end;
 
