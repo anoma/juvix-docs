@@ -73,23 +73,26 @@ import Data.List;
 open Data.List;
 ```
 
+In general, we can combine any import statement with an open statement. The
+syntax is `<import statement> <open statement wihout module name>`.
+
 When opening a module, if we want to open an explicit subset of its definitions,
 we must use the `using` keyword thus:
 
 ```juvix
-open Data.List using {List; sort; reverse}
+open Data.List using {List; sort; reverse};
 ```
 
 We can also rename symbols in an open statement thus:
 ```juvix
-open Data.List using {List; sort as listSort; reverse as reverseList}
+open Data.List using {List; sort as listSort; reverse as reverseList};
 ```
 
 If we want to open all definitions of a module minus a subset, we
 use the `hiding` keyword thus:
 
 ```juvix
-open Data.List hiding {head; tail}
+open Data.List hiding {head; tail};
 ```
 
 All opened definitions are available under the current module, but
