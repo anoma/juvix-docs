@@ -166,7 +166,7 @@ pre-build:
 		${MAKE} pre-commit
 
 .PHONY: docs
-docs: pre-build active-python-env
+docs: pre-build
 	@mkdocs build --config-file ${MKDOCSCONFIG}
 
 .PHONY: serve
@@ -186,7 +186,7 @@ mike-serve: docs
 	mike serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
 .PHONY: dev
-dev:
+dev: pre-build
 	export DEV=true
 	mike delete ${DEVALIAS} ${MIKEFLAGS} > /dev/null 2>&1 || true
 	VERSION=${DEVALIAS} ${MAKE} mike
@@ -194,7 +194,7 @@ dev:
 # Call this with `DEV=true make release` if you want to use
 # the latest overview/change log from the main branch.
 .PHONY: release
-release: pre-build juvix
+release: pre-build
 	mike delete ${VERSION} ${MIKEFLAGS} > /dev/null 2>&1 || true
 	${MAKE} mike
 	mike alias ${VERSION} latest -u --no-redirect ${MIKEFLAGS}
@@ -221,7 +221,7 @@ JUVIXFORMATFLAGS?=--in-place
 JUVIXTYPECHECKFLAGS?=--only-errors
 
 .PHONY: format-juvix-files
-format-juvix-files:
+format-juvix-files: juvix-bin
 	@for file in $(JUVIXFILESTOFORMAT); do \
 		${JUVIXBIN} format $(JUVIXFORMATFLAGS) "$$file" > /dev/null 2>&1; \
 		exit_code=$$?; \
@@ -235,16 +235,15 @@ format-juvix-files:
       	done;
 
 .PHONY: check-format-juvix-files
-check-format-juvix-files:
+check-format-juvix-files: juvix-bin
 	@JUVIXFORMATFLAGS=--check ${MAKE} format-juvix-files
 
 JUVIXEXAMPLEFILES=$(shell find ./docs \
 	-type d \( -name ".juvix-build" \) -prune -o \
 	-name "*.juvix" -print)
 
-
 .PHONY: typecheck-juvix-examples
-typecheck-juvix-examples:
+typecheck-juvix-examples: juvix-bin
 	@for file in $(JUVIXEXAMPLEFILES); do \
 		${JUVIXBIN} typecheck "$$file" $(JUVIXTYPECHECKFLAGS); \
 		exit_code=$$?; \
