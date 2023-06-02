@@ -2,6 +2,7 @@
 icon: material/view-module
 comments: true
 ---
+
 # Module system
 
 Modules are the way in which we split our programs in separate files. Juvix also

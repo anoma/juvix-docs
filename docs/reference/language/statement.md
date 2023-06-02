@@ -2,6 +2,7 @@
 icon: material/equal
 comments: true
 ---
+
 # Statement
 
 A juvix statement is each of the components of a module.
