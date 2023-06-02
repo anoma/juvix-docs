@@ -2,6 +2,12 @@ name: Juvix Docs CI
 "on":
   workflow_dispatch:
     inputs:
+      build-type:
+        type: choice
+        description: "Makefile target to build"
+        options:
+          - "dev"
+          - "release"
       ref:
         description: the repository ref to build
         required: true
@@ -23,54 +29,72 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  SKIP: format-juvix-files,typecheck-juvix-examples
+  GIT_COMMITTER_NAME: juvix-docs-ci
+  GIT_COMMITTER_EMAIL: juvix@heliax.dev
 
 jobs:
-  pre-commit:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout our repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install the latest Juvix compiler
+        uses: jaxxstorm/action-install-gh-release@v1.10.0
+        with:
+          repo: anoma/juvix
+          tag: latest
+          chmod: 0755
+      - name: Check Juvix version
+        run: |
+          juvix --version
+
+      - uses: actions/cache@v3
+        with:
+          key: ${{ github.ref }}
+          path: .cache
 
       - uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: "3.11.1"
+          check-latest: true
+          cache: "pip"
 
       - uses: pre-commit/action@v3.0.0
 
-  # build:
-  #   runs-on: ubuntu-20.04
-  #   steps:
-  #     - name: Checkout our repository
-  #       uses: actions/checkout@v3
-  #       with:
-  #         path: main
-  #         submodules: recursive
+      - name: Generate HTML files from examples
+        run: |
+          make html-examples
 
-  #     - id: cache-llvm
-  #       uses: actions/cache@v3
-  #       with:
-  #         path: |
-  #           C:/Program Files/LLVM
-  #           ./llvm
-  #         key: "${{ runner.os }}-llvm-13"
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --user -r requirements.txt
 
-  #     - name: Install LLVM and Clang
-  #       uses: KyleMayes/install-llvm-action@v1
-  #       with:
-  #         version: "13.0"
-  #         cached: "${{ steps.cache-llvm.outputs.cache-hit }}"
+      - name: Build prerequisites
+        run: |
+          make pre-build
 
-  #     - name: Install the latest Wasmer version
-  #       uses: jaxxstorm/action-install-gh-release@v1.10.0
-  #       with:
-  #         repo: wasmerio/wasmer
-  #         tag: latest
-  #         binaries-location: bin
-  #         cache: true
+      - name: Test building without material-insides
+        run: |
+          MKDOCSCONFIG=mkdocs.yml make docs
 
-  #     - name: Generate HTML files from examples
-  #       run: |
-  #         cd main
-  #         echo "$GITHUB_WORKSPACE/.local/bin" >> $GITHUB_PATH
-  #         make html-examples
-  #         make demo-example
+      - name: Setup Git
+        run: |
+          git config --global user.name "${GIT_COMMITTER_NAME}"
+          git config --global user.email "${GIT_COMMITTER_EMAIL}"
+
+      - name: Install material-insiders
+        run: |
+          pip install git+https://${{ secrets.GH_TOKEN }}@github.com/squidfunk/mkdocs-material-insiders.git
+
+      - name: deploy documentation
+        if: >-
+          github.ref == 'refs/heads/main' || github.event_name ==
+          'workflow_dispatch'
+        run: |
+          make ${{ github.event.inputs.build-type }}
+        env:
+          RUN_GITHUB_ACTION: ${{ secrets.RUN_GITHUB_ACTION }}

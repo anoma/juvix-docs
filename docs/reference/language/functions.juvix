@@ -2,8 +2,8 @@ module functions;
 
 module example-multiply-by-two;
   --8<-- [start:multiplyByTwo]
-  open import Stdlib.Data.Nat;
-  
+  import Stdlib.Data.Nat open using {Nat; *};
+
   multiplyByTwo : Nat -> Nat;
   multiplyByTwo n := 2 * n;
 --8<-- [end:multiplyByTwo]
@@ -11,20 +11,16 @@ end;
 
 module short-definitons;
   --8<-- [start:shortDefinitions]
-  open import Stdlib.Data.Nat;
-  
-  multiplyByTwo :
-    Nat -> Nat :=
-      \ {
-        | n := 2 * n
-      };
+  import Stdlib.Data.Nat open;
+
+  multiplyByTwo : Nat -> Nat := \ {n := 2 * n};
 --8<-- [end:shortDefinitions]
 end;
 
 module example-negate-boolean;
   --8<-- [start:negateBoolean]
-  open import Stdlib.Data.Bool;
-  
+  import Stdlib.Data.Bool open;
+
   neg : Bool -> Bool;
   neg true := false;
   neg false := true;
@@ -33,13 +29,13 @@ end;
 
 module mutually-recursive;
   --8<-- [start:mutuallyRecursive]
-  open import Stdlib.Data.Nat;
-  open import Stdlib.Data.Bool;
+  import Stdlib.Data.Nat open;
+  import Stdlib.Data.Bool open;
 
-  open import Stdlib.Prelude;
-  
+  import Stdlib.Prelude open;
+
   odd : Nat -> Bool;
-  
+
   even : Nat -> Bool;
 
   odd zero := false;
@@ -52,10 +48,10 @@ end;
 
 module anonymous-functions;
   --8<-- [start:anonymousFunctions]
-  open import Stdlib.Prelude;
-  
+  import Stdlib.Prelude open;
+
   odd : Nat -> Bool;
-  
+
   even : Nat -> Bool;
 
   odd :=

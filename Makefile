@@ -64,17 +64,13 @@ clean-juvix-build:
 PYTHON := $(shell command -v python3 2> /dev/null)
 PIP := $(shell command -v pip3 2> /dev/null)
 
-.PHONY: python-env
-python-env:
+.PHONY: python-requirements
+python-requirements:
 	@$(if $(PYTHON),, \
 		echo "[!] Python3 is not installed. Please install it and try again.")
 	@$(if $(PIP),,\
 		echo "[!] Pip3 is not installed. Please install it and try again.")
-	${PYTHON} -m venv python-env
-
-.PHONY : mkdocs
-mkdocs: python-env
-	@pip3 install -r requirements.txt
+	@${PIP} install -r requirements.txt
 
 # ----------------------------------------------------------------------------
 # -- Juvix Compiler installation
@@ -162,8 +158,7 @@ pre-build:
 	${MAKE} checkout-juvix && \
 		${MAKE} juvix-metafiles && \
 		${MAKE} html-examples && \
-		${MAKE} icons &&  \
-		${MAKE} pre-commit
+		${MAKE} icons
 
 .PHONY: docs
 docs: pre-build
@@ -242,8 +237,8 @@ JUVIXEXAMPLEFILES=$(shell find ./docs \
 	-type d \( -name ".juvix-build" \) -prune -o \
 	-name "*.juvix" -print)
 
-.PHONY: typecheck-juvix-examples
-typecheck-juvix-examples: juvix-bin
+.PHONY: typecheck-juvix-files
+typecheck-juvix-files: juvix-bin
 	@for file in $(JUVIXEXAMPLEFILES); do \
 		${JUVIXBIN} typecheck "$$file" $(JUVIXTYPECHECKFLAGS); \
 		exit_code=$$?; \

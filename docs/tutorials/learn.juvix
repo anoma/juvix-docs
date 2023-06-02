@@ -4,7 +4,7 @@ module learn;
 -- Hello world example. This is a comment.
 module Hello;
   -- Import the standard library prelude, including the 'String' type
-  open import Stdlib.Prelude;
+  import Stdlib.Prelude open;
 
   main : String;
   main := "Hello world!";
@@ -65,8 +65,8 @@ end;
 
 module max3-example;
   --8<-- [start:max3]
-  open import Stdlib.Prelude;
-  open import Stdlib.Data.Nat.Ord;
+  import Stdlib.Prelude open;
+  import Stdlib.Data.Nat.Ord open;
 
   max3 : Nat -> Nat -> Nat -> Nat;
   max3 x y z := if (x > y) (max x z) (max y z);
@@ -74,7 +74,7 @@ module max3-example;
 end;
 
 module let-example;
-  open import Stdlib.Prelude;
+  import Stdlib.Prelude open;
 
   --8<-- [start:let]
   f : Nat -> Nat;
@@ -105,7 +105,7 @@ module let-even;
 end;
 
 module NList-example;
-  open import Stdlib.Prelude;
+  import Stdlib.Prelude open;
 
   --8<-- [start:NList]
   type NList :=
@@ -120,7 +120,7 @@ module NList-example;
   --8<-- [end:nlength]
 
   --8<-- [start:nmaximum]
-  open import Stdlib.Data.Nat.Ord using {max};
+  import Stdlib.Data.Nat.Ord open using {max};
 
   nmaximum : NList -> Nat;
   nmaximum nnil := 0;
@@ -131,7 +131,7 @@ module NList-example;
   nmap : (Nat -> Nat) -> NList -> NList;
   nmap _ nnil := nnil;
   nmap f (ncons x xs) := ncons (f x) (nmap f xs);
-  --8<-- [end:NListMap]
+--8<-- [end:NListMap]
 end;
 
 module Tree-example;
@@ -147,11 +147,11 @@ module Tree-example;
   mirror : Tree -> Tree;
   mirror (leaf x) := leaf x;
   mirror (node x l r) := node x (mirror r) (mirror l);
-  --8<-- [end:TreeMirror]
+--8<-- [end:TreeMirror]
 end;
 
 module List-example;
-
+  
   --8<-- [start:List]
   syntax infixr 5 ::;
   type List (A : Type) :=
@@ -181,17 +181,15 @@ module tail-recursion-example;
   sum (x :: xs) := x + sum xs;
   --8<-- [end:ListSum]
 
-  module sum-tail;
-    --8<-- [start:ListSumTail]
-    sum : List Nat -> Nat;
-    sum lst :=
-      let
-        go : Nat -> List Nat -> Nat;
-        go acc nil := acc;
-        go acc (x :: xs) := go (acc + x) xs;
-      in go 0 lst;
-    --8<-- [end:ListSumTail]
-  end;
+  --8<-- [start:ListSumTail]
+  sum' : List Nat -> Nat;
+  sum' lst :=
+    let
+      go : Nat -> List Nat -> Nat;
+      go acc nil := acc;
+      go acc (x :: xs) := go (acc + x) xs;
+    in go 0 lst;
+  --8<-- [end:ListSumTail]
 
   module fibo-example;
     --8<-- [start:FiboTail]
@@ -238,19 +236,19 @@ module iterators-example;
   --8<-- [start:map-rfor]
   map : {A B : Type} -> (A -> B) -> List A -> List B;
   map f l := rfor (acc := nil) (x in l) f x :: acc;
-  --8<-- [end:map-rfor]
+--8<-- [end:map-rfor]
 end;
 
 module totality-example;
-  open import Stdlib.Prelude;
-  open import Stdlib.Data.Nat.Ord;
+  import Stdlib.Prelude open;
+  import Stdlib.Data.Nat.Ord open;
 
   module fact-not-terminating-example;
     terminating
     --8<-- [start:fact-not-terminating]
     fact : Nat -> Nat;
     fact x := if (x == 0) 1 (x * fact (sub x 1));
-    --8<-- [end:fact-not-terminating]
+  --8<-- [end:fact-not-terminating]
   end;
 
   module fact-terminating-example;
@@ -258,7 +256,7 @@ module totality-example;
     fact : Nat -> Nat;
     fact zero := 1;
     fact x@(suc n) := x * fact n;
-    --8<-- [end:fact-terminating]
+  --8<-- [end:fact-terminating]
   end;
 
   --8<-- [start:log2-terminating]
@@ -274,7 +272,7 @@ module totality-example;
     even : Nat -> Bool;
     even zero := true;
     even (suc (suc n)) := even n;
-    --8<-- [end:even-def-not-pass-coverage]
+  --8<-- [end:even-def-not-pass-coverage]
   end;
 end;
 
@@ -285,13 +283,13 @@ module Maybe-example;
     | just : A -> Maybe A;
   --8<-- [end:Maybe]
 
-  open List-example using {List;nil;::};
+  open List-example using {List; nil; ::};
 
   module tail-list-example;
     --8<-- [start:tailMaybe]
     tail' : {A : Type} -> List A -> Maybe (List A);
     tail' (_ :: xs) := just xs;
     tail' nil := nothing;
-    --8<-- [end:tailMaybe]
+  --8<-- [end:tailMaybe]
   end;
 end;
