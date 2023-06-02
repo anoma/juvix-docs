@@ -4,7 +4,7 @@ module learn;
 -- Hello world example. This is a comment.
 module Hello;
   -- Import the standard library prelude, including the 'String' type
-  open import Stdlib.Prelude;
+  import Stdlib.Prelude open;
 
   main : String;
   main := "Hello world!";
@@ -33,7 +33,7 @@ module Nat-example;
   --8<-- [end:Nat]
 
   --8<-- [start:NatAdd]
-  infixl 6 +;
+  syntax infixl 6 +;
   + : Nat -> Nat -> Nat;
   + zero b := b;
   + (suc a) b := suc (a + b);
@@ -65,8 +65,8 @@ end;
 
 module max3-example;
   --8<-- [start:max3]
-  open import Stdlib.Prelude;
-  open import Stdlib.Data.Nat.Ord;
+  import Stdlib.Prelude open;
+  import Stdlib.Data.Nat.Ord open;
 
   max3 : Nat -> Nat -> Nat -> Nat;
   max3 x y z := if (x > y) (max x z) (max y z);
@@ -74,7 +74,7 @@ module max3-example;
 end;
 
 module let-example;
-  open import Stdlib.Prelude;
+  import Stdlib.Prelude open;
 
   --8<-- [start:let]
   f : Nat -> Nat;
@@ -105,7 +105,7 @@ module let-even;
 end;
 
 module NList-example;
-  open import Stdlib.Prelude;
+  import Stdlib.Prelude open;
 
   --8<-- [start:NList]
   type NList :=
@@ -120,7 +120,7 @@ module NList-example;
   --8<-- [end:nlength]
 
   --8<-- [start:nmaximum]
-  open import Stdlib.Data.Nat.Ord using {max};
+  import Stdlib.Data.Nat.Ord open using {max};
 
   nmaximum : NList -> Nat;
   nmaximum nnil := 0;
@@ -131,7 +131,7 @@ module NList-example;
   nmap : (Nat -> Nat) -> NList -> NList;
   nmap _ nnil := nnil;
   nmap f (ncons x xs) := ncons (f x) (nmap f xs);
-  --8<-- [end:NListMap]
+--8<-- [end:NListMap]
 end;
 
 module Tree-example;
@@ -151,9 +151,9 @@ module Tree-example;
 end;
 
 module List-example;
-
+  
   --8<-- [start:List]
-  infixr 5 ::;
+  syntax infixr 5 ::;
   type List (A : Type) :=
     | nil : List A
     | :: : A -> List A -> List A;
@@ -182,8 +182,8 @@ module tail-recursion-example;
   --8<-- [end:ListSum]
 
   --8<-- [start:ListSumTail]
-  sum : List Nat -> Nat;
-  sum lst :=
+  sum' : List Nat -> Nat;
+  sum' lst :=
     let
       go : Nat -> List Nat -> Nat;
       go acc nil := acc;
@@ -225,9 +225,23 @@ module tail-recursion-example;
   end;
 end;
 
+module iterators-example;
+  import Stdlib.Prelude open hiding {map};
+
+  --8<-- [start:sum-for]
+  sum : List Nat -> Nat;
+  sum l := for (acc := 0) (x in l) x + acc;
+  --8<-- [end:sum-for]
+
+  --8<-- [start:map-rfor]
+  map : {A B : Type} -> (A -> B) -> List A -> List B;
+  map f l := rfor (acc := nil) (x in l) f x :: acc;
+--8<-- [end:map-rfor]
+end;
+
 module totality-example;
-  open import Stdlib.Prelude;
-  open import Stdlib.Data.Nat.Ord;
+  import Stdlib.Prelude open;
+  import Stdlib.Data.Nat.Ord open;
 
   module fact-not-terminating-example;
     terminating
@@ -269,7 +283,7 @@ module Maybe-example;
     | just : A -> Maybe A;
   --8<-- [end:Maybe]
 
-  open List-example using {List;nil;::};
+  open List-example using {List; nil; ::};
 
   module tail-list-example;
     --8<-- [start:tailMaybe]

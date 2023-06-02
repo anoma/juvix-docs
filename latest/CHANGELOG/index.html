@@ -49,8 +49,8 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        
+        <link rel="stylesheet" href="../assets/external/fonts.googleapis.com/css.49ea35f2.css">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -61,7 +61,7 @@
     
       <link rel="stylesheet" href="../assets/css/juvix-highlight.css">
     
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.css">
+      <link rel="stylesheet" href="../assets/external/cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -603,6 +603,17 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#v035-2023-06-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.3.5 (2023-06-02)
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#v034-2023-05-22" class="md-nav__link">
@@ -1336,13 +1347,6 @@
     
   </span>
   
-  
-    
-  
-  
-    <span class="md-status md-status--deprecated"></span>
-  
-
   
 
       </a>
@@ -2318,6 +2322,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#v035-2023-06-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.3.5 (2023-06-02)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v034-2023-05-22" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2600,6 +2615,39 @@ nobuttons: true</p>
 <p><a href="https://github.com/anoma/juvix">
 <img align="right" width="300" height="300" alt="Juvix Mascot" src="../assets/images/tara-smiling.svg" />
 </a></p>
+<h2 id="v035-2023-06-02"><a href="https://github.com/anoma/juvix/tree/v0.3.5">v0.3.5</a> (2023-06-02)<a class="headerlink" href="#v035-2023-06-02" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/anoma/juvix/compare/v0.3.4...v0.3.5">Full Changelog</a></p>
+<p><strong>Implemented enhancements:</strong></p>
+<ul>
+<li>Update standard library for better readability, efficiency and iterator use <a href="https://github.com/anoma/juvix/pull/2153">#2153</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Use the<code>JUVIX_LLVM_DIST_PATH</code> environment variable to search for the clang executable <a href="https://github.com/anoma/juvix/pull/2152">#2152</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Finish the new pretty printing algorithm and delete the old one <a href="https://github.com/anoma/juvix/pull/2151">#2151</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Add <code>:doc</code> command to the repl <a href="https://github.com/anoma/juvix/pull/2142">#2142</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Allow to specify VampIR variable names <a href="https://github.com/anoma/juvix/pull/2141">#2141</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>VampIR pipeline: handle booleans in the type of <code>main</code> <a href="https://github.com/anoma/juvix/pull/2137">#2137</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Add <code>main</code> field to <code>juvix.yaml</code> <a href="https://github.com/anoma/juvix/pull/2120">#2120</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Add <code>:def</code> command to the repl <a href="https://github.com/anoma/juvix/pull/2119">#2119</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+</ul>
+<p><strong>Merged pull requests:</strong></p>
+<ul>
+<li>Properly scan imports inside local modules <a href="https://github.com/anoma/juvix/pull/2165">#2165</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Add extra git dependencies to <code>cabal.project</code> <a href="https://github.com/anoma/juvix/pull/2158">#2158</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Support new <code>import ... open</code> syntax in REPL <a href="https://github.com/anoma/juvix/pull/2156">#2156</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Add the <code>format</code> pragma <a href="https://github.com/anoma/juvix/pull/2150">#2150</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Remove code for <code>Eval</code> and <code>Print</code> statements <a href="https://github.com/anoma/juvix/pull/2149">#2149</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Fix printing of infix constructor values <a href="https://github.com/anoma/juvix/pull/2144">#2144</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Add <code>ValueType</code> <a href="https://github.com/anoma/juvix/pull/2143">#2143</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Add <code>Semigroup</code> instance for <code>AnsiText</code> <a href="https://github.com/anoma/juvix/pull/2140">#2140</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Show unicode characters without escaping <a href="https://github.com/anoma/juvix/pull/2127">#2127</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Iterator syntax <a href="https://github.com/anoma/juvix/pull/2126">#2126</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Fix spurious messages from Makefile.generic <a href="https://github.com/anoma/juvix/pull/2125">#2125</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Add gnu-sed to the macOS build in the CI <a href="https://github.com/anoma/juvix/pull/2123">#2123</a> (<a href="https://github.com/jonaprieto">jonaprieto</a>)</li>
+<li>Fix baseUrl for juvix docs in Doctor command <a href="https://github.com/anoma/juvix/pull/2122">#2122</a> (<a href="https://github.com/vrom911">vrom911</a>)</li>
+<li>Remove --no-format option <a href="https://github.com/anoma/juvix/pull/2121">#2121</a> (<a href="https://github.com/vrom911">vrom911</a>)</li>
+<li>Add Bottom node <a href="https://github.com/anoma/juvix/pull/2112">#2112</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>VampIR integration <a href="https://github.com/anoma/juvix/pull/2103">#2103</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Add VampIR to the CI <a href="https://github.com/anoma/juvix/pull/2096">#2096</a> (<a href="https://github.com/jonaprieto">jonaprieto</a>)</li>
+</ul>
 <h2 id="v034-2023-05-22"><a href="https://github.com/anoma/juvix/tree/v0.3.4">v0.3.4</a> (2023-05-22)<a class="headerlink" href="#v034-2023-05-22" title="Permanent link">&para;</a></h2>
 <p><a href="https://github.com/anoma/juvix/compare/v0.3.3...v0.3.4">Full Changelog</a></p>
 <p><strong>Implemented enhancements:</strong></p>
@@ -4382,15 +4430,15 @@ and will not be fixed.</p>
         
       
         
-          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+          <script src="../assets/external/polyfill.io/v3/polyfill.min.7596a0b8.js"></script>
         
       
         
-          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+          <script src="../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         
       
         
-          <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
+          <script src="../assets/external/cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
         
       
         
@@ -4398,7 +4446,7 @@ and will not be fixed.</p>
         
       
         
-          <script src="https://cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.min.js"></script>
+          <script src="../assets/external/cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.min.js"></script>
         
       
         

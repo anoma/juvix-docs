@@ -7,7 +7,7 @@ type Nat :=
 --8<-- [end:typeNat]
 
 --8<-- [start:addNat]
-infixl 6 +;
+syntax infixl 6 +;
 + : Nat -> Nat -> Nat;
 + zero b := b;
 + (suc a) b := suc (a + b);
@@ -15,15 +15,15 @@ infixl 6 +;
 
 module List;
   --8<-- [start:typeList]
-  infixr 5 ::;
+  syntax infixr 5 ::;
   type List (A : Type) :=
     | nil : List A
     | :: : A -> List A -> List A;
   --8<-- [end:typeList]
 
   --8<-- [start:elemList]
-  open import Stdlib.Data.Bool using {Bool;false;||};
-  
+  import Stdlib.Data.Bool open using {Bool; false; ||};
+
   elem :
     {A : Type} -> (A -> A -> Bool) -> A -> List A -> Bool;
   elem _ _ nil := false;

@@ -49013,7 +49013,7 @@
             r.VERSION +
             "/lib/mathmaps"),
           (r.WGXpath =
-            "https://cdn.jsdelivr.net/npm/wicked-good-xpath@1.3.0/dist/wgxpath.install.js");
+            "https://docs.juvix.org/assets/external/cdn.jsdelivr.net/npm/wicked-good-xpath@1.3.0/dist/wgxpath.install.js");
       },
       5274: function (t, e, r) {
         Object.defineProperty(e, "__esModule", { value: !0 }),
