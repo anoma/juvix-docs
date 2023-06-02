@@ -81,6 +81,11 @@ jobs:
         run: |
           MKDOCSCONFIG=mkdocs.yml make docs
 
+      - name: Setup Git
+        run: |
+          git config --global user.name "${GIT_COMMITTER_NAME}"
+          git config --global user.email "${GIT_COMMITTER_EMAIL}"
+
       - name: Install material-insiders
         run: |
           pip install git+https://${{ secrets.GH_TOKEN }}@github.com/squidfunk/mkdocs-material-insiders.git
@@ -90,8 +95,6 @@ jobs:
           github.ref == 'refs/heads/main' || github.event_name ==
           'workflow_dispatch'
         run: |
-          git config user.name juvix-docs-ci
-          git config user.email juvix@heliax.dev
           make ${{ github.event.inputs.build-type }}
         env:
           RUN_GITHUB_ACTION: ${{ secrets.RUN_GITHUB_ACTION }}
