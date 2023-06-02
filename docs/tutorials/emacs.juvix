@@ -1,6 +1,5 @@
-{-# format: false #-}
 module emacs;
-{-FIXME
+
 --8<-- [start:Hello]
 module Hello;
   import Stdlib.Prelude open;
@@ -12,4 +11,3 @@ module Hello;
   main := print;
 end;
 --8<-- [end:Hello]
--}

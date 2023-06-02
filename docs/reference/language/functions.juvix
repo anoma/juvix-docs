@@ -1,10 +1,8 @@
-{-# format: false #-}
 module functions;
 
-{- FIXME
 module example-multiply-by-two;
   --8<-- [start:multiplyByTwo]
-  import Stdlib.Data.Nat open;
+  import Stdlib.Data.Nat open using {Nat; *};
 
   multiplyByTwo : Nat -> Nat;
   multiplyByTwo n := 2 * n;
@@ -69,4 +67,3 @@ module anonymous-functions;
     };
 --8<-- [end:anonymousFunctions]
 end;
--}
