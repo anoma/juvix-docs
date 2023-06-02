@@ -2,6 +2,12 @@ name: Juvix Docs CI
 "on":
   workflow_dispatch:
     inputs:
+      build-type:
+        type: choice
+        description: "Makefile target to build"
+        options:
+          - "dev"
+          - "release"
       ref:
         description: the repository ref to build
         required: true
@@ -69,13 +75,13 @@ jobs:
         run: |
           make pre-build
 
-      - name: deploy documentation (dev)
+      - name: deploy documentation
         if: >-
           github.ref == 'refs/heads/main' || github.event_name ==
           'workflow_dispatch'
         run: |
           git config user.name juvix-docs-ci
           git config user.email juvix@heliax.dev
-          make dev
+          make ${{ github.event.inputs.build-type }}
         env:
           RUN_GITHUB_ACTION: ${{ secrets.RUN_GITHUB_ACTION }}
