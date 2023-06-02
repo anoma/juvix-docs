@@ -147,7 +147,7 @@ module Tree-example;
   mirror : Tree -> Tree;
   mirror (leaf x) := leaf x;
   mirror (node x l r) := node x (mirror r) (mirror l);
---8<-- [end:TreeMirror]
+  --8<-- [end:TreeMirror]
 end;
 
 module List-example;
@@ -181,15 +181,17 @@ module tail-recursion-example;
   sum (x :: xs) := x + sum xs;
   --8<-- [end:ListSum]
 
-  --8<-- [start:ListSumTail]
-  sum : List Nat -> Nat;
-  sum lst :=
-    let
-      go : Nat -> List Nat -> Nat;
-      go acc nil := acc;
-      go acc (x :: xs) := go (acc + x) xs;
-    in go 0 lst;
-  --8<-- [end:ListSumTail]
+  module sum-tail;
+    --8<-- [start:ListSumTail]
+    sum : List Nat -> Nat;
+    sum lst :=
+      let
+        go : Nat -> List Nat -> Nat;
+        go acc nil := acc;
+        go acc (x :: xs) := go (acc + x) xs;
+      in go 0 lst;
+    --8<-- [end:ListSumTail]
+  end;
 
   module fibo-example;
     --8<-- [start:FiboTail]
@@ -248,7 +250,7 @@ module totality-example;
     --8<-- [start:fact-not-terminating]
     fact : Nat -> Nat;
     fact x := if (x == 0) 1 (x * fact (sub x 1));
-  --8<-- [end:fact-not-terminating]
+    --8<-- [end:fact-not-terminating]
   end;
 
   module fact-terminating-example;
@@ -256,7 +258,7 @@ module totality-example;
     fact : Nat -> Nat;
     fact zero := 1;
     fact x@(suc n) := x * fact n;
-  --8<-- [end:fact-terminating]
+    --8<-- [end:fact-terminating]
   end;
 
   --8<-- [start:log2-terminating]
@@ -272,7 +274,7 @@ module totality-example;
     even : Nat -> Bool;
     even zero := true;
     even (suc (suc n)) := even n;
-  --8<-- [end:even-def-not-pass-coverage]
+    --8<-- [end:even-def-not-pass-coverage]
   end;
 end;
 
@@ -290,6 +292,6 @@ module Maybe-example;
     tail' : {A : Type} -> List A -> Maybe (List A);
     tail' (_ :: xs) := just xs;
     tail' nil := nothing;
-  --8<-- [end:tailMaybe]
+    --8<-- [end:tailMaybe]
   end;
 end;
