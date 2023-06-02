@@ -31,9 +31,9 @@ repos:
 
   - repo: local
     hooks:
-      - id: format-juvix-files
-        name: format Juvix files
-        entry: make format-juvix-files
+      - id: check-format-juvix-files
+        name: check format Juvix files
+        entry: make check-format-juvix-files
         language: system
         verbose: true
         pass_filenames: false
