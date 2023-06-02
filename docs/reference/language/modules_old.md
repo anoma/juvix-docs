@@ -3,6 +3,7 @@ icon: material/view-module
 comments: true
 status: deprecated
 ---
+
 # Module system
 
 ## Defining a module

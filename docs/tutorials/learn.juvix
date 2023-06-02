@@ -173,11 +173,16 @@ module List-example;
 end;
 
 module tail-recursion-example;
-  open import Stdlib.Prelude;
-  open NList-example using {NList;nnil;ncons};
+  import Stdlib.Prelude open hiding {map};
 
-  --8<-- [start:NListSumTail]
-  sum : NList -> Nat;
+  --8<-- [start:ListSum]
+  sum : List Nat -> Nat;
+  sum nil := 0;
+  sum (x :: xs) := x + sum xs;
+  --8<-- [end:ListSum]
+
+  --8<-- [start:ListSumTail]
+  sum : List Nat -> Nat;
   sum lst :=
     let
       go : Nat -> List Nat -> Nat;

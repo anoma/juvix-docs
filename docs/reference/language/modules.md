@@ -2,6 +2,7 @@
 icon: material/view-module
 comments: true
 ---
+
 # Module system
 
 Modules are the way in which we split our programs in separate files. Juvix also
@@ -85,6 +86,7 @@ open Data.List using {List; sort; reverse};
 ```
 
 We can also rename symbols in an open statement thus:
+
 ```juvix
 open Data.List using {List; sort as listSort; reverse as reverseList};
 ```
