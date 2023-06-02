@@ -47,6 +47,9 @@ jobs:
           repo: anoma/juvix
           tag: latest
           chmod: 0755
+      - name: Check Juvix version
+        run: |
+          juvix --version
 
       - uses: actions/cache@v2
         with:
