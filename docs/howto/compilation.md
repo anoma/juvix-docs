@@ -21,7 +21,7 @@ main := "Hello world!";
 ```
 
 A file compiled to an executable must define the zero-argument function
-`main` of type `IO` which is evaluated when running the program.
+`main` which is evaluated when running the program.
 
 To compile the file `Hello.juvix` type `juvix compile Hello.juvix`.
 Typing `juvix compile --help` will list all options to the `compile`
@@ -37,7 +37,8 @@ are specified with the `-t` option:
     for your machine.
 2.  `wasm32-wasi`. Produces a WebAssembly binary which uses the WASI
     runtime.
-3.  `geb`. Produces a [GEB](https://anoma.github.io/geb/) input file.
+3.  `vampir`. Produces a [VampIR](https://github.com/anoma/vamp-ir) input file.
+4.  `geb`. Produces a [GEB](https://anoma.github.io/geb/) input file.
 
 # Compilation options
 
@@ -46,6 +47,7 @@ commonly used options are:
 
 - `-t target`: specify the target,
 - `-g`: generate debug information and runtime assertions,
+- `-O level`: set optimization level (default: 1, or 0 with `-g`).
 - `-o file`: specify the output file.
 
 # Juvix projects
@@ -64,3 +66,40 @@ To check that Juvix is correctly detecting your project's root, you can
 run the command `juvix dev root File.juvix`.
 
 See also: [Modules Reference](../reference/language/modules.md).
+
+# Compiling to the VampIR backend
+
+For the [VampIR](https://github.com/anoma/vamp-ir) backend, the `main` function must have type
+```juvix
+Ty1 -> .. -> Tyn -> TyR
+```
+where `Tyi`,`TyR` have type `Nat`, `Int` or `Bool`. The compiler adds an equation to the generated VampIR file which states the relationship between the input and the output of the `main` function:
+```
+main arg1 .. argn = out;
+```
+where `arg1`,..,`argn` are the names of the arguments of `main` found in the source code. If the result type is `Bool` (i.e., `main` returns a boolean), then instead of `out` the compiler uses `1` (true).
+
+The variables `argi`,`out` in the generated file are unbound VampIR
+variables for which VampIR solicits witnesses during proof generation.
+
+For example, compiling
+```
+main : Nat -> Nat -> Bool;
+main x y := x + y > 0;
+```
+generates the equation
+```
+main x y = 1
+```
+
+The names of the `main` input in the generated VampIR file can also be
+specified with the `argnames` pragma. For example, compiling
+```
+{-# argnames: [a, b] #-}
+main : Nat -> Nat -> Bool;
+main x y := x + y > 0;
+```
+generates the equation
+```
+main a b = 1
+```
