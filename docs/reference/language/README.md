@@ -22,11 +22,6 @@ The Juvix module system allows developers to break down their programs into
 smaller, reusable modules that can be compiled separately and combined to create
 larger programs. These modules can be used to build libraries, which can then be
 documented using Juvix's built-in documentation generation tool, see for
-example, [the Juvix standard library's website][stdlib]. For further details,
-please refer to [the Juvix book][juvix-book] which includes
-our [latest updates][changelog].
+example, [the Juvix standard library's website][stdlib].
 
-[changelog]: https://anoma.github.io/juvix/changelog.html
-[homebrew]: https://brew.sh
-[juvix-book]: https://docs.juvix.org
-[stdlib]: https://github.com/anoma/juvix-stdlib
+[stdlib]: https://anoma.github.io/juvix-stdlib/
