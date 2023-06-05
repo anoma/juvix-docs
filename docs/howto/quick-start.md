@@ -19,7 +19,13 @@ Create a new package:
 juvix init
 ```
 
-Compile a source file into an executable:
+Evaluate a source file:
+
+```shell
+juvix eval path/to/source.juvix
+```
+
+Compile a source file into a native executable:
 
 ```shell
 juvix compile path/to/source.juvix
@@ -28,7 +34,7 @@ juvix compile path/to/source.juvix
 Compile a source file into a WebAssembly binary:
 
 ```shell
-juvix compile -t wasm path/to/source.juvix
+juvix compile -t wasm32-wasi path/to/source.juvix
 ```
 
 Launch the REPL:
@@ -82,6 +88,6 @@ How-to](./howto/installing.md) for more
 information. You can also run `juvix doctor` to check your setup.
 
 ```shell
-juvix compile --target wasm HelloWorld.juvix
+juvix compile --target wasm32-wasi HelloWorld.juvix
 wasmer HelloWorld.wasm
 ```
