@@ -92,6 +92,8 @@ jobs:
           github.ref == 'refs/heads/main'
         run: |
           pip install --user -r insiders.requirements.txt
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: deploy documentation
         if: >-
