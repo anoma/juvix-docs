@@ -95,10 +95,10 @@ Stdlib.Prelude> swap (1, 2)
 ## Files, modules and compilation
 
 Currently, the REPL does not support adding new definitions. To define
-new functions or data types, you need to put them in a separate file and
-either load the file in the REPL with `:load file.juvix` or compile the
-file to a binary executable with the shell command
-`juvix compile file.juvix`.
+new functions or data types, you need to put them in a separate file
+and either load the file in the REPL with `:load file.juvix`, evaluate
+it with the shell command `juvix eval file.juvix`, or compile it to a
+binary executable with `juvix compile file.juvix`.
 
 To conveniently edit Juvix files, an [Emacs mode](./emacs.md) and a
 [VSCode extension](./vscode.md) are available.

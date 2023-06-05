@@ -26,7 +26,7 @@ section](./overview.md).
     Learn how to [install Juvix](./howto/installing.md) on macOS or Linux, as well as compile and
    document your Juvix projects.
 
-    [:octicons-arrow-right-24: Quick start ](./quick-start.md)
+    [:octicons-arrow-right-24: Quick start ](./howto/quick-start.md)
 
     [:octicons-arrow-right-24: How-to guides ](./howto/installing.md)
 
