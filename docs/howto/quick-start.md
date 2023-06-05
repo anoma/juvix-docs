@@ -20,6 +20,7 @@ juvix init
 ```
 
 Evaluate a source file:
+
 ```shell
 juvix eval path/to/source.juvix
 ```
