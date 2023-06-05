@@ -306,11 +306,10 @@ module Exercise-solutions;
       go zero := true;
       go (suc zero) := true;
       go n@(suc k) := if (mod x k == 0) false (go k);
-    in
-    case x
-    | zero := false
-    | suc zero := false
-    | suc k := go k;
+    in case x
+      | zero := false
+      | suc zero := false
+      | suc k := go k;
   --8<-- [end:SolPrime]
 
   --8<-- [start:SolHalf]
@@ -334,46 +333,45 @@ module Exercise-solutions;
   --8<-- [end:SolSuffixes]
 
   module Tree-nat;
-  type Tree :=
-    | leaf : Nat -> Tree
-    | node : Nat -> Tree -> Tree -> Tree;
+    type Tree :=
+      | leaf : Nat -> Tree
+      | node : Nat -> Tree -> Tree -> Tree;
 
-  --8<-- [start:SolTreeMap]
-  tmap : (Nat -> Nat) -> Tree -> Tree;
-  tmap f (leaf x) := leaf (f x);
-  tmap f (node x l r) := node (f x) (tmap f l) (tmap f r);
+    --8<-- [start:SolTreeMap]
+    tmap : (Nat -> Nat) -> Tree -> Tree;
+    tmap f (leaf x) := leaf (f x);
+    tmap f (node x l r) := node (f x) (tmap f l) (tmap f r);
   --8<-- [end:SolTreeMap]
   end;
 
   module Tree-poly;
-  --8<-- [start:SolTreeMapPoly]
-  type Tree (A : Type) :=
-    | leaf : A -> Tree A
-    | node : A -> Tree A -> Tree A -> Tree A;
+    --8<-- [start:SolTreeMapPoly]
+    type Tree (A : Type) :=
+      | leaf : A -> Tree A
+      | node : A -> Tree A -> Tree A -> Tree A;
 
-  tmap : {A B : Type} -> (A -> B) -> Tree A -> Tree B;
-  tmap f (leaf x) := leaf (f x);
-  tmap f (node x l r) := node (f x) (tmap f l) (tmap f r);
+    tmap : {A B : Type} -> (A -> B) -> Tree A -> Tree B;
+    tmap f (leaf x) := leaf (f x);
+    tmap f (node x l r) := node (f x) (tmap f l) (tmap f r);
   --8<-- [end:SolTreeMapPoly]
   end;
 
   module reverse-for;
-  --8<-- [start:SolReverseFor]
-  reverse : {A : Type} -> List A -> List A;
-  reverse xs := for (acc := nil) (x in xs) x :: acc;
+    --8<-- [start:SolReverseFor]
+    reverse : {A : Type} -> List A -> List A;
+    reverse xs := for (acc := nil) (x in xs) x :: acc;
   --8<-- [end:SolReverseFor]
   end;
 
   module reverse-tail;
-  --8<-- [start:SolReverseTail]
-  reverse : {A : Type} -> List A -> List A;
-  reverse {A} :=
-    let
-      go : List A -> List A -> List A;
-      go acc nil := acc;
-      go acc (x :: xs) := go (x :: acc) xs;
-    in
-    go nil;
+    --8<-- [start:SolReverseTail]
+    reverse : {A : Type} -> List A -> List A;
+    reverse {A} :=
+      let
+        go : List A -> List A -> List A;
+        go acc nil := acc;
+        go acc (x :: xs) := go (x :: acc) xs;
+      in go nil;
   --8<-- [end:SolReverseTail]
   end;
 
@@ -384,8 +382,7 @@ module Exercise-solutions;
       go : Nat -> Nat -> Nat;
       go acc zero := acc;
       go acc n@(suc n') := go (acc * n) n';
-    in
-    go 1;
+    in go 1;
   --8<-- [end:SolFact]
 
   --8<-- [start:Composition]
@@ -397,6 +394,6 @@ module Exercise-solutions;
   --8<-- [start:SolCompose]
   comp : {A : Type} -> List (A -> A) -> A -> A;
   comp fs := for (acc := id) (f in fs) acc ∘ f;
-  --8<-- [end:SolCompose]
+--8<-- [end:SolCompose]
 
 end;
