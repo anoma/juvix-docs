@@ -175,6 +175,10 @@ serve-python: docs
 	@cd site && python3 -m http.server ${PORT}
 
 mike:
+	@git fetch --all
+	@git checkout gh-pages
+	@git pull origin gh-pages --rebase
+	@git checkout main
 	mike deploy ${VERSION} ${MIKEFLAGS}
 
 mike-serve: docs
