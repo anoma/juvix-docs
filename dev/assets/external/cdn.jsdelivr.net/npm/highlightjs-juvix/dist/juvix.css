@@ -1,0 +1,31 @@
+.hljs-meta-prompt {
+  color: #4e0285;
+}
+
+.hljs-meta-prompt-command {
+  color: #a70072;
+}
+
+.hljs-inductive {
+  color: #86b300;
+}
+
+.hljs-number {
+  color: #00a822;
+}
+
+.hljs-constructor {
+  color: #a37acc;
+}
+
+.hljs-function {
+  color: #d78810;
+}
+
+.hljs-string {
+  color: #f07171;
+}
+
+.hljs-keyword {
+  color: #399ee6;
+}
