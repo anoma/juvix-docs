@@ -118,7 +118,7 @@ HEADER := "---\\nnobuttons: true\\n---\\n"
 .PHONY: juvix-metafiles
 juvix-metafiles: juvix-sources
 	@for file in $(METAFILES); do \
-		echo -e "$(HEADER)" | \
+		echo "$(HEADER)" | \
 			cat - ${COMPILERSOURCES}/$$file > temp  \
 			&& mv temp docs/$$file; \
 	done
