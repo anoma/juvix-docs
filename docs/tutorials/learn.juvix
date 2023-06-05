@@ -151,7 +151,7 @@ module Tree-example;
 end;
 
 module List-example;
-
+  
   --8<-- [start:List]
   syntax infixr 5 ::;
   type List (A : Type) :=
