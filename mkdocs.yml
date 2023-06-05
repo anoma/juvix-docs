@@ -84,7 +84,8 @@ markdown_extensions:
       permalink: true
   - tables
   - pymdownx.betterem
-  # - pymdownx.details
+  - pymdownx.details
+  - pymdownx.superfences
   - pymdownx.snippets
   - pymdownx.arithmatex:
       generic: true
