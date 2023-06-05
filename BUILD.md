@@ -47,13 +47,13 @@ If you want to build the documentation without the `insiders` version of the
 theme, run the following command:
 
 ```bash
-MKDOCSCONFIG=mkdocs.yml make docs
+make docs
 ```
 
 To view the documentation locally, run the following command:
 
 ```bash
-MKDOCSCONFIG=mkdocs.yml make serve
+make serve
 ```
 
 ### Building Locally with Mkdocs Material Insiders
@@ -75,13 +75,13 @@ pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insider
 After that, build the documentation with the following command:
 
 ```bash
-make docs
+MKDOCSCONFIG=mkdocs.insiders.yml make docs
 ```
 
 To view the documentation locally, run the following command:
 
 ```bash
-make serve
+MKDOCSCONFIG=mkdocs.insiders.yml make serve
 ```
 
 ## Deploying the Documentation from a Local Machine
@@ -96,7 +96,7 @@ caution when executing this command.
 ```bash
 make pre-build
 make pre-commit
-make dev
+MKDOCSCONFIG=mkdocs.insiders.yml make dev
 ```
 
 **NB:** The CI installs the latest official release of the Juvix compiler. If
@@ -113,5 +113,5 @@ caution when executing this command.
 ```bash
 make pre-build
 make pre-commit
-make release
+MKDOCSCONFIG=mkdocs.insiders.yml make release
 ```

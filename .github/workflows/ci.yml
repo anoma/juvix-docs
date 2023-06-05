@@ -95,6 +95,6 @@ jobs:
           github.ref == 'refs/heads/main' || github.event_name ==
           'workflow_dispatch'
         run: |
-          make ${{ github.event.inputs.build-type }}
+          MKDOCSCONFIG=mkdocs.insiders.yml make ${{ github.event.inputs.build-type }}
         env:
           RUN_GITHUB_ACTION: ${{ secrets.RUN_GITHUB_ACTION }}

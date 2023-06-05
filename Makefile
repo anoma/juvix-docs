@@ -21,7 +21,7 @@ METAFILES:= README.md \
 		   LICENSE.md
 
 PORT?=8000
-MKDOCSCONFIG?=mkdocs.insiders.yml
+MKDOCSCONFIG?=mkdocs.yml
 MIKEFLAGS?=--push  \
 	--remote origin  \
 	--branch gh-pages  \
