@@ -739,7 +739,6 @@ natural number is prime.
     --8<------ "docs/tutorials/learn.juvix:SolPrime"
     ```
 
-
 ### Exercise 2
 
 What is wrong with the following definition?
@@ -833,7 +832,6 @@ Write a function which reverses a list:
 
 - using the `for` iterator,
 - using tail recursion.
-
 
 ??? info "Solution"
 
