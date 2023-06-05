@@ -28,7 +28,7 @@ dependencies:
 To install the Python dependencies, execute the following command:
 
 ```bash
-pip install -r requirements.txt
+pip3 install --user -r requirements.txt
 ```
 
 Alternatively, you can run `make python-requirements`.
@@ -68,8 +68,8 @@ export GH_TOKEN=...
 Ask a maintainer for the GitHub token, then install the material-insiders
 dependency:
 
-```python
-pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
+```shell
+pip3 install --user -r insiders.requirements.txt
 ```
 
 After that, build the documentation with the following command:
