@@ -162,7 +162,7 @@ pre-build:
 
 .PHONY: docs
 docs: pre-build
-	@mkdocs build --config-file ${MKDOCSCONFIG}
+	@mkdocs build -v --config-file ${MKDOCSCONFIG}
 
 .PHONY: serve
 serve: docs

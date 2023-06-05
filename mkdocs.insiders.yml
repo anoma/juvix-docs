@@ -4,6 +4,10 @@ plugins:
       enabled: !ENV [OFFLINE, false]
   - privacy:
       enabled: !ENV [CI, false]
+      externals_exclude:
+        - cdn.jsdelivr.net/npm/mathjax@3/*
+        - giscus.app/*
+
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - social
@@ -67,6 +71,17 @@ extra:
       link: https://github.com/anoma/juvix
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/juvixlang
+  extra:
+    consent:
+      title: Cookie consent
+      description: >-
+        We use cookies to recognize your repeated visits and preferences, as well
+        as to measure the effectiveness of our documentation and whether users
+        find what they're searching for. With your consent, you're helping us to
+        make our documentation better.
+      actions:
+        - accept
+        - manage
 
   analytics:
     provider: google
