@@ -274,6 +274,13 @@ Stdlib.Prelude> case (1, 2) | (suc _, zero) := 0 | (suc _, suc x) := x | _ := 19
 1
 ```
 
+It is possible to name subpatterns with `@`.
+
+```jrepl
+Stdlib.Prelude> case 3 | suc n@(suc _) := n | _ := 0
+2
+```
+
 ## Comparisons and conditionals
 
 To use the comparison operators on natural numbers, one needs to import
@@ -719,12 +726,18 @@ and the [Juvix program examples](../reference/examples.md).
 
 ### Exercise 1
 
-Define a function `prime : Nat -> Nat` which checks if a given
+Define a function `prime : Nat -> Bool` which checks if a given
 natural number is prime.
 
 !!! tip
 
     A number is prime if it is greater than 1 and has no divisors other than 1 and itself.
+
+??? info "Solution"
+
+    ```juvix
+    --8<------ "docs/tutorials/learn.juvix:SolPrime"
+    ```
 
 ### Exercise 2
 
@@ -738,10 +751,26 @@ half n := if (n < 2) 0 (half (sub n 2) + 1);
 How can you reformulate this definition so that it is accepted by
 Juvix?
 
+??? info "Solution"
+
+    The definition doesn't pass the termination checker. One way to reformulate it is as follows:
+
+    ```juvix
+    --8<------ "docs/tutorials/learn.juvix:SolHalf"
+    ```
+
 ### Exercise 3
 
 Define a polymorphic function which computes the last element of a
 list. What is the result of your function on the empty list?
+
+??? info "Solution"
+
+    To satisfy the totality checker, one can e.g. wrap the return value in a `Maybe` type.
+
+    ```juvix
+    --8<------ "docs/tutorials/learn.juvix:SolLast"
+    ```
 
 ### Exercise 4
 
@@ -755,6 +784,12 @@ by removing some initial elements. For example, the suffixes of `1 :: 2 :: 3 :: 
 
 Define a function which computes the list of all suffixes of a given list,
 arranged in descending order of their lengths.
+
+??? info "Solution"
+
+    ```juvix
+    --8<------ "docs/tutorials/learn.juvix:SolSuffixes"
+    ```
 
 ### Exercise 5
 
@@ -772,10 +807,24 @@ tmap : (Nat -> Nat) -> Tree -> Tree;
 
 which applies a function to all natural numbers stored in a tree.
 
+??? info "Solution"
+
+    ```juvix
+    --8<------ "docs/tutorials/learn.juvix:SolTreeMap"
+    ```
+
 ### Exercise 6
 
 Modify the `Tree` type from [Exercise 5](#exercise-5)
 to be polymorphic in the element type, and then repeat the previous exercise.
+
+??? info "Solution"
+
+    Only the types need to be changed.
+
+    ```juvix
+    --8<------ "docs/tutorials/learn.juvix:SolTreeMapPoly"
+    ```
 
 ### Exercise 7
 
@@ -784,9 +833,29 @@ Write a function which reverses a list:
 - using the `for` iterator,
 - using tail recursion.
 
+??? info "Solution"
+
+    Using the `for` iterator:
+
+    ```juvix
+    --8<------ "docs/tutorials/learn.juvix:SolReverseFor"
+    ```
+
+    Using tail recursion:
+
+    ```juvix
+    --8<------ "docs/tutorials/learn.juvix:SolReverseTail"
+    ```
+
 ### Exercise 8
 
 Write a tail recursive function which computes the factorial of a natural number.
+
+??? info "Solution"
+
+    ```juvix
+    --8<------ "docs/tutorials/learn.juvix:SolFact"
+    ```
 
 ### Exercise 9
 
@@ -803,3 +872,16 @@ comp (suc :: (*) 2 :: \{x := sub x 1} :: nil)
 ```
 
 should be a function which given `x` computes `2(x - 1) + 1`.
+
+??? info "Solution"
+
+    ```juvix
+    --8<------ "docs/tutorials/learn.juvix:SolCompose"
+    ```
+    where `∘` is a composition function from the standard library:
+    ```juvix
+    syntax infixr 9 ∘;
+    ∘ : {A B C : Type} -> (B -> C) -> (A -> B) -> A -> C;
+    ∘ f g x := f (g x);
+    ```
+    The `∘` can be typed in Emacs or VSCode with `\o`.
