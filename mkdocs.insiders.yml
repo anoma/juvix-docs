@@ -4,9 +4,10 @@ plugins:
       enabled: !ENV [OFFLINE, false]
   - privacy:
       enabled: !ENV [CI, false]
-      externals_exclude:
+      assets_exclude:
         - cdn.jsdelivr.net/npm/mathjax@3/*
         - giscus.app/*
+        - github.com/*
 
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
