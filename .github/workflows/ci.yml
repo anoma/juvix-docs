@@ -4,7 +4,8 @@ name: Juvix Docs CI
     inputs:
       build-type:
         type: choice
-        description: "Makefile target to build"
+        description: "Docs build type"
+        default: "dev"
         options:
           - "dev"
           - "release"
@@ -87,13 +88,14 @@ jobs:
           git config --global user.email "${GIT_COMMITTER_EMAIL}"
 
       - name: Install material-insiders
+        if: >-
+          github.ref == 'refs/heads/main'
         run: |
           pip install --user -r insiders.requirements.txt
 
       - name: deploy documentation
         if: >-
-          github.ref == 'refs/heads/main' || github.event_name ==
-          'workflow_dispatch'
+          github.ref == 'refs/heads/main'
         run: |
           MKDOCSCONFIG=mkdocs.insiders.yml make ${{ github.event.inputs.build-type }}
         env:
