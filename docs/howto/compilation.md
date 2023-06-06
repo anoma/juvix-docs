@@ -29,9 +29,8 @@ command.
 
 # Compilation targets
 
-Since version 0.3 Juvix supports three compilation targets. The targets
-are specified with the `-t` option:
-`juvix compile -t target file.juvix`.
+Juvix supports several compilation targets. The targets are specified
+with the `-t` option: `juvix compile -t target file.juvix`.
 
 1.  `native`. This is the default. Produces a native 64bit executable
     for your machine.
@@ -75,10 +74,10 @@ For the [VampIR](https://github.com/anoma/vamp-ir) backend, the `main` function 
 Ty1 -> .. -> Tyn -> TyR
 ```
 
-where `Tyi`,`TyR` have type `Nat`, `Int` or `Bool`. The compiler adds an equation to the generated VampIR file which states the relationship between the input and the output of the `main` function:
+where `Tyi`,`TyR` are `Nat`, `Int` or `Bool`. The compiler adds an equation to the generated VampIR file which states the relationship between the input and the output of the `main` function:
 
 ```
-main arg1 .. argn = out;
+main arg1 .. argn = out
 ```
 
 where `arg1`,..,`argn` are the names of the arguments of `main` found in the source code. If the result type is `Bool` (i.e., `main` returns a boolean), then instead of `out` the compiler uses `1` (true).
@@ -88,7 +87,7 @@ variables for which VampIR solicits witnesses during proof generation.
 
 For example, compiling
 
-```
+```juvix
 main : Nat -> Nat -> Bool;
 main x y := x + y > 0;
 ```
@@ -99,10 +98,10 @@ generates the equation
 main x y = 1
 ```
 
-The names of the `main` input in the generated VampIR file can also be
+The names of the `main` input arguments in the generated VampIR file can also be
 specified with the `argnames` pragma. For example, compiling
 
-```
+```juvix
 {-# argnames: [a, b] #-}
 main : Nat -> Nat -> Bool;
 main x y := x + y > 0;
