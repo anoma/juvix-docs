@@ -23,14 +23,31 @@ main := "Hello world!";
 A file compiled to an executable must define the zero-argument function
 `main` which is evaluated when running the program.
 
-To compile the file `Hello.juvix` type `juvix compile Hello.juvix`.
-Typing `juvix compile --help` will list all options to the `compile`
-command.
+To compile the file `Hello.juvix` type
+
+```shell
+juvix compile Hello.juvix
+```
+
+Typing
+
+```shell
+juvix compile --help
+```
+
+will list all options to the `compile` command.
 
 # Compilation targets
 
+<<<<<<< Updated upstream
 Juvix supports several compilation targets. The targets are specified
-with the `-t` option: `juvix compile -t target file.juvix`.
+with the `-t` option:
+
+```shell
+juvix compile -t TARGET file.juvix
+```
+
+As a target, you can choose one of the following:
 
 1.  `native`. This is the default. Produces a native 64bit executable
     for your machine.
@@ -38,16 +55,18 @@ with the `-t` option: `juvix compile -t target file.juvix`.
     runtime.
 3.  `vampir`. Produces a [VampIR](https://github.com/anoma/vamp-ir) input file.
 4.  `geb`. Produces a [GEB](https://anoma.github.io/geb/) input file.
+5.  `core`. Produces `.jvc` file.
+6.  `asm`. Produces `.jva` file.
 
 # Compilation options
 
 To see all compilation options type `juvix compile --help`. The most
 commonly used options are:
 
-- `-t target`: specify the target,
+- `-t TARGET`: specify the target,
 - `-g`: generate debug information and runtime assertions,
-- `-O level`: set optimization level (default: 1, or 0 with `-g`).
-- `-o file`: specify the output file.
+- `-O LEVEL`: set optimization level (default: 1, or 0 with `-g`).
+- `-o FILE`: specify the output file.
 
 # Juvix projects
 

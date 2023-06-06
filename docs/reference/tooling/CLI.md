@@ -14,6 +14,7 @@ juvix [Global options] ((-v|--version) | (-h|--help) | COMPILER_CMD | UTILITY_CM
 ## Informative options
 
 - `-v,--version` Print the version and exit
+- `--numeric-version` Show only the version number
 - `-h,--help` Show this help text
 
 ## Global Command flags
@@ -25,19 +26,27 @@ juvix [Global options] ((-v|--version) | (-h|--help) | COMPILER_CMD | UTILITY_CM
   juvix-mode)
 - `--no-termination` Disable termination checking
 - `--no-positivity` Disable positivity checking for inductive types
+- `--no-coverage` Disable coverage checking for patterns
 - `--no-stdlib` Do not use the standard library
+- `--internal-build-dir BUILD_DIR` Directory for compiler internal output
+- `--stdin` Read from Stdin
+- `--unroll ARG` Recursion unrolling limit (default: 140)
 
 ## Main Commands
 
 - `html` Generate HTML output from a Juvix file
 - `typecheck` Typecheck a Juvix file
 - `compile` Compile a Juvix file
+- `eval` Evaluate a Juvix file
 
 ## Utility Commands
 
 - `doctor` Perform checks on your Juvix development environment
 - `init` Interactively initialize a Juvix project in the current
   directory
+- `repl` Run the Juvix REPL
+- `format` Format a Juvix file or Juvix project
+- `clean` Delete build artifacts
 
 ## Dev Commands
 
@@ -54,14 +63,19 @@ juvix dev COMMAND
 - `termination` Subcommands related to termination checking
 - `internal` Subcommands related to Internal
 - `minic` Translate a Juvix file to a subset of C
+- `geb` Subcommands related to JuvixGeb
+- `runtime` Subcommands related to the Juvix runtime
+- `repl` Run the Juvix dev REPL
 
 ## CLI Auto-completion Scripts
 
 The Juvix CLI can generate auto-completion scripts. Follow the
 instructions below for your shell.
 
-NB: You may need to restart your shell after installing the completion
-script.
+!!! note
+
+    NB: You may need to restart your shell after installing the completion
+    script.
 
 ### Bash
 

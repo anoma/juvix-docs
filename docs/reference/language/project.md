@@ -22,7 +22,19 @@ which contains the following fields:
 3. **dependencies** (_optional_): The dependencies of the project given as a
    list. Each dependency is given as relative (or absolute) path to the root of
    another juvix project. If the field is ommited, it will be assumed to contain
-   the juvix standard library as a dependency.
+   the [Juvix standard library](https://anoma.github.io/juvix-stdlib/) as a
+   dependency.
+
+The example `juvix.yaml` for the project may look like this:
+
+```yaml
+name: my-project
+version: 0.0.0
+dependencies:
+  - deps/stdlib/
+  - deps/containers
+  - deps/test
+```
 
 As intuition would tell, a juvix module belongs to a juvix project if it is
 placed in the subtree hanging from the root directory. This rule has two

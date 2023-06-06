@@ -15,6 +15,12 @@ set up the testing environment for the WASM compiler tests.
 Run tests using:
 
 ```shell
+make test
+```
+
+Or using `Stack`:
+
+```shell
 stack test
 ```
 

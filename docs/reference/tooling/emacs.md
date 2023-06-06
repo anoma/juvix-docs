@@ -5,8 +5,8 @@ comments: true
 
 ## Emacs Mode
 
-There is an Emacs mode available for Juvix. Currently, it supports
-syntax highlighting for well-scoped modules.
+There is an [Emacs mode](https://github.com/anoma/juvix-mode) available for
+Juvix. Currently, it supports syntax highlighting for well-scoped modules.
 
 To get started, clone the Juvix Emacs mode repository:
 

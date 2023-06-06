@@ -22,23 +22,33 @@ type Unit := unit : Unit;
 
 In the following example, we declare the type `Nat` – the unary
 representation of natural numbers. This type comes with two
-constructors: `zero` and `suc`. Example elements of type `Nat` are the
-number one represented by `suc zero`, the number two represented by
-`suc (suc zero)`, etc.
+constructors: `zero` and `suc`.
+
+Example elements of type `Nat`:
+
+- number one represented by `suc zero`
+- the number two represented by `suc (suc zero)`
+- etc.
 
 ```juvix
 --8<------ "docs/reference/language/datatypes.juvix:typeNat"
 ```
 
 Constructors can be used like normal functions or in patterns when
-defining functions by pattern matching. For example, here is a function
-adding two natural numbers:
+defining functions by [pattern matching](../functions#pattern-matching).
+For example, here is a function adding two natural numbers:
 
 ```juvix
 --8<------ "docs/reference/language/datatypes.juvix:addNat"
 ```
 
-A data type can possess type parameters. When a data type has a type parameter `A`, it is referred to as _polymorphic in_ `A`. A classic example of this concept is the `List` type, which is polymorphic in the type of its list elements.
+## Polymorphic data type
+
+A data type can possess type parameters. When a data type has a type parameter
+`A`, it is referred to as _polymorphic in_ `A`.
+
+A classic example of this concept is the `List` type, which is polymorphic in
+the type of its list elements.
 
 ```juvix
 --8<------ "docs/reference/language/datatypes.juvix:typeList"

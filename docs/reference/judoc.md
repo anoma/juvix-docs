@@ -69,6 +69,15 @@ Note that the following is a single block since it lacks the `---` separator:
 --- Still first block
 ```
 
+Alternatively, you can use block Judoc comments for that:
+
+```juvix
+{-- First block
+
+Second block
+---}
+```
+
 ### Paragraph
 
 A _paragraph_ is a non-empty sequence of _lines_.

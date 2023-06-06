@@ -25,10 +25,11 @@ fun : A → B;
 
 ## CLI flag
 
-Utilizing the global CLI flag --no-termination.
+You can disable the termination checking by utilizing the global CLI flag
+`--no-termination`.
 
 ```shell
-juvix typecheck --no-termination MyProgram.juvix
+juvix --no-termination typecheck MyProgram.juvix
 ```
 
 !!! note
