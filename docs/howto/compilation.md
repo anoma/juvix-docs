@@ -39,7 +39,6 @@ will list all options to the `compile` command.
 
 # Compilation targets
 
-<<<<<<< Updated upstream
 Juvix supports several compilation targets. The targets are specified
 with the `-t` option:
 
