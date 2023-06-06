@@ -8,18 +8,22 @@ comments: true
 A function declaration consists of a type signature and a group of
 _function clauses_.
 
-In the following example, we define a function `multiplyByTwo`. The
-first line `multiplyByTwo : Nat -> Nat;` is the type signature and the
-second line `multiplyByTwo n := 2 * n;` is a function clause.
+In the following example, we define a function `multiplyByTwo`.
 
 ```juvix
 --8<------ "docs/reference/language/functions.juvix:multiplyByTwo"
 ```
 
-A function may have more than one function clause. When a function is
-called, the first clause that matches the arguments is used.
+The first line `multiplyByTwo : Nat -> Nat;` is the type signature and the
+second line `multiplyByTwo n := 2 * n;` is a function clause.
 
-The following function has two clauses.
+## Pattern matching
+
+A function may have more than one function clause. When a function is
+called, it will pattern match on the input, and the first clause that matches
+the arguments is used.
+
+The following function has two clauses:
 
 ```juvix
 --8<-- "docs/reference/language/functions.juvix:negateBoolean"
@@ -49,7 +53,8 @@ Anonymous functions, or _lambdas_, are introduced with the syntax:
   | pat1 .. patN_M := clauseM }
 ```
 
-The first pipe `|` is optional. Instead of `\` one can also use `λ`.
+The first pipe `|` is optional. Instead of `\` one can also use the Unicode
+alternative – `λ`.
 
 An anonymous function just lists all clauses of a function without
 naming it. Any function declaration can be converted to use anonymous

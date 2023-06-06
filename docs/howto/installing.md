@@ -130,7 +130,7 @@ curl https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-15/libcl
 tar xf libclang_rt.builtins-wasm32-wasi-15.0.tar.gz
 ```
 
-1.  Extract the `wasi-sysroot-*.tar.gz` archive on your local system and
+2.  Extract the `wasi-sysroot-*.tar.gz` archive on your local system and
     set `WASI_SYSROOT_PATH` to its path.
 
     For example:

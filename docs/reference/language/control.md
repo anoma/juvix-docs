@@ -19,7 +19,7 @@ case value
 For example, one can evaluate the following expression in the REPL:
 
 ```juvix
-Stdlib.Prelude> case 2 | zero := 0 | suc x := x | _ := 19
+Stdlib.Prelude> case 2 | zero := 0 | suc x := x
 1
 ```
 

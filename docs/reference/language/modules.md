@@ -6,15 +6,16 @@ comments: true
 # Module system
 
 Modules are the way in which we split our programs in separate files. Juvix also
-supports local modules, which provide a way to better organize different scopes
-within a file.
+supports [local modules](#local-modules), which provide a way to better organize
+different scopes within a file.
 
-We call top modules those who are defined at the top of a file.
-We call local modules those who are defined inside another module.
+We call **top modules** those who are defined at the top of a file.
+
+We call **local modules** those who are defined inside another module.
 
 ## Top modules
 
-A module has a name and a body, which comprises a sequence of
+A module has a _name_ and a _body_, which comprises a sequence of
 [statements](statement.md).
 
 In order to define a module named `Data.List` we will use the following syntax:
@@ -49,6 +50,8 @@ It is possible to import modules and give them a more convenient name thus:
 import Data.List as List;
 ```
 
+### Open statements
+
 If we want to access the contents of a module without the need to qualify the
 names, we use an _open statement_. The syntax is as follows:
 
@@ -56,9 +59,11 @@ names, we use an _open statement_. The syntax is as follows:
 open Data.List;
 ```
 
-Now we can simply write `sort`. It is important to remember that when we open a
+Now we can simply write `sort`.
+
+It is important to remember that when we open a
 module, that module must be in scope, i.e., it must either be imported
-or defined as a local module
+or defined as a local module.
 
 Since importing and opening a module is done often, there is special syntax for
 that. The following statement:
@@ -75,7 +80,7 @@ open Data.List;
 ```
 
 In general, we can combine any import statement and open statement that refer to
-the same module. The syntax is `<import statement> <open statement wihout module
+the same module. The syntax is `<import statement> <open statement without module
 name>`.
 
 When opening a module, if we want to open an explicit subset of its definitions,
@@ -98,13 +103,15 @@ use the `hiding` keyword thus:
 open Data.List hiding {head; tail};
 ```
 
+### Reexport modules
+
 All opened definitions are available under the current module, but
 they are not exported by default. Meaning that if another module imports the current
 module, it will only be able to access the definitions defined there but not
 those which have been opened. If we want opened definitions to be exported, we
 must use the `public` keyword thus:
 
-```
+```juvix
 module Prelude;
 
 import Data.List open public;
@@ -113,7 +120,7 @@ import Data.List open public;
 Now, from another module we can access definitions in `Data.List` through the
 `Prelude` module.
 
-```
+```juvix
 module MyModule;
 
 import Prelude open;
@@ -130,7 +137,7 @@ useful to group definitions within a file.
 
 The syntax for local modules is as follows:
 
-```
+```juvix
 module Path.To.TopModule;
 
 module ModuleName;
