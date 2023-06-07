@@ -3,7 +3,9 @@ icon: material/laptop
 comments: true
 ---
 
-# Dependencies
+# Installing Juvix
+
+## Prerequisites
 
 You need [Clang / LLVM](https://releases.llvm.org/download.html) version
 13 or later. Note that on macOS the preinstalled clang does not support
@@ -20,9 +22,20 @@ If you want to compile to WebAssembly, you also need:
 See [below](./installing.md#installing-dependencies) for instructions on
 how to install the dependencies.
 
-# Installing Juvix
+## Shell script
 
-### MacOS
+We provide a shell script that installs the Juvix compiler binary for Linux and macOS
+using the [Github release page](https://github.com/anoma/juvix/releases).
+
+Copy and paste the following command into your terminal to install Juvix.
+
+!!! note ""
+
+    ```text
+    curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/anoma/juvix-installer/main/juvix-installer.sh | sh
+    ```
+
+## MacOS
 
 The easiest way to install Juvix on MacOS is by using
 [Homebrew](https://brew.sh).
@@ -46,7 +59,7 @@ Helpful information can also be obtained by running:
 brew info juvix
 ```
 
-### Linux x86_64
+## Linux x86_64
 
 A Juvix compiler binary executable for Linux x86_64 is
 available on the [Juvix release
@@ -68,7 +81,7 @@ unzip linux_release.zip
 mv juvix ~/.local/bin/juvix
 ```
 
-### Building Juvix from source
+## Building Juvix from source
 
 To install Juvix from source you must clone the [Github
 repository](https://github.com/anoma/juvix.git). Then Juvix can be
@@ -97,7 +110,7 @@ version of Juvix in the `main` branch on Github.
 brew install --build-from-source --HEAD juvix --verbose
 ```
 
-### Building the project with `cabal`
+## Building the project with `cabal`
 
 We recommend to use the `stack` build tool with this project.
 
@@ -112,7 +125,7 @@ make runtime
 cabal build
 ```
 
-# Installing dependencies
+## Installing dependencies
 
 To install `wasi-sdk` you need to download `libclang_rt` and
 `wasi-sysroot` precompiled archives from the [wasi-sdk release
