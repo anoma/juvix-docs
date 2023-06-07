@@ -48,32 +48,32 @@ We list all currently recognized pragmas. Below `b` denotes a boolean (`true` or
 
 - `inline: b`
 
-    Indicates whether a function should be inlined:
-    - `true`: always inline when fully applied,
-    - `false`: never inline (also disables automatic inlining).
+  Indicates whether a function should be inlined:
+  - `true`: always inline when fully applied,
+  - `false`: never inline (also disables automatic inlining).
 
-    When the `inline` pragma is not present and the optimization level is at least 1, a non-recursive fully applied function is automatically inlined if the height of the body term does not exceed the inlining depth limit, which can be specified with the `--inline` option to the compile command.
+  When the `inline` pragma is not present and the optimization level is at least 1, a non-recursive fully applied function is automatically inlined if the height of the body term does not exceed the inlining depth limit, which can be specified with the `--inline` option to the compile command.
 
 - `inline: n`
 
-    Indicates that a partial application of the function with at least `n` explicit arguments should always be inlined. For example, with the definition
+  Indicates that a partial application of the function with at least `n` explicit arguments should always be inlined. For example, with the definition
 
-    ```juvix
-    {-# inline: 2 #-}
-    compose : {A B C : Type} -> (B -> C) -> (A -> B) -> A -> C;
-    compose f g x := f (g x);
-    ```
+  ```juvix
+  {-# inline: 2 #-}
+  compose : {A B C : Type} -> (B -> C) -> (A -> B) -> A -> C;
+  compose f g x := f (g x);
+  ```
 
-    in the expression `compose f g` the function `compose` will be inlined, but in `compose f` it won't be.
+  in the expression `compose f g` the function `compose` will be inlined, but in `compose f` it won't be.
 
 - `unroll: n`
 
-    Set the maximum recursion unrolling depth to `n`. This affects only the `vampir` and `geb` backends.
+  Set the maximum recursion unrolling depth to `n`. This affects only the `vampir` and `geb` backends.
 
 - `argnames: [arg1, .., argn]`
 
-    Set the names of function arguments in the generated output to `arg1`,..,`argn`. This is useful primarily with the `vampir` backend to name VampIR input variables.
+  Set the names of function arguments in the generated output to `arg1`,..,`argn`. This is useful primarily with the `vampir` backend to name VampIR input variables.
 
 - `format: b`
 
-    Enable or disable formatting for the specified module. Adding the `format: false` pragma before a module makes the formatter ignore the module and output it verbatim.
+  Enable or disable formatting for the specified module. Adding the `format: false` pragma before a module makes the formatter ignore the module and output it verbatim.
