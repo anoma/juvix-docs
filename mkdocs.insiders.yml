@@ -14,12 +14,16 @@ plugins:
   - social
   - tags
   - blog:
+      enabled: true
+      blog_dir: blog
       blog_toc: true
       draft: false
       authors: true
       draft_on_serve: true
       post_date_format: short
+      post_readtime: true
       post_url_date_format: yyyy/MM/dd
+      post_url_format: "{file}"
       archive: true
       archive_name: Archive
       categories: true

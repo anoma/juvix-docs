@@ -1,16 +1,21 @@
 ---
 date: 2022-07-25
+readtime: 5
 authors:
   - jonathan
 categories:
-  - implementation-notes
+  - type-system
+tags:
+  - type-system
+  - inductive-types
+links:
+  - Coq's Inductive Types: https://coq.inria.fr/distrib/current/refman/language/core/inductive.html
+  - FStar's Inductive Type Families: https://www.fstar-lang.org/tutorial/book/part2/part2_inductive_type_families.html
 ---
 
 # Stay Positive with Your Data Types
 
-In this blog post, we will investigate the notion of strictly positive inductive
-data types, which is a condition that Juvix mandates for a data type to be
-considered well-typed.
+In this discussion, we will explore the concept of strictly positive inductive data types, a critical requirement within the Juvix framework for classifying a data type as well-typed.
 
 An **inductive type** is considered _strictly positive_ if it either:
 
@@ -21,6 +26,8 @@ A name is considered strictly positive for an inductive type if it never appears
 in a negative position within the argument types of its constructors. The term
 _negative position_ denotes instances located to the left of an arrow in a type
 constructor argument.
+
+<!-- more -->
 
 ## Example
 
