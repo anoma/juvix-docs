@@ -9,8 +9,8 @@ tags:
   - ETHPrague
   - Workshop
 links:
-- ETHPrague2023: https://ethprague.com/schedule/#Sunday
-- Juvix-ETH-Workshop: https://github.com/anoma/juvix-eth-workshop
+  - ETHPrague2023: https://ethprague.com/schedule/#Sunday
+  - Juvix-ETH-Workshop: https://github.com/anoma/juvix-eth-workshop
 ---
 
 # Join Juvix Team at ETHPrague
