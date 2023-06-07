@@ -1,9 +1,16 @@
 ---
 date: 2023-06-07
+readtime: 5
 authors:
   - veronika
 categories:
   - conference
+tags:
+  - ETHPrague
+  - Workshop
+links:
+- ETHPrague2023: https://ethprague.com/schedule/#Sunday
+- Juvix-ETH-Workshop: https://github.com/anoma/juvix-eth-workshop
 ---
 
 # Join Juvix Team at ETHPrague
@@ -24,6 +31,8 @@ Make sure to mark your calendar for the following key sessions:
 
 - Talk by **Veronika Romashkina**: On _Saturday, June 10th, from 14:10 - 14:30_ at the _Institute of Cryptoanarchy_, Veronika, Developer Relations at Heliax, will present a talk titled **"Juvix: Toward a Functional Programming Language for Decentralized Applications and Beyond."**
 - Workshop by **Paul Cadman**: Also on _Saturday, June 10th, from 16:20 - 17:20_ at the _Paper Hub_, Paul, Compiler Engineer at Heliax, will host a workshop titled **"Discovering Juvix: The High-Level Functional Programming Language for Building Next-Generation dApps."**
+
+<!-- more -->
 
 ## Explore Juvix: Talk Highlights
 
