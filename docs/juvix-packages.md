@@ -39,3 +39,7 @@ A project for demostrating the process of generating arithmetic circuits from hi
 !!! info
 
     If you are using Juvix in your project, please let us know by opening an issue or a pull request to add it to this list.
+
+## Other Juvix programs
+
+--8<-- "docs/reference/examples.md:8:"

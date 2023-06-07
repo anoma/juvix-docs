@@ -78,7 +78,7 @@ section](./overview.md).
 
 [anoma]: https://anoma.net
 [changelog]: https://docs.juvix.org/changelog.html
-[Discord]: https://discord.gg/PfaaFVErHt
+[Discord]: https://discord.gg/jwzaMZ2Sct
 [geb]: https://github.com/anoma/geb
 [GitHub]: https://github.com/anoma/juvix
 [homebrew]: https://brew.sh

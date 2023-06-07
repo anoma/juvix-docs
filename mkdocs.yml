@@ -112,6 +112,8 @@ nav:
       - Overview: ./overview.md
       - Changelog: ./CHANGELOG.md
       - Contributing: ./CONTRIBUTING.md
+  - Blog:
+      - blog/index.md
 
   - Tutorials:
       - Learn Juvix in minutes: ./tutorials/learn.md
@@ -158,7 +160,6 @@ nav:
         # - Strictly positive data types: ./explanations/totality/positive.md
         # - Coverage checking: ./explanations/totality/coverage.md
 
-  - Blog:
-      - blog/index.md
-
+  - Standard library: https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html#
   - Packages and Projects: ./juvix-packages.md
+  - Discord: https://discord.gg/jwzaMZ2Sct

@@ -4,6 +4,9 @@ plugins:
       enabled: !ENV [OFFLINE, false]
   - privacy:
       enabled: !ENV [CI, false]
+      links: true
+      links_attr_map:
+        target: _blank
       assets_exclude:
         - cdn.jsdelivr.net/npm/mathjax@3/*
         - giscus.app/*
