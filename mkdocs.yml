@@ -132,7 +132,9 @@ nav:
           - Modules: ./reference/language/modules.md
           - Local definitions: ./reference/language/let.md
           - Control structures: ./reference/language/control.md
+          - Iterators: ./reference/language/iterators.md
           - Comments: ./reference/language/comments.md
+          - Pragmas: ./reference/language/pragmas.md
           - Axioms: ./reference/language/axioms.md
       - Standard library: ./reference/stdlib.md
       - Example programs: ./reference/examples.md
