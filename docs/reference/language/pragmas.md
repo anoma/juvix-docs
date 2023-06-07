@@ -49,6 +49,7 @@ We list all currently recognized pragmas. Below `b` denotes a boolean (`true` or
 - `inline: b`
 
   Indicates whether a function should be inlined:
+
   - `true`: always inline when fully applied,
   - `false`: never inline (also disables automatic inlining).
 
