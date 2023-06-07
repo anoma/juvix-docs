@@ -1,7 +1,7 @@
 # Quick Start
 
-To install Juvix, follow the instructions in the [Installation
-How-to](./howto/installing.md).
+To install Juvix, follow the instructions in the [installation
+guide](./installing.md).
 
 After installation, run `juvix --help` to see the list of commands.
 
@@ -84,7 +84,7 @@ You should see the output: `hello world!`
 
 The source code can also be compiled to a WebAssembly binary. This
 requires some additional setup. See the [Installation
-How-to](./howto/installing.md) for more
+How-to](./installing.md) for more
 information. You can also run `juvix doctor` to check your setup.
 
 ```shell
