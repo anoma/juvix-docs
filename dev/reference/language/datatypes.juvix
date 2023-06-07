@@ -1,0 +1,32 @@
+module datatypes;
+
+--8<-- [start:typeNat]
+type Nat :=
+  | zero : Nat
+  | suc : Nat -> Nat;
+--8<-- [end:typeNat]
+
+--8<-- [start:addNat]
+syntax infixl 6 +;
++ : Nat -> Nat -> Nat;
++ zero b := b;
++ (suc a) b := suc (a + b);
+--8<-- [end:addNat]
+
+module List;
+  --8<-- [start:typeList]
+  syntax infixr 5 ::;
+  type List (A : Type) :=
+    | nil : List A
+    | :: : A -> List A -> List A;
+  --8<-- [end:typeList]
+
+  --8<-- [start:elemList]
+  import Stdlib.Data.Bool open using {Bool; false; ||};
+
+  elem :
+    {A : Type} -> (A -> A -> Bool) -> A -> List A -> Bool;
+  elem _ _ nil := false;
+  elem eq s (x :: xs) := eq s x || elem eq s xs;
+--8<-- [end:elemList]
+end;
