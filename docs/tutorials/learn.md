@@ -7,7 +7,11 @@ comments: true
 
 ![tara-teaching](./../assets/images/tara-teaching.svg){ align=left width="280" }
 
-Welcome to the Juvix tutorial! This concise guide will introduce you to essential language features, while also serving as an introduction to functional programming. By the end of this tutorial, you'll have a strong foundation in Juvix's core concepts, ready to explore its advanced capabilities. Let's get started on your Juvix journey!
+Welcome to the Juvix tutorial! This concise guide will introduce you to
+essential language features, while also serving as an introduction to functional
+programming. By the end of this tutorial, you'll have a strong foundation in
+Juvix's core concepts, ready to explore its advanced capabilities. Let's get
+started on your Juvix journey!
 
 ## Juvix REPL
 
@@ -651,7 +655,9 @@ manually written recursion.
 By default, the Juvix compiler requires all functions to be _total_.
 Totality consists of:
 
-- [termination](../explanations/totality/termination.md) and [coverage](../explanations/totality/coverage.md) for function declarations, and
+- [termination](../explanations/totality/termination.md) and
+  [coverage](../explanations/totality/coverage.md) for function declarations,
+  and
 - [strict positivity](../explanations/totality/positive.md) for user-defined
   data types.
 
@@ -687,13 +693,20 @@ definition is rejected because the case `suc zero` is not handled:
 --8<------ "docs/tutorials/learn.juvix:even-def-not-pass-coverage"
 ```
 
-Since coverage checking forces the user to specify the function for all input values, it may be unclear how to implement functions which are typically partial. For example, the `tail` function on lists is often left undefined for the empty list. One solution is to return a default value. In the Juvix standard library, `tail` is implemented as follows, returning the empty list when the argument is empty.
+Since coverage checking forces the user to specify the function for all input
+values, it may be unclear how to implement functions which are typically
+partial. For example, the `tail` function on lists is often left undefined for
+the empty list. One solution is to return a default value. In the Juvix standard
+library, `tail` is implemented as follows, returning the empty list when the
+argument is empty.
 
 ```juvix
 --8<------ "docs/tutorials/learn.juvix:ListTail"
 ```
 
-Another solution is to wrap the result in the `Maybe` type from the standard library, which allows representing optional values. An element of `Maybe A` is either `nothing` or `just x` with `x : A`.
+Another solution is to wrap the result in the `Maybe` type from the standard
+library, which allows representing optional values. An element of `Maybe A` is
+either `nothing` or `just x` with `x : A`.
 
 ```juvix
 --8<------ "docs/tutorials/learn.juvix:Maybe"
@@ -705,7 +718,8 @@ For example, one could define the tail function as:
 --8<------ "docs/tutorials/learn.juvix:tailMaybe"
 ```
 
-Then the user needs to explicitly check if the result of the function contains a value or not:
+Then the user needs to explicitly check if the result of the function contains a
+value or not:
 
 ```juvix
 case tail' lst
@@ -738,8 +752,8 @@ type Bool :=
   | false : Bool;
 ```
 
-Remember that you can import this definition by adding `import Stdlib.Prelude open` at
-the beginning of your module.
+Remember that you can import this definition by adding `import Stdlib.Prelude
+open` at the beginning of your module.
 
 Now, define the logical function `not` by using pattern matching.
 
@@ -752,8 +766,8 @@ Now, define the logical function `not` by using pattern matching.
     ```
 
 Now, define the logical functions `and`, `or` by using pattern matching as well.
-Feel free to experiment and see what happens if your patterns are not exhaustive, i.e.,
-if not all the cases are covered.
+Feel free to experiment and see what happens if your patterns are not
+exhaustive, i.e., if not all the cases are covered.
 
 Next, let's define the logical function `xor`, which should return `true` if and
 only if exactly one of its arguments is `true`. This time, instead of using
@@ -767,8 +781,9 @@ pattern matching, use the previously defined logical functions.
 
 #### The `Maybe` type
 
-The `NMaybe` type encapsulates an optional natural number (the preceding `N` stands for `Nat`).
-The `nnothing` constructor is used when the value is missing. On the other hand, the `njust` constructor is used when the value is present.
+The `NMaybe` type encapsulates an optional natural number (the preceding `N`
+stands for `Nat`). The `nnothing` constructor is used when the value is missing.
+On the other hand, the `njust` constructor is used when the value is present.
 
 ```juvix
 type NMaybe :=
@@ -776,7 +791,8 @@ type NMaybe :=
   | njust : Nat → NMaybe;
 ```
 
-Let's define a function `isJust : NMaybe -> Bool` that returns `true` when the value is present.
+Let's define a function `isJust : NMaybe -> Bool` that returns `true` when the
+value is present.
 
 ??? info "Solution"
 
@@ -806,9 +822,9 @@ type Maybe (A : Type) :=
 In this definition, we parameterize the type `Maybe` with a generic type `A`.
 
 Implement again the `fromMaybe` function, but now, for the polymorphic `Maybe`
-type. Note that in type signatures we must bind type variables. We usually do that by
-introducing an implicit argument of type `Type`.
-The signature of `fromMaybe` should be:
+type. Note that in type signatures we must bind type variables. We usually do
+that by introducing an implicit argument of type `Type`. The signature of
+`fromMaybe` should be:
 
 ```juvix
 fromMaybe : {A : Type} -> A -> Maybe A -> A;
@@ -830,7 +846,8 @@ To get some more practice, give an implementation for `maybe`:
 maybe : {A B : Type} -> B -> (A -> B) -> Maybe A -> B
 ```
 
-This should return the value (if present) applied to the given function. Otherwise it should return the default value.
+This should return the value (if present) applied to the given function.
+Otherwise it should return the default value.
 
 ??? info "Solution"
 
@@ -872,11 +889,16 @@ Try to give an implementation for it.
     head (h :: _) := just h;
     ```
 
-So far we have defined only functions that do not involve looping, but any non-trivial program will require some sort of repetition, so let's tackle that.
+So far we have defined only functions that do not involve looping, but any
+non-trivial program will require some sort of repetition, so let's tackle that.
 
-As stated previously, the only way to express repetition in Juivx is by using _recursion_. We say that a function is recursive if it is defined in terms of itself, i.e., the name of the function appears in its body.
+As stated previously, the only way to express repetition in Juivx is by using
+_recursion_. We say that a function is recursive if it is defined in terms of
+itself, i.e., the name of the function appears in its body.
 
-The next exercise is to define a function which returns the last element of a list. This function will need to call itself until it reaches the last element of the list.
+The next exercise is to define a function which returns the last element of a
+list. This function will need to call itself until it reaches the last element
+of the list.
 
 ```juvix
 last : {A : Type} -> List A -> Maybe A;
@@ -920,7 +942,8 @@ Now write a function that concatenates a list of lists.
     --8<------ "docs/tutorials/learn.juvix:List-concatMany"
     ```
 
-Can you give an alternative implementation that uses the `rfor` iterator? What would happen if you used `for` instead of `rfor`?
+Can you give an alternative implementation that uses the `rfor` iterator? What
+would happen if you used `for` instead of `rfor`?
 
 ??? info "Solution"
 
@@ -928,8 +951,9 @@ Can you give an alternative implementation that uses the `rfor` iterator? What w
     --8<------ "docs/tutorials/learn.juvix:List-concatMany-iter"
     ```
 
-In the previous solution, if you replace `rfor` by `for`,
-the resulting list will be as if the original list was reversed, but each of the nested lists keep their original order.
+In the previous solution, if you replace `rfor` by `for`, the resulting list
+will be as if the original list was reversed, but each of the nested lists keep
+their original order.
 
 Write a function that reverses a list:
 
@@ -952,7 +976,8 @@ Write a function that reverses a list:
 
 #### Function composition
 
-Let's try a different exercise. Consider the following function clause, which defines function composition.
+Let's try a different exercise. Consider the following function clause, which
+defines function composition.
 
 ```
 compose f g x := f (g x);
@@ -985,7 +1010,8 @@ natural number is prime.
 
 !!! tip
 
-    A number is prime if it is greater than 1 and has no divisors other than 1 and itself.
+    A number is prime if it is greater than 1 and has no divisors
+    other than 1 and itself.
 
 ??? info "Solution"
 
@@ -1007,7 +1033,8 @@ Juvix?
 
 ??? info "Solution"
 
-    The definition doesn't pass the termination checker. One way to reformulate it is as follows:
+    The definition doesn't pass the termination checker.
+    One way to reformulate it is as follows:
 
     ```juvix
     --8<------ "docs/tutorials/learn.juvix:SolHalf"
@@ -1015,8 +1042,8 @@ Juvix?
 
 #### Suffixes
 
-A _suffix_ of a list `l` is any list which can be obtained from `l`
-by removing some initial elements. For example, the suffixes of `1 :: 2 :: 3 :: nil` are:
+A _suffix_ of a list `l` is any list which can be obtained from `l` by removing
+some initial elements. For example, the suffixes of `1 :: 2 :: 3 :: nil` are:
 
 - `1 :: 2 :: 3 :: nil`,
 - `2 :: 3 :: nil`,
@@ -1056,8 +1083,8 @@ which applies a function to all natural numbers stored in a tree.
 
 #### Polymorphic tree
 
-Modify the `Tree` type from [Exercise 5](#exercise-5)
-to be polymorphic in the element type, and then repeat the previous exercise.
+Modify the `Tree` type from [Exercise 5](#exercise-5) to be polymorphic in the
+element type, and then repeat the previous exercise.
 
 ??? info "Solution"
 
@@ -1069,7 +1096,8 @@ to be polymorphic in the element type, and then repeat the previous exercise.
 
 #### Factorial
 
-Write a tail recursive function which computes the factorial of a natural number.
+Write a tail recursive function which computes the factorial of a natural
+number.
 
 ??? info "Solution"
 
@@ -1098,10 +1126,13 @@ should be a function which given `x` computes `2(x - 1) + 1`.
     ```juvix
     --8<------ "docs/tutorials/learn.juvix:SolCompose"
     ```
+
     where `∘` is a composition function from the standard library:
+
     ```juvix
     syntax infixr 9 ∘;
     ∘ : {A B C : Type} -> (B -> C) -> (A -> B) -> A -> C;
     ∘ f g x := f (g x);
     ```
+
     The `∘` can be typed in Emacs or VSCode with `\o`.
