@@ -899,9 +899,10 @@ Next, implement a function that concatenates two lists:
     It is enough to pattern match the first list.
 
 ??? info "Solution"
-`juvix
+
+    ```juvix
         --8<------ "docs/tutorials/learn.juvix:List-concat"
-    `
+    ```
 
 Now write a function that concatenates a list of lists.
 
