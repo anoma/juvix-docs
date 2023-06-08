@@ -151,7 +151,7 @@ module Tree-example;
 end;
 
 module List-example;
-
+  
   --8<-- [start:List]
   syntax infixr 5 ::;
   type List (A : Type) :=
@@ -353,36 +353,36 @@ module Exercise-solutions;
     --8<-- [start:compose]
     compose : {A B C : Type} -> (B -> C) -> (A -> B) -> A -> C;
     compose f g x := f (g x);
-    --8<-- [end:compose]
+  --8<-- [end:compose]
   end;
 
+  module SolLists;
+    --8<-- [start:SolLast]
+    last : {A : Type} -> List A -> Maybe A;
+    last nil := nothing;
+    last (x :: nil) := just x;
+    last (_ :: xs) := last xs;
+    --8<-- [end:SolLast]
 
-module SolLists;
-  --8<-- [start:SolLast]
-  last : {A : Type} -> List A -> Maybe A;
-  last nil := nothing;
-  last (x :: nil) := just x;
-  last (_ :: xs) := last xs;
-  --8<-- [end:SolLast]
+    --8<-- [start:List-concat]
+    concat : {A : Type} -> List A -> List A -> List A;
+    concat nil b := b;
+    concat (a :: as) b := a :: concat as b;
+    --8<-- [end:List-concat]
 
-  --8<-- [start:List-concat]
-  concat : {A : Type} -> List A -> List A -> List A;
-  concat nil b := b;
-  concat (a :: as) b := a :: concat as b;
-  --8<-- [end:List-concat]
+    --8<-- [start:List-concatMany]
+    concatMany : {A : Type} -> List (List A) -> List A;
+    concatMany nil := nil;
+    concatMany (a :: as) := concat a (concatMany as);
+    --8<-- [end:List-concatMany]
 
-  --8<-- [start:List-concatMany]
-  concatMany : {A : Type} -> List (List A) -> List A;
-  concatMany nil := nil;
-  concatMany (a :: as) := concat a (concatMany as);
-  --8<-- [end:List-concatMany]
-
-  --8<-- [start:List-concatMany-iter]
-  concatMany-iter : {A : Type} -> List (List A) -> List A;
-  concatMany-iter m := rfor (acc := nil) (l in m) concat l acc;
+    --8<-- [start:List-concatMany-iter]
+    concatMany-iter : {A : Type} -> List (List A) -> List A;
+    concatMany-iter m :=
+      rfor (acc := nil) (l in m) concat l acc;
   --8<-- [end:List-concatMany-iter]
 
-end;
+  end;
 
   --8<-- [start:SolPrime]
   prime : Nat -> Bool;

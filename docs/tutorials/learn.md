@@ -744,6 +744,7 @@ the beginning of your module.
 Now, define the logical function `not` by using pattern matching.
 
 !!! tip
+
     The type signature should look like this:
 
     ```juvix
@@ -898,9 +899,9 @@ Next, implement a function that concatenates two lists:
     It is enough to pattern match the first list.
 
 ??? info "Solution"
-    ```juvix
+`juvix
         --8<------ "docs/tutorials/learn.juvix:List-concat"
-    ```
+    `
 
 Now write a function that concatenates a list of lists.
 
@@ -913,6 +914,7 @@ Now write a function that concatenates a list of lists.
     `concat` may be helpful.
 
 ??? info "Solution"
+
     ```juvix
     --8<------ "docs/tutorials/learn.juvix:List-concatMany"
     ```
@@ -920,6 +922,7 @@ Now write a function that concatenates a list of lists.
 Can you give an alternative implementation that uses the `rfor` iterator? What would happen if you used `for` instead of `rfor`?
 
 ??? info "Solution"
+
     ```juvix
     --8<------ "docs/tutorials/learn.juvix:List-concatMany-iter"
     ```
@@ -957,10 +960,12 @@ compose f g x := f (g x);
 Can you give the most general type signature for it?
 
 ??? hint
+
     The type signature should start like this:
-    `juvix
+
+    ```juvix
         compose : {A B C : Type} -> ...
-        `
+    ```
 
 ??? info "Solution"
 
