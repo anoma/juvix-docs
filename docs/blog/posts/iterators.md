@@ -149,6 +149,7 @@ For example, to compute the largest and the second-largest element of a list of 
 ```juvix
 for (n, n' := 0, 0) (x in lst) if (x >= n) (x, n) (if (x > n') (n, x) (n, n'))
 ```
+
 where `n` is the largest and `n'` the second-largest element found so far.
 
 One can also operate on multiple lists simultaneously. For example, the following computes the dot product of the lists `xs`, `ys` (assuming they have equal lengths):
