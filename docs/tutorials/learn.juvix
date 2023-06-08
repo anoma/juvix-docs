@@ -151,7 +151,7 @@ module Tree-example;
 end;
 
 module List-example;
-  
+
   --8<-- [start:List]
   syntax infixr 5 ::;
   type List (A : Type) :=
@@ -298,6 +298,92 @@ module Exercise-solutions;
   import Stdlib.Prelude open hiding {∘};
   import Stdlib.Data.Nat.Ord open;
 
+  module SolBool;
+    --8<-- [start:SolBool]
+    not : Bool -> Bool;
+    not false := true;
+    not true := false;
+
+    or : Bool -> Bool -> Bool;
+    or false b := b;
+    or true _ := true;
+
+    and : Bool -> Bool -> Bool;
+    and true b := b;
+    and false _ := false;
+
+    xor : Bool -> Bool -> Bool;
+    xor a b := and (not (and a b)) (or a b);
+  --8<-- [end:SolBool]
+  end;
+
+  module SolNMaybe;
+    type NMaybe :=
+      | nnothing : NMaybe
+      | njust : Nat → NMaybe;
+
+    --8<-- [start:NMaybe-isJust]
+    isJust : NMaybe -> Bool;
+    isJust (njust _) := true;
+    isJust nnothing := false;
+    --8<-- [end:NMaybe-isJust]
+
+    --8<-- [start:NMaybe-fromMaybe]
+    fromMaybe : Nat -> NMaybe -> Nat;
+    fromMaybe _ (njust n) := n;
+    fromMaybe d nnothing := d;
+  --8<-- [end:NMaybe-fromMaybe]
+  end;
+
+  module SolMaybe;
+    --8<-- [start:Maybe-fromMaybe]
+    fromMaybe : {A : Type} -> A -> Maybe A -> A;
+    fromMaybe _ (just n) := n;
+    fromMaybe d nothing := d;
+    --8<-- [end:Maybe-fromMaybe]
+
+    --8<-- [start:Maybe-maybe]
+    maybe : {A B : Type} -> B -> (A -> B) -> Maybe A -> B;
+    maybe _ f (just n) := f n;
+    maybe d _ nothing := d;
+  --8<-- [end:Maybe-maybe]
+  end;
+
+  module SolComposition;
+    --8<-- [start:compose]
+    compose : {A B C : Type} -> (B -> C) -> (A -> B) -> A -> C;
+    compose f g x := f (g x);
+    --8<-- [end:compose]
+  end;
+
+
+module SolLists;
+  --8<-- [start:SolLast]
+  last : {A : Type} -> List A -> Maybe A;
+  last nil := nothing;
+  last (x :: nil) := just x;
+  last (_ :: xs) := last xs;
+  --8<-- [end:SolLast]
+
+  --8<-- [start:List-concat]
+  concat : {A : Type} -> List A -> List A -> List A;
+  concat nil b := b;
+  concat (a :: as) b := a :: concat as b;
+  --8<-- [end:List-concat]
+
+  --8<-- [start:List-concatMany]
+  concatMany : {A : Type} -> List (List A) -> List A;
+  concatMany nil := nil;
+  concatMany (a :: as) := concat a (concatMany as);
+  --8<-- [end:List-concatMany]
+
+  --8<-- [start:List-concatMany-iter]
+  concatMany-iter : {A : Type} -> List (List A) -> List A;
+  concatMany-iter m := rfor (acc := nil) (l in m) concat l acc;
+  --8<-- [end:List-concatMany-iter]
+
+end;
+
   --8<-- [start:SolPrime]
   prime : Nat -> Bool;
   prime x :=
@@ -318,13 +404,6 @@ module Exercise-solutions;
   half (suc zero) := 0;
   half (suc (suc n)) := half n + 1;
   --8<-- [end:SolHalf]
-
-  --8<-- [start:SolLast]
-  last : {A : Type} -> List A -> Maybe A;
-  last nil := nothing;
-  last (x :: nil) := just x;
-  last (_ :: xs) := last xs;
-  --8<-- [end:SolLast]
 
   --8<-- [start:SolSuffixes]
   suffixes : {A : Type} -> List A -> List (List A);
