@@ -1,0 +1,13 @@
+module lets;
+
+--8<-- [start:let-sum]
+import Stdlib.Prelude open;
+
+sum : List Nat -> Nat;
+sum lst :=
+  let
+    go : Nat -> List Nat -> Nat;
+    go acc nnil := acc;
+    go acc (x :: xs) := go (acc + x) xs;
+  in go zero lst;
+--8<-- [end:let-sum]
