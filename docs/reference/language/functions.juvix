@@ -55,15 +55,12 @@ module anonymous-functions;
   even : Nat -> Bool;
 
   odd :=
-    \ {
-      | zero := false
-      | (suc n) := even n
-    };
+  \ {
+    | zero := false
+    | (suc n) := even n
+  };
 
   even :=
-    \ {
-      | zero := true
-      | (suc n) := odd n
-    };
+      \ { | zero := true | (suc n) := odd n };
 --8<-- [end:anonymousFunctions]
 end;
