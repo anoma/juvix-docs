@@ -2540,10 +2540,10 @@ following example, we define a function that checks if a number is
 
   even : Nat -&gt; Bool;
 
-  odd zero := false;
+    odd zero := false;
   odd (suc n) := even n;
 
-  even zero := true;
+    even zero := true;
   even (suc n) := odd n;</code></pre>
 <h2 id="anonymous-functions">Anonymous functions<a class="headerlink" href="#anonymous-functions" title="Permanent link">&para;</a></h2>
 <p>Anonymous functions, or <em>lambdas</em>, are introduced with the syntax:</p>
@@ -2561,13 +2561,13 @@ functions:</p>
 
   even : Nat -&gt; Bool;
 
-  odd :=
+    odd :=
     \ {
       | zero := false
       | (suc n) := even n
     };
 
-  even :=
+    even :=
     \ {
       | zero := true
       | (suc n) := odd n
