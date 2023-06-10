@@ -1,0 +1,69 @@
+module functions;
+
+module example-multiply-by-two;
+  --8<-- [start:multiplyByTwo]
+  import Stdlib.Data.Nat open using {Nat; *};
+
+  multiplyByTwo : Nat -> Nat;
+  multiplyByTwo n := 2 * n;
+--8<-- [end:multiplyByTwo]
+end;
+
+module short-definitons;
+  --8<-- [start:shortDefinitions]
+  import Stdlib.Data.Nat open;
+
+  multiplyByTwo : Nat -> Nat := \ {n := 2 * n};
+--8<-- [end:shortDefinitions]
+end;
+
+module example-negate-boolean;
+  --8<-- [start:negateBoolean]
+  import Stdlib.Data.Bool open;
+
+  neg : Bool -> Bool;
+  neg true := false;
+  neg false := true;
+--8<-- [end:negateBoolean]
+end;
+
+module mutually-recursive;
+  --8<-- [start:mutuallyRecursive]
+  import Stdlib.Data.Nat open;
+  import Stdlib.Data.Bool open;
+
+  import Stdlib.Prelude open;
+
+  odd : Nat -> Bool;
+
+  even : Nat -> Bool;
+
+    odd zero := false;
+  odd (suc n) := even n;
+
+    even zero := true;
+  even (suc n) := odd n;
+--8<-- [end:mutuallyRecursive]
+end;
+
+module anonymous-functions;
+  --8<-- [start:anonymousFunctions]
+  import Stdlib.Prelude open;
+
+  odd : Nat -> Bool;
+
+  even : Nat -> Bool;
+
+    odd :=
+    \ {
+      | zero := false
+      | (suc n) := even n
+    };
+
+    even :=
+    \ {
+      | zero := true
+      | (suc n) := odd n
+    };
+--8<-- [end:anonymousFunctions]
+end;
