@@ -215,13 +215,17 @@ install-pre-commit :
 pre-commit :
 	@pre-commit run --all-files
 
-JUVIXFILESTOFORMAT=$(shell find ./docs -type d -name ".juvix-build" -prune -o -type f -name "*.juvix" -print)
+JUVIXFILES=$(shell find ./docs \
+	-type d -name ".juvix-build" -prune -o \
+	-type d -name "examples" -prune -o \
+	-type f -name "*.juvix" -print)
 JUVIXFORMATFLAGS?=--in-place
 JUVIXTYPECHECKFLAGS?=--only-errors
+JUSTCHECK?=0
 
 .PHONY: format-juvix-files
 format-juvix-files: juvix-bin
-	@for file in $(JUVIXFILESTOFORMAT); do \
+	@for file in $(JUVIXFILES); do \
 		${JUVIXBIN} format $(JUVIXFORMATFLAGS) "$$file" > /dev/null 2>&1; \
 		exit_code=$$?; \
 		if [ $$exit_code -eq 0 ]; then \
@@ -229,21 +233,17 @@ format-juvix-files: juvix-bin
       	elif [[ $$exit_code -ne 0 && "$$file" == *"tests/"* ]]; then \
 			echo "[CONTINUE] $$file is in tests directory."; \
       	else \
- 			echo "[FAIL] $$file formatting failed" && exit 1; \
+ 			echo "[FAIL] $$file formatting failed" && exit ${JUSTCHECK}; \
       	fi; \
       	done;
 
 .PHONY: check-format-juvix-files
 check-format-juvix-files: juvix-bin
-	@JUVIXFORMATFLAGS=--check ${MAKE} format-juvix-files
-
-JUVIXEXAMPLEFILES=$(shell find ./docs \
-	-type d \( -name ".juvix-build" \) -prune -o \
-	-name "*.juvix" -print)
+	@JUVIXFORMATFLAGS=--check JUSTCHECK=1 ${MAKE} format-juvix-files
 
 .PHONY: typecheck-juvix-files
 typecheck-juvix-files: juvix-bin
-	@for file in $(JUVIXEXAMPLEFILES); do \
+	@for file in $(JUVIXFILES); do \
 		${JUVIXBIN} typecheck "$$file" $(JUVIXTYPECHECKFLAGS); \
 		exit_code=$$?; \
 		if [ $$exit_code -eq 0 ]; then \
