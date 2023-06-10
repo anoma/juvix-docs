@@ -38,10 +38,10 @@ module mutually-recursive;
 
   even : Nat -> Bool;
 
-  odd zero := false;
+    odd zero := false;
   odd (suc n) := even n;
 
-  even zero := true;
+    even zero := true;
   even (suc n) := odd n;
 --8<-- [end:mutuallyRecursive]
 end;
@@ -54,13 +54,16 @@ module anonymous-functions;
 
   even : Nat -> Bool;
 
-  odd :=
-  \ {
-    | zero := false
-    | (suc n) := even n
-  };
+    odd :=
+    \ {
+      | zero := false
+      | (suc n) := even n
+    };
 
-  even :=
-      \ { | zero := true | (suc n) := odd n };
+    even :=
+    \ {
+      | zero := true
+      | (suc n) := odd n
+    };
 --8<-- [end:anonymousFunctions]
 end;
