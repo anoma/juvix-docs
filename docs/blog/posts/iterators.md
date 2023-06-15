@@ -1,6 +1,6 @@
 ---
 date: 2023-06-08
-readtime: 5
+readtime: 15
 authors:
   - lukasz
 categories:
