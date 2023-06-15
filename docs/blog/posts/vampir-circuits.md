@@ -132,7 +132,7 @@ hash : Nat -> Nat -> Nat;
 
 would limit the recusion depth (i.e. the number of possible nested recursive calls) for `hash` to 16. It is the responsibility of the user to ensure that the recursion unrolling depth is sufficient for all arguments that the function might be applied to in the program. In the above example, `hash` recurses on its first argument and the call to `hash` in `main` provides `16` as the first argument. Hence, no more than 16 nested recursive calls to `hash` are possible.
 
-If the recursion unrolling depth is too small, i.e. smaller than the actual number of nested recursive calls, then the computation result may be incorrect.
+If the recursion unrolling depth is too small, i.e. smaller than the actual number of nested recursive calls, then the computation result may be incorrect. On the other hand, the circuit size grows with the unrolling depth, so it's advised to keep it as small as possible.
 
 ## The compilation method - normalization
 
