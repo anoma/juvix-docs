@@ -119,7 +119,7 @@ If the result type `ResTy` is `Nat` or `Int`, then the generated equation is
 main arg1 .. argN = out;
 ```
 
-Currently, all Vamp-IR inputs (`argK`, `out`) are private and it is not possible to change the name of `out`. These technical limitation will be lifted in future Juvix versions.
+Currently, all Vamp-IR inputs (`argK`, `out`) are private and it is not possible to change the name of `out`. These technical limitations will be lifted in future Juvix versions.
 
 ## Recursion unrolling
 
@@ -142,7 +142,7 @@ The disadvantage of performing full normalization is that it may super-exponenti
 
 ## The branching problem
 
-With the current compilation method, any recursive function which contains two or more recursive calls to itself in its body will cause an exponential blow-up in the generated code size, and thus will most likely fail to compile. As a rule of thumb, the size of the VampIR code generated for a Juvix function is proportional to k^n where n is the unrolling depth and k is the number of recursive calls in the function body.
+With the current compilation method, any recursive function which contains two or more recursive calls to itself in its body will cause an exponential blow-up in the generated code size, and thus will most likely fail to compile. As a rule of thumb, the size of the VampIR code generated for a Juvix function is proportional to k^n where k > 1 is the number of recursive calls in the function body and n is the unrolling depth; or proportional to n when k = 1.
 
 For example, trying to compile the fast power function
 
@@ -180,7 +180,7 @@ power : Nat → Nat → Nat;
 power := power' 1;
 ```
 
-With the reformulated definition, the program size increases only by a factor of 1^30 = 30. Now compiling to Vamp-IR succeeds and it is possible to generate a ZK proof that e.g. 2^30 is indeed equal to 1073741824.
+With the reformulated definition, the program size increases only by a factor of 30. Now compiling to Vamp-IR succeeds and it is possible to generate a ZK proof that e.g. 2^30 is indeed equal to 1073741824.
 
 [vampir-book]: https://anoma.github.io/VampIR-Book/
 [normal-form]: https://en.wikipedia.org/wiki/Beta_normal_form
