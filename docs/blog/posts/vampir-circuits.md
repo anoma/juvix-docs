@@ -10,18 +10,18 @@ tags:
   - vampir
 links:
   - Vamp-IR book: https://anoma.github.io/VampIR-Book/
-  - A Vamp-IR's guide to arithmetic and circuits: https://blog.anoma.net/a-vamp-irs-guide-to-arithmetic-circuits-and-perfectly-boiled-eggs/
+  - A Vamp-IR's guide to arithmetic circuits: https://blog.anoma.net/a-vamp-irs-guide-to-arithmetic-circuits-and-perfectly-boiled-eggs/
 ---
 
 # Compiling Juvix programs to arithmetic circuits via Vamp-IR
 
 Since version 0.3.5, the Juvix compiler supports the `vampir` target which generates [Vamp-IR][vampir-book] input files that can be compiled to various proof systems based on arithmetic circuits, like Plonk or Halo 2. Vamp-IR is a proof-system-agnostic language for writing arithmetic circuits used as an itermediate representation by Juvix.
 
-In this post, I will not be discussing the details of VampIR or the circuit computation model, beyond what is necessary to understand how to compile Juvix programs to circuits. Instead, I will describe how high-level functional Juvix programs can be compiled to circuits, what the common pitfalls and current limitations are. The reader is assumed to have at least basic familiarity with [Vamp-IR][vampir-book].
+In this post, I will not be discussing the details of Vamp-IR or the circuit computation model, beyond what is necessary to understand how to compile Juvix programs to circuits. Instead, I will describe how high-level functional Juvix programs can be compiled to circuits, what the common pitfalls and current limitations are. The reader is assumed to have at least basic familiarity with [Vamp-IR][vampir-book].
 
 ## A simple circuit program
 
-For a simple example of a Juvix program that can be compiled to arithmetic circuits via VampIR, we consider computing the 6-bit mid-square hash of a 16-bit number.
+For a simple example of a Juvix program that can be compiled to arithmetic circuits via Vamp-IR, we consider computing the 6-bit mid-square hash of a 16-bit number.
 
 ```juvix
 module MidSquareHash;
@@ -48,35 +48,35 @@ main : Nat -> Nat -> Bool;
 main x y := hash 16 x == y;
 ```
 
-To compile this file to VampIR type
+To compile this file to Vamp-IR type
 
 ```
 juvix compile -t vampir MidSquareHash.juvix
 ```
 
-This should generate the `MidSquareHash.pir` file with the VampIR code.
+This should generate the `MidSquareHash.pir` file with the Vamp-IR code.
 
-The exact details of the hashing algorithm are not essential here. What matters is that Juvix can compile this ordinary high-level program, which uses recursion, pattern-matching, etc., into low-level VampIR representation. The user does not need to understand arithmetic circuits or VampIR beyond the basics.
+The exact details of the hashing algorithm are not essential here. What matters is that Juvix can compile this ordinary high-level program, which uses recursion, pattern-matching, etc., into low-level Vamp-IR representation. The user does not need to understand arithmetic circuits or Vamp-IR beyond the basics.
 
-The Juvix `main` function is compiled to a VampIR `main` function which is then used in an equation which connects the inputs (arguments of `main`) to the ouput of `main`. For example, for the program above the generated equation is:
+The Juvix `main` function is compiled to a Vamp-IR `main` function which is then used in an equation which connects the inputs (arguments of `main`) to the ouput of `main`. For example, for the program above the generated equation is:
 
 ```
 main x y = 1;
 ```
 
-stating that `main x y` equals `true`. The variables `x`, `y` are VampIR's private inputs.
+stating that `main x y` equals `true`. The variables `x`, `y` are Vamp-IR's private inputs.
 
-## Controlling generated equations in the VampIR code
+## Controlling generated equations in the Vamp-IR code
 
-In principle, any Juvix program can be compiled to a circuit, subject to certain restrictions. When targeting VampIR, the `main` function must have the type
+In principle, any Juvix program can be compiled to a circuit, subject to certain restrictions. When targeting Vamp-IR, the `main` function must have the type
 
 ```juvix
 main : ArgTy1 -> .. -> ArgTyN -> ResTy;
 ```
 
-where `ArgTyK` and `ResTy` are `Nat`, `Int` or `Bool`. Since VampIR natively supports only numbers (the field elements), booleans are represented using `1` for `true` and `0` for `false`.
+where `ArgTyK` and `ResTy` are `Nat`, `Int` or `Bool`. Since Vamp-IR natively supports only numbers (field elements), booleans are represented using `1` for `true` and `0` for `false`.
 
-If the result type `ResTy` is a boolean (`Bool`), then the generated VampIR file will contain the equation
+If the result type `ResTy` is a boolean (`Bool`), then the generated Vamp-IR file will contain the equation
 
 ```
 main arg1 .. argN = 1;
@@ -89,7 +89,7 @@ main : Nat -> Nat -> Bool;
 main x y := x == y;
 ```
 
-will generate VampIR code similar to
+will generate Vamp-IR code similar to
 
 ```
 def main x y = equals x y;
@@ -97,7 +97,7 @@ def main x y = equals x y;
 main x y = 1;
 ```
 
-The VampIR input variable names can also be explicitly specified with the `argnames` pragma, e.g., compiling
+The Vamp-IR input variable names can also be explicitly specified with the `argnames` pragma, e.g., compiling
 
 ```juvix
 {-# argnames: [a, b] #-}
@@ -105,7 +105,7 @@ main : Nat -> Nat -> Bool;
 main x y := x == y;
 ```
 
-will generate VampIR code similar to
+will generate Vamp-IR code similar to
 
 ```
 def main x y = equals x y;
@@ -119,11 +119,11 @@ If the result type `ResTy` is `Nat` or `Int`, then the generated equation is
 main arg1 .. argN = out;
 ```
 
-Currently, all VampIR inputs (`argK`, `out`) are private and it is not possible to change the name of `out`. These technical limitation will be lifted in future Juvix versions.
+Currently, all Vamp-IR inputs (`argK`, `out`) are private and it is not possible to change the name of `out`. These technical limitation will be lifted in future Juvix versions.
 
 ## Recursion unrolling
 
-Neither arithmetic circuits nor the VampIR intermediate representation support recursion. This means that all Juvix recursive functions need to be unrolled up to a specified depth. Currently, the default unrolling depth is 140, which may be too much or too little depending on your particular program. The unrolling depth can be specified globally on the command line with the `--unroll` option, or on a per-function basis with the `unroll` pragma. For example, using
+Neither arithmetic circuits nor the Vamp-IR intermediate representation support recursion. This means that all Juvix recursive functions need to be unrolled up to a specified depth. Currently, the default unrolling depth is 140, which may be too much or too little depending on your particular program. The unrolling depth can be specified globally on the command line with the `--unroll` option, or on a per-function basis with the `unroll` pragma. For example, using
 
 ```juvix
 {-# unroll: 16 #-}
@@ -136,7 +136,7 @@ If the recursion unrolling depth is too small, i.e. smaller than the actual numb
 
 ## The compilation method - normalization
 
-Currently, the Juvix compiler uses a straightforward method to translate Juvix programs to VampIR code: it simply computes the full [normal form](normal-form) of the `main` function. Because of the restrictions we imposed on its type, the normal form of the `main` function must be an applicative expression built up from variables, constants and arithmetic and boolean operations. Such an expression can be directly translated to the VampIR input format.
+Currently, the Juvix compiler uses a straightforward method to translate Juvix programs to Vamp-IR code: it simply computes the full [normal form](normal-form) of the `main` function. Because of the restrictions we imposed on its type, the normal form of the `main` function must be an applicative expression built up from variables, constants and arithmetic and boolean operations. Such an expression can be directly translated to the Vamp-IR input format.
 
 The disadvantage of performing full normalization is that it may super-exponentially blow up the size of the program. As explained below, this applies in particular to branching recursive functions with at least two recursive calls.
 
@@ -180,7 +180,7 @@ power : Nat → Nat → Nat;
 power := power' 1;
 ```
 
-With the reformulated definition, Juvix-to-VampIR compilation succeeds and it is possible to generate a ZK proof that 2^30 is indeed equal to 1073741824.
+With the reformulated definition, compiling Juvix to Vamp-IR succeeds and it is possible to generate a ZK proof that 2^30 is indeed equal to 1073741824.
 
 [vampir-book]: https://anoma.github.io/VampIR-Book/
 [normal-form]: https://en.wikipedia.org/wiki/Beta_normal_form
