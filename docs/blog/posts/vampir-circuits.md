@@ -50,7 +50,7 @@ main x y := hash 16 x == y;
 
 To compile this file to Vamp-IR type
 
-```
+```shell
 juvix compile -t vampir MidSquareHash.juvix
 ```
 
@@ -60,7 +60,7 @@ The exact details of the hashing algorithm are not essential here. What matters 
 
 The Juvix `main` function is compiled to a Vamp-IR `main` function which is then used in an equation which connects the inputs (arguments of `main`) to the ouput of `main`. For example, for the program above the generated equation is:
 
-```
+```text
 main x y = 1;
 ```
 
@@ -78,7 +78,7 @@ where `ArgTyK` and `ResTy` are `Nat`, `Int` or `Bool`. Since Vamp-IR natively su
 
 If the result type `ResTy` is a boolean (`Bool`), then the generated Vamp-IR file will contain the equation
 
-```
+```text
 main arg1 .. argN = 1;
 ```
 
@@ -91,7 +91,7 @@ main x y := x == y;
 
 will generate Vamp-IR code similar to
 
-```
+```text
 def main x y = equal x y;
 
 main x y = 1;
@@ -107,7 +107,7 @@ main x y := x == y;
 
 will generate Vamp-IR code similar to
 
-```
+```text
 def main x y = equal x y;
 
 main a b = 1;
@@ -115,7 +115,7 @@ main a b = 1;
 
 If the result type `ResTy` is `Nat` or `Int`, then the generated equation is
 
-```
+```text
 main arg1 .. argN = out;
 ```
 
