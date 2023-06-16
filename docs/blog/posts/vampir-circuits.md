@@ -60,8 +60,8 @@ The exact details of the hashing algorithm are not essential here. What matters 
 
 The Juvix `main` function is compiled to a VampIR `main` function which is then used in an equation which connects the inputs (arguments of `main`) to the ouput of `main`. For example, for the program above the generated equation is:
 
-```juvix
-main x y = 1
+```
+main x y = 1;
 ```
 
 stating that `main x y` equals `true`. The variables `x`, `y` are VampIR's private inputs.
@@ -78,8 +78,8 @@ where `ArgTyK` and `ResTy` are `Nat`, `Int` or `Bool`. Since VampIR natively sup
 
 If the result type `ResTy` is a boolean (`Bool`), then the generated VampIR file will contain the equation
 
-```juvix
-main arg1 .. argN = 1
+```
+main arg1 .. argN = 1;
 ```
 
 where `arg1`, .., `argN` are the names of inputs to the `main` function. By default, these are inferred from the variable names in the first clause of `main`, e.g., compiling
@@ -92,9 +92,9 @@ main x y := x == y;
 will generate VampIR code similar to
 
 ```
-def main x y := equals x y;
+def main x y = equals x y;
 
-main x y = 1
+main x y = 1;
 ```
 
 The VampIR input variable names can also be explicitly specified with the `argnames` pragma, e.g., compiling
@@ -108,15 +108,15 @@ main x y := x == y;
 will generate VampIR code similar to
 
 ```
-def main x y := equals x y;
+def main x y = equals x y;
 
-main a b = 1
+main a b = 1;
 ```
 
 If the result type `ResTy` is `Nat` or `Int`, then the generated equation is
 
 ```
-main arg1 .. argN = out
+main arg1 .. argN = out;
 ```
 
 Currently, all VampIR inputs (`argK`, `out`) are private and it is not possible to change the name of `out`. These technical limitation will be lifted in future Juvix versions.
@@ -180,7 +180,7 @@ power : Nat → Nat → Nat;
 power := power' 1;
 ```
 
-With the reformulated definition, Juvix-to-VampIR compilation succeeds and it is possible to generate a ZK proof that 2^30 is indeed 1073741824.
+With the reformulated definition, Juvix-to-VampIR compilation succeeds and it is possible to generate a ZK proof that 2^30 is indeed equal to 1073741824.
 
 [vampir-book]: https://anoma.github.io/VampIR-Book/
 [normal-form]: https://en.wikipedia.org/wiki/Beta_normal_form
