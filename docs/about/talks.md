@@ -8,5 +8,10 @@ applications.
 
 Gain valuable insights and inspiration from our presentations at various conferences.
 
-- ["Juvix"](https://youtu.be/T8jkl7_BMAY) _@Privacy Evolution 22_ by **Paul Cadman**
-- ["Juvix: Towards a Functional Programming Language for Decentralized Applications and Beyond"](https://youtu.be/YAOFCQTAhUI) _@ETHPrague2023_ by **Veronika Romashkina**
+## 2023
+
+- Veronika Romashkina (2023, July 10). **Juvix: Towards a Functional Programming Language for Decentralized Applications and Beyond** [Video]. Retrieved from YouTube. [Link to the video](https://youtu.be/YAOFCQTAhUI)
+
+## 2022
+
+- Paul Cadman (2022, July 20). **Juvix** [Video]. Retrieved from YouTube. [Link to the video](https://youtu.be/T8jkl7_BMAY)

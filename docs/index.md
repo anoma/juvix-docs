@@ -47,14 +47,12 @@ section](./overview.md).
 
     [:octicons-arrow-right-24: Read the book](./explanations/README.md) -->
 
--  :fontawesome-solid-book-open:{ .lg .middle } __Talks and Workshops__
+-  :fontawesome-solid-video:{ .lg .middle } __Talks and Workshops__
 
     ---
 
     A collection of talks and workshop videos showcasing Juvix. Gain valuable
     insights and inspiration from our presentations at various conferences.
-
-    core principles, and demonstrating real-world examples of Juvix applications
 
     [:octicons-arrow-right-24: Juvix videos](./about/talks.md)
 
