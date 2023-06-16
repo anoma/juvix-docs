@@ -15,9 +15,9 @@ links:
 
 # Compiling Juvix programs to arithmetic circuits via Vamp-IR
 
-Since version 0.3.5, the Juvix compiler supports the `vampir` target which generates [Vamp-IR][vampir-book] input files that can be compiled to various proof systems based on arithmetic circuits, like Plonk or Halo 2. Vamp-IR is a proof-system-agnostic language for writing arithmetic circuits used as an itermediate representation by Juvix.
+Since version 0.3.5, the Juvix compiler supports the `vampir` target which generates [Vamp-IR][vampir-book] input files that can be compiled to various proof systems based on arithmetic circuits, like Plonk or Halo 2. Vamp-IR is a proof-system-agnostic language for writing arithmetic circuits used as an intermediate representation by Juvix.
 
-In this post, I will not be discussing the details of Vamp-IR or the circuit computation model, beyond what is necessary to understand how to compile Juvix programs to circuits. Instead, I will describe how high-level functional Juvix programs can be compiled to circuits, what the common pitfalls and current limitations are. The reader is assumed to have at least basic familiarity with [Vamp-IR][vampir-book].
+In this post, I will not be discussing the details of Vamp-IR or the circuit computation model. Instead, I will describe how high-level functional Juvix programs can be compiled to circuits, what the common pitfalls and current limitations are. The reader is assumed to have at least basic familiarity with [Vamp-IR][vampir-book].
 
 ## A simple circuit program
 
@@ -54,7 +54,7 @@ To compile this file to Vamp-IR type
 juvix compile -t vampir MidSquareHash.juvix
 ```
 
-This should generate the `MidSquareHash.pir` file with the Vamp-IR code.
+This should generate the `MidSquareHash.pir` file containing the Vamp-IR code.
 
 The exact details of the hashing algorithm are not essential here. What matters is that Juvix can compile this ordinary high-level program, which uses recursion, pattern-matching, etc., into low-level Vamp-IR representation. The user does not need to understand arithmetic circuits or Vamp-IR beyond the basics.
 
@@ -66,7 +66,7 @@ main x y = 1;
 
 stating that `main x y` equals `true`. The variables `x`, `y` are Vamp-IR's private inputs.
 
-## Controlling generated equations in the Vamp-IR code
+## Controlling generated equations
 
 In principle, any Juvix program can be compiled to a circuit, subject to certain restrictions. When targeting Vamp-IR, the `main` function must have the type
 
@@ -92,7 +92,7 @@ main x y := x == y;
 will generate Vamp-IR code similar to
 
 ```
-def main x y = equals x y;
+def main x y = equal x y;
 
 main x y = 1;
 ```
@@ -108,7 +108,7 @@ main x y := x == y;
 will generate Vamp-IR code similar to
 
 ```
-def main x y = equals x y;
+def main x y = equal x y;
 
 main a b = 1;
 ```
@@ -134,9 +134,9 @@ would limit the recusion depth (i.e. the number of possible nested recursive cal
 
 If the recursion unrolling depth is too small, i.e. smaller than the actual number of nested recursive calls, then the computation result may be incorrect. On the other hand, the circuit size grows with the unrolling depth, so it's advised to keep it as small as possible.
 
-## The compilation method - normalization
+## Compilation by normalization
 
-Currently, the Juvix compiler uses a straightforward method to translate Juvix programs to Vamp-IR code: it simply computes the full [normal form](normal-form) of the `main` function. Because of the restrictions we imposed on its type, the normal form of the `main` function must be an applicative expression built up from variables, constants and arithmetic and boolean operations. Such an expression can be directly translated to the Vamp-IR input format.
+Currently, the Juvix compiler uses a straightforward method to translate Juvix programs to Vamp-IR code: it simply computes the full [normal form][normal-form] of the `main` function. Because of the restrictions we imposed on its type, the normal form of the `main` function must be an applicative expression built up from variables, constants and arithmetic and boolean operations. Such an expression can be directly translated to the Vamp-IR input format.
 
 The disadvantage of performing full normalization is that it may super-exponentially blow up the size of the program. As explained below, this applies in particular to branching recursive functions with at least two recursive calls.
 
