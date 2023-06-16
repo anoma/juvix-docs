@@ -39,13 +39,24 @@ section](./overview.md).
 
     [:octicons-arrow-right-24: Learn Juvix in 5 minutes](./tutorials/learn)
 
--  :fontawesome-solid-book-open:{ .lg .middle } __Explanations__
+<!-- -  :fontawesome-solid-book-open:{ .lg .middle } __Explanations__
 
     ---
 
     A series dedicated to delivering more in-depth technical explanations of Juvix.
 
-    [:octicons-arrow-right-24: Read the book](./explanations/README.md)
+    [:octicons-arrow-right-24: Read the book](./explanations/README.md) -->
+
+-  :fontawesome-solid-book-open:{ .lg .middle } __Talks and Workshops__
+
+    ---
+
+    A collection of talks and workshop videos showcasing Juvix. Gain valuable
+    insights and inspiration from our presentations at various conferences.
+
+    core principles, and demonstrating real-world examples of Juvix applications
+
+    [:octicons-arrow-right-24: Juvix videos](./about/talks.md)
 
 -   :fontawesome-solid-lines-leaning:{ .lg .middle } __Reference__
 
