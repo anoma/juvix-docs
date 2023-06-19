@@ -15,9 +15,11 @@ links:
 
 # Compiling Juvix programs to arithmetic circuits via Vamp-IR
 
-Since version 0.3.5, the Juvix compiler supports the `vampir` target which generates [Vamp-IR][vampir-book] input files that can be compiled to various proof systems based on arithmetic circuits, like Plonk or Halo 2. Vamp-IR is a proof-system-agnostic language for writing arithmetic circuits used as an intermediate representation by Juvix.
+Since version 0.3.5, the Juvix compiler supports the `vampir` target which generates [Vamp-IR][vampir-book] input files that can be compiled to various proof systems based on arithmetic circuits, like Plonk or Halo 2. Vamp-IR is a proof-system-agnostic language for writing arithmetic circuits.
 
 In this post, I will not be discussing the details of Vamp-IR or the circuit computation model. Instead, I will describe how high-level functional Juvix programs can be compiled to circuits, what the common pitfalls and current limitations are. The reader is assumed to have at least basic familiarity with [Vamp-IR][vampir-book].
+
+<!-- more -->
 
 ## A simple circuit program
 
