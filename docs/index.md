@@ -73,6 +73,7 @@ section](./overview.md).
     with helpful examples and more. And, don't forget to join us on [Discord].
 
     [:octicons-arrow-right-24: Blog](./blog)
+
     [:octicons-arrow-right-24: Join us](./about/community.md)
 
 -   :material-scale-balance:{ .lg .middle } __Open Source, GPL3.0__
