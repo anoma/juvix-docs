@@ -379,7 +379,8 @@ module Exercise-solutions;
     --8<-- [start:List-concatMany-iter]
     concatMany-iter : {A : Type} -> List (List A) -> List A;
     concatMany-iter m :=
-      rfor (acc := nil) (l in m) concat l acc;
+      rfor (acc := nil) (l in m)
+        concat l acc;
   --8<-- [end:List-concatMany-iter]
 
   end;
