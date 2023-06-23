@@ -3773,7 +3773,8 @@ would happen if you used <code>for</code> instead of <code>rfor</code>?</p>
 <summary>Solution</summary>
 <pre class="highlight"><code class="language-juvix">    concatMany-iter : {A : Type} -&gt; List (List A) -&gt; List A;
     concatMany-iter m :=
-      rfor (acc := nil) (l in m) concat l acc;</code></pre>
+      rfor (acc := nil) (l in m)
+        concat l acc;</code></pre>
 </details>
 <p>In the previous solution, if you replace <code>rfor</code> by <code>for</code>, the resulting list
 will be as if the original list was reversed, but each of the nested lists keep
