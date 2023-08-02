@@ -28,7 +28,7 @@
         <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../feed_rss_updated.xml">
       
       <link rel="icon" href="../assets/images/favicon/favicon.ico">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16+insiders-4.36.0">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21+insiders-4.38.1">
     
     
       
@@ -36,7 +36,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.cac7c1ad.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.3a36e643.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ecc776e4.min.css">
@@ -637,6 +637,17 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#v042-2023-07-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.4.2 (2023-07-25)
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#v041-2023-06-23" class="md-nav__link">
@@ -2588,6 +2599,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#v042-2023-07-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.4.2 (2023-07-25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v041-2023-06-23" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2884,6 +2906,34 @@
 <p><a href="https://github.com/anoma/juvix" target="_blank" rel="noopener">
 <img align="right" width="300" height="300" alt="Juvix Mascot" src="../assets/images/tara-smiling.svg" />
 </a></p>
+<h2 id="v042-2023-07-25"><a href="https://github.com/anoma/juvix/tree/v0.4.2" target="_blank" rel="noopener">v0.4.2</a> (2023-07-25)<a class="headerlink" href="#v042-2023-07-25" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/anoma/juvix/compare/v0.4.1...v0.4.2" target="_blank" rel="noopener">Full Changelog</a></p>
+<p><strong>Implemented enhancements:</strong></p>
+<ul>
+<li>Fold lets when the bound variable occurs at most once <a href="https://github.com/anoma/juvix/pull/2231" target="_blank" rel="noopener">#2231</a> (<a href="https://github.com/lukaszcz" target="_blank" rel="noopener">lukaszcz</a>)</li>
+<li>Case folding <a href="https://github.com/anoma/juvix/pull/2229" target="_blank" rel="noopener">#2229</a> (<a href="https://github.com/lukaszcz" target="_blank" rel="noopener">lukaszcz</a>)</li>
+<li>Specialization optimisation <a href="https://github.com/anoma/juvix/pull/2164" target="_blank" rel="noopener">#2164</a> (<a href="https://github.com/lukaszcz" target="_blank" rel="noopener">lukaszcz</a>)</li>
+</ul>
+<p><strong>Merged pull requests:</strong></p>
+<ul>
+<li>Refactor deriving statements in <code>Concrete.Language</code> <a href="https://github.com/anoma/juvix/pull/2256" target="_blank" rel="noopener">#2256</a> (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
+<li>Rename inductive constructor <a href="https://github.com/anoma/juvix/pull/2255" target="_blank" rel="noopener">#2255</a> (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
+<li>Add record declaration syntax <a href="https://github.com/anoma/juvix/pull/2254" target="_blank" rel="noopener">#2254</a> (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
+<li>Typcheck imports before statements <a href="https://github.com/anoma/juvix/pull/2253" target="_blank" rel="noopener">#2253</a> (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
+<li>Named arguments <a href="https://github.com/anoma/juvix/pull/2250" target="_blank" rel="noopener">#2250</a> (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
+<li>Format juvix files using new function syntax <a href="https://github.com/anoma/juvix/pull/2245" target="_blank" rel="noopener">#2245</a> (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
+<li>Update to GEB version 0.3.2 <a href="https://github.com/anoma/juvix/pull/2244" target="_blank" rel="noopener">#2244</a> (<a href="https://github.com/lukaszcz" target="_blank" rel="noopener">lukaszcz</a>)</li>
+<li>New syntax for function definitions <a href="https://github.com/anoma/juvix/pull/2243" target="_blank" rel="noopener">#2243</a> (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
+<li>Parse many consecutive <code>-</code> as a comment <a href="https://github.com/anoma/juvix/pull/2240" target="_blank" rel="noopener">#2240</a> (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
+<li>Add syntax for builtin list <a href="https://github.com/anoma/juvix/pull/2239" target="_blank" rel="noopener">#2239</a> (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
+<li>Fix bug in aritychecker <a href="https://github.com/anoma/juvix/pull/2238" target="_blank" rel="noopener">#2238</a> (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
+<li>Local pragmas improvements <a href="https://github.com/anoma/juvix/pull/2236" target="_blank" rel="noopener">#2236</a> (<a href="https://github.com/lukaszcz" target="_blank" rel="noopener">lukaszcz</a>)</li>
+<li>Fix bug in <code>computeTypeInfo</code> <a href="https://github.com/anoma/juvix/pull/2234" target="_blank" rel="noopener">#2234</a> (<a href="https://github.com/lukaszcz" target="_blank" rel="noopener">lukaszcz</a>)</li>
+<li>Numeric range types <a href="https://github.com/anoma/juvix/pull/2232" target="_blank" rel="noopener">#2232</a> (<a href="https://github.com/lukaszcz" target="_blank" rel="noopener">lukaszcz</a>)</li>
+<li>Use specialization pragmas in the standard library <a href="https://github.com/anoma/juvix/pull/2230" target="_blank" rel="noopener">#2230</a> (<a href="https://github.com/lukaszcz" target="_blank" rel="noopener">lukaszcz</a>)</li>
+<li>Fix de Bruijn indices in LetRecs <a href="https://github.com/anoma/juvix/pull/2227" target="_blank" rel="noopener">#2227</a> (<a href="https://github.com/lukaszcz" target="_blank" rel="noopener">lukaszcz</a>)</li>
+<li>Remove abstract <a href="https://github.com/anoma/juvix/pull/2219" target="_blank" rel="noopener">#2219</a> (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
+</ul>
 <h2 id="v041-2023-06-23"><a href="https://github.com/anoma/juvix/tree/v0.4.1" target="_blank" rel="noopener">v0.4.1</a> (2023-06-23)<a class="headerlink" href="#v041-2023-06-23" title="Permanent link">&para;</a></h2>
 <p><a href="https://github.com/anoma/juvix/compare/v0.4.0...v0.4.1" target="_blank" rel="noopener">Full Changelog</a></p>
 <p><strong>Implemented enhancements:</strong></p>
@@ -3000,7 +3050,7 @@
 <li>Fix Makefile target bugs for formatting and type Checking Juvix files <a href="https://github.com/anoma/juvix/pull/2057" target="_blank" rel="noopener">#2057</a> (<a href="https://github.com/jonaprieto" target="_blank" rel="noopener">jonaprieto</a>)</li>
 <li>Fix a bug in the positivity checker <span class="arithmatex">\(\#1943\)</span> <a href="https://github.com/anoma/juvix/pull/2054" target="_blank" rel="noopener">#2054</a> (<a href="https://github.com/jonaprieto" target="_blank" rel="noopener">jonaprieto</a>)</li>
 <li>Arity check types and functions <span class="arithmatex">\(-\&gt;\)</span> <a href="https://github.com/anoma/juvix/pull/2049" target="_blank" rel="noopener">#2049</a> (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
-<li>Fix ordering of statements in Abstract -> Internal <a href="https://github.com/anoma/juvix/pull/2040" target="_blank" rel="noopener">#2040</a> (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
+<li>Fix ordering of statements in Abstract -&gt; Internal <a href="https://github.com/anoma/juvix/pull/2040" target="_blank" rel="noopener">#2040</a> (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
 </ul>
 <h2 id="v033-2023-05-08"><a href="https://github.com/anoma/juvix/tree/v0.3.3" target="_blank" rel="noopener">v0.3.3</a> (2023-05-08)<a class="headerlink" href="#v033-2023-05-08" title="Permanent link">&para;</a></h2>
 <p><a href="https://github.com/anoma/juvix/compare/v0.3.2...v0.3.3" target="_blank" rel="noopener">Full Changelog</a></p>
@@ -3437,7 +3487,7 @@
 <li>Documentation: how to compile Juvix programs
   <a href="https://github.com/anoma/juvix/pull/1813" target="_blank" rel="noopener">#1813</a>
   (<a href="https://github.com/lukaszcz" target="_blank" rel="noopener">lukaszcz</a>)</li>
-<li>Make '>>' lazy <a href="https://github.com/anoma/juvix/pull/1812" target="_blank" rel="noopener">#1812</a>
+<li>Make '&gt;&gt;' lazy <a href="https://github.com/anoma/juvix/pull/1812" target="_blank" rel="noopener">#1812</a>
   (<a href="https://github.com/lukaszcz" target="_blank" rel="noopener">lukaszcz</a>)</li>
 <li>Output proper GEB Lisp programs
   <a href="https://github.com/anoma/juvix/pull/1810" target="_blank" rel="noopener">#1810</a>
@@ -3952,7 +4002,7 @@
 </ul>
 <p><strong>Merged pull requests:</strong></p>
 <ul>
-<li>Replace -> by := in lambda syntax
+<li>Replace -&gt; by := in lambda syntax
   <a href="https://github.com/anoma/juvix/pull/1533" target="_blank" rel="noopener">#1533</a>
   (<a href="https://github.com/janmasrovira" target="_blank" rel="noopener">janmasrovira</a>)</li>
 <li>'Match' with complex patterns in Core
@@ -4736,7 +4786,7 @@ and will not be fixed.</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.path", "navigation.footer", "search.highlight", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.7001d404.min.js"></script>
+      <script src="../assets/javascripts/bundle.7c5c0157.min.js"></script>
       
         
           <script src="../js/timeago.min.js"></script>
