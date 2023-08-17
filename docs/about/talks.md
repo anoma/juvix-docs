@@ -10,7 +10,7 @@ Gain valuable insights and inspiration from our presentations at various confere
 
 ## 2023
 
-- Veronika Romashkina (2023, July 10). **Juvix: Towards a Functional Programming Language for Decentralized Applications and Beyond** [Video]. Retrieved from YouTube. [Link to the video](https://youtu.be/YAOFCQTAhUI)
+- Veronika Romashkina (2023, July 10). **Juvix: Towards a Functional Programming Language for Decentralized Applications and Beyond** [Video]. Retrieved from YouTube. [Link to the video](https://youtu.be/nk6aDtzhLYY)
 
 ## 2022
 
