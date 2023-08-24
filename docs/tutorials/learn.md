@@ -148,16 +148,36 @@ example, the `not` function is defined in the standard library by:
 --8<------ "docs/tutorials/learn.juvix:BoolNot"
 ```
 
-The first line is the _signature_ which specifies the type of the
-definition. In this case, `not` is a function from `Bool` to `Bool`. The
-signature is followed by two _function clauses_ which specify the
-function result depending on the shape of the arguments. When a function
-call is evaluated, the first clause that matches the arguments is used.
+The type of the definition is specified after the colon. In this case,
+`not` is a function from `Bool` to `Bool`. The type is followed by two
+_function clauses_ which specify the function result depending on the
+shape of the arguments. When a function call is evaluated, the first
+clause that matches the arguments is used.
 
 In contrast to languages like Python, Java or C/C++, Juvix doesn't
 require parentheses for function calls. All the arguments are just
 listed after the function. The general pattern for function application
 is: `func arg1 arg2 arg3 ...`
+
+Initial arguments that are the same in all clauses can be moved to the
+left of the colon. For example,
+
+```juvix
+--8<------ "docs/tutorials/learn.juvix:BoolOr"
+```
+
+is equivalent to
+
+```juvix
+--8<------ "docs/tutorials/learn.juvix:BoolOr2"
+```
+
+If there is only one clause and all arguments are to the left of the
+colon, the pipe `|` should be omitted:
+
+```juvix
+--8<------ "docs/tutorials/learn.juvix:BoolId"
+```
 
 A more complex example of a data type is the `Nat` type from the
 standard library:
@@ -185,6 +205,17 @@ Any element of `Nat` can be built with the constructors in this way –
 there are no other elements. Mathematically, this is an inductive
 definition, which is why the data type is called _inductive_.
 
+Constructors can either by specified by listing their types after
+colons like in the above definition of `Nat`, or with a shorter _ADT
+syntax_ like in the definition of `Bool`. The ADT syntax is similar to
+data type definition syntax in functional languages like Haskell or
+OCaml: one lists the types of constructor arguments separated by
+spaces. In this syntax, the `Nat` type could be defined by
+
+```juvix
+--8<------ "docs/tutorials/learn.juvix:NatAdt"
+```
+
 If implemented directly, the above unary representation of natural
 numbers would be extremely inefficient. The Juvix compiler uses a binary
 number representation under the hood and implements arithmetic
@@ -201,10 +232,11 @@ constructors:
 --8<------ "docs/tutorials/learn.juvix:NatAdd"
 ```
 
-The `syntax infixl 6 +` declares `+` to be an infix left-associative operator
-with priority 6. The `+` is an ordinary function, except that function
-application for `+` is written in infix notation. The definitions of the
-clauses of `+` still need the prefix notation on the left-hand sides.
+The `syntax operator + additive` declares `+` to be an operator with
+the `additive` fixity. The `+` is an ordinary function, except that
+function application for `+` is written in infix notation. The
+definitions of the clauses of `+` still need the prefix notation on
+the left-hand sides.
 
 The `a` and `b` in the patterns on the left-hand sides of the clauses
 are _variables_ which match arbitrary values of the corresponding type.
@@ -462,11 +494,11 @@ polymorphic definition of lists from the standard library:
 --8<------ "docs/tutorials/learn.juvix:List"
 ```
 
-The constructor `::` is declared as a right-associative infix operator
-with priority 5. The definition has a parameter `A` which is the
-element type. Then `List Ty` is the type of lists with elements of
-type `Ty`. For example, `List Nat` is the type of lists of natural
-numbers, isomorphic to the type `NList` defined above.
+The constructor `::` is declared as a right-associative infix
+operator. The definition has a parameter `A` which is the element
+type. Then `List Ty` is the type of lists with elements of type
+`Ty`. For example, `List Nat` is the type of lists of natural numbers,
+isomorphic to the type `NList` defined above.
 
 Now one can define the `map` function polymorphically:
 
@@ -613,6 +645,9 @@ among them `for` and `rfor`. We can implement the `sum` function using
 --8<------ "docs/tutorials/learn.juvix:sum-for"
 ```
 
+The braces around the body (in `{x + acc}`) are optional. A
+recommended style is to use braces if the body is on the same line.
+
 The above `for` iteration starts with the accumulator `acc` equal to
 `0` and goes through the list `l` from left to right (from beginning
 to end), at each step updating the accumulator to `x + acc` where `x`
@@ -635,7 +670,7 @@ standard library can also be used with the iterator syntax. The
 expression
 
 ```juvix
-map (x in l) body
+map (x in l) {body}
 ```
 
 is equivalent to
@@ -722,7 +757,7 @@ Then the user needs to explicitly check if the result of the function contains a
 value or not:
 
 ```juvix
-case tail' lst
+case (tail' lst)
 | just x := ...
 | nothing := ...
 ```
@@ -759,7 +794,7 @@ Now, define the logical function `not` by using pattern matching.
 
 !!! tip
 
-    The type signature should look like this:
+    The type of your function should be:
 
     ```juvix
         not : Bool -> Bool;
@@ -814,7 +849,7 @@ It would be useful to have a type that represents optional values of any type.
 In Juivx, we can define the polymorphic version of `NMaybe` like this:
 
 ```juvix
-type Maybe (A : Type) :=
+type Maybe A :=
   | nothing : Maybe A
   | just : A → Maybe A;
 ```
@@ -822,12 +857,11 @@ type Maybe (A : Type) :=
 In this definition, we parameterize the type `Maybe` with a generic type `A`.
 
 Implement again the `fromMaybe` function, but now, for the polymorphic `Maybe`
-type. Note that in type signatures we must bind type variables. We usually do
-that by introducing an implicit argument of type `Type`. The signature of
-`fromMaybe` should be:
+type. Note that in function definitions we must specify the type variables. The definition of
+`fromMaybe` begin with:
 
 ```juvix
-fromMaybe : {A : Type} -> A -> Maybe A -> A;
+fromMaybe {A} (d : A) : Maybe A -> A
 ```
 
 Give the implementation.
@@ -840,14 +874,14 @@ Give the implementation.
 
 Neat! It is indeed very easy to define polymorphic functions in Juvix.
 
-To get some more practice, give an implementation for `maybe`:
+To get some more practice, give an implementation for `maybe` which begins with:
 
 ```juvix
-maybe : {A B : Type} -> B -> (A -> B) -> Maybe A -> B
+maybe {A B} (d : B) (f : A -> B) : Maybe A -> B
 ```
 
-This should return the value (if present) applied to the given function.
-Otherwise it should return the default value.
+This should return the value (if present) applied to the function `f`.
+Otherwise it should return the default value `d`.
 
 ??? info "Solution"
 
@@ -860,18 +894,20 @@ Otherwise it should return the default value.
 We can define polymorphic lists as follows:
 
 ```juvix
-syntax infixr 5 ::;
-type List (a : Type) :=
-  | nil : List a
-  | :: : a → List a → List a;
+import Stdlib.Data.Fixity open;
+
+syntax operator :: cons;
+type List A :=
+  | nil : List A
+  | :: : A -> List A -> List A;
 ```
 
-Lets define a function that returns the first element of a `List` if it exists.
+Let's define a function that returns the first element of a `List` if it exists.
 
-Do you think the following type signature is appropriate? If not, why?
+Do you beginning the definition as follows is appropriate? If not, why?
 
 ```juvix
-head : {A : Type} -> List A -> A;
+head {A} : List A -> A
 ```
 
 Try to give an implementation for it.
@@ -884,9 +920,9 @@ Try to give an implementation for it.
     The proper definition of `head` should be:
 
     ```juvix
-    head : {A : Type} -> List A -> Maybe A;
-    head nil := nothing;
-    head (h :: _) := just h;
+    head {A} : List A -> Maybe A
+      | nil := nothing
+      | (h :: _) := just h;
     ```
 
 So far we have defined only functions that do not involve looping, but any
@@ -901,7 +937,7 @@ list. This function will need to call itself until it reaches the last element
 of the list.
 
 ```juvix
-last : {A : Type} -> List A -> Maybe A;
+last {A} : List A -> Maybe A;
 ```
 
 ??? info "Solution"
@@ -913,7 +949,7 @@ last : {A : Type} -> List A -> Maybe A;
 Next, implement a function that concatenates two lists:
 
 ```juvix
-  concat : {A : Type} -> List A -> List A -> List A;
+  concat {A} : List A -> List A -> List A
 ```
 
 !!! tip
@@ -929,7 +965,7 @@ Next, implement a function that concatenates two lists:
 Now write a function that concatenates a list of lists.
 
 ```juvix
-  concatMany : {A : Type} -> List (List A) -> List A;
+  concatMany {A} : List (List A) -> List A
 ```
 
 !!! tip
@@ -976,21 +1012,18 @@ Write a function that reverses a list:
 
 #### Function composition
 
-Let's try a different exercise. Consider the following function clause, which
-defines function composition.
+Let's try a different exercise. Define a function `compose` that
+composes two functions `f` and `g`. It should take three arguments
+`f`, `g`, `x` and its only clause's body should be `f (g x)`.
 
-```
-compose f g x := f (g x);
-```
-
-Can you give the most general type signature for it?
+Can you make the `compose` function polymorphic and as general as possible?
 
 ??? hint
 
-    The type signature should start like this:
+    The definition should start like this:
 
     ```juvix
-        compose : {A B C : Type} -> ...
+        compose {A B C} ...
     ```
 
 ??? info "Solution"
@@ -1024,8 +1057,7 @@ natural number is prime.
 Does Juvix accept the following definition?
 
 ```juvix
-half : Nat -> Nat;
-half n := if (n < 2) 0 (half (sub n 2) + 1);
+half : Nat -> Nat := if (n < 2) 0 (half (sub n 2) + 1);
 ```
 
 How can you reformulate this definition so that it is accepted by
@@ -1110,7 +1142,7 @@ number.
 Define a function
 
 ```juvix
-comp : {A : Type} -> List (A -> A) -> A -> A
+comp {A} : List (A -> A) -> A -> A
 ```
 
 which composes all functions in a list. For example,
@@ -1130,9 +1162,8 @@ should be a function which given `x` computes `2(x - 1) + 1`.
     where `∘` is a composition function from the standard library:
 
     ```juvix
-    syntax infixr 9 ∘;
-    ∘ : {A B C : Type} -> (B -> C) -> (A -> B) -> A -> C;
-    ∘ f g x := f (g x);
+    syntax operator ∘ composition;
+    ∘ {A B C} (f : B -> C) (g : A -> B) (x : A) : C := f (g x);
     ```
 
     The `∘` can be typed in Emacs or VSCode with `\o`.
