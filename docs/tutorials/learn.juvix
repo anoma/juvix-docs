@@ -41,7 +41,7 @@ module Bool-functions-2;
   or' : Bool -> Bool -> Bool
     | _ true := true
     | x _ := x;
---8<-- [end:BoolOr2]
+  --8<-- [end:BoolOr2]
 
   --8<-- [start:BoolId]
   id (x : Bool) : Bool := x;
@@ -53,7 +53,7 @@ module Nat-adt;
   type Nat :=
     | zero
     | suc Nat;
-  --8<-- [end:NatAdt]
+--8<-- [end:NatAdt]
 end;
 
 module Nat-example;
@@ -288,7 +288,8 @@ module totality-example;
 
   --8<-- [start:log2-terminating]
   terminating
-  log2 (n : Nat) : Nat := if (n <= 1) 0 (suc (log2 (div n 2)));
+  log2 (n : Nat) : Nat :=
+    if (n <= 1) 0 (suc (log2 (div n 2)));
   --8<-- [end:log2-terminating]
 
   -- TODO: open issue about this
@@ -376,7 +377,8 @@ module Exercise-solutions;
 
   module SolComposition;
     --8<-- [start:compose]
-    compose {A B C} (f : B -> C) (g : A -> B) (x : A) : C := f (g x);
+    compose {A B C} (f : B -> C) (g : A -> B) (x : A) : C :=
+      f (g x);
   --8<-- [end:compose]
   end;
 
@@ -485,7 +487,7 @@ module Exercise-solutions;
     in go 1;
   --8<-- [end:SolFact]
 
---8<-- [start:Composition]
+  --8<-- [start:Composition]
   import Stdlib.Data.Fixity open;
 
   syntax operator ∘ composition;
