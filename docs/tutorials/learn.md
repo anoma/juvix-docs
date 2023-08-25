@@ -159,8 +159,8 @@ require parentheses for function calls. All the arguments are just
 listed after the function. The general pattern for function application
 is: `func arg1 arg2 arg3 ...`
 
-Initial arguments that are the same in all clauses can be moved to the
-left of the colon. For example,
+Initial arguments that are matched against variables or wildcards in
+all clauses can be moved to the left of the colon. For example,
 
 ```juvix
 --8<------ "docs/tutorials/learn.juvix:BoolOr"
