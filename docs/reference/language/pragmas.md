@@ -26,15 +26,12 @@ Pragmas associated with a module are inherited by all definitions in the module,
 ```juvix
 {-# inline: true #-}
 module M;
-  f : Nat -> Nat;
-  f := ..;
+  f : Nat -> Nat := ..;
 
-  g : Nat -> Nat;
-  g := ..;
+  g : Nat -> Nat := ..;
 
   {-# inline: false #-}
-  h : Nat -> Nat;
-  h := ..;
+  h : Nat -> Nat := ..;
 end;
 ```
 
@@ -61,8 +58,7 @@ We list all currently recognized pragmas. Below `b` denotes a boolean (`true` or
 
   ```juvix
   {-# inline: 2 #-}
-  compose : {A B C : Type} -> (B -> C) -> (A -> B) -> A -> C;
-  compose f g x := f (g x);
+  compose {A B C} (f : B -> C) (g : A -> B) (x : A) : C := f (g x);
   ```
 
   in the expression `compose f g` the function `compose` will be inlined, but in `compose f` it won't be.

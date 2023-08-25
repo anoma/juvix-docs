@@ -4,16 +4,36 @@ module example-multiply-by-two;
   --8<-- [start:multiplyByTwo]
   import Stdlib.Data.Nat open using {Nat; *};
 
-  multiplyByTwo : Nat -> Nat;
-  multiplyByTwo n := 2 * n;
+  multiplyByTwo : Nat -> Nat
+    | n := 2 * n;
 --8<-- [end:multiplyByTwo]
+end;
+
+module move-to-left;
+  --8<-- [start:moveToLeft]
+  import Stdlib.Data.Nat open;
+
+  add (n : Nat) : Nat -> Nat
+    | zero := n
+    | (suc m) := suc (add n m);
+--8<-- [end:moveToLeft]
+end;
+
+module example-add;
+  --8<-- [start:add]
+  import Stdlib.Data.Nat open;
+
+  add : Nat -> Nat -> Nat
+    | n zero := n
+    | n (suc m) := suc (add n m);
+--8<-- [end:add]
 end;
 
 module short-definitons;
   --8<-- [start:shortDefinitions]
   import Stdlib.Data.Nat open;
 
-  multiplyByTwo : Nat -> Nat := \ {n := 2 * n};
+  multiplyByTwo (n : Nat) : Nat := n;
 --8<-- [end:shortDefinitions]
 end;
 
@@ -21,9 +41,9 @@ module example-negate-boolean;
   --8<-- [start:negateBoolean]
   import Stdlib.Data.Bool open;
 
-  neg : Bool -> Bool;
-  neg true := false;
-  neg false := true;
+  neg : Bool -> Bool
+    | true := false
+    | false := true;
 --8<-- [end:negateBoolean]
 end;
 
@@ -34,15 +54,13 @@ module mutually-recursive;
 
   import Stdlib.Prelude open;
 
-  odd : Nat -> Bool;
+  odd : Nat -> Bool
+    | zero := false
+    | (suc n) := even n;
 
-  even : Nat -> Bool;
-
-    odd zero := false;
-  odd (suc n) := even n;
-
-    even zero := true;
-  even (suc n) := odd n;
+  even : Nat -> Bool
+    | zero := true
+    | (suc n) := odd n;
 --8<-- [end:mutuallyRecursive]
 end;
 
@@ -50,17 +68,13 @@ module anonymous-functions;
   --8<-- [start:anonymousFunctions]
   import Stdlib.Prelude open;
 
-  odd : Nat -> Bool;
-
-  even : Nat -> Bool;
-
-    odd :=
+  odd : Nat -> Bool :=
     \ {
       | zero := false
       | (suc n) := even n
     };
 
-    even :=
+  even : Nat -> Bool :=
     \ {
       | zero := true
       | (suc n) := odd n

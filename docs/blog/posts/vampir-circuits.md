@@ -32,22 +32,21 @@ import Stdlib.Prelude open;
 import Stdlib.Data.Nat.Ord open;
 
 --- `pow N` is 2 ^ N
-pow : Nat -> Nat;
-pow zero := 1;
-pow (suc n) := 2 * pow n;
+pow : Nat -> Nat
+  | zero := 1
+  | (suc n) := 2 * pow n;
 
 --- `hash N` hashes a number with max N bits (i.e. smaller than 2^N) into 6 bits
 --- (i.e. smaller than 64) using the mid-square algorithm.
-hash : Nat -> Nat -> Nat;
-hash (suc n@(suc (suc m))) x :=
-  if
-    (x < pow n)
-    (hash n x)
-    (mod (div (x * x) (pow m)) (pow 6));
-hash _ x := x * x;
+hash : Nat -> Nat -> Nat
+  | (suc n@(suc (suc m))) x :=
+    if
+      (x < pow n)
+      (hash n x)
+      (mod (div (x * x) (pow m)) (pow 6));
+  | _ x := x * x;
 
-main : Nat -> Nat -> Bool;
-main x y := hash 16 x == y;
+main (x y : Nat) : Bool := hash 16 x == y;
 ```
 
 To compile this file to Vamp-IR type
@@ -87,8 +86,7 @@ main arg1 .. argN = 1;
 where `arg1`, .., `argN` are the names of inputs to the `main` function. By default, these are inferred from the variable names in the first clause of `main`, e.g., compiling
 
 ```juvix
-main : Nat -> Nat -> Bool;
-main x y := x == y;
+main (x y : Nat) : Bool := x == y;
 ```
 
 will generate Vamp-IR code similar to
@@ -103,8 +101,7 @@ The Vamp-IR input variable names can also be explicitly specified with the `argn
 
 ```juvix
 {-# argnames: [a, b] #-}
-main : Nat -> Nat -> Bool;
-main x y := x == y;
+main (x y : Nat) : Bool := x == y;
 ```
 
 will generate Vamp-IR code similar to
@@ -151,8 +148,7 @@ For example, trying to compile the fast power function
 ```juvix
 {-# unroll: 30 #-}
 terminating
-power' : Nat → Nat → Nat → Nat;
-power' acc a b :=
+power' (acc a b : Nat) : Nat :=
   if
     (b == 0)
     acc
@@ -161,8 +157,7 @@ power' acc a b :=
       (power' acc (a * a) (div b 2))
       (power' (acc * a) (a * a) (div b 2)));
 
-power : Nat → Nat → Nat;
-power := power' 1;
+power : Nat → Nat → Nat := power' 1;
 ```
 
 makes the Juvix compiler hang. The pragma `unroll: 30` doesn't help, because 2^30 = 1073741824 is still a large number - this is the factor by which the program size increases during compilation.
@@ -172,14 +167,12 @@ However, the fast power function may be reformulated to use only one recusive ca
 ```juvix
 {-# unroll: 30 #-}
 terminating
-power' : Nat → Nat → Nat → Nat;
-power' acc a b :=
+power' (acc a b : Nat) : Nat :=
   let
     acc' : Nat := if (mod b 2 == 0) acc (acc * a);
   in if (b == 0) acc (power' acc' (a * a) (div b 2));
 
-power : Nat → Nat → Nat;
-power := power' 1;
+power : Nat → Nat → Nat := power' 1;
 ```
 
 With the reformulated definition, the program size increases only by a factor of 30. Now compiling to Vamp-IR succeeds and it is possible to generate a ZK proof that e.g. 2^30 is indeed equal to 1073741824.

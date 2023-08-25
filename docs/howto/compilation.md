@@ -16,10 +16,9 @@ module `Hello`:
 module Hello;
 
 -- Import the standard library prelude, including the 'String' type
-open import Stdlib.Prelude;
+import Stdlib.Prelude open;
 
-main : String;
-main := "Hello world!";
+main : String := "Hello world!";
 ```
 
 A file compiled to an executable must define the zero-argument function
@@ -108,8 +107,7 @@ variables for which VampIR solicits witnesses during proof generation.
 For example, compiling
 
 ```juvix
-main : Nat -> Nat -> Bool;
-main x y := x + y > 0;
+main (x y : Nat) : Bool := x + y > 0;
 ```
 
 generates the equation
@@ -123,8 +121,7 @@ specified with the `argnames` pragma. For example, compiling
 
 ```juvix
 {-# argnames: [a, b] #-}
-main : Nat -> Nat -> Bool;
-main x y := x + y > 0;
+main (x y : Nat) : Bool := x + y > 0;
 ```
 
 generates the equation
