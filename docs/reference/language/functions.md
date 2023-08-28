@@ -5,7 +5,7 @@ comments: true
 
 # Function declarations
 
-A function declaration consists of a type signature followed a group
+A function declaration consists of a type signature followed by a group
 of _function clauses_.
 
 In the following example, we define a function `multiplyByTwo`.
