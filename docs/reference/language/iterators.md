@@ -22,10 +22,10 @@ where `n` and `k` specify the number of _initializers_ (of the form `acc := a`) 
 An application of an iterator `iter` has the general form
 
 ```juvix
-iter (acc1 := a1; ..; accn := an) (x1 in xs1; ..; xk in xsk) body
+iter (acc1 := a1; ..; accn := an) (x1 in xs1; ..; xk in xsk) {body}
 ```
 
-where `acci`, `xi` are patterns, `ai`, `xsi` are expressions, and `body` is an expression which can refer to the variables bound by the `acci`, `xi`.
+where `acci`, `xi` are patterns, `ai`, `xsi` are expressions, and `body` is an expression which can refer to the variables bound by the `acci`, `xi`. The braces around `body` are optional.
 
 The iterator application syntax is equivalent to
 

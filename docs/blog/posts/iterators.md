@@ -67,8 +67,10 @@ correspond to list folds:
 Iterator application has the syntax:
 
 ```juvix
-for (acc := a) (x in xs) body
+for (acc := a) (x in xs) {body}
 ```
+
+The braces around `body` are optional.
 
 The above `for` iteration starts with the accumulator `acc` equal to `a` and
 goes through the list `xs` from left to right (from beginning to end), at each
@@ -81,31 +83,31 @@ For example, the following code computes the sum of all numbers in the list
 `xs`:
 
 ```juvix
-for (acc := 0) (x in xs) x + acc
+for (acc := 0) (x in xs) {x + acc}
 ```
 
 Product of all numbers in a list:
 
 ```juvix
-for (acc := 1) (x in xs) x * acc
+for (acc := 1) (x in xs) {x * acc}
 ```
 
 Reversing a list:
 
 ```juvix
-for (acc := nil) (x in xs) x :: acc
+for (acc := nil) (x in xs) {x :: acc}
 ```
 
 Counting odd numbers in a list:
 
 ```juvix
-for (acc := 0) (x in xs) if (mod x 2 == 0) acc (acc + 1)
+for (acc := 0) (x in xs) {if (mod x 2 == 0) acc (acc + 1)}
 ```
 
 Sum of squares of positive numbers in a list:
 
 ```juvix
-for (acc := 0) (x in xs) if (x > 0) (acc + x * x) acc
+for (acc := 0) (x in xs) {if (x > 0) (acc + x * x) acc}
 ```
 
 The `for` iterator is complemented by the `rfor` iterator which goes through the
@@ -114,7 +116,7 @@ list from right to left (from end to beginning).
 For example, the following code concatenates all lists from a list of lists:
 
 ```juvix
-rfor (acc := nil) (x in xs) x ++ acc
+rfor (acc := nil) (x in xs) {x ++ acc}
 ```
 
 If we used the `for` iterator above, the order of concatenations would be
@@ -123,13 +125,13 @@ reversed.
 Applying a function `f` to each element in a list may be implemented with:
 
 ```juvix
-rfor (acc := nil) (x in xs) f x :: acc
+rfor (acc := nil) (x in xs) {f x :: acc}
 ```
 
 Filtering a list with a predicate `p`:
 
 ```juvix
-rfor (acc := nil) (x in xs) if (p x) (x :: acc) acc
+rfor (acc := nil) (x in xs) {if (p x) (x :: acc) acc}
 ```
 
 The above keeps only the elements that satisfy `p`. The order of the elements
@@ -146,13 +148,13 @@ case, there are no explicit accumulators in the notation.
 The expression
 
 ```juvix
-map (x in xs) body
+map (x in xs) {body}
 ```
 
 is equivalent to (assuming `acc` doesn't occur in `body`)
 
 ```juvix
-rfor (acc := nil) (x in xs) body :: acc
+rfor (acc := nil) (x in xs) {(body) :: acc}
 ```
 
 or if you're familiar with the standard `map` function:
@@ -174,9 +176,9 @@ which check whether `all`, resp. `any`, elements `x` in a list satisfy `body`
 (which would of course refer to `x`):
 
 ```juvix
-all (x in xs) body
+all (x in xs) {body}
 
-any (x in xs) body
+any (x in xs) {body}
 ```
 
 ## Multiple accumulators
@@ -189,7 +191,7 @@ For example, to compute the largest and the second-largest element of a list of
 non-negative numbers one can use:
 
 ```juvix
-for (n, n' := 0, 0) (x in lst) if (x >= n) (x, n) (if (x > n') (n, x) (n, n'))
+for (n, n' := 0, 0) (x in lst) {if (x >= n) (x, n) (if (x > n') (n, x) (n, n'))}
 ```
 
 where `n` is the largest and `n'` the second-largest element found so far.
@@ -199,7 +201,7 @@ following computes the dot product of the lists `xs`, `ys` (assuming they have
 equal lengths):
 
 ```juvix
-for (acc := 0) (x, y in zip xs ys) x * y + acc
+for (acc := 0) (x, y in zip xs ys) {x * y + acc}
 ```
 
 The `zip` function creates a list of pairs of elements in the two lists, e.g.,
@@ -219,7 +221,7 @@ syntax iterator func;
 Then any iterator application of the form
 
 ```juvix
-func (acc1 := a1; ..; accn := an) (x1 in xs1; ..; xk in xsk) body
+func (acc1 := a1; ..; accn := an) (x1 in xs1; ..; xk in xsk) {body}
 ```
 
 is automatically replaced by

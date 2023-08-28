@@ -46,8 +46,7 @@ end;
 -- B.juvix
 module B;
     import A;
-    x : A.Nat;
-    x := A.zero;
+    x : A.Nat := A.zero;
 ```
 
 Additionally, one can <u>open</u> an imported module making available
@@ -64,8 +63,7 @@ end;
 module B;
     import A;
     open A;
-    x : Nat;
-    x := zero;
+    x : Nat := zero;
 ```
 
 However, opening modules may create name collisions if you already have
@@ -85,8 +83,7 @@ module B;
 import A;
 open A;
 axiom a : A;
-
-x := a;
+x : A := a;
 end;
 ```
 
@@ -99,7 +96,7 @@ import A;
 open A hiding {a};
 
 axiom a : A;
-x := a;
+x : A := a;
 
 end;
 ```
@@ -127,7 +124,7 @@ The `hiding` keyword can be used within an `open-import` statement.
 module A;
 open import A hiding {a};
 axiom a : A;
-x := a;
+x : A := a;
 end;
 ```
 
@@ -157,8 +154,7 @@ end;
 module C;
 open import B;
 
-x : A;
-x := a;
+x : A := a;
 end;
 ```
 

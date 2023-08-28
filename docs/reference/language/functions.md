@@ -5,8 +5,8 @@ comments: true
 
 # Function declarations
 
-A function declaration consists of a type signature and a group of
-_function clauses_.
+A function declaration consists of a type signature followed by a group
+of _function clauses_.
 
 In the following example, we define a function `multiplyByTwo`.
 
@@ -14,8 +14,9 @@ In the following example, we define a function `multiplyByTwo`.
 --8<------ "docs/reference/language/functions.juvix:multiplyByTwo"
 ```
 
-The first line `multiplyByTwo : Nat -> Nat;` is the type signature and the
-second line `multiplyByTwo n := 2 * n;` is a function clause.
+The first line `multiplyByTwo : Nat -> Nat` is the type signature and the
+second line `| n := 2 * n;` is a function clause.
+
 
 ## Pattern matching
 
@@ -32,6 +33,29 @@ The following function has two clauses:
 When `neg` is called with `true`, the first clause is used and the function
 returns `false`. Similarly, when `neg` is called with `false`, the second clause
 is used and the function returns `true`.
+
+## Short definitions
+
+Initial function arguments that are matched against variables or
+wildcards in all clauses can be moved to the left of the colon in the
+function definition. For example,
+
+```juvix
+--8<-- "docs/reference/language/functions.juvix:moveToLeft"
+```
+
+is equivalent to
+
+
+```juvix
+--8<-- "docs/reference/language/functions.juvix:add"
+```
+
+If there is only one clause with no patterns, then the pipe `|` must be omitted:
+
+```juvix
+--8<-- "docs/reference/language/functions.juvix:shortDefinitions"
+```
 
 ## Mutually recursive functions
 
@@ -62,13 +86,4 @@ functions:
 
 ```juvix
 --8<-- "docs/reference/language/functions.juvix:anonymousFunctions"
-```
-
-## Short definitions
-
-A function definition can be written in one line, with the body
-immediately following the signature:
-
-```juvix
---8<-- "docs/reference/language/functions.juvix:shortDefinitions"
 ```

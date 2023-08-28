@@ -1,5 +1,7 @@
 module builtins;
 
+import Stdlib.Data.Fixity open;
+
 --8<-- [start:builtin-nat]
 builtin nat
 type Nat :=
@@ -8,15 +10,15 @@ type Nat :=
 --8<-- [end:builtin-nat]
 
 --8<-- [start:builtin-nat-plus]
-syntax infixl 6 +;
+syntax operator + additive;
 builtin nat-plus
-+ : Nat → Nat → Nat;
-+ zero b := b;
-+ (suc a) b := suc (a + b);
++ : Nat → Nat → Nat
+  | zero b := b
+  | (suc a) b := suc (a + b);
 --8<-- [end:builtin-nat-plus]
 
 module example-print-nat;
-  
+
   builtin IO
   axiom IO : Type;
 
