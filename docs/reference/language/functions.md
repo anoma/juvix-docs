@@ -51,7 +51,7 @@ is equivalent to
 --8<-- "docs/reference/language/functions.juvix:add"
 ```
 
-It there is only one clause with no patterns, then the pipe `|` must be omitted:
+If there is only one clause with no patterns, then the pipe `|` must be omitted:
 
 ```juvix
 --8<-- "docs/reference/language/functions.juvix:shortDefinitions"
