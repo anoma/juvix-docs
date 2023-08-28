@@ -85,6 +85,7 @@ juvix-sources:
 		git fetch --all && \
 		if [ "${DEV}" = true ]; then \
 			git checkout main > /dev/null 2>&1; \
+			git pull origin main --rebase; \
 		else \
 			git checkout v${VERSION} > /dev/null 2>&1; \
 		fi;
@@ -99,15 +100,12 @@ juvix-bin:
 	@$(if $(CHECKJUVIX) , \
 		, echo "[!] Juvix is not installed. Please install it and try again. Try make install-juvix")
 
-# The numeric version of the Juvix compiler must match the
-# version of the documentation specified in the VERSION file.
+# Juvix compiler's numeric version should match VERSION file's documented one.
 checkout-juvix: juvix-sources juvix-bin
-	@if [ "${DEV}" != true ]; then \
-		if [ "${JUVIXBINVERSION}" != "${VERSION}" ]; then \
-			echo "[!] Juvix version ${JUVIXBINVERSION} does not match the documentation version $(VERSION)."; \
-			exit 1; \
-		fi; \
-	fi
+	if [ "${JUVIXBINVERSION}" != "${VERSION}" ]; then \
+		echo "[!] Juvix version ${JUVIXBINVERSION} does not match the documentation version $(VERSION)."; \
+		exit 1; \
+	fi;
 
 # ----------------------------------------------------------------------------
 # -- Examples and other sources from the Juvix Compiler repo
@@ -190,10 +188,10 @@ dev: pre-build
 	mike delete ${DEVALIAS} ${MIKEFLAGS} > /dev/null 2>&1 || true
 	VERSION=${DEVALIAS} ${MAKE} mike
 
-# Call this with `DEV=true make release` if you want to use
+# Call this with `DEV=true make latest` if you want to use
 # the latest overview/change log from the main branch.
-.PHONY: release
-release: pre-build
+.PHONY: latest
+latest: pre-build
 	mike delete ${VERSION} ${MIKEFLAGS} > /dev/null 2>&1 || true
 	${MAKE} mike
 	mike alias ${VERSION} latest -u --no-redirect ${MIKEFLAGS}
