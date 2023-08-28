@@ -17,7 +17,6 @@ In the following example, we define a function `multiplyByTwo`.
 The first line `multiplyByTwo : Nat -> Nat` is the type signature and the
 second line `| n := 2 * n;` is a function clause.
 
-
 ## Pattern matching
 
 A function may have more than one function clause. When a function is
@@ -45,7 +44,6 @@ function definition. For example,
 ```
 
 is equivalent to
-
 
 ```juvix
 --8<-- "docs/reference/language/functions.juvix:add"

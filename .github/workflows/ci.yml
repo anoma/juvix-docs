@@ -5,17 +5,19 @@ name: Juvix Docs CI
       build-type:
         type: choice
         description: "Docs build type"
-        default: "release"
+        default: "dev"
         options:
           - "dev"
           - "release"
-      ref:
-        description: the repository ref to build
-        required: true
-        default: main
+      skip:
+        description: Skipped build tasks (comma-separated) e.g., check-format-juvix-files, typecheck-juvix-files
+        default: ""
+        required: false
+
   push:
     branches:
       - main
+
   pull_request:
     branches:
       - main
@@ -32,6 +34,7 @@ concurrency:
 env:
   GIT_COMMITTER_NAME: juvix-docs-ci
   GIT_COMMITTER_EMAIL: juvix@heliax.dev
+  SKIP: ${{ github.event.inputs.skip }}
 
 jobs:
   build-and-deploy:
@@ -42,13 +45,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install the latest Juvix compiler
+      - id: juvix-version
+        run: |
+          cat VERSION
+
+      - name: Install the corresponding Juvix compiler
         uses: jaxxstorm/action-install-gh-release@v1.10.0
         with:
-          repo: anoma/juvix
-          tag: latest
+          repo: jonaprieto/juvix
+          tag: v${{ steps.juvix-version.outputs.stdout }}
           chmod: 0755
-      - name: Check Juvix version
+
+      - name: See the exact version of the Juvix compiler installed
         run: |
           juvix --version
 
@@ -78,7 +86,7 @@ jobs:
         run: |
           make pre-build
 
-      - name: Test building without material-insides
+      - name: Test building without material-insiders
         run: |
           MKDOCSCONFIG=mkdocs.yml make docs
 
@@ -99,6 +107,6 @@ jobs:
         if: >-
           github.ref == 'refs/heads/main'
         run: |
-          MKDOCSCONFIG=mkdocs.insiders.yml make ${{ github.event.inputs.build-type }}
+          MKDOCSCONFIG=mkdocs.insiders.yml JUVIXBINVERSION=${{ steps.juvix-version.outputs.stdout }} make ${{ github.event.inputs.build-type }}
         env:
           RUN_GITHUB_ACTION: ${{ secrets.RUN_GITHUB_ACTION }}
