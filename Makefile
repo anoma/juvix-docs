@@ -102,9 +102,11 @@ juvix-bin:
 
 # Juvix compiler's numeric version should match VERSION file's documented one.
 checkout-juvix: juvix-sources juvix-bin
-	if [ "${JUVIXBINVERSION}" != "${VERSION}" ]; then \
+	@if [ "${JUVIXBINVERSION}" != "${VERSION}" ]; then \
 		echo "[!] Juvix version ${JUVIXBINVERSION} does not match the documentation version $(VERSION)."; \
 		exit 1; \
+	else \
+		echo "All good: using Juvix version ${JUVIXBINVERSION}"; \
 	fi;
 
 # ----------------------------------------------------------------------------
