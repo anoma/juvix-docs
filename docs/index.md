@@ -6,7 +6,9 @@ description: Juvix is a high-level programming language for writing privacy-pres
 
 # Welcome to the Juvix documentation!
 
-![Tara](assets/images/tara-smiling.svg){align=right width="300"}
+<div style="text-align:center">
+  <img src="assets/images/tara-smiling.svg" width="250" />
+</div>
 
 Juvix is an open-source, ever-evolving functional language for creating
 privacy-focused decentralized apps. It allows developers to write high-level
