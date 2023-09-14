@@ -62,7 +62,7 @@ theme:
 
   custom_dir: "docs/overrides"
   font:
-    text: Roboto
+    text: Roboto Slab # Noto Sans
     code: Roboto Mono
 
   favicon: assets/images/favicon/favicon.ico
@@ -152,11 +152,11 @@ nav:
           - notes/lsp.md
           - notes/runtime-benchmark-results.md
 
-  - Explanations:
-      - About: ./explanations/README.md
+  # - Explanations:
+      # - About: ./explanations/README.md
       # - Type theory: ./explanations/typetheory.md
-      - Totality checking:
-          - Termination: ./explanations/totality/termination.md
+      # - Totality checking:
+      #     - Termination: ./explanations/totality/termination.md
         # - Strictly positive data types: ./explanations/totality/positive.md
         # - Coverage checking: ./explanations/totality/coverage.md
 

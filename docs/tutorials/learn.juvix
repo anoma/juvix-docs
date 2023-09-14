@@ -417,10 +417,11 @@ module Exercise-solutions;
         | zero := true
         | (suc zero) := true
         | n@(suc k) := if (mod x k == 0) false (go k);
-    in case x
+    in case x of {
       | zero := false
       | suc zero := false
-      | suc k := go k;
+      | suc k := go k
+    };
   --8<-- [end:SolPrime]
 
   --8<-- [start:SolHalf]
