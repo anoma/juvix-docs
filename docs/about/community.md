@@ -1,3 +1,8 @@
+---
+icon: octicons/comment-discussion-16
+comments: true
+---
+
 # Juvix community
 
 Join us on our [Discord server](https://discord.gg/jwzaMZ2Sct)

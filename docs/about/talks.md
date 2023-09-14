@@ -1,3 +1,7 @@
+---
+icon: material/presentation-play
+---
+
 # Talks and workshops
 
 On this page you will find a collection of our talks and workshop videos showcasing Juvix.

@@ -25,10 +25,11 @@ extra_css:
   - https://cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.css
 
 theme:
+  language: en
   name: material
   palette:
     # Palette toggle for light mode
-    - scheme: default
+    - scheme: slate
       primary: deep orange
       accent: orange
       toggle:
@@ -36,7 +37,7 @@ theme:
         name: Switch to dark mode
 
     # Palette toggle for dark mode
-    - scheme: slate
+    - scheme: default
       primary: deep orange
       accent: deep orange
       toggle:
@@ -62,8 +63,8 @@ theme:
 
   custom_dir: "docs/overrides"
   font:
-    text: Roboto Slab # Noto Sans
-    code: Roboto Mono
+    text: Incosolata
+    code: JetBrains Mono
 
   favicon: assets/images/favicon/favicon.ico
   logo: assets/logo-juvix.svg
@@ -106,12 +107,15 @@ plugins:
   - tags
   - mkdocstrings
 
-nav:
-  - Juvix:
-      - About: ./index.md
-      - Overview: ./overview.md
-      - Changelog: ./CHANGELOG.md
-      - Contributing: ./CONTRIBUTING.md
+nav: 
+  - ./index.md
+  - About:
+      - Overview: ./about/overview.md
+      - Changelog: ./docs/changelog.md
+      - Contributing: ./about/contributing.md
+      - Team: ./about/team.md
+      - License: ./about/license.md 
+
   - Blog:
       - blog/index.md
 

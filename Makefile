@@ -15,10 +15,7 @@ COMPILERSOURCES?=juvix-src
 
 MAKEAUXFLAGS?=-s
 MAKE=make ${MAKEAUXFLAGS}
-METAFILES:= README.md \
-		   CHANGELOG.md \
-		   CONTRIBUTING.md \
-		   LICENSE.md
+METAFILES:= CHANGELOG.md 
 
 PORT?=8000
 MKDOCSCONFIG?=mkdocs.yml
@@ -122,7 +119,6 @@ juvix-metafiles: juvix-sources
 			cat - ${COMPILERSOURCES}/$$file > temp  \
 			&& mv temp docs/$$file; \
 	done
-	@mv docs/README.md docs/overview.md
 
 
 .PHONY: html-examples
