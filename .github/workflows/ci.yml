@@ -63,7 +63,7 @@ jobs:
         if: github.event_name != 'workflow_dispatch' || ( github.event_name != 'workflow_dispatch' || github.event.inputs.build-type == 'dev')
         with:
           repo: anoma/juvix
-          tag: v"${{ steps.juvix-version.outputs.number }}"
+          tag: v${{ steps.juvix-version.outputs.number }}
 
       - name: See the exact version of the Juvix compiler installed
         run: |
