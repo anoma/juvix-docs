@@ -42,6 +42,38 @@ For example, here is a function adding two natural numbers:
 --8<------ "docs/reference/language/datatypes.juvix:addNat"
 ```
 
+# ADT syntax
+
+As an alternative to the above syntax, we can use a more familiar and compact
+syntax for declaring data types. This syntax is inspired by ADT syntax in Haskell.
+
+```juvix
+type <name> <type-parameters> := 
+  | <constructor1> <arg1-1> ... <arg1-n> 
+  | ... 
+  | <constructorN> <argn-1> ... <argn-n>;
+```
+
+Different from the previous presentation, here the constructors do not have
+typing information. Instead, the typing information is inferred from the
+presentation. If a type constructor as above has no arguments, then its type is
+the type of the data type being declared. In the case the type constructor has
+arguments, then its type is the function type from the types of the arguments to
+the type of the data type being declared.
+
+For example, the `Nat` type can be declared as follows:
+
+```juvix
+type Nat := Z | S Nat;
+```
+
+Another example is the `List` type, which is polymorphic in the type of its
+elements.
+
+```juvix
+type List A := Nil | Cons A (List A);
+```
+
 ## Polymorphic data type
 
 A data type can possess type parameters. When a data type has a type parameter
@@ -62,3 +94,7 @@ The following function determines whether an element is in a list or not.
 
 For more examples of inductive types and how to use them, see [the Juvix
 standard library](https://anoma.github.io/juvix-stdlib/).
+
+<!-- TODO projections  -->
+
+<!-- import Stdlib.Prelude open hiding {Show;mkShow;module Show}; -->
