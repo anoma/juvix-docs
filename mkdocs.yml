@@ -111,13 +111,13 @@ plugins:
   - tags
   - mkdocstrings
 
-nav: 
+nav:
   - ./index.md
   - About:
       - Overview: ./about/overview.md
       - Changelog: ./CHANGELOG.md
       - Team: ./about/team.md
-      - License: ./about/license.md 
+      - License: ./about/license.md
 
   - Blog:
       - blog/index.md
@@ -131,6 +131,7 @@ nav:
   - How-to guides:
       - Installing Juvix: ./howto/installing.md
       - Compiling programs: ./howto/compilation.md
+      - Setting up a project: ./howto/project.md
       - Contributing: ./howto/contributing.md
     # - Judoc documentation tool: ./howto/judoc.md
 
@@ -149,10 +150,10 @@ nav:
           - Pragmas: ./reference/language/pragmas.md
           - Axioms: ./reference/language/axioms.md
           - Syntax extensions:
-            - Aliases: ./reference/language/aliases.md
-            - Iterators: ./reference/language/iterators.md
-            - Fixity declarations: ./reference/language/fixity.md
-            - Operators: ./reference/language/operators.md
+              - Aliases: ./reference/language/aliases.md
+              - Iterators: ./reference/language/iterators.md
+              - Fixities: ./reference/language/fixity.md
+              - Operators: ./reference/language/operators.md
 
       - Standard library: ./reference/stdlib.md
       - Example programs: ./reference/examples.md
@@ -168,12 +169,12 @@ nav:
           - notes/runtime-benchmark-results.md
 
   # - Explanations:
-      # - About: ./explanations/README.md
-      # - Type theory: ./explanations/typetheory.md
-      # - Totality checking:
-      #     - Termination: ./explanations/totality/termination.md
-        # - Strictly positive data types: ./explanations/totality/positive.md
-        # - Coverage checking: ./explanations/totality/coverage.md
+  # - About: ./explanations/README.md
+  # - Type theory: ./explanations/typetheory.md
+  # - Totality checking:
+  #     - Termination: ./explanations/totality/termination.md
+  # - Strictly positive data types: ./explanations/totality/positive.md
+  # - Coverage checking: ./explanations/totality/coverage.md
 
   - Standard library: https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html#
   - Packages and Projects: ./juvix-packages.md
