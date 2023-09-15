@@ -50,9 +50,9 @@ jobs:
         run: |
 
       - name: Install the corresponding Juvix compiler
-        uses: jaxxstorm/action-install-gh-latest@v1.10.0
+        uses: jaxxstorm/action-install-gh-release@v1.10.0
         with:
-          repo: jonaprieto/juvix
+          repo: anoma/juvix
           tag: v${{ steps.juvix-version.outputs.stdout }}
           chmod: 0755
 
