@@ -113,5 +113,5 @@ caution when executing this command.
 ```bash
 make pre-build
 make pre-commit
-MKDOCSCONFIG=mkdocs.insiders.yml make release
+MKDOCSCONFIG=mkdocs.insiders.yml make latest
 ```

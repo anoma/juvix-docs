@@ -42,7 +42,7 @@ section](./about/overview.md).
     Master the essentials of Juvix through a series of
     tailored examples, tutorials and technical explanations.
 
-    [:octicons-arrow-right-24: Learn Juvix in 5 minutes](./tutorials/learn)
+    [:octicons-arrow-right-24: Learn Juvix in 5 minutes](./tutorials/learn.md)
 
 <!-- -  :fontawesome-solid-book-open:{ .lg .middle } __Explanations__
 
@@ -77,7 +77,7 @@ section](./about/overview.md).
     Check out our blog to discover new features in the upcoming release, along
     with helpful examples and more. And, don't forget to join us on [Discord].
 
-    [:octicons-arrow-right-24: Blog](./blog)
+    [:octicons-arrow-right-24: Blog](./blog/index.md)
 
     [:octicons-arrow-right-24: Join us](./about/community.md)
 
