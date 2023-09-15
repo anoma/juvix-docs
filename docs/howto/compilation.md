@@ -3,128 +3,110 @@ icon: octicons/terminal-16
 comments: true
 ---
 
-# Compiling simple programs
+# Program Compilation
 
-## Hello world example
+## Example: Hello World
 
-A Juvix file must declare a module whose name corresponds exactly to the
-name of the file. For example, a file `Hello.juvix` must declare a
-module `Hello`:
+A Juvix file must declare a module with the same name as the file. For instance, `Hello.juvix` should declare a module `Hello`:
 
 ```juvix
--- Hello world example. This is a comment.
+-- This is a comment.
 module Hello;
 
--- Import the standard library prelude, including the 'String' type
+-- Importing the 'String' type from standard library prelude
 import Stdlib.Prelude open;
 
 main : String := "Hello world!";
 ```
 
-A file compiled to an executable must define the zero-argument function
-`main` which is evaluated when running the program.
+The zero-argument function `main` is evaluated when running the program and must be defined in a file compiled to an executable.
 
-To compile the file `Hello.juvix` type
+To compile `Hello.juvix`, type:
 
 ```shell
 juvix compile Hello.juvix
 ```
 
-Typing
+For all options of the `compile` command, type:
 
 ```shell
 juvix compile --help
 ```
 
-will list all options to the `compile` command.
+## Compilation Targets
 
-## Compilation targets
-
-Juvix supports several compilation targets. The targets are specified
-with the `-t` option:
+Juvix supports several targets specified with the `-t` option:
 
 ```shell
 juvix compile -t TARGET file.juvix
 ```
 
-As a target, you can choose one of the following:
+Targets include:
 
-1.  `native`. This is the default. Produces a native 64bit executable
-    for your machine.
-2.  `wasm32-wasi`. Produces a WebAssembly binary which uses the WASI
-    runtime.
-3.  `vampir`. Produces a [VampIR](https://github.com/anoma/vamp-ir) input file.
-4.  `geb`. Produces a [GEB](https://anoma.github.io/geb/) input file.
-5.  `core`. Produces `.jvc` file.
-6.  `asm`. Produces `.jva` file.
+1.  `native`: Default target producing a native 64bit executable.
+2.  `wasm32-wasi`: Produces a WebAssembly binary using the WASI runtime.
+3.  `vampir`: Creates a [VampIR](https://github.com/anoma/vamp-ir) input file.
+4.  `geb`: Generates a [GEB](https://anoma.github.io/geb/) input file.
+5.  `core`: Produces `.jvc` file.
+6.  `asm`: Produces `.jva` file.
 
-## Compilation options
+## Compilation Options
 
-To see all compilation options type `juvix compile --help`. The most
-commonly used options are:
+To view all compilation options, type `juvix compile --help`. Commonly used options include:
 
-- `-t TARGET`: specify the target,
-- `-g`: generate debug information and runtime assertions,
-- `-O LEVEL`: set optimization level (default: 1, or 0 with `-g`).
-- `-o FILE`: specify the output file.
+- `-t TARGET`: Target specification.
+- `-g`: Debug information and runtime assertions generation.
+- `-O LEVEL`: Optimization level setting (default: 1, or 0 with `-g`).
+- `-o FILE`: Output file specification.
 
-## Juvix projects
+## Juvix Projects
 
-A <u>Juvix project</u> is a collection of Juvix modules inside one main
-project directory containing a `juvix.yaml` metadata file. The name of
-each module must coincide with the path of the file it is defined in,
-relative to the project's root directory. For example, if the file is
-`root/Data/List.juvix` then the module must be called `Data.List`,
-assuming `root` is the project's directory.
+A Juvix project is a collection of Juvix modules in one main directory containing a `juvix.yaml` metadata file. Each module's name must match its file path, relative to the project's root directory. For instance, if the file is `root/Data/List.juvix`, the module should be called `Data.List`.
 
-To interactively initialize a Juvix project in the current directory,
-use `juvix init`.
+To initialize a Juvix project interactively in the current directory, use `juvix init`.
 
-To check that Juvix is correctly detecting your project's root, you can
-run the command `juvix dev root File.juvix`.
+To verify correct project root detection by Juvix, run `juvix dev root File.juvix`.
 
-See also: [Modules Reference](../reference/language/modules.md).
+Refer to: [Modules Reference](../reference/language/modules.md).
 
-## Compiling to the VampIR backend
+## Compiling to VampIR Backend
 
-For the [VampIR](https://github.com/anoma/vamp-ir) backend, the `main` function must have type
+For the [VampIR](https://github.com/anoma/vamp-ir) backend, the `main` function must have type:
 
 ```text
 Ty1 -> ... -> Tyn -> TyR
 ```
 
-where `Tyi`,`TyR` are `Nat`, `Int` or `Bool`. The compiler adds an equation to the generated VampIR file which states the relationship between the input and the output of the `main` function:
+Here, `Tyi`,`TyR` are `Nat`, `Int` or `Bool`. The compiler adds an equation to the generated VampIR file that states the relationship between the input and output of the `main` function:
 
 ```text
 main arg1 .. argn = out
 ```
 
-where `arg1`, ... ,`argn` are the names of the arguments of `main` found in the source code. If the result type is `Bool` (i.e., `main` returns a boolean), then instead of `out` the compiler uses `1` (true).
+Here, `arg1`, ... ,`argn` are the argument names of `main` found in the source code. If `main` returns a boolean (`Bool`), the compiler uses `1` (true) instead of `out`.
 
-The variables `argi`,`out` in the generated file are unbound VampIR
-variables for which VampIR solicits witnesses during proof generation.
+The variables `argi`,`out` in the generated file are unbound VampIR variables for which VampIR solicits witnesses during proof generation.
 
-For example, compiling
+For example:
 
 ```juvix
 main (x y : Nat) : Bool := x + y > 0;
 ```
 
-generates the equation
+Generates the equation:
 
 ```text
 main x y = 1
 ```
 
-The names of the `main` input arguments in the generated VampIR file can also be
-specified with the `argnames` pragma. For example, compiling
+The `main` input argument names in the generated VampIR file can also be specified with the `argnames` pragma:
 
 ```juvix
 {-# argnames: [a, b] #-}
 main (x y : Nat) : Bool := x + y > 0;
 ```
 
-generates the equation
+Generates the equation:
 
 ```text
 main a b = 1

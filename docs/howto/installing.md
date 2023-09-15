@@ -1,6 +1,6 @@
 ---
 icon: material/laptop
-comments: true
+comments: false
 ---
 
 # Installing Juvix
@@ -25,14 +25,14 @@ how to install the dependencies.
 ## Shell script
 
 We provide a shell script that installs the Juvix compiler binary for Linux and macOS
-using the [Github release page](https://github.com/anoma/juvix/releases).
+using the [GitHub release page](https://github.com/anoma/juvix/releases).
 
 Copy and paste the following command into your terminal to install Juvix.
 
 !!! note ""
 
     ```text
-    curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/anoma/juvix-installer/main/juvix-installer.sh | sh
+    curl --proto '=https' --tlsv1.2 -sSfL https://get.juvix.org | sh
     ```
 
 ## MacOS
@@ -83,7 +83,7 @@ mv juvix ~/.local/bin/juvix
 
 ## Building Juvix from source
 
-To install Juvix from source you must clone the [Github
+To install Juvix from source you must clone the [GitHub
 repository](https://github.com/anoma/juvix.git). Then Juvix can be
 installed with the following commands. We assume you have
 [Stack](https://haskellstack.org) and [GNU
@@ -102,9 +102,9 @@ The C compiler and linker paths can be specified as options to the
 make install CC=path/to/clang LIBTOOL=path/to/llvm-ar
 ```
 
-On MacOS, you can alternatively run the following command for Homebrew.
+On macOS, you can alternatively run the following command for Homebrew.
 The flag `--HEAD` used below is optional – use it to build the latest
-version of Juvix in the `main` branch on Github.
+version of Juvix in the `main` branch on GitHub.
 
 ```shell
 brew install --build-from-source --HEAD juvix --verbose
@@ -112,7 +112,7 @@ brew install --build-from-source --HEAD juvix --verbose
 
 ## Building the project with `cabal`
 
-We recommend to use the `stack` build tool with this project.
+We recommend using the `stack` build tool with this project.
 
 If you prefer the `cabal` build tool instead, then you need to generate
 the `juvix.cabal` file using [hpack](https://github.com/sol/hpack)
@@ -154,3 +154,8 @@ curl https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-15/wasi-
 tar xf wasi-sysroot-15.0.tar.gz
 export WASI_SYSROOT_PATH=~/wasi-sysroot
 ```
+
+
+!!! tip "Checking your setup"
+
+    Run `juvix doctor` in your terminal to validate your setup.
