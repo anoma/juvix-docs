@@ -112,10 +112,18 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: deploy documentation
+      - name: Deploy documentation via GitHub (for releases)
         if: >-
-          github.ref == 'refs/heads/main'
+          github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
         run: |
-          MKDOCSCONFIG=mkdocs.insiders.yml JUVIXBINVERSION=${{ steps.juvix-version.outputs.stdout }} make ${{ github.event.inputs.build-type }}
+          MKDOCSCONFIG=mkdocs.insiders.yml make ${{ github.event.inputs.build-type }}
+        env:
+          RUN_GITHUB_ACTION: ${{ secrets.RUN_GITHUB_ACTION }}
+
+      - name: By default, deploy DEV documentation via pushes to main
+        if: >-
+          github.ref == 'refs/heads/main' && github.event_name != 'workflow_dispatch'
+        run: |
+          MKDOCSCONFIG=mkdocs.insiders.yml make dev
         env:
           RUN_GITHUB_ACTION: ${{ secrets.RUN_GITHUB_ACTION }}
