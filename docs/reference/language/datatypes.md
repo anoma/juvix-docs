@@ -48,9 +48,9 @@ As an alternative to the above syntax, we can use a more familiar and compact
 syntax for declaring data types. This syntax is inspired by ADT syntax in Haskell.
 
 ```juvix
-type <name> <type-parameters> := 
-  | <constructor1> <arg1-1> ... <arg1-n> 
-  | ... 
+type <name> <type-parameters> :=
+  | <constructor1> <arg1-1> ... <arg1-n>
+  | ...
   | <constructorN> <argn-1> ... <argn-n>;
 ```
 

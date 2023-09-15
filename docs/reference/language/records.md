@@ -10,8 +10,8 @@ labeled type arguments. These arguments are termed as _fields_ of the associated
 record and consist of a name and type. The field's name is used to access to the
 value linked with the term of the record type.
 
-```text
-type <record name> <type parameters> := 
+```juvix
+type <record name> <type parameters> :=
     | <type-constructor1> {
         <field1-1> : <type1-n>;
         ...
@@ -21,7 +21,7 @@ type <record name> <type parameters> :=
     | <type-constructor-n> {
         <fieldn-1> : <typen-1>;
         ...
-        <fieldn-n> : <typen-n> 
+        <fieldn-n> : <typen-n>
     };
 ```
 

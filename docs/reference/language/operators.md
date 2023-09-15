@@ -20,10 +20,8 @@ are already many commons of these declarations included with the standard
 library. See [common fixities](./fixity.md#examples-of-fixity-declarations) for more
 information.
 
-
 For instance, we can define the `×` operator as a binary operator as follows:
 
 ```juvix
 --8<------ "docs/reference/language/operators.juvix:product"
 ```
-
