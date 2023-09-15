@@ -103,6 +103,15 @@ use the `hiding` keyword thus:
 open Data.List hiding {head; tail};
 ```
 
+Sometimes you might want to open or hide the type constructors of a data type.
+Recall that each data type defines a module containing names linked to its type
+constructors. For example, if you want to hide the type constructors of a data
+type, you must use the `hiding` keyword and module keyword as follows:
+
+```juvix
+import Stdlib.Prelude open hiding {module List};
+```
+
 ### Reexport modules
 
 All opened definitions are available under the current module, but

@@ -3,16 +3,20 @@ icon: material/file-document-multiple-outline
 comments: true
 ---
 
-# Judoc syntax reference
+# Native Documentation Tool
+
+Inspired by [Haddock](https://www.haskell.org/haddock/) and
+[Agda](https://agda.readthedocs.io/en/v2.6.1.1/language/documentation.html),
+Juvix has its own documentation tool called _Judoc_.
 
 Judoc is used to document parts of your code. You can attach _Judoc
 blocks_ to the following entities:
 
-1. A module.
-2. A type definition.
-3. A constructor definition.
-4. A type signature of a function.
-5. An axiom definition.
+- A module.
+- A type definition.
+- A constructor definition.
+- A type signature of a function.
+- An axiom definition.
 
 In order to attach documentation to any of these entities, write _blocks_ of
 documentation before them:
@@ -25,7 +29,7 @@ module Cool;
 ..
 ```
 
-1. For type definitions:
+- For type definitions:
 
 ```juvix
 --- Unary representation of natural numbers
@@ -36,7 +40,7 @@ type Nat : Type :=
     suc : Nat -> Nat;
 ```
 
-1. For type signatures (and likewise for axioms):
+- For type signatures (and likewise for axioms):
 
 ```juvix
 --- The polymorphic identity function
@@ -97,7 +101,7 @@ above will be rendered as
 First line Second line
 ```
 
-##### line
+##### Line
 
 A _line_ starts with `---` and is followed by a non-empty sequence of
 _atoms_.
@@ -121,8 +125,6 @@ For instance, the following are valid _atoms_:
 2. `;Pair Int Bool;`
 
 ### Example
-
-An example is of the following form
 
 ```juvix
 --- >>> someExpression ;

@@ -159,12 +159,12 @@ nav:
       - Example programs: ./reference/examples.md
       # - Benchmarks: ./reference/benchmarks.md
       - Tooling: # ./reference/tooling/README.md
+          - Documentation Tool: ./reference/judoc.md
           - Command line interface: ./reference/tooling/CLI.md
           - Doctor: ./reference/tooling/doctor.md
           - Emacs mode: ./reference/tooling/emacs.md
           - Haskell test suite: ./reference/tooling/testing.md
-      - Judoc reference: ./reference/judoc.md
-      - Misc:
+      - Compiler Dev Reference:
           - notes/lsp.md
           - notes/runtime-benchmark-results.md
 
