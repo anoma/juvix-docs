@@ -3,37 +3,33 @@ icon: material/car-traction-control
 comments: true
 ---
 
-# Control structures
 
-## Case
+# Control Structures
 
-A case expression has the following syntax:
+## Case Expressions
+
+The syntax for a case expression is:
 
 ```juvix
-case value
-| pat1 := branch1
-..
-| patN := branchN
+case <expression> of {
+  | <pat1> := <branch1>
+  ..
+  | <patN> := <branchN>
+  }
 ```
 
-For example, one can evaluate the following expression in the REPL:
+For instance, evaluation of the following expression in the REPL yields `1`:
 
 ```juvix
-Stdlib.Prelude> case 2 | zero := 0 | suc x := x
+Stdlib.Prelude> case 2 of { | zero := 0 | suc x := x }
 1
 ```
 
-## Lazy builtins
+## Lazy Builtins
 
-The standard library provides several builtin functions which are
-treated specially and evaluated lazily. These builtins must always be
-fully applied.
+The standard library offers several lazily evaluated builtin functions. These must be fully applied.
 
-- `if condition branch1 branch2`. First evaluates `condition`, if true
-  evaluates and returns `branch1`, otherwise evaluates and returns
-  `branch2`.
-- `a || b`. Lazy disjunction. First evaluates `a`, if true returns
-  true, otherwise evaluates and returns `b`.
-- `a && b`. Lazy conjunction. First evaluates `a`, if false returns
-  false, otherwise evaluates and returns `b`.
-- `a >> b`. Sequences two IO actions. Lazy in the second argument.
+- `if condition branch1 branch2`: Evaluates `condition` first, returns `branch1` if true, else returns `branch2`.
+- `a || b`: Lazy disjunction. Evaluates `a` first, returns true if true, else evaluates and returns `b`.
+- `a && b`: Lazy conjunction. Evaluates `a` first, returns false if false, else evaluates and returns `b`.
+- `a >> b`: Sequences two IO actions, lazy in the second argument.

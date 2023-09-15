@@ -1,7 +1,10 @@
 ---
 nobuttons: true
-title: Welcome to the Juvix documentation!
+title: Juvix Documentation
 description: Juvix is a high-level programming language for writing privacy-preserving decentralised applications.
+hide:
+  - navigation
+  - toc
 ---
 
 # Welcome to the Juvix documentation!
@@ -17,7 +20,7 @@ execution using [Taiga][taiga] on [Anoma][anoma] or Ethereum.
 
 This documentation covers various topics, including a concise introduction to
 the Juvix ecosystem, which can be found in the [overview
-section](./overview.md).
+section](./about/overview.md).
 
 <div class="grid cards" markdown>
 
@@ -84,7 +87,7 @@ section](./overview.md).
 
     Juvix is licensed under GPL3 and available on [GitHub].
 
-    [:octicons-arrow-right-24: License](./LICENSE.md)
+    [:octicons-arrow-right-24: License](./about/license.md)
 
 </div>
 
