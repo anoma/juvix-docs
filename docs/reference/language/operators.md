@@ -1,6 +1,6 @@
 ---
 icon: material/math-integral
-comments: true
+comments: false
 ---
 
 # Operator Syntax
@@ -15,11 +15,15 @@ declaration has to precede the term declaration.
 syntax operator <name> := <fixity>;
 ```
 
-Here, `<fixity>` is a previously declared [fixity](./fixity.md).
+Where `<fixity>` is a previously declared [fixity](./fixity.md). Note that there
+are already many commons of these declarations included with the standard
+library. See [common fixities](./fixity.md#examples-of-fixity-declarations) for more
+information.
 
-For instance, we can define the `×` operator as a binary operator as
-follows:
+
+For instance, we can define the `×` operator as a binary operator as follows:
 
 ```juvix
 --8<------ "docs/reference/language/operators.juvix:product"
 ```
+

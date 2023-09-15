@@ -1,6 +1,6 @@
 ---
 icon: material/application-parentheses
-comments: true
+comments: false
 ---
 
 # Operator Fixity
@@ -14,6 +14,7 @@ the operator's arity, associativity, and precedence.
 ```juvix
 syntax fixitiy <name> := <arity>;
 ```
+
 Where `<arity>` is either `unary` or `binary`.
 
 This is equivalent to:
@@ -27,42 +28,43 @@ syntax fixitiy <name> := <arity> {};
 ```juvix
 syntax fixitiy <name> := <arity> { assoc := <associativity> };
 ```
+
 Where `<associativity>` is either `left`, `right`, or `none`.
 
 - Precedence declaration of an operator with no associativity:
 
-    - Equal precedence to another operator:
+  - Equal precedence to another operator:
 
-    ```juvix
-    syntax fixitiy <name> := <arity> { same := otherOperatorName };
-    ```
+  ```juvix
+  syntax fixitiy <name> := <arity> { same := otherOperatorName };
+  ```
 
-    - Higher precedence than other operators:
+  - Higher precedence than other operators:
 
-    ```juvix
-    syntax fixitiy <name> := <arity> { 
-        above := [otherOperatorName1;...; otherOperatorNameN] };
-    ```
+  ```juvix
+  syntax fixitiy <name> := <arity> {
+      above := [otherOperatorName1;...; otherOperatorNameN] };
+  ```
 
-    - Lower precedence than other operators:
+  - Lower precedence than other operators:
 
-    ```juvix
-    syntax fixitiy <name> := <arity> { 
-        below := [otherOperatorName1;...; otherOperatorNameN] };
-    ```
+  ```juvix
+  syntax fixitiy <name> := <arity> {
+      below := [otherOperatorName1;...; otherOperatorNameN] };
+  ```
 
 - Associativity and precedence declaration of an operator:
 
 ```juvix
-syntax fixitiy <name> := <arity> { 
-    assoc := <associativity>; 
-    above := [otherOperatorName1;...; otherOperatorNameN] 
+syntax fixitiy <name> := <arity> {
+    assoc := <associativity>;
+    above := [otherOperatorName1;...; otherOperatorNameN]
     };
 ```
 
 ## Examples of Fixity Declarations
 
-Below are a few common fixity declarations for operators 
+Below are a few common fixity declarations for operators
 in Juvix's standard library.
 
 ```juvix

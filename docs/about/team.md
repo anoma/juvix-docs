@@ -8,11 +8,11 @@ icon: octicons/people-16
 
 ## Core team
 
-- Paul Cadman 
+- Paul Cadman
 - Jonathan Cubides
-- Łukasz Czajka 
+- Łukasz Czajka
 - Artem Gureev
-- Jan Mas Rovira 
+- Jan Mas Rovira
 
 ## Anoma contributors
 
@@ -22,4 +22,4 @@ icon: octicons/people-16
 
 ## Past members
 
-- Veronika Romashkina 
+- Veronika Romashkina

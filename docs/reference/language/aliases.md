@@ -21,7 +21,7 @@ Aliases can be forward referenced, permitting their use prior to declaration.
 For instance, we define the alias Boolean for the `Bool` type, and their terms
 `true` and `false` as `⊤` and `⊥` respectively.
 
-```juvix 
+```juvix
 --8<------ "docs/reference/language/aliases.juvix:forward"
 ```
 

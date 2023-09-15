@@ -1,6 +1,6 @@
 ---
 icon: material/function-variant
-comments: true
+comments: false
 ---
 
 # Function declarations

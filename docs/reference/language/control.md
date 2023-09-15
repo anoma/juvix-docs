@@ -1,8 +1,7 @@
 ---
 icon: material/car-traction-control
-comments: true
+comments: false
 ---
-
 
 # Control Structures
 

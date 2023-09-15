@@ -1,6 +1,6 @@
 ---
 icon: material/toy-brick-outline
-comments: true
+comments: false
 ---
 
 # Data types

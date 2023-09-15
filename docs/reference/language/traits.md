@@ -1,6 +1,6 @@
 ---
 icon: material/face-recognition
-comments: true
+comments: false
 ---
 
 # Traits
@@ -9,7 +9,7 @@ comments: true
 
 A trait is a special type of record that can be used to define a set of
 functions that must be implemented for a given type. Traits are declared using
-the `trait` keyword. 
+the `trait` keyword.
 
 ```juvix
 trait
@@ -19,16 +19,16 @@ trait
 Recall a record type declaration is of the form:
 
 ```juvix
-type <name> <type-parameters> := 
-    <constructor> { <field1> : <type1>;
-                    ...
-                    <fieldn> : <typen> };
+type <name> <type-parameters> :=
+    <constructor> {
+       <field1> : <type1>;
+       ...
+       <fieldn> : <typen>
+    };
 ```
-
 
 For example, the following defines a trait `Show`. Any type `A` that implements
 `Show` must provide a function `show` that takes an `A` and returns a `String`.
-
 
 ```juvix
 trait
@@ -38,9 +38,9 @@ type Show A := mkShow { show : A → String };
 ## Defining instances
 
 An instance of a trait refers to a term of the corresponding record type, which
-must implement all methods stipulated by the trait. To declare a given term
-is an instance of a trait, we use the `instance` keyword. To define an instance
-of a trait, we use the trait constructor of the corresponding record type.
+must implement all methods stipulated by the trait. To declare a given term is
+an instance of a trait, we use the `instance` keyword. To define an instance of
+a trait, we use the trait constructor of the corresponding record type.
 
 ```juvix
 instance
@@ -56,11 +56,6 @@ instance
 Using the `Show` trait defined above, we can define a function `showNat` that
 takes a `Nat` and returns a `String`. One possible implementation is the
 following:
-
-```juvix
-
-```
-
 
 ```juvix
 --8<------ "docs/reference/language/traits.juvix:usage"

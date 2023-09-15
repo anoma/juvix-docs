@@ -155,7 +155,6 @@ tar xf wasi-sysroot-15.0.tar.gz
 export WASI_SYSROOT_PATH=~/wasi-sysroot
 ```
 
-
 !!! tip "Checking your setup"
 
     Run `juvix doctor` in your terminal to validate your setup.

@@ -1,6 +1,6 @@
 ---
 icon: material/office-building-plus-outline
-comments: true
+comments: false
 ---
 
 # Built-ins

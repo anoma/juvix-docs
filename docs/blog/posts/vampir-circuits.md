@@ -17,7 +17,7 @@ links:
 
 Since version 0.3.5, the Juvix compiler supports the `vampir` target which generates [Vamp-IR][vampir-book] input files that can be compiled to various proof systems based on arithmetic circuits, like Plonk or Halo 2. Vamp-IR is a proof-system-agnostic language for writing arithmetic circuits.
 
-In this post, I will not be discussing the details of Vamp-IR or the circuit computation model. Instead, I will describe how high-level functional Juvix programs can be compiled to circuits, what the common pitfalls and current limitations are. The reader is assumed to have at least basic familiarity with [Vamp-IR][vampir-book].
+In this post, we will not be discussing the details of Vamp-IR or the circuit computation model. Instead, we will describe how high-level functional Juvix programs can be compiled to circuits, what the common pitfalls and current limitations are. The reader is assumed to have at least basic familiarity with [Vamp-IR][vampir-book].
 
 <!-- more -->
 
@@ -118,7 +118,7 @@ If the result type `ResTy` is `Nat` or `Int`, then the generated equation is
 main arg1 .. argN = out;
 ```
 
-Currently, all Vamp-IR inputs (`argK`, `out`) are private and it is not possible to change the name of `out`. These technical limitations will be lifted in future Juvix versions.
+Currently, all Vamp-IR inputs (`argK`, `out`) are private, and it is not possible to change the name of `out`. These technical limitations will be lifted in future Juvix versions.
 
 ## Recursion unrolling
 

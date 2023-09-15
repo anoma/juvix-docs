@@ -24,4 +24,13 @@ larger programs. These modules can be used to build libraries, which can then be
 documented using Juvix's built-in documentation generation tool, see for
 example, [the Juvix standard library's website][stdlib].
 
+## Related internal reports
+
+| Title                      | Doi/url                                                     | Date         |
+| :------------------------- | :---------------------------------------------------------- | :----------- |
+| Juvix to VampIR Pipeline   | [10.5281/zenodo.8268823](https://zenodo.org/record/8268823) | Aug 14, 2023 |
+| The Core language of Juvix | [10.5281/zenodo.8297159](https://zenodo.org/record/8297159) | Aug 29, 2023 |
+| Geb Pipeline               | [10.5281/zenodo.8262747](https://zenodo.org/record/8262747) | Aug 21, 2023 |
+| Rethinking VampIR          | [10.5281/zenodo.8262815](https://zenodo.org/record/8262815) | Aug 29, 2023 |
+
 [stdlib]: https://anoma.github.io/juvix-stdlib/

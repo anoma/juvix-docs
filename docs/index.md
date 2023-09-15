@@ -1,6 +1,6 @@
 ---
 nobuttons: true
-title: Juvix Documentation
+title: Home
 description: Juvix is a high-level programming language for writing privacy-preserving decentralised applications.
 hide:
   - navigation

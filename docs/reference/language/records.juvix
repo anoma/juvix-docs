@@ -8,7 +8,6 @@ type Pair (A B : Type) :=
   };
 --8<-- [end:pair]
 
-
 --8<-- [start:declaringnewtype]
 type T := constructT : T;
 
@@ -47,5 +46,3 @@ p2 : Pair EnumRecord EnumRecord :=
     (fst := C1 (c1a := constructT; c1b := constructT);
     snd := C2 (c2a := constructT; c2b := constructT));
 --8<-- [end:declaringenum]
-
-

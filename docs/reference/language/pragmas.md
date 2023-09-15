@@ -1,6 +1,6 @@
 ---
 icon: material/comment-processing
-comments: true
+comments: false
 ---
 
 # Pragma syntax

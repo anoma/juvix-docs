@@ -1,9 +1,9 @@
 ---
 icon: material/equal
-comments: true
+comments: false
 ---
 
-# Juvix project
+# How to setup a Juvix project
 
 A _juvix project_ is a collection of juvix modules plus some extra metadata
 gathered in a `juvix.yaml` file. The most convenient way to create a juvix

@@ -1,6 +1,6 @@
 ---
 icon: material/reiterate
-comments: true
+comments: false
 ---
 
 # Iterators

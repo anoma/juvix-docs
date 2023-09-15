@@ -1,6 +1,6 @@
 ---
 icon: material/comment-text
-comments: true
+comments: false
 ---
 
 # Comments

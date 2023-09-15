@@ -1,6 +1,6 @@
 ---
 icon: material/view-module
-comments: true
+comments: false
 ---
 
 # Module system
@@ -28,7 +28,7 @@ module Data.List;
 
 ### Top module naming convention
 
-Top modules that belong to a [project](project.md) must follow a naming
+Top modules that belong to a [project](./../howto/project.md) must follow a naming
 convention. That is, if `dir` is the root of a project, then the module in
 `dir/Data/List.juvix` must be named `Data.List`.
 

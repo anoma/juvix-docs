@@ -4,6 +4,5 @@ module operators;
 syntax fixity product := binary;
 
 syntax operator × product;
-type × (a : Type) (b : Type) :=
-  | , : a → b → a × b;
---8<-- [stop:product]
+type × (a : Type) (b : Type) := , : a → b → a × b;
+--8<-- [end:product]

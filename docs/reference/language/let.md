@@ -1,6 +1,6 @@
 ---
 icon: material/equal
-comments: true
+comments: false
 ---
 
 # Local definitions
