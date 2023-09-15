@@ -1,0 +1,34 @@
+module traits;
+
+import Stdlib.Prelude open using {String; ++str};
+
+--8<-- [start:usage]
+type Unit := unit;
+
+type Box A := box A;
+
+trait
+type T A := mkT {pp : A → A};
+
+ppBox {A} {{T A}} : Box A → Box A
+  | (box x) := box (T.pp x);
+
+instance
+boxT {A} {{T A}} : T (Box A) := mkT (pp := ppBox);
+--8<-- [end:usage]
+
+--8<-- [start:natShow]
+type Nat :=
+  | Z
+  | S Nat;
+
+trait
+type Show A := mkShow {show : A → String};
+
+NatToString : Nat -> String
+  | Z := "Z"
+  | (S n) := "S " ++str NatToString n;
+
+instance
+showNat : Show Nat := mkShow (show := NatToString);
+--8<-- [end:natShow]
