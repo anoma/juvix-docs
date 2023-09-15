@@ -1,0 +1,18 @@
+module fixity;
+
+--8<-- [start:product]
+syntax fixity product := binary;
+
+syntax operator × product;
+type × (a : Type) (b : Type) :=
+  | , : a → b → a × b;
+--8<-- [stop:product]
+
+--8<-- [start:composition]
+syntax fixity composition := binary {assoc := right};
+--8<-- [stop:composition]
+
+--8<-- [start:mul]
+syntax fixity add := binary {assoc := left};
+syntax fixity mul := binary {assoc := left; above := [add]};
+--8<-- [stop:mul]
