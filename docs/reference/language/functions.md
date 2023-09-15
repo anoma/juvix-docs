@@ -65,6 +65,17 @@ following example, we define a function that checks if a number is
 --8<-- "docs/reference/language/functions.juvix:mutuallyRecursive"
 ```
 
+Identifiers do not need to be defined before they are used. Then it is possible
+to define mutually recursive functions/types without any special syntax.
+
+However, there are some exceptions to this. We cannot forward reference a symbol
+`f` in some statement `s` if between `s` and the definition of `f` there is one
+of the following statements:
+
+- Local module
+- Import statement
+- Open statement
+
 ## Anonymous functions
 
 Anonymous functions, or _lambdas_, are introduced with the syntax:
