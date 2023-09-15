@@ -11,7 +11,8 @@ type Pair (A B : Type) :=
 
 --8<-- [start:declaringnewtype]
 type T := constructT : T;
-type newtype := mknewtype {f : T};
+
+type newtype := mkNewtype {f : T};
 --8<-- [end:declaringnewtype]
 
 --8<-- [start:declaringpair]
