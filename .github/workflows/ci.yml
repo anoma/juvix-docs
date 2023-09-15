@@ -39,8 +39,6 @@ env:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    outputs:
-      juvix-version: ${{ steps.juvix-version.outputs.stdout }}
     steps:
       - name: Checkout our repository
         uses: actions/checkout@v3
@@ -58,14 +56,16 @@ jobs:
       - name: See the dev version in the documentation
         id: juvix-version
         run: |
-          echo $(cat VERSION) >> $GITHUB_OUTPUT
+          jversion=$((RANDOM))
+          echo "::add-mask::$jversion"
+          echo "number=$jversion" >> "$GITHUB_OUTPUT"
 
       - name: Install the corresponding Juvix compiler
         uses: jaxxstorm/action-install-gh-release@v1.10.0
         if: github.event_name != 'workflow_dispatch' || ( github.event_name != 'workflow_dispatch' || github.event.inputs.build-type == 'dev')
         with:
           repo: anoma/juvix
-          tag: v${{ steps.juvix-version.outputs.stdout }}
+          tag: v"${{ steps.juvix-version.outputs.number }}"
 
       - name: See the exact version of the Juvix compiler installed
         run: |
