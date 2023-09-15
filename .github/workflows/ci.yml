@@ -45,11 +45,9 @@ jobs:
         with:
           fetch-depth: 0
 
-        # if the input option was "latest", 
+        # if the input option was "latest",
       - id: juvix-version
         run: |
-
-
 
       - name: Install the corresponding Juvix compiler
         uses: jaxxstorm/action-install-gh-latest@v1.10.0
