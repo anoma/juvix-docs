@@ -56,9 +56,7 @@ jobs:
       - name: See the dev version in the documentation
         id: juvix-version
         run: |
-          jversion=$((RANDOM))
-          echo "::add-mask::$jversion"
-          echo "number=$jversion" >> "$GITHUB_OUTPUT"
+          echo "number=$(cat VERSION)" >> "$GITHUB_OUTPUT"
 
       - name: Install the corresponding Juvix compiler
         uses: jaxxstorm/action-install-gh-release@v1.10.0
