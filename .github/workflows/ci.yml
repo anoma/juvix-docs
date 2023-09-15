@@ -45,12 +45,22 @@ jobs:
         with:
           fetch-depth: 0
 
-        # if the input option was "latest",
-      - id: juvix-version
+      - name: Install the corresponding Juvix compiler
+        uses: jaxxstorm/action-install-gh-release@v1.10.0
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.build-type == 'latest'
+        with:
+          repo: anoma/juvix
+          tag: latest
+          chmod: 0755
+
+      - name: see the dev version in the documentation
+        id: juvix-version
         run: |
+          cat VERSION
 
       - name: Install the corresponding Juvix compiler
         uses: jaxxstorm/action-install-gh-release@v1.10.0
+        if: github.event_name != 'workflow_dispatch' || ( github.event_name != 'workflow_dispatch' || github.event.inputs.build-type == 'dev')
         with:
           repo: anoma/juvix
           tag: v${{ steps.juvix-version.outputs.stdout }}
