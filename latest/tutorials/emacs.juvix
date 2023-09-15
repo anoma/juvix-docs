@@ -4,10 +4,6 @@ module emacs;
 module Hello;
   import Stdlib.Prelude open;
 
-  print : IO;
-  print := printStringLn "Hello world!";
-
-  main : IO;
-  main := print;
+  main : IO := printStringLn "Hello world!";
 end;
 --8<-- [end:Hello]

@@ -31,8 +31,20 @@ body {
     color: #787b80;
 }
 
+.ju-comment {
+    color: #ba919966;
+}
+
+.ju-judoc {
+    color: #8b2252;
+}
+
 .ju-var {
     color: #5c6166;
+}
+
+.ju-fixity {
+    color: #ed9366;
 }
 
 .ju-number {
@@ -43,11 +55,13 @@ body {
     font-weight: bold;
 }
 
-a:hover, a.hover-highlight {
-    background-color: #dadbdc ;
+a:hover,
+a.hover-highlight {
+    background-color: #dadbdc;
 }
 
-a:link, a:visited {
+a:link,
+a:visited {
     text-decoration: none;
 }
 
