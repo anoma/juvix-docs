@@ -51,4 +51,4 @@ exceptions:
 ## Module naming convention
 
 Modules that belong to a project must follow a naming convention.
-See the documentation for [modules](modules.md).
+See the documentation for [modules](./../reference/language/modules.md).

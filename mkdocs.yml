@@ -53,7 +53,7 @@ theme:
     - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
-    - navigation.expand
+    # - navigation.expand
     - navigation.path
     - navigation.footer
     # - navigation.instant

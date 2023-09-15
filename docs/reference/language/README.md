@@ -1,6 +1,6 @@
 ---
 icon: material/label-outline
-comments: true
+comments: false
 ---
 
 Juvix is designed with a focus on safety. The Juvix compiler runs several
@@ -25,6 +25,13 @@ documented using Juvix's built-in documentation generation tool, see for
 example, [the Juvix standard library's website][stdlib].
 
 ## Related internal reports
+
+An ongoing effort to specify the Juvix language and internal representations
+along its semantics is being carried out in the form of internal reports. These
+reports are written for our own internal use and are not intended to be read by
+the public, at least for now. However, we are making them available here
+for the sake of transparency. 
+
 
 | Title                      | Doi/url                                                     | Date         |
 | :------------------------- | :---------------------------------------------------------- | :----------- |
