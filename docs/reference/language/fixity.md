@@ -5,9 +5,9 @@ comments: true
 
 # Operator Fixity
 
-Fixity declarations define the precedence and associativity of operators. They can be declared before the operator is defined, using one of the following forms:
+A fixity declaration, introduced by the `syntax` keyword followed by `fixity`, defines an operator's precedence and associativity. The syntax varies based on the operator's arity, associativity, and precedence.
 
-- Arity declaration:
+- Arity declaration of an operator with no precedence or associativity:
 
 ```juvix
 syntax fixitiy <operatorName> := <arity>;
@@ -20,14 +20,14 @@ This is equivalent to:
 syntax fixitiy <operatorName> := <arity> {};
 ```
 
-- Associativity declaration for a given arity:
+- Associativity declaration of an operator with no precedence:
 
 ```juvix
 syntax fixitiy <operator> := <arity> { assoc := <associativity> };
 ```
 Where `<associativity>` is either `left`, `right`, or `none`.
 
-- Precedence declaration:
+- Precedence declaration of an operator with no associativity:
 
     - Equal precedence to another operator:
 
@@ -48,6 +48,17 @@ Where `<associativity>` is either `left`, `right`, or `none`.
     syntax fixitiy <operatorName> := <arity> { 
         below := [otherOperatorName1;...; otherOperatorNameN] };
     ```
+
+- Associativity and precedence declaration of an operator:
+
+```juvix
+syntax fixitiy <operatorName> := <arity> { 
+    assoc := <associativity>; 
+    above := [otherOperatorName1;...; otherOperatorNameN] };
+```
+
+
+## Examples
 
 Below are examples of these forms:
 
