@@ -86,7 +86,11 @@ markdown_extensions:
   - tables
   - pymdownx.betterem
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.snippets
   - pymdownx.arithmatex:
       generic: true
@@ -111,8 +115,7 @@ nav:
   - ./index.md
   - About:
       - Overview: ./about/overview.md
-      - Changelog: ./docs/changelog.md
-      - Contributing: ./about/contributing.md
+      - Changelog: ./CHANGELOG.md
       - Team: ./about/team.md
       - License: ./about/license.md 
 
@@ -127,7 +130,8 @@ nav:
 
   - How-to guides:
       - Installing Juvix: ./howto/installing.md
-      - Compiling Juvix programs: ./howto/compilation.md
+      - Compiling programs: ./howto/compilation.md
+      - Contributing: ./howto/contributing.md
     # - Judoc documentation tool: ./howto/judoc.md
 
   - Reference:
@@ -136,6 +140,9 @@ nav:
           - Functions: ./reference/language/functions.md
           - Builtins: ./reference/language/builtins.md
           - Data types: ./reference/language/datatypes.md
+          - Records: ./reference/language/records.md
+          - Traits: ./reference/language/traits.md
+          - Aliases: ./reference/language/aliases.md
           - Modules: ./reference/language/modules.md
           - Local definitions: ./reference/language/let.md
           - Control structures: ./reference/language/control.md
@@ -143,9 +150,10 @@ nav:
           - Comments: ./reference/language/comments.md
           - Pragmas: ./reference/language/pragmas.md
           - Axioms: ./reference/language/axioms.md
+          - Fixities: ./reference/language/fixity.md
       - Standard library: ./reference/stdlib.md
       - Example programs: ./reference/examples.md
-      - Benchmarks: ./reference/benchmarks.md
+      # - Benchmarks: ./reference/benchmarks.md
       - Tooling: # ./reference/tooling/README.md
           - Command line interface: ./reference/tooling/CLI.md
           - Doctor: ./reference/tooling/doctor.md

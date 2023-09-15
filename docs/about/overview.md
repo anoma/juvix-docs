@@ -150,11 +150,11 @@ Here is a summary of resources to help you learn more about Juvix:
 
 ## Contributing
 
-If you're interested in contributing to Juvix, please see the [contributing guidelines](CONTRIBUTING.md) for more information. We welcome contributions of all kinds, from bug reports and feature requests to code contributions and documentation improvements.
+If you're interested in contributing to Juvix, please see the [contributing guidelines](./../howto/contributing.md)  for more information. We welcome contributions of all kinds, from bug reports and feature requests to code contributions and documentation improvements.
 
 ## License
 
-Juvix is open-source software released under the GNU General Public License v3.0. See the [LICENSE](LICENSE.md) file for more information.
+Juvix is open-source software released under the GNU General Public License v3.0. See the [LICENSE](./license.md) file for more information.
 
 [anoma]: https://anoma.net
 [changelog]: https://anoma.github.io/juvix/changelog.html
