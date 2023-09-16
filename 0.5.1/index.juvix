@@ -1,0 +1,23 @@
+module index;
+
+import Stdlib.Prelude open;
+import Stdlib.Data.Nat.Ord open;
+
+--8<-- [start:exponentiation]
+module FastExponentiation;
+  
+  {-# unroll: 30 #-}
+  terminating
+  power' (acc a b : Nat) : Nat :=
+    let
+      acc' : Nat := if (mod b 2 == 0) acc (acc * a);
+    in if (b == 0) acc (power' acc' (a * a) (div b 2));
+
+  power : Nat → Nat → Nat := power' 1;
+
+end;
+--8<-- [end:exponentiation]
+
+--8<-- [start:intent]
+-- ss
+--8<-- [end:intent]
