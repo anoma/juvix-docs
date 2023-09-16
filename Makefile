@@ -161,7 +161,7 @@ docs: pre-build
 	@mkdocs build -v --config-file ${MKDOCSCONFIG}
 
 .PHONY: serve
-serve: docs
+serve:
 	@mkdocs serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
 # In case you want to serve the docs using Python's built-in server.

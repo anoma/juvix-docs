@@ -1,6 +1,6 @@
 ---
 icon: material/axe
-comments: true
+comments: false
 ---
 
 # Axiom

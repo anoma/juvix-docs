@@ -9,18 +9,107 @@ hide:
 
 # Welcome to the Juvix documentation!
 
-<div style="text-align:center">
-  <img src="assets/images/tara-smiling.svg" width="250" />
-</div>
+<div class="grid cards" markdown>
 
 Juvix is an open-source, ever-evolving functional language for creating
 privacy-focused decentralized apps. It allows developers to write high-level
 programs that compile to WASM or, via [VampIR][vampir], to circuits for private
 execution using [Taiga][taiga] on [Anoma][anoma] or Ethereum.
+</div>
 
-This documentation covers various topics, including a concise introduction to
-the Juvix ecosystem, which can be found in the [overview
-section](./about/overview.md).
+
+<div class="grid cards" markdown>
+
+<div markdown>
+
+## :material-content-duplicate: Intents in Juvix for Anoma
+
+An intent is a high-level description of a transaction the user wants to
+perform. It is a program that describes the conditions under which a transaction
+is valid. For example, Alice wants to exchange 2 B or 1 A for 1 Dolphin.
+
+Read more on Anoma's intents [here](https://anoma.net/blog/intents-arent-real).
+
+<div style="text-align:center" markdown>
+
+<div style="text-align:center">
+  <img src="assets/images/tara-smiling.svg" width="250" />
+</div>
+
+
+[Try Juvix now on Codespaces](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=102404734&machine=standardLinux32gb&location=WestEurope){ .md-button .md-button--primary }
+
+</div>
+
+
+</div>
+
+<div style="padding: 1rem 0 0 0" markdown>
+
+
+:octicons-mark-github-16: [`anoma/juvix-workshop`](https://github.com/anoma/taiga-simulator)
+
+```juvix
+...
+-- Alice is willing to exchange either 2 B or 1 A for 1 Dolphin.
+module Apps.TwoPartyExchange;
+--- Definitions related to Alice's intent
+module AliceIntent;
+  logicFunction : LogicFunction
+    | kind tx :=
+        let
+            {- check if the resource associated to
+            this logic function is among the created (output) resources.
+            Then check if alice's intent is satisfied. -}
+            createdRs : List Resource := createdResources tx;
+            createdHashes : List LogicHash :=
+                map logicHash createdRs;
+        in isCreated kind
+      || quantityOfDenom Dolphin.denomination createdRs == 1
+      && quantityOfDenom A.denomination createdRs == 1
+      || quantityOfDenom Dolphin.denomination createdRs == 1
+      && quantityOfDenom B.denomination createdRs == 2;
+ ...
+```
+
+</div>
+
+</div>
+
+
+## :material-graph-outline: Juvix Compilation to Arithmetic Circuits
+
+<div class="grid cards" markdown>
+
+<div markdown>
+
+A significant feature of Juvix includes compiling programs into arithmetic circuits for confidential execution, achieved via the in-house [VampIR][vampir] compiler. Arithmetic circuits model the computation of Juvix programs by representing polynomial computations. These circuits can be executed privately using [Taiga][taiga]. Essentially, arithmetic circuits are systematic polynomial equations expressed in a universal, canonical form.
+
+See more [Compiling Juvix programs to arithmetic circuits via Vamp-IR](./blog/posts/vampir-circuits.md).
+
+</div>
+
+<div markdown>
+
+```juvix
+module FastExponentiation;
+
+{-# unroll: 30 #-}
+terminating
+power' (acc a b : Nat) : Nat :=
+  let acc' : Nat := if (mod b 2 == 0) acc (acc * a);
+  in if (b == 0) acc (power' acc' (a * a) (div b 2));
+power : Nat → Nat → Nat := power' 1;
+
+end;
+```
+
+</div>
+
+</div>
+
+
+## :material-firework: Juvix is growing fast!
 
 <div class="grid cards" markdown>
 

@@ -1,6 +1,6 @@
 ---
 icon: material/rename-outline
-comments: true
+comments: false
 ---
 
 # Aliases

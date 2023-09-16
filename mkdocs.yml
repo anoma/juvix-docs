@@ -63,7 +63,7 @@ theme:
 
   custom_dir: "docs/overrides"
   font:
-    text: Incosolata
+    text: Roboto Flex
     code: JetBrains Mono
 
   favicon: assets/images/favicon/favicon.ico
@@ -71,8 +71,11 @@ theme:
 
   icon:
     repo: fontawesome/brands/github
-    edit: material/pencil
-    view: material/eye
+    edit: material/file-eye
+    view: material/file-edit
+    search: octicons/search-16
+    previous: octicons/arrow-left-16
+    next: octicons/arrow-right-16
 
 markdown_extensions:
   - abbr
