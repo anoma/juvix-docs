@@ -1,0 +1,9 @@
+module emacs;
+
+--8<-- [start:Hello]
+module Hello;
+  import Stdlib.Prelude open;
+
+  main : IO := printStringLn "Hello world!";
+end;
+--8<-- [end:Hello]
