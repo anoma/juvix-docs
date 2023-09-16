@@ -3,26 +3,37 @@ icon: material/view-module
 comments: false
 ---
 
-# Module system
+# Module System
 
-Modules are the way in which we split our programs in separate files. Juvix also
-supports [local modules](#local-modules), which provide a way to better organize
-different scopes within a file.
+Modules facilitate the division of programs into separate files. In Juvix, this
+is achieved through **top modules** and **local modules**. Top modules are
+defined at the file's top, while local modules are nested within another module.
+Local modules also serve to organize different scopes within a file.
 
-We call **top modules** those who are defined at the top of a file.
+The syntax for defining a module is:
 
-We call **local modules** those who are defined inside another module.
+```text
+module <name>;
+  <body>
+end;
+```
 
-## Top modules
+In this syntax:
 
-A module has a _name_ and a _body_, which comprises a sequence of
-[statements](statement.md).
+- `<name>` represents the module's name.
 
-In order to define a module named `Data.List` we will use the following syntax:
+- `<body>` is a sequence of Juvix statements (traits, data types, functions,
+  etc.).
+
+- The `end` keyword is used to close the module definition.
+
+!!!info Inline end "Note"
+The `end` keyword is optional if the module definition is the last statement in the file.
+
+For instance, to define a module named `Data.List`, we write:
 
 ```juvix
 module Data.List;
-
 <body>
 ```
 

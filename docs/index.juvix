@@ -1,11 +1,10 @@
 module index;
 
-import Stdlib.Prelude open;
-import Stdlib.Data.Nat.Ord open;
+--8<-- [start:hash]
+module Hash;
+  import Stdlib.Prelude open;
+  import Stdlib.Data.Nat.Ord open;
 
---8<-- [start:exponentiation]
-module FastExponentiation;
-  
   {-# unroll: 30 #-}
   terminating
   power' (acc a b : Nat) : Nat :=
@@ -13,11 +12,44 @@ module FastExponentiation;
       acc' : Nat := if (mod b 2 == 0) acc (acc * a);
     in if (b == 0) acc (power' acc' (a * a) (div b 2));
 
-  power : Nat → Nat → Nat := power' 1;
+  power : Nat → Nat := power' 1 2;
 
+  hash' : Nat -> Nat -> Nat
+    | (suc n@(suc (suc m))) x :=
+      if
+        (x < power n)
+        (hash' n x)
+        (mod (div (x * x) (power m)) (power 6))
+    | _ x := x * x;
+
+  hash : Nat -> Nat := hash' 16;
+
+  -- result: 3
+  main : Nat := hash 1367;
 end;
---8<-- [end:exponentiation]
+--8<-- [end:hash]
 
+{-
 --8<-- [start:intent]
--- ss
+...
+-- Alice is willing to exchange either 2 B or 1 A for 1 Dolphin.
+module Apps.TwoPartyExchange;
+--- Definitions related to Alice's intent
+module AliceIntent;
+  logicFunction : LogicFunction
+    | kind tx :=
+        let
+            {- check if the resource associated to
+            this logic function is among the created (output) resources.
+            Then check if alice's intent is satisfied. -}
+            createdRs : List Resource := createdResources tx;
+            createdHashes : List LogicHash :=
+                map logicHash createdRs;
+        in isCreated kind
+      || quantityOfDenom Dolphin.denomination createdRs == 1
+      && quantityOfDenom A.denomination createdRs == 1
+      || quantityOfDenom Dolphin.denomination createdRs == 1
+      && quantityOfDenom B.denomination createdRs == 2;
+ ...
 --8<-- [end:intent]
+-}

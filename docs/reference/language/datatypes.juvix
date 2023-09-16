@@ -2,6 +2,30 @@ module datatypes;
 
 import Stdlib.Data.Fixity open;
 
+--8<-- [start:unit]
+type Unit := unit : Unit;
+--8<-- [end:unit]
+
+--8<-- [start:typeBool]
+type Bool :=
+  | true : Bool
+  | false : Bool;
+--8<-- [end:typeBool]
+
+module ADT;
+  --8<-- [start:natADT]
+  type Nat :=
+    | Z
+    | S Nat;
+  --8<-- [end:natADT]
+
+  --8<-- [start:listADT]
+  type List A :=
+    | Nil
+    | Cons A (List A);
+--8<-- [end:listADT]
+end;
+
 --8<-- [start:typeNat]
 type Nat :=
   | zero : Nat

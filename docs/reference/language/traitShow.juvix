@@ -20,13 +20,13 @@ showNatI : Show Nat := mkShow (show := natToString);
 --8<-- [end:showInstances]
 
 --8<-- [start:showList]
-showList {A} : {{Show A}} → List A → String
-  | nil := "nil"
-  | (h :: t) := Show.show h ++str " :: " ++str showList t;
-
 instance
 showListI {A} {{Show A}} : Show (List A) :=
-  mkShow (show := showList);
+  let
+    showList {A} : {{Show A}} → List A → String
+      | nil := "nil"
+      | (h :: t) := Show.show h ++str " :: " ++str showList t;
+  in mkShow (show := showList);
 --8<-- [end:showList]
 
 --8<-- [start:showMaybe]
@@ -39,19 +39,15 @@ showMaybeI {A} {{Show A}} : Show (Maybe A) :=
   mkShow (show := showMaybe);
 --8<-- [end:showMaybe]
 
---8<-- [start:implicit]
 f {A} {{Show A}} : A → String
   | x := Show.show x;
 
+--8<-- [start:implicit]
 f' {A} : {{Show A}} → A → String
   | {{mkShow s}} x := s x;
 
 f'' {A} : {{Show A}} → A → String
   | {{M}} x := Show.show {{M}} x;
-
-f'3 {A} {{M : Show A}} : A → String := Show.show {{M}};
-
-f'4 {A} {{_ : Show A}} : A → String := Show.show;
 --8<-- [end:implicit]
 
 --8<-- [start:main]
@@ -63,10 +59,5 @@ main : IO :=
     >> printStringLn (Show.show [1; 2; 3])
     >> printStringLn (f' [1; 2])
     >> printStringLn (f'' [true; false])
-    >> printStringLn (f'3 [just true; nothing; just false])
-    >> printStringLn (f'4 [just [1]; nothing; just [2; 3]])
-    >> printStringLn (f'3 "abba")
-    >> printStringLn
-      (f'3 {{M := mkShow λ {x := x ++str "!"}}} "abba")
     >> printStringLn (Show.show ["a"; "b"; "c"; "d"]);
 --8<-- [end:main]

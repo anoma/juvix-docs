@@ -1,5 +1,18 @@
 module records;
 
+module Person;
+  import Stdlib.Prelude open;
+
+  --8<-- [start:person]
+  type Person :=
+    mkPerson {
+      name : String;
+      age : Nat
+    };
+--8<-- [end:person]
+
+end;
+
 --8<-- [start:pair]
 type Pair (A B : Type) :=
   mkPair {

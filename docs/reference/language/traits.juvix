@@ -3,8 +3,6 @@ module traits;
 import Stdlib.Prelude open using {String; ++str};
 
 --8<-- [start:usage]
-type Unit := unit;
-
 type Box A := box A;
 
 trait

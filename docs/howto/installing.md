@@ -35,6 +35,11 @@ Copy and paste the following command into your terminal to install Juvix.
     curl --proto '=https' --tlsv1.2 -sSfL https://get.juvix.org | sh
     ```
 
+!!! tip ""
+
+      In VSCode, install Juvix automatically with the [Juvix VSCode
+      extension](https://marketplace.visualstudio.com/items?itemName=heliax.juvix-mode).
+
 ## MacOS
 
 The easiest way to install Juvix on MacOS is by using

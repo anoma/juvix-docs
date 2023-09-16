@@ -1,115 +1,173 @@
 ---
 nobuttons: true
-title: Home
+title: Juvix Docs
 description: Juvix is a high-level programming language for writing privacy-preserving decentralised applications.
 hide:
   - navigation
   - toc
 ---
 
-# Welcome to the Juvix documentation!
 
-<div class="grid cards" markdown>
-
-Juvix is an open-source, ever-evolving functional language for creating
-privacy-focused decentralized apps. It allows developers to write high-level
-programs that compile to WASM or, via [VampIR][vampir], to circuits for private
-execution using [Taiga][taiga] on [Anoma][anoma] or Ethereum.
-</div>
+# Juvix: a language for intent-centric and declarative decentralized applications
 
 
 <div class="grid cards" markdown>
-
-<div markdown>
-
-## :material-content-duplicate: Intents in Juvix for Anoma
-
-An intent is a high-level description of a transaction the user wants to
-perform. It is a program that describes the conditions under which a transaction
-is valid. For example, Alice wants to exchange 2 B or 1 A for 1 Dolphin.
-
-Read more on Anoma's intents [here](https://anoma.net/blog/intents-arent-real).
 
 <div style="text-align:center" markdown>
 
 <div style="text-align:center">
-  <img src="assets/images/tara-smiling.svg" width="250" />
+  <img src="assets/images/tara-smiling.svg" width="220" />
 </div>
 
+[Install Juvix on your machine](http://localhost:8000/howto/installing/#shell-script){ .md-button .md-button--primary}
 
-[Try Juvix now on Codespaces](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=102404734&machine=standardLinux32gb&location=WestEurope){ .md-button .md-button--primary }
-
-</div>
-
+[Try Juvix now on Codespaces](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=102404734&machine=standardLinux32gb&location=WestEurope){ .md-button  }
 
 </div>
 
-<div style="padding: 1rem 0 0 0" markdown>
+<div markdown>
 
+Juvix is an open-source functional language with static typing and strict
+semantics. It is the programming language for the [Anoma][anoma]'s blockchain. The
+primary purpose of this language is to encode [Anoma's intents][anoma], enabling
+private or transparent execution through [Taiga][taiga] on the Anoma
+blockchain.
 
-:octicons-mark-github-16: [`anoma/juvix-workshop`](https://github.com/anoma/taiga-simulator)
+Juvix, while designed for Anoma, offers capabilities that surpass it. It can
+compile programs into WASM and arithmetic circuits using [VampIR][vampir] or
+[Geb][geb], providing features expected in any other high-level programming
+language.
 
-```juvix
-...
--- Alice is willing to exchange either 2 B or 1 A for 1 Dolphin.
-module Apps.TwoPartyExchange;
---- Definitions related to Alice's intent
-module AliceIntent;
-  logicFunction : LogicFunction
-    | kind tx :=
-        let
-            {- check if the resource associated to
-            this logic function is among the created (output) resources.
-            Then check if alice's intent is satisfied. -}
-            createdRs : List Resource := createdResources tx;
-            createdHashes : List LogicHash :=
-                map logicHash createdRs;
-        in isCreated kind
-      || quantityOfDenom Dolphin.denomination createdRs == 1
-      && quantityOfDenom A.denomination createdRs == 1
-      || quantityOfDenom Dolphin.denomination createdRs == 1
-      && quantityOfDenom B.denomination createdRs == 2;
- ...
-```
+Stay tuned for Juvix updates! Follow us on [:material-twitter: Twitter][twitter]
+and join our [:fontawesome-brands-discord: Discord][Discord] community.
+
+<!-- To follow the development of Anoma, follow [:material-twitter: Anoma
+Twitter][anomaTwitter] and join [:fontawesome-brands-discord: Anoma
+Discord][anomaDiscord]. -->
 
 </div>
 
 </div>
 
+<div style="text-align:center" markdown>
 
-## :material-graph-outline: Juvix Compilation to Arithmetic Circuits
+## ... a brief of what Juvix is about
+
+</div>
+
 
 <div class="grid cards" markdown>
 
 <div markdown>
 
-A significant feature of Juvix includes compiling programs into arithmetic circuits for confidential execution, achieved via the in-house [VampIR][vampir] compiler. Arithmetic circuits model the computation of Juvix programs by representing polynomial computations. These circuits can be executed privately using [Taiga][taiga]. Essentially, arithmetic circuits are systematic polynomial equations expressed in a universal, canonical form.
+## :material-content-duplicate: Intents in Juvix for Anoma's dApps
 
-See more [Compiling Juvix programs to arithmetic circuits via Vamp-IR](./blog/posts/vampir-circuits.md).
+What is an [intent](https://anoma.net/blog/intents-arent-real)? An intent, in
+essence, is a high-level description of a user's desired transaction. It can be
+written in Juvix as a program detailing the conditions that validate the
+transaction in relation to the user's resources.
+
+Take for instance, Alice's intent. Her intent is to trade either two units of
+resource `B` or one unit of resource `A` for a unit of `C`. Bob, on the other
+hand, is willing to exchange one unit of resource `A` for 1 `C`. How can we
+write these intents in Juvix? The conditions for Alice's intent is presented in
+Juvix on the right, a **logic function** that validates the transaction.
+
+See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.html#1184) the full Juvix code for this example.
+
+<div class="grid cards" style="text-align:center" markdown>
+
+```mermaid
+flowchart LR
+    A[Alice] -- "Intent #1: has 2 B, wants 1 C" ----> B[Anoma]
+    A -- "Intent #2: has 1 A, wants 1 C" ----> B
+    X[Bob] -- "Intent #3: has 1 C, wants 1 A" ----> B
+```
+
+</div>
+
+How to write intents in Juvix to validate transactions in Anoma is futher
+elaborated in both the [Taiga
+Simulator](https://github.com/anoma/taiga-simulator) repository and the [Juvix
+Workshop](https://github.com/anoma/juvix-workshop).
 
 </div>
 
 <div markdown>
 
+## :octicons-mark-github-16: [`anoma/juvix-workshop`](https://github.com/anoma/taiga-simulator)
+
 ```juvix
-module FastExponentiation;
+--8<------ "docs/index.juvix:intent"
+```
 
-{-# unroll: 30 #-}
-terminating
-power' (acc a b : Nat) : Nat :=
-  let acc' : Nat := if (mod b 2 == 0) acc (acc * a);
-  in if (b == 0) acc (power' acc' (a * a) (div b 2));
-power : Nat → Nat → Nat := power' 1;
+</div>
+</div>
 
-end;
+
+<div class="grid cards" markdown>
+
+<div markdown>
+
+## :material-graph-outline: Arithmetic Circuits / Zero-knowledge Proofs
+
+An arithmetic circuit is an algebraic representation, essentially expressing a
+system of polynomial equations in a universal, canonical form that model the
+computation of a program. Arithmetic circuits are used in zero-knowledge proofs
+and Juvix can compile programs into these representations via [VampIR][vampir].
+
+```mermaid
+flowchart LR
+    A[Juvix file]  -- Juvix --> B[VampIR circuit]
+    B -- VampIR --> C[PLONK or Halo2 circuit]
+```
+
+``` shell
+juvix compile -t vampir Hash.juvix
+```
+
+The VampIR file can then be compiled to a PLONK circuit:
+
+``` shell
+vamp-ir plonk setup -m 10 -o input.pp
+vamp-ir plonk compile -u input.pp -s Hash.pir -o c.plonk
+```
+
+A zero-knowledge proof that `hash 1367` is equal to `3` can then be generated
+from the circuit:
+
+``` shell
+vamp-ir plonk prove -u input.pp -c c.plonk -o proof.plonk -i Hash.json
+```
+
+This proof can then be verified:
+
+``` shell
+vamp-ir plonk verify -u input.pp -c c.plonk -p proof.plonk
 ```
 
 </div>
 
+<div markdown>
+
+## :octicons-mark-github-16: [`anoma/juvix-workshop`](https://github.com/anoma/juvix-workshop/blob/main/arithmetic-circuits/README.md)
+
+```juvix
+--8<------ "docs/index.juvix:hash"
+```
+
+For further details, refer to [Compiling Juvix programs to
+arithmetic circuits via Vamp-IR](./blog/posts/vampir-circuits.md).
+
 </div>
 
+</div>
+
+<div style="text-align:center" markdown>
 
 ## :material-firework: Juvix is growing fast!
+
+</div>
 
 <div class="grid cards" markdown>
 
@@ -184,6 +242,7 @@ end;
 [anoma]: https://anoma.net
 [changelog]: https://docs.juvix.org/changelog.html
 [Discord]: https://discord.gg/jwzaMZ2Sct
+[anomaDiscord]: https://discord.gg/jwzaMZ2Sct
 [geb]: https://github.com/anoma/geb
 [GitHub]: https://github.com/anoma/juvix
 [homebrew]: https://brew.sh
@@ -198,6 +257,7 @@ end;
 [stdlib]: https://github.com/anoma/juvix-stdlib
 [taiga]: https://github.com/anoma/taiga
 [twitter]: https://twitter.com/juvixlang
+[anomaTwitter]: https://twitter.com/anoma
 [vampir]: https://github.com/anoma/vamp-ir
 [vscode-plugin]: https://github.com/anoma/vscode-juvix
 [website]: https://juvix.org
