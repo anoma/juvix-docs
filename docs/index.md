@@ -8,7 +8,7 @@ hide:
 ---
 
 
-# Juvix: a language for intent-centric and declarative decentralized applications
+# **Juvix** a language for *intent-centric* and *declarative decentralized* applications
 
 
 <div class="grid cards" markdown>

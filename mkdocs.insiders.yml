@@ -4,13 +4,14 @@ plugins:
       enabled: !ENV [OFFLINE, false]
   - privacy:
       enabled: !ENV [CI, false]
-      links: true
       links_attr_map:
         target: _blank
       assets_exclude:
         - cdn.jsdelivr.net/npm/mathjax@3/*
         - giscus.app/*
         - github.com/*
+        - unpkg.com/*
+        - docs.juvix.org/*
 
   - search:
       # lang: en
@@ -81,10 +82,10 @@ extra:
   generator: false
   version:
     provider: mike
-  alternate:
-    - name: English
-      link: /en/
-      lang: en
+  # alternate:
+  #   - name: English
+  #     link: /en/
+  #     lang: en
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/anoma/juvix
@@ -108,7 +109,7 @@ extra:
 
   analytics:
     provider: google
-    property: G-9R2Q766R16
+    property: !ENV GOOGLE_ANALYTICS_KEY
     feedback:
       title: Was this page helpful?
       ratings:
