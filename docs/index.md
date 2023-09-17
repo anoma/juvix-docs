@@ -30,13 +30,13 @@ hide:
 Juvix is an open-source functional language with static typing and strict
 semantics. It is the programming language for the [Anoma][anoma]'s blockchain. The
 primary purpose of this language is to encode [Anoma's intents][anoma], enabling
-private or transparent execution through [Taiga][taiga] on the Anoma
+private and transparent execution through [Taiga][taiga] on the Anoma
 blockchain.
 
-Juvix, while designed for Anoma, offers capabilities that surpass it. It can
-compile programs into WASM and arithmetic circuits using [VampIR][vampir] or
-[Geb][geb], providing features expected in any other high-level programming
-language.
+Juvix, initially designed for Anoma, provides features typical of any high-level
+programming language with many more on the horizon. It can compile programs into
+native executable, WASM, and arithmetic circuits using [VampIR][vampir] or
+[Geb][geb], facilitating zero-knowledge proofs.
 
 Stay tuned for Juvix updates! Follow us on [:material-twitter: Twitter][twitter]
 and join our [:fontawesome-brands-discord: Discord][Discord] community.
@@ -86,7 +86,7 @@ flowchart LR
 
 </div>
 
-How to write intents in Juvix to validate transactions in Anoma is futher
+How to write intents in Juvix to validate transactions in Anoma is further
 elaborated in both the [Taiga
 Simulator](https://github.com/anoma/taiga-simulator) repository and the [Juvix
 Workshop](https://github.com/anoma/juvix-workshop).
@@ -114,7 +114,8 @@ Workshop](https://github.com/anoma/juvix-workshop).
 An arithmetic circuit is an algebraic representation, essentially expressing a
 system of polynomial equations in a universal, canonical form that model the
 computation of a program. Arithmetic circuits are used in zero-knowledge proofs
-and Juvix can compile programs into these representations via [VampIR][vampir].
+and Juvix can compile programs into these representations via our in-house
+compiler [VampIR][vampir].
 
 ```mermaid
 flowchart LR
@@ -156,8 +157,8 @@ vamp-ir plonk verify -u input.pp -c c.plonk -p proof.plonk
 --8<------ "docs/index.juvix:hash"
 ```
 
-For further details, refer to [Compiling Juvix programs to
-arithmetic circuits via Vamp-IR](./blog/posts/vampir-circuits.md).
+For further details, refer to [Compiling Juvix programs to arithmetic circuits
+via Vamp-IR](./blog/posts/vampir-circuits.md).
 
 </div>
 
