@@ -109,6 +109,8 @@ markdown_extensions:
   - pymdownx.highlight:
       use_pygments: false
   - pymdownx.keys
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
 

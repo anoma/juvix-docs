@@ -10,7 +10,6 @@ hide:
 
 # **Juvix** a language for *intent-centric* and *declarative decentralized* applications
 
-
 <div class="grid cards" markdown>
 
 <div style="text-align:center" markdown>
@@ -21,7 +20,7 @@ hide:
 
 [Install Juvix on your machine](http://localhost:8000/howto/installing/#shell-script){ .md-button .md-button--primary}
 
-[Try Juvix now on Codespaces](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=102404734&machine=standardLinux32gb&location=WestEurope){ .md-button  }
+[:fontawesome-regular-circle-dot:{ .heart }  Try Juvix now on Codespaces](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=102404734&machine=standardLinux32gb&location=WestEurope){ .md-button  }
 
 </div>
 
@@ -100,9 +99,24 @@ Workshop](https://github.com/anoma/juvix-workshop).
 
 ## :octicons-mark-github-16: [`anoma/taiga-simulator`](https://github.com/anoma/taiga-simulator)
 
-```juvix
---8<------ "docs/index.juvix:intent"
-```
+
+=== "Partial transactions"
+
+    ```juvix
+    --8<------ "docs/index/IntentExample.juvix:partialTxs"
+    ```
+
+=== "Alice Intent"
+
+    ```juvix
+    --8<------ "docs/index/IntentExample.juvix:aliceIntent"
+    ```
+
+=== "Logics"
+
+    ```juvix
+    --8<------ "docs/index/IntentExample.juvix:logics"
+    ```
 
 !!!info "Note"
 
@@ -162,9 +176,18 @@ vamp-ir plonk verify -u input.pp -c c.plonk -p proof.plonk
 
 ## :octicons-mark-github-16: [`anoma/juvix-workshop`](https://github.com/anoma/juvix-workshop/blob/main/arithmetic-circuits/README.md)
 
-```juvix
---8<------ "docs/index.juvix:hash"
-```
+=== "Hash.juvix"
+
+    ```juvix
+    --8<------ "docs/index/Hash.juvix:hash"
+    ```
+
+=== "input.json"
+
+    ```juvix
+    --8<------ "docs/index/Hash.json"
+    ```
+
 
 !!!info "Note"
 
