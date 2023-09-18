@@ -9,33 +9,34 @@ hide:
 
 - :octicons-mark-github-16: [`anoma/juvix-containers`](https://github.com/anoma/juvix-containers)
 
-  ***
+    ***
 
-  Immutable container types for Juvix.
+    Immutable container types for Juvix.
 
-  - [x] BinaryTree, Map, Queue, Set, Tree, UnbalancedSet, and much more to come.
-  - [x] Tests using [anoma/juvix-test](#anomajuvix-test).
+    - [x] BinaryTree, Map, Queue, Set, Tree, UnbalancedSet, and much more to come.
+    
+    - [x] Tests using [anoma/juvix-test](#anomajuvix-test).
 
 - :octicons-mark-github-16: [`anoma/juvix-quickcheck`](https://github.com/anoma/juvix-quickcheck)
 
-  ***
+    ***
 
-  This package provides property-based testing for the Juvix programming language inspired by the popular Haskell library, QuickCheck.
+    This package provides property-based testing for the Juvix programming language inspired by the popular Haskell library, QuickCheck.
 
-  - [x] Automated testing: Generate random test cases to validate properties of Juvix code.
+    - [x] Automated testing: Generate random test cases to validate properties of Juvix code.
 
 - :octicons-mark-github-16: [`anoma/juvix-stdlib`](https://github.com/anoma/juvix-stdlib)
 
-  ***
+    ***
 
-  Shipped with Juvix, the standard library provides a set of useful functions
-  and types for writing Juvix programs.
+    Shipped with Juvix, the standard library provides a set of useful functions
+    and types for writing Juvix programs.
 
 - :octicons-mark-github-16: [`anoma/juvix-test`](https://github.com/anoma/juvix-test)
 
-  ***
+    ***
 
-  A unit testing framework for Juvix programs.
+    A unit testing framework for Juvix programs.
 
 </div>
 
@@ -45,15 +46,15 @@ hide:
 
 - :octicons-mark-github-16: [`anoma/taiga-simulator`](https://github.com/anoma/taiga-simulator)
 
-  ***
+    ***
 
-  The Taiga Simulator is a [Juvix](https://juvix.org) function that simulates the [Taiga](https://github.com/anoma/taiga) execution model.
+    The Taiga Simulator is a [Juvix](https://juvix.org) function that simulates the [Taiga](https://github.com/anoma/taiga) execution model.
 
 - :octicons-mark-github-16: [`anoma/juvix-e2e-demo`](https://github.com/anoma/juvix-e2e-demo)
 
-  ***
+    ***
 
-  A project for demostrating the process of generating arithmetic circuits from high-level specifications. This CodeSpace includes all the necessary compilers for circuit generation, such as Juvix, GEB, and VampIR. Furthermore, it features the Juvix VSCode extension to simplify writing Juvix programs and allows users to interact with and evaluate the resulting GEB/VampIR programs.
+    A project for demostrating the process of generating arithmetic circuits from high-level specifications. This CodeSpace includes all the necessary compilers for circuit generation, such as Juvix, GEB, and VampIR. Furthermore, it features the Juvix VSCode extension to simplify writing Juvix programs and allows users to interact with and evaluate the resulting GEB/VampIR programs.
 
 </div>
 

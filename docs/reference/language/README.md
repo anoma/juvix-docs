@@ -1,6 +1,8 @@
 ---
 icon: material/label-outline
 comments: false
+hide:
+  - toc
 ---
 
 Juvix is designed with a focus on safety. The Juvix compiler runs several
