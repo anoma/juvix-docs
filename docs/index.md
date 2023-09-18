@@ -182,7 +182,7 @@ vamp-ir plonk verify -u input.pp -c c.plonk -p proof.plonk
     --8<------ "docs/index/Hash.juvix:hash"
     ```
 
-=== "input.json"
+=== "Hash.json"
 
     ```juvix
     --8<------ "docs/index/Hash.json"
