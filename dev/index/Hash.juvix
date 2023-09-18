@@ -1,0 +1,28 @@
+--8<-- [start:hash]
+module Hash;
+
+import Stdlib.Prelude open;
+import Stdlib.Data.Nat.Ord open;
+
+{-# unroll: 30 #-}
+terminating
+power' (acc a b : Nat) : Nat :=
+  let
+    acc' : Nat := if (mod b 2 == 0) acc (acc * a);
+  in if (b == 0) acc (power' acc' (a * a) (div b 2));
+
+power : Nat → Nat := power' 1 2;
+
+hash' : Nat -> Nat -> Nat
+  | (suc n@(suc (suc m))) x :=
+    if
+      (x < power n)
+      (hash' n x)
+      (mod (div (x * x) (power m)) (power 6))
+  | _ x := x * x;
+
+hash : Nat -> Nat := hash' 16;
+
+-- result: 3
+main : Nat := hash 1367;
+--8<-- [end:hash]
