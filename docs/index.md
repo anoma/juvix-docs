@@ -68,8 +68,8 @@ written in Juvix as a program detailing the conditions that validate the
 transaction in relation to the user's resources.
 
 Take for instance, Alice's intent. Her intent is to trade either two units of
-resource `B` or one unit of resource `A` for a unit of `C`. Bob, on the other
-hand, is willing to exchange one unit of resource `A` for 1 `C`. How can we
+resource `B` or one unit of resource `A` for a unit of `Dolphin`. Bob, on the other
+hand, is willing to exchange one unit of resource `A` for 1 `Dolphin`. How can we
 write these intents in Juvix? The conditions for Alice's intent is presented in
 Juvix on the right, a **logic function** that validates the transaction.
 
@@ -79,9 +79,12 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
 
 ```mermaid
 flowchart LR
-    A[Alice] -- "Intent #1: has 2 B, wants 1 C" ----> B[Anoma]
-    A -- "Intent #2: has 1 A, wants 1 C" ----> B
-    X[Bob] -- "Intent #3: has 1 C, wants 1 A" ----> B
+    A((Alice)) -- "Intent #1: has 2 B, wants 1 Dolphin" ----> B[Taiga]
+    A -- "Intent #2: has 1 A, wants 1 Dolphin" ----> B
+    X((Bob)) -- "Intent #3: has 1 Dolphin, wants 1 A" ----> B
+    Y((Solver)) -- "Intent solver" ----> B
+    B --> Z(Transaction)
+    Z --> O[(Anoma)]
 ```
 
 </div>
@@ -101,7 +104,9 @@ Workshop](https://github.com/anoma/juvix-workshop).
 --8<------ "docs/index.juvix:intent"
 ```
 
-- See also the Sudoku intent example: [here](https://anoma.github.io/taiga-simulator/Apps.Sudoku.html#).
+!!!info "Note"
+
+    See also the Sudoku intent example: [here](https://anoma.github.io/taiga-simulator/Apps.Sudoku.html#).
 
 </div>
 </div>
@@ -140,7 +145,9 @@ A zero-knowledge proof that `hash 1367` is equal to `3` can then be generated
 from the circuit:
 
 ``` shell
-vamp-ir plonk prove -u input.pp -c c.plonk -o proof.plonk -i Hash.json
+vamp-ir plonk prove -u input.pp \
+                    -c c.plonk \
+                    -o proof.plonk -i Hash.json
 ```
 
 This proof can then be verified:
@@ -159,8 +166,10 @@ vamp-ir plonk verify -u input.pp -c c.plonk -p proof.plonk
 --8<------ "docs/index.juvix:hash"
 ```
 
-For further details, refer to [Compiling Juvix programs to arithmetic circuits
-via Vamp-IR](./blog/posts/vampir-circuits.md).
+!!!info "Note"
+
+    For further details, refer to [Compiling Juvix programs to arithmetic circuits
+    via Vamp-IR](./blog/posts/vampir-circuits.md).
 
 </div>
 

@@ -47,8 +47,6 @@ module IntentExample;
     logicFunction : LogicFunction
       | kind tx :=
         let
-          {- check if the resource associated to this logic function is among
-                                      the created (output) resources. Then check if alice's intent is satisfied. -}
           createdRs : List Resource := createdResources tx;
           createdHashes : List LogicHash :=
             map Resource.logicHash createdRs;
@@ -86,7 +84,6 @@ module IntentExample;
     partialTransaction : PartialTx :=
       mkPartialTx
         (consumedPair := Dolphin.mkResource 1, dummyResource;
-
         createdPair := A.mkResource 1, dummyResource);
   end;
 
