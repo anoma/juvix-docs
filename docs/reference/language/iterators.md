@@ -5,7 +5,7 @@ comments: false
 
 # Iterators
 
-Any identifier can be declared an iterator. The declaration has the form
+Any identifier can be declared as an iterator. The syntax to define an iterator is the following:
 
 ```juvix
 syntax iterator iter;

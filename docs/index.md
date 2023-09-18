@@ -1,6 +1,6 @@
 ---
 nobuttons: true
-title: Juvix Docs
+title: Home
 description: Juvix is a high-level programming language for writing privacy-preserving decentralised applications.
 hide:
   - navigation
@@ -95,11 +95,13 @@ Workshop](https://github.com/anoma/juvix-workshop).
 
 <div markdown>
 
-## :octicons-mark-github-16: [`anoma/juvix-workshop`](https://github.com/anoma/taiga-simulator)
+## :octicons-mark-github-16: [`anoma/taiga-simulator`](https://github.com/anoma/taiga-simulator)
 
 ```juvix
 --8<------ "docs/index.juvix:intent"
 ```
+
+- See also the Sudoku intent example: [here](https://anoma.github.io/taiga-simulator/Apps.Sudoku.html#).
 
 </div>
 </div>

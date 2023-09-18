@@ -42,7 +42,7 @@ docs/CONTRIBUTING.md
 docs/LICENSE.md
 docs/README.md
 docs/overview.md
-.juvix-build
+**/.juvix-build
 
 # C Code generation
 *.out.c
