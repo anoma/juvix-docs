@@ -23,6 +23,5 @@ hash' : Nat -> Nat -> Nat
 
 hash : Nat -> Nat := hash' 16;
 
--- result: 3
-main : Nat := hash 1367;
+main : Nat -> Nat := hash;
 --8<-- [end:hash]
