@@ -22,7 +22,6 @@ links:
 
     The compilation described is currently not supported by the newest version of Juvix and Geb. Changes are forthcoming.
 
-
 [Before](https://docs.juvix.org/latest/blog/vampir-circuits/), we discussed the standard normalization approach to compiling Juvix programs to VampIR. An alternative backend is provided by the Geb project currently implemented in Lisp providing a categorical view of the needed translations.
 
 The post will be devoted to discussing the core ideas of Geb, the practical steps to take in order to use the corresponding pipeline, as well as the current limitations the backend faces.
@@ -64,10 +63,13 @@ def intToBool : Nat -> Bool := \(x : Int) if x = 0 then false else true;
 -- for the compilation to succeed
 main (x : Nat) : Bool := if intToBool x then 0 else 1;
 ```
-and we want to compile it to code that is readable by the Lisp implementation of Geb. We run 
+
+and we want to compile it to code that is readable by the Lisp implementation of Geb. We run
+
 ```shell
 juvix compile -t geb NotZero.juvix
 ```
+
 which generates a `NonZero.lisp` file with the following code:
 
 ```lisp
@@ -105,18 +107,19 @@ which generates a `NonZero.lisp` file with the following code:
 ```
 
 The file generated will used by the Geb binary where `*entry*` will be used as a parameter for a term to be compiled. The Lambda code produced is similar to STLC with certain variations. In the above code, we have:
-1) Unit type is `so1`
-2) Unique element of the Unit type is `unit`
-3) Coproduct type of `a` and `b` is `coprod a b`
-4) `left` and `right` are appropriate sum-type injections
-5) Function type from `a` to `b` is `fun-type a b`
-6) `int` a stand-in for a type of 24-bit numbers
-7) `lamb` is lambda abstraction 
-8) `app` is function application
-9) `case-on` is sum type induction
-10) `lamb-eq` predicate for checking number equality
-11)  `index n` is an `n`-th DeBruijn index 
-12)  `bit-choice n` is a constructor for number `n`
+
+1. Unit type is `so1`
+2. Unique element of the Unit type is `unit`
+3. Coproduct type of `a` and `b` is `coprod a b`
+4. `left` and `right` are appropriate sum-type injections
+5. Function type from `a` to `b` is `fun-type a b`
+6. `int` a stand-in for a type of 24-bit numbers
+7. `lamb` is lambda abstraction
+8. `app` is function application
+9. `case-on` is sum type induction
+10. `lamb-eq` predicate for checking number equality
+11. `index n` is an `n`-th DeBruijn index
+12. `bit-choice n` is a constructor for number `n`
 
 ## From Lambda to VampIR
 
@@ -132,26 +135,27 @@ One can remove `-o "NonZero.pir"` in order for the terminal to print the relevan
 
 In the build directory type
 
-```shell 
+```shell
 ./geb.image -i "NonZero.lisp" -e "NonZero:*entry*" -l -p
 ```
 
 Which returns
 
-```shell 
+```shell
 (def entry x1 x2 = {
    (1 - (iszero x1))
  };)
 ```
+
 Note that the last variable in the function is unused. This will be the case for any compiled function and is due to a compilation side-effect when we go from Lambda to Geb.
 
- For further instructions on the use of the binary, consult the [Geb documentation](https://github.com/anoma/geb).
- 
- ## Interactive Mode
- 
- If one is interested in using more features than the direct compilation to VampIR, one may use the Geb codebase interactively. 
- 
-To do so, load the system as per the [Geb documentation](https://github.com/anoma/geb), then go a package preferably using all the relevant lambda code such as `geb.lambda.trans` by typing 
+For further instructions on the use of the binary, consult the [Geb documentation](https://github.com/anoma/geb).
+
+## Interactive Mode
+
+If one is interested in using more features than the direct compilation to VampIR, one may use the Geb codebase interactively.
+
+To do so, load the system as per the [Geb documentation](https://github.com/anoma/geb), then go a package preferably using all the relevant lambda code such as `geb.lambda.trans` by typing
 
 ```lisp!
 CL-USER> (in-package geb.lambda.trans)
@@ -165,7 +169,7 @@ If we want to compile the identity function on natural numbers `(lamb (list int)
 TRANS> (to-circuit (lamb (list int) (index 0)) :id)
 ```
 
-Moreover, we can compile this not to a circuit but to Geb in a nil context (which we need to specify explicitly), e.g. by typing 
+Moreover, we can compile this not to a circuit but to Geb in a nil context (which we need to specify explicitly), e.g. by typing
 
 ```lisp
 TRANS> (to-cat nil (lamb (list int) (index 0)))
@@ -189,17 +193,17 @@ The transformation of Juvix to Lambda is a pretty easy one compared to the norma
 
 The Juvix code gets transformed by
 
-1) Transforming type names and rescuing needed type signatures, e.g. `Nat` becomes primitive `Int`
-2) Unrolling recursion
-3) Lifting out let-statements
-4) Inlining type synonyms
-5) Presenting finite indictive datatypes using sum/product type structures
+1. Transforming type names and rescuing needed type signatures, e.g. `Nat` becomes primitive `Int`
+2. Unrolling recursion
+3. Lifting out let-statements
+4. Inlining type synonyms
+5. Presenting finite indictive datatypes using sum/product type structures
 
-Afterwards, a direct translation to STLC follows. 
+Afterwards, a direct translation to STLC follows.
 
 ## From Lambda to Geb
 
-The compilation of Lambda to Geb is actually a canonical one. Geb is secretly a category equivalent to ***FinSet*** and in particular, is a Cartesian Closed Category. By a classical result of Lambek-Scott, there is a unique compilation of STLC to Geb preserving STLC structure. All other datatypes are compiled primitively: e.g. `plus` in Lambda gets compiled to the primitive `nat-plus`.
+The compilation of Lambda to Geb is actually a canonical one. Geb is secretly a category equivalent to **_FinSet_** and in particular, is a Cartesian Closed Category. By a classical result of Lambek-Scott, there is a unique compilation of STLC to Geb preserving STLC structure. All other datatypes are compiled primitively: e.g. `plus` in Lambda gets compiled to the primitive `nat-plus`.
 
 ## From Geb to Seq$\mathbb N$
 
@@ -215,7 +219,7 @@ After describing the Geb backend, we also need to mention current limitations an
 
 ## Limited Interpretation Power
 
-Currently, not all Juvix programs can be interpreted in Geb. As we have mentioned, Geb is just a variation of ***FinSet***, a fairly weak category. We currently do not have support for interpreting any polymorphic type or any infinite datatype. 
+Currently, not all Juvix programs can be interpreted in Geb. As we have mentioned, Geb is just a variation of **_FinSet_**, a fairly weak category. We currently do not have support for interpreting any polymorphic type or any infinite datatype.
 
 Moreover, as there are no primitive function types in Geb, we also do not have a way to make internal function definitions via constraints in VampIR the way the normalizer compilation does.
 
@@ -223,11 +227,8 @@ However, these issues are to be addressed in a newer version of Geb, which will 
 
 ## Heap Exhaustion for Functions of Natural Number
 
-While Geb seems like a good candidate to do "categorical arithmetic" in and hence to compile to arithmetic circuits, the fact that the primitive constructions are very minimal serves as a reason for an exponential blow-up. An object representing `n`-bit natural number `nat-wdth n` is analyzed as a `2^n` coproduct of terminal objects. So even if we have primitives for natural numbers, for `curry` and `uncurry` operations the functions get analyzed bit-by-bit, causing a blow-up. 
+While Geb seems like a good candidate to do "categorical arithmetic" in and hence to compile to arithmetic circuits, the fact that the primitive constructions are very minimal serves as a reason for an exponential blow-up. An object representing `n`-bit natural number `nat-wdth n` is analyzed as a `2^n` coproduct of terminal objects. So even if we have primitives for natural numbers, for `curry` and `uncurry` operations the functions get analyzed bit-by-bit, causing a blow-up.
 
 If one compiles complicated functions, even working with 2-bit numbers can cause a heap exhaust.
 
 However, there are forthcoming enhancements to the pipeline. Future optimizations of Lambda will include a "smart" version of beta-reduction allowing for the removal of unnecessary lambda and function application occurences. This will effectively eliminate all blow-up problems having to do with compiling relevant Juvix code.
-
-
-
