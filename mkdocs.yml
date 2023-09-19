@@ -31,6 +31,14 @@ theme:
   language: en
   name: material
   palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: deep orange
+      accent: orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
     # Palette toggle for dark mode
     - scheme: slate
       primary: deep orange
@@ -38,14 +46,6 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
-
-        # Palette toggle for light mode
-    - scheme: default
-      primary: deep orange
-      accent: orange
-      toggle:
-        icon: material/weather-night
-        name: Switch to dark mode
 
   features:
     - content.action.edit

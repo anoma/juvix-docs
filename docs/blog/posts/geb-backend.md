@@ -48,6 +48,8 @@ terminal/initial objects and finite (co)products with additional constructs for
 objects representing `n`-bit natural numbers. The pipeline itself is a string of
 functors between categories:
 
+<!-- more -->
+
 $$
 \text {Lambda} \to \text {Geb} \to \text {Seq} \mathbb N
 $$
