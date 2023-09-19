@@ -151,7 +151,7 @@ juvix compile -t vampir Hash.juvix
 The VampIR file can then be compiled to a PLONK circuit:
 
 ``` shell
-vamp-ir plonk setup -m 10 -o input.pp
+vamp-ir plonk setup -m 14 -o input.pp
 vamp-ir plonk compile -u input.pp -s Hash.pir -o c.plonk
 ```
 
