@@ -78,15 +78,7 @@ Let us create an example using one of the VampIR tests in the codebase. We
 create a file `NotZero.juvix` with body
 
 ```juvix
--- This is a comment
-module NotZero;
-
--- We need to name the module exactly the same name as the file
-def intToBool : Nat -> Bool := \(x : Int) if x = 0 then false else true;
-
--- We need to include a function named main
--- for the compilation to succeed
-main (x : Nat) : Bool := if intToBool x then 0 else 1;
+--8<------ "docs/blog/posts/geb-backend/NotZero.juvix"
 ```
 
 and we want to compile it to code that is readable by the Lisp implementation of

@@ -74,8 +74,8 @@ theme:
 
   icon:
     repo: fontawesome/brands/github
-    edit: material/file-eye
-    view: material/file-edit
+    edit: material/file-edit
+    view: material/file-eye
     search: octicons/search-16
     previous: octicons/arrow-left-16
     next: octicons/arrow-right-16

@@ -13,7 +13,7 @@ import Stdlib.Data.Int.Ord open;
 --- Definitions related to Alice's intent
 --8<-- [start:aliceIntent]
 module AliceIntent;
-  logicFunction : LogicFunction
+  logicFunction : ResourceKind -> PartialTx -> Bool
     | kind tx :=
       let
         createdRs : List Resource := createdResources tx;

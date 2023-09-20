@@ -62,9 +62,9 @@ Discord][anomaDiscord]. -->
 ## :material-content-duplicate: Intents in Juvix for Anoma's dApps
 
 What is an [intent](https://anoma.net/blog/intents-arent-real)? An intent, in
-essence, is a high-level description of a user's desired transaction. It can be
-written in Juvix as a program detailing the conditions that validate the
-transaction in relation to the user's resources.
+essence, is a high-level description of a desired state. It can be written in
+Juvix as a program detailing the conditions that validate the transaction in
+relation to the user's resources.
 
 Take for instance, Alice's intent. Her intent is to trade either two units of
 resource `B` or one unit of resource `A` for a unit of `Dolphin`. Bob, on the other
@@ -78,12 +78,12 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
 
 ```mermaid
 flowchart LR
-    A((Alice)) -- "Intent #1: has 2 B, wants 1 Dolphin" ----> B[Taiga]
-    A -- "Intent #2: has 1 A, wants 1 Dolphin" ----> B
-    X((Bob)) -- "Intent #3: has 1 Dolphin, wants 1 A" ----> B
-    Y((Solver)) -- "Intent solver" ----> B
-    B --> Z(Transaction)
+    A((Alice)) -- "Intent 1:\ntrade 1 A or 2 B for 1 Dolphin" ---> B[Taiga]
+    X((Bob)) -- "Intent 2:\ntrade 1 Dolphin for 1 A" ---> B
+    B --> P((Pool))
+    P -- "Intent solving" --> Z("Finalized\nTransaction")
     Z --> O[(Anoma)]
+
 ```
 
 </div>
@@ -118,9 +118,9 @@ Workshop](https://github.com/anoma/juvix-workshop).
     --8<------ "docs/index/IntentExample.juvix:logics"
     ```
 
-!!!info "Note"
+<!-- !!!info "Note"
 
-    See also the Sudoku intent example: [here](https://anoma.github.io/taiga-simulator/Apps.Sudoku.html#).
+    See also the Sudoku intent example: [here](https://anoma.github.io/taiga-simulator/Apps.Sudoku.html#). -->
 
 </div>
 </div>
