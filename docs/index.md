@@ -62,9 +62,8 @@ Discord][anomaDiscord]. -->
 ## :material-content-duplicate: Intents in Juvix for Anoma's dApps
 
 What is an [intent](https://anoma.net/blog/intents-arent-real)? An intent, in
-essence, is a high-level description of a desired state. It can be written in
-Juvix as a program detailing the conditions that validate the transaction in
-relation to the user's resources.
+essence, is a high-level description, a message sent by programs to indicate
+changes of a desired state.
 
 Take for instance, Alice's intent. Her intent is to trade either two units of
 resource `B` or one unit of resource `A` for a unit of `Dolphin`. Bob, on the other
@@ -76,22 +75,19 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
 
 <div class="grid cards" style="text-align:center" markdown>
 
-```mermaid
-flowchart LR
-    A((Alice)) -- "Intent 1:\ntrade 1 A or 2 B for 1 Dolphin" ---> B[Taiga]
-    X((Bob)) -- "Intent 2:\ntrade 1 Dolphin for 1 A" ---> B
-    B --> P((Pool))
-    P -- "Intent solving" --> Z("Finalized\nTransaction")
-    Z --> O[(Anoma)]
+=== "Two-party exchange"
 
-```
+    ```mermaid
+    flowchart LR
+        A((Alice)) -- "Intent 1:\ntrade 1 A or 2 B for 1 Dolphin" ---> B[Taiga]
+        X((Bob)) -- "Intent 2:\ntrade 1 Dolphin for 1 A" ---> B
+        B --> P[Pool]
+        S((Solver)) <----> P
+        P -- "Intent solving" --> Z("Finalized\nTransaction")
+        Z --> O[(Anoma)]
+    ```
 
 </div>
-
-How to write intents in Juvix to validate transactions in Anoma is further
-elaborated in both the [Taiga
-Simulator](https://github.com/anoma/taiga-simulator) repository and the [Juvix
-Workshop](https://github.com/anoma/juvix-workshop).
 
 </div>
 
@@ -118,12 +114,57 @@ Workshop](https://github.com/anoma/juvix-workshop).
     --8<------ "docs/index/IntentExample.juvix:logics"
     ```
 
+    ```juvix
+    twoPartyExchange : Test :=
+        let
+            txs : List PartialTx :=
+            Alice.partialTransaction
+                :: Bob.partialTransaction
+                :: Solver.partialTransaction
+                :: nil;
+        in testCase
+            "two party exchange"
+            (assertTrue
+            "expected two-party exchange transactions to validate"
+            (checkTransaction logicFunctions txs));
+    ```
+
 <!-- !!!info "Note"
 
     See also the Sudoku intent example: [here](https://anoma.github.io/taiga-simulator/Apps.Sudoku.html#). -->
 
 </div>
 </div>
+
+
+=== "Taiga Simulator"
+
+    How to write intents in Juvix to validate transactions in Anoma is further
+    elaborated in both the [Taiga
+    Simulator](https://github.com/anoma/taiga-simulator) repository and the [Juvix
+    Workshop](https://github.com/anoma/juvix-workshop).
+
+=== "Transaction lifecycle"
+
+    ```mermaid
+    sequenceDiagram
+        UserWallet ->>Taiga API: use intent to create ptxs
+        Taiga API  -->>UserWallet: returns ptxs
+        UserWallet  ->>Solvers: send a ptxs
+        Solvers   ->>Solvers: match/broadcast ptxs
+        Solvers  -->>Taiga API: create helper ptxs
+        Taiga API  -->>Solvers: gives helper ptxs
+        Solvers   ->>Taiga API: create a tx
+        Taiga API  -->>Solvers: returns a finalized tx
+        Solvers  ->>Finaliser : submit finalized transaction
+            Finaliser ->> Taiga API: verify the finalized transaction
+        Taiga API ->> Finaliser: return the result (valid/invalid)
+        Finaliser -->> Blockchain: commit a (balanced) tx
+        Blockchain ->> Blockchain: run consensus Typhon alg.
+        Blockchain ->> Taiga API: verify the transaction
+        Taiga API -->> Blockchain: return the result (valid/invalid)
+    ```
+
 
 
 <div class="grid cards" markdown>
