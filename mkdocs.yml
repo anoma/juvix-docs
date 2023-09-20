@@ -135,6 +135,7 @@ nav:
       # - Structuring Juvix projects: ./tutorials/structure.md
       - Juvix VSCode extension: ./tutorials/vscode.md
       - Juvix Emacs mode: ./tutorials/emacs.md
+      - ZKSummit 10 Workshop: ./tutorials/workshop.md
 
   - How-to guides:
       - Installing Juvix: ./howto/installing.md
