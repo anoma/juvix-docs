@@ -12,7 +12,7 @@ defining its arity and potentially its precedence and associativity. This syntax
 declaration has to precede the term declaration.
 
 ```juvix
-syntax operator <name> := <fixity>;
+syntax operator <name> <fixity>;
 ```
 
 Where `<fixity>` is a previously declared [fixity](./fixity.md). Note that there
