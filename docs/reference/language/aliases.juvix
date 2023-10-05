@@ -44,9 +44,10 @@ syntax operator || logical;
 --8<-- [end:export]
 
 --8<-- [start:or]
+syntax operator or logical; 
 syntax alias or := ||;
 
-or3 (a b c : Binary) : Binary := or (or a b) c;
+or3 (a b c : Binary) : Binary := (a || b) || c;
 --8<-- [end:or]
 
 type Pair := mkPair Binary Binary;
