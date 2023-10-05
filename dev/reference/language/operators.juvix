@@ -1,0 +1,8 @@
+module operators;
+
+--8<-- [start:product]
+syntax fixity product := binary;
+
+syntax operator × product;
+type × (a : Type) (b : Type) := , : a → b → a × b;
+--8<-- [end:product]
