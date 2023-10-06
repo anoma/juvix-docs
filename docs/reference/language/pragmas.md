@@ -1,6 +1,8 @@
 ---
 icon: material/comment-processing
 comments: false
+search:
+  boost: 3
 ---
 
 # Pragma syntax

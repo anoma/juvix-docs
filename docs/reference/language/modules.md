@@ -1,6 +1,8 @@
 ---
 icon: material/view-module
 comments: false
+search:
+  boost: 3
 ---
 
 # Module System
@@ -10,12 +12,12 @@ is achieved through **top modules** and **local modules**. Top modules are
 defined at the file's top, while local modules are nested within another module.
 Local modules also serve to organize different scopes within a file.
 
+## Syntax of `module` declaration
+
 The syntax for defining a module is:
 
 ```text
-module <name>;
-  <body>
-end;
+--8<-- "docs/reference/language/syntax.md:module-syntax"
 ```
 
 In this syntax:
@@ -28,7 +30,8 @@ In this syntax:
 - The `end` keyword is used to close the module definition.
 
 !!!info Inline end "Note"
-The `end` keyword is optional if the module definition is the last statement in the file.
+
+    The `end` keyword is optional if the module definition is the last statement in the file.
 
 For instance, to define a module named `Data.List`, we write:
 

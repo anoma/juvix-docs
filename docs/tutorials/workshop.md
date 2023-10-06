@@ -1,6 +1,8 @@
 ---
 icon: material/notebook-heart
 comments: true
+search:
+  boost: 2
 ---
 
 # Juvix Workshop ZKSummit10 version

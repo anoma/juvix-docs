@@ -1,6 +1,8 @@
 ---
 icon: material/math-integral
 comments: false
+search:
+  boost: 3
 ---
 
 # Operator Syntax

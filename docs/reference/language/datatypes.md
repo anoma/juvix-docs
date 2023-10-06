@@ -1,54 +1,57 @@
 ---
 icon: material/toy-brick-outline
 comments: false
+search:
+  boost: 3
 ---
 
-# Data Types
+# Defining Data Types in Juvix
 
-A data type, also known as an _inductive type_, is a type with elements
-constructed from a finite set of _constructors_.
+A crucial aspect of any programming language is the ability to define custom
+data types. In Juvix, these are known as _inductive types_. An inductive type is
+a type with elements constructed from a finite set of _constructors_.
 
-In the following example, we define a data type `Bool` with two constructors,
-`true` and `false`.
+Consider as a first example where we define a data type `Bool` with two
+constructors, `true` and `false`.
 
 ```juvix
 --8<------ "docs/reference/language/datatypes.juvix:typeBool"
 ```
 
-A declaration of a data type
-consists of the keyword `type`, followed by a unique name, type parameters, and
-constructors.
+## Syntax of Data Type Declaration
+
+### General Declaration
+
+The declaration of a data type in Juvix consists of the keyword `type`, followed
+by a unique name, optional type parameters, and constructors.
 
 ```text
-type <name> <type-parameters> :=
-    | <constructor1> : <type1>
-    | ...
-    | <constructorn> : <typen>;
+--8<-- "docs/reference/language/syntax.md:datatype-syntax"
 ```
-
-The syntax for declaring a data type varies (see the [ADT syntax](#adt-syntax)
-and [record syntax](./records.md)) but the most general syntax is the one above.
 
 In this syntax:
 
 - `<name>` represents a unique name for the declared data type.
+- `<type-parameters>` denote optional type parameters in the form `A B C ...` or
+  with typing information `(A : Type)`. These parameters define the return type
+  of the constructors, i.e., `<name> <type-parameters>`.
+- `<constructor1>` through `<constructorn>` are the constructors of the data
+  type. Each constructor has a unique name and a type, which can be the type of
+  the declared data type or a function type from the types of the arguments to
+  the type of the declared data type.
 
-- `<type-parameters>` denote type parameters in the form `A B C ...` or with
-  typing information `(A : Type)`. These parameters are optional and define the
-  return type of the constructors, i.e., `<name> <type-parameters>`.
-
-- `<constructor1>` ... `<constructorn>` are the constructors of the data type.
-  Each constructor has a unique name and a type, which can be the type of the
-  declared data type or a function type from the types of the arguments to the
-  type of the declared data type.
+While there are variations in the syntax for declaring a data type (see the [ADT
+syntax](#adt-syntax) and [record syntax](./records.md)), the most general syntax
+is the one outlined above.
 
 !!! info "Note"
-A data type declaration implicitly declares a [module](./modules.md) with
-the same name as the data type, containing the symbols of the constructors,
-and the type of the data type itself. One can open this module to access
-these symbols or hide it to prevent access to them.
 
-## Example data types
+    A data type declaration implicitly declares a [module](./modules.md) with
+    the same name as the data type, containing the symbols of the constructors,
+    and the type of the data type itself. One can open this module to access
+    these symbols or hide it to prevent access to them.
+
+## Example of data types
 
 The `Unit` type, the simplest data type, has a single constructor named `unit`.
 

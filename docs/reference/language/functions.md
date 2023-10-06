@@ -1,29 +1,64 @@
 ---
 icon: material/function-variant
 comments: false
+search:
+  boost: 3
 ---
 
-# Function declarations
+# Function Declarations in Juvix
 
-A function declaration consists of a type signature followed by a group
-of _function clauses_.
+In Juvix, a function declaration is composed of a type signature and the body of
+the function. The type signature specifies the types of the arguments and the
+return type of the function. Constants are considered as functions with no
+arguments. The body of a function can either be a single expression or a set of
+function clauses when pattern matching is employed.
 
-In the following example, we define a function `multiplyByTwo`.
+## Syntax of Function Declarations
+
+The syntax for a function declaration has the following form:
+
+```juvix
+--8<-- "docs/reference/language/syntax.md:function-syntax"
+```
+
+Function declarations in Juvix can have variations related to named and implicit
+arguments.
+
+### Named Arguments
+
+A named argument is an argument whose name is specified in the function type
+signature before the colon. This name is then available within the scope of the
+function's body.
+
+```juvix
+--8<-- "docs/reference/language/syntax.md:function-named-arguments"
+```
+
+For example, consider the function `multiplyByTwo` which takes a `Nat` (natural
+number) and returns a `Nat`. The argument is named `n` and is used in the
+function's body to return `2 * n`.
 
 ```juvix
 --8<------ "docs/reference/language/functions.juvix:multiplyByTwo"
 ```
 
-The first line `multiplyByTwo : Nat -> Nat` is the type signature and the
-second line `| n := 2 * n;` is a function clause.
+## Pattern Matching in Function Declarations
 
-## Pattern matching
+A function may consist of one or more function clauses instead of a single
+expression. This is applicable when the function's argument is a data type and
+we want to pattern match on that argument.
 
-A function may have more than one function clause. When a function is
-called, it will pattern match on the input, and the first clause that matches
-the arguments is used.
+The syntax for a function declaration using pattern matching is as follows:
 
-The following function has two clauses:
+```text
+--8<-- "docs/reference/language/syntax.md:function-pattern-matching"
+```
+
+Here `<pat1>` through `<patN>` are patterns that are matched against the
+argument of the function. The corresponding body is evaluated when the pattern
+matches.
+
+For instance, consider the following function with two clauses:
 
 ```juvix
 --8<-- "docs/reference/language/functions.juvix:negateBoolean"
@@ -33,65 +68,66 @@ When `neg` is called with `true`, the first clause is used and the function
 returns `false`. Similarly, when `neg` is called with `false`, the second clause
 is used and the function returns `true`.
 
-## Short definitions
+Note that one may pattern match multiple arguments at once. The syntax in case
+of two arguments is as follows and can be extended to more arguments.
 
-Initial function arguments that are matched against variables or
-wildcards in all clauses can be moved to the left of the colon in the
-function definition. For example,
-
-```juvix
---8<-- "docs/reference/language/functions.juvix:moveToLeft"
+```text
+--8<-- "docs/reference/language/syntax.md:function-pattern-matching-multiple-arguments"
 ```
 
-is equivalent to
 
-```juvix
---8<-- "docs/reference/language/functions.juvix:add"
-```
+!!! note
 
-If there is only one clause with no patterns, then the pipe `|` must be omitted:
+    Initial function arguments that match variables or wildcards in all clauses can
+    be moved to the left of the colon in the function definition. For example,
 
-```juvix
---8<-- "docs/reference/language/functions.juvix:shortDefinitions"
-```
+    ```juvix
+    --8<-- "docs/reference/language/functions.juvix:moveToLeft"
+    ```
 
-## Mutually recursive functions
+    is equivalent to
 
-Function declarations can depend on each other recursively. In the
-following example, we define a function that checks if a number is
-`even` by calling a function that checks if a number is `odd`.
+    ```juvix
+    --8<-- "docs/reference/language/functions.juvix:add"
+    ```
+
+    If there is only one clause without any patterns, the pipe `|` must be omitted as we see earlier.
+
+    ```juvix
+    --8<-- "docs/reference/language/functions.juvix:shortDefinitions"
+    ```
+
+## Mutually Recursive Functions
+
+Functions in Juvix can depend on each other recursively. In the following
+example, a function checks if a number is `even` by calling another function
+that verifies if the number is `odd`.
 
 ```juvix
 --8<-- "docs/reference/language/functions.juvix:mutuallyRecursive"
 ```
 
-Identifiers do not need to be defined before they are used. Then it is possible
-to define mutually recursive functions/types without any special syntax.
+Identifiers don't need to be defined before they are used, allowing for mutually
+recursive functions/types without any special syntax. However, exceptions exist.
+A symbol `f` cannot be forward-referenced in a statement `s` if a local module,
+import statement, or open statement exists between `s` and the definition of
+`f`.
 
-However, there are some exceptions to this. We cannot forward reference a symbol
-`f` in some statement `s` if between `s` and the definition of `f` there is one
-of the following statements:
+## Anonymous Functions (Lambdas)
 
-- Local module
-- Import statement
-- Open statement
+Anonymous functions or _lambdas_ can be defined using the following syntax:
 
-## Anonymous functions
+### Syntax of `lambda` declarations
 
-Anonymous functions, or _lambdas_, are introduced with the syntax:
-
-```juvix
-\{| pat1 .. patN_1 := clause1
-  | ..
-  | pat1 .. patN_M := clauseM }
+```text
+--8<-- "docs/reference/language/syntax.md:function-lambda"
 ```
 
-The first pipe `|` is optional. Instead of `\` one can also use the Unicode
-alternative – `λ`.
+The initial pipe `|` is optional. You can use either `\` or the Unicode
+alternative `λ` to denote an anonymous function.
 
-An anonymous function just lists all clauses of a function without
-naming it. Any function declaration can be converted to use anonymous
-functions:
+An anonymous function lists all clauses of a function without naming it. Any
+function declaration can be converted to use anonymous functions:
 
 ```juvix
 --8<-- "docs/reference/language/functions.juvix:anonymousFunctions"

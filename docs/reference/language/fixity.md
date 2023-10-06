@@ -1,62 +1,81 @@
 ---
 icon: material/application-parentheses
 comments: false
+search:
+  boost: 3
 ---
 
-# Operator Fixity
+# Fixities
 
-A fixity declaration, introduced by the `syntax` keyword followed by `fixity`,
-defines an operator's precedence and associativity. The syntax varies based on
-the operator's arity, associativity, and precedence.
+Fixities in Juvix refers to the precedence and associativity of operators. A
+fixity declaration is defined using the `syntax` keyword followed by `fixity`.
+It specifies how an operator should be parsed in relation to other operators.
 
-- Arity declaration of an operator with no precedence or associativity:
+## Syntax of Fixity Declaration
 
-```juvix
-syntax fixitiy <name> := <arity>;
-```
+The syntax for a fixity declaration varies based on the operator's arity,
+associativity, and precedence.
 
-Where `<arity>` is either `unary` or `binary`.
+### Arity Declaration
 
-This is equivalent to:
-
-```juvix
-syntax fixitiy <name> := <arity> {};
-```
-
-- Associativity declaration of an operator with no precedence:
+For an operator with no specified precedence or associativity, the arity can be
+declared as follows:
 
 ```juvix
-syntax fixitiy <name> := <arity> { assoc := <associativity> };
+syntax fixity <name> := <arity>;
 ```
 
-Where `<associativity>` is either `left`, `right`, or `none`.
+In this syntax, `<name>` represents the operator name, and `<arity>` can either
+be `unary` or `binary`.
 
-- Precedence declaration of an operator with no associativity:
+This declaration is equivalent to:
 
-  - Equal precedence to another operator:
+```juvix
+syntax fixity <name> := <arity> {};
+```
+
+### Associativity Declaration
+
+For an operator with no specified precedence, its associativity can be declared
+as:
+
+```juvix
+syntax fixity <name> := <arity> { assoc := <associativity> };
+```
+
+Here, `<associativity>` can either be `left`, `right`, or `none`.
+
+### Precedence Declaration
+
+For an operator with no specified associativity, its precedence can be declared
+relative to other operators.
+
+- If it has equal precedence to another operator:
 
   ```juvix
-  syntax fixitiy <name> := <arity> { same := otherOperatorName };
+  syntax fixity <name> := <arity> { same := otherOperatorName };
   ```
 
-  - Higher precedence than other operators:
+- If it has higher precedence than other operators:
 
   ```juvix
-  syntax fixitiy <name> := <arity> {
+  syntax fixity <name> := <arity> {
       above := [otherOperatorName1;...; otherOperatorNameN] };
   ```
 
-  - Lower precedence than other operators:
+- If it has lower precedence than other operators:
 
   ```juvix
-  syntax fixitiy <name> := <arity> {
+  syntax fixity <name> := <arity> {
       below := [otherOperatorName1;...; otherOperatorNameN] };
   ```
 
-- Associativity and precedence declaration of an operator:
+### Associativity and Precedence Declaration
+
+For an operator with both associativity and precedence:
 
 ```juvix
-syntax fixitiy <name> := <arity> {
+syntax fixity <name> := <arity> {
     assoc := <associativity>;
     above := [otherOperatorName1;...; otherOperatorNameN]
     };
@@ -64,8 +83,8 @@ syntax fixitiy <name> := <arity> {
 
 ## Examples of Fixity Declarations
 
-Below are a few common fixity declarations for operators
-in Juvix's standard library.
+Here are some examples of common fixity declarations for operators in Juvix's
+standard library.
 
 ```juvix
 --8<------ "docs/reference/language/fixity.juvix:stdlib"

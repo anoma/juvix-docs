@@ -1,28 +1,25 @@
 ---
 icon: material/face-recognition
 comments: false
+search:
+  boost: 3
 ---
 
 # Traits
 
 A trait is a special type of [record](./records.md) that can be used to define a
-set of functions that must be implemented for a given type. Traits are declared
-using the `trait` keyword.
+set of functions that must be implemented for a given type.
 
-```juvix
-trait
-<record type declaration>
-```
+## Syntax
 
-The syntax of a record type declaration is as follows:
+### Trait declarations
+
+Traits are declared
+using the `trait` keyword, followed by a record type declaration.
 
 ```text
-type <name> <type-parameters> :=
-    <constructor> {
-       <field1> : <type1>;
-       ...
-       <fieldn> : <typen>
-    };
+trait
+--8<------ "docs/reference/language/syntax.md:record-syntax"
 ```
 
 For example, the following defines a trait `Show`. Any type `A` that implements
@@ -32,7 +29,7 @@ For example, the following defines a trait `Show`. Any type `A` that implements
 --8<------ "docs/reference/language/traitShow.juvix:show"
 ```
 
-## Instance declarations
+### Instance declarations
 
 An instance of a trait refers to a term of the corresponding record type, which
 must implement all methods stipulated by the trait.
@@ -42,12 +39,7 @@ keyword. To define an instance of a trait, we use the trait constructor of the
 corresponding record type.
 
 ```text
-instance
-<term> : {{<trait>}} := <trait constructor> (
-    field1 := <term1>;
-    ...
-    fieldn := <termn>;
-);
+--8<------ "docs/reference/language/syntax.md:instance-syntax"
 ```
 
 For example, we could define three instances of `Show` for `String`, `Bool`, and
@@ -64,7 +56,7 @@ for the type of lists:
 --8<------ "docs/reference/language/traitShow.juvix:showList"
 ```
 
-## Using traits
+## Usage
 
 Using the `Show` trait defined above, we can define a function `showNat` that
 takes a `Nat` and returns a `String`. One possible implementation is the

@@ -110,7 +110,7 @@ checkout-juvix: juvix-sources juvix-bin
 # -- Examples and other sources from the Juvix Compiler repo
 # ----------------------------------------------------------------------------
 
-HEADER := "---\\nnobuttons: true\\n---\\n"
+HEADER := "---\\nnobuttons: true\\nsearch:\\n  exclude: true\\n---\\n"
 
 .PHONY: juvix-metafiles
 juvix-metafiles: juvix-sources
@@ -221,17 +221,7 @@ JUSTCHECK?=0
 
 .PHONY: format-juvix-files
 format-juvix-files: juvix-bin
-	@for file in $(JUVIXFILES); do \
-		${JUVIXBIN} format $(JUVIXFORMATFLAGS) "$$file" > /dev/null 2>&1; \
-		exit_code=$$?; \
-		if [ $$exit_code -eq 0 ]; then \
-			echo "[OK] $$file"; \
-      	elif [[ $$exit_code -ne 0 && "$$file" == *"tests/"* ]]; then \
-			echo "[CONTINUE] $$file is in tests directory."; \
-      	else \
- 			echo "[FAIL] $$file formatting failed" && exit ${JUSTCHECK}; \
-      	fi; \
-      	done;
+	@cd docs && ${JUVIXBIN} format $(JUVIXFORMATFLAGS) .
 
 .PHONY: check-format-juvix-files
 check-format-juvix-files: juvix-bin
@@ -248,3 +238,14 @@ typecheck-juvix-files: juvix-bin
  			echo "[FAIL] Typecking failed for $$file" && exit 1; \
       	fi; \
 	done
+
+SMOKE := $(shell command -v smoke 2> /dev/null)
+
+.PHONY : smoke-only
+smoke-only:
+	@$(if $(SMOKE),, $(error "Smoke not found, please install it from https://github.com/jonaprieto/smoke"))
+	@smoke $(shell find tests -name '*.smoke.yaml')
+
+.PHONY : smoke
+smoke: install submodules
+	@${MAKE} smoke-only

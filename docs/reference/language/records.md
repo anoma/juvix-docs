@@ -1,88 +1,97 @@
 ---
 icon: material/list-box
 comments: true
+search:
+  boost: 3
 ---
 
 # Records
 
-A record is a special [data type](./datatypes.md) which contain one or more data
-constructors, each with labeled type arguments.
+Records are a special kind of [data type](./datatypes.md). Each data constructor
+within a record has named type arguments. This feature is reminiscent of
+declaring a structure in languages such as C++ or Java, or akin to defining a
+record in a database system.
 
-For example, the following defines a record type `Person` with a single
-constructor `mkPerson` that takes two arguments, `name` and `age`, of types
-`String` and `Nat`, respectively.
+## Syntax and Semantics
 
-```juvix
---8<------ "docs/reference/language/records.juvix:person"
-```
+In the context of record types, a _field_ is a named type argument that is
+intrinsically associated with a data constructor. The field's name functions as
+an identifier or a key, enabling access to the value that is bound to the term
+of the record type.
 
-In each type constructor of the record, the type arguments are called _fields_.
-Each field consists of a name and type. The field's name can be used to access
-to the value connected with the term of the record type.
-
-The syntax for declaring a record type is as follows:
+The standard syntax for declaring a record type is as follows:
 
 ```text
-type <record name> <type parameters> :=
-    | <type-constructor1> {
-        <field1-1> : <type1-n>;
-        ...
-        <field1-n> : <type1-n>
-        }
-    | ...
-    | <type-constructor-n> {
-        <fieldn-1> : <typen-1>;
-        ...
-        <fieldn-n> : <typen-n>
-    };
+trait
+--8<------ "docs/reference/language/syntax.md:record-syntax"
 ```
 
-## Using Records
+In this syntax:
 
-Records are just like any other data type. They can be used in local
-definitions, exported from a module, and used in pattern matching.
+- `<record name>` is a unique identifier for the declared record type. This name should be unique within its scope and it is case sensitive.
 
-That is, one could define a record with a single constructor or multiple
-constructors. For instance, here is an example declaring the `newType` record
-type declaration with the `mkNewtype` type constructor and one filed named `f`.
+- `<type parameters>` are optional and represent the generic parameters that the
+  record type may take, see [data types](./datatypes.md) for more information.
+  They allow for greater flexibility and reusability of the record type.
+
+- `<type-constructor>` represents the different constructors that the record type can have. Each constructor can have a different set of fields.
+
+- `<field1-1>`, `<field1-n>`, `<fieldn-1>`, `<fieldn-n>` are the names of the fields in each constructor. These names should be unique within their constructor.
+
+- `<type-1-n>`, `<type-n-1>`, `<type-n-n>` represent the type of the corresponding field.
+
+!!!note
+
+        One thing to note is that the field names are qualified by the type
+        name. This means that the field names are prefixed by the type name when
+        accessing them. If this is not desired, the `open` keyword can be used
+        to bring the field names into scope followed by the type name.
+
+## Usage
+
+Records function similarly to other data types. They can be defined locally,
+exported from a module, and utilized in pattern matching.
+
+For example, here we declare the `newType` record type with the `mkNewtype` type
+constructor and one field named `f`.
 
 ```juvix
 --8<------ "docs/reference/language/records.juvix:declaringnewtype"
 ```
 
-We could also define a record with multiple constructors. For instance, let us
-define the record type called `Pair` to model pairs of values. The `Pair`
-type has a single `mkPair` type constructor that takes two arguments, called
-`fst` and `snd`, of types `A` and `B`, respectively.
+Records with multiple constructors can also be defined. Consider the `Pair`
+record type that models pairs of values. The `Pair` type has a single `mkPair`
+type constructor that takes two arguments, named `fst` and `snd`, of type
+parameters `A` and `B`, respectively.
 
 ```juvix
 --8<------ "docs/reference/language/records.juvix:pair"
 ```
 
-To use this type, create a `Pair` type term (a pair) using the `mkPair` type
-constructor and supplying values for each field.
+To utilize this type, create a `Pair` type term (a pair) using the `mkPair` type
+constructor and provide values for each field.
 
 ```juvix
 --8<------ "docs/reference/language/records.juvix:declaringpair"
 ```
 
-Field names enable access to their associated values. For instance, another pair
-equivalent to the one defined above can be declared using values extracted via
-the field names.
+Field names allow access to their corresponding values. For example, another
+pair equivalent to the one defined above can be declared using values retrieved
+via the field names.
 
 ```juvix
 --8<------ "docs/reference/language/records.juvix:viafields"
 ```
 
-The fields record type's fields are qualified by the type name by default. To
-access the fields without the type name, use the `open` keyword to bring these
-names into scope.
+By default, the fields of a record type are qualified by the type name. To
+access the fields without specifying the type name, use the `open` keyword to
+bring these names into scope.
 
 ```juvix
 --8<------ "docs/reference/language/records.juvix:openrecord"
 ```
 
-Lastly, let us declare a record with multiple constructors.
+Finally, consider the declaration of a record with multiple constructors.
 
 ```juvix
 --8<------ "docs/reference/language/records.juvix:declaringenum"
