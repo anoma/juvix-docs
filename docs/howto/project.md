@@ -9,7 +9,11 @@ search:
 
 A _juvix project_ is a collection of juvix modules plus some extra metadata
 gathered in a `juvix.yaml` file. The most convenient way to create a juvix
-project is to run the command `juvix init`.
+project is to run the command:
+
+```shell
+--8<------ "docs/howto/project/CLI.yaml:init"
+```
 
 ## Juvix YAML file
 
@@ -69,7 +73,6 @@ therefore a user can use it including the following line in the `juvix.yaml`
 # -- juvix.yaml
 dependencies:
   - .juvix-build/stdlib/
-file: []
 name: juvix-docs
 version: 0.0.0
 ```
@@ -122,6 +125,14 @@ pipeline, all remote dependencies are processed:
 
       * Remote dependencies of transitive dependencies are also processed.
       * The `git fetch` step is required for the case where the remote is updated.
+
+!!! info "Lock file"
+
+      * A lock file is generated in the same directory as for `juvix.yaml`. This file is used to
+        determine if any dependency needs to be updated. If the `ref` in the
+        lock file does not match the `ref` in the package file, it is considered out of date.
+
+<!-- Add more about the new `juvix dependencies` -->
 
 #### Fixing errors
 
