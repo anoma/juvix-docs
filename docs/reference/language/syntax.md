@@ -141,6 +141,15 @@ iter (acc1 := a1; ..; accn := an) (x1 in xs1; ..; xk in xsk) {body}
 --8<-- [end:iterator-application-syntax]
 ```
 
+## Pragmas
+
+```text
+--8<-- [start:pragma-id-syntax]
+{-# pragma_name: pragma_value #-}
+identifier : Type;
+--8<-- [end:pragma-id-syntax]
+```
+
 ## Control
 
 ### Case

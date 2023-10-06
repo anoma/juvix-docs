@@ -23,7 +23,7 @@ The syntax for a `let` binding is as follows:
 In this syntax:
 
 - `{name}` refers to the name of the variable you want to define and should be a
-  valid identifier accompanied by a type annotation.
+  valid identifier of type `<type>`.
 - `{term}` is the value or computation assigned to the identifier.
 - `{body}` represents the section of code where this local definition is valid.
 
