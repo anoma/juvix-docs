@@ -22,11 +22,13 @@ For an operator with no specified precedence or associativity, the arity can be
 declared as follows:
 
 ```juvix
-syntax fixity <name> := <arity>;
+--8<------ "docs/reference/language/syntax.md:fixity-arity-syntax"
 ```
 
-In this syntax, `<name>` represents the operator name, and `<arity>` can either
-be `unary` or `binary`.
+In this syntax,
+
+- `<name>` represents the operator name, and
+- `<arity>` can either be `none`, `unary`, or `binary`.
 
 This declaration is equivalent to:
 
@@ -79,6 +81,26 @@ syntax fixity <name> := <arity> {
     assoc := <associativity>;
     above := [otherOperatorName1;...; otherOperatorNameN]
     };
+```
+
+# Operator Alias Fixity
+
+In Juvix, when an operator is aliased, the new alias automatically inherits the
+fixity of the original operator. This behavior ensures consistency and
+predictability when using aliases in place of their corresponding operators.
+
+Consider a scenario where the `or` operator is an alias of the `||` operator.
+The `or` operator will inherit the fixity of the `||` operator by default.
+
+```juvix
+--8<------ "docs/reference/language/aliases.juvix:or-inherit"
+```
+
+However, if you want to override this behavior, you can declare the alias with
+`none` as its fixity.
+
+```juvix
+--8<------ "docs/reference/language/aliases.juvix:or-fixity-none"
 ```
 
 ## Examples of Fixity Declarations

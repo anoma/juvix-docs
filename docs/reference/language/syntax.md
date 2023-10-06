@@ -15,6 +15,14 @@ syntax alias <originalName> := <AlternativeName>;
 --8<-- [end:alias-syntax]
 ```
 
+# Fixity
+
+```text
+--8<-- [start:fixity-arity-syntax]
+syntax fixity <name> := <arity>;
+--8<-- [end:fixity-arity-syntax]
+```
+
 # Axiom
 
 ```text
@@ -70,12 +78,12 @@ Lambdas
 ## Data Types
 
 ```text
---8<-- [start:data-type-syntax]
+--8<-- [start:datatype-syntax]
 type <name> <type-parameters> :=
     | <constructor1> : <type1>
     | ...
     | <constructorn> : <typen>;
---8<-- [end:data-type-syntax]
+--8<-- [end:datatype-syntax]
 ```
 
 ## Traits and Records

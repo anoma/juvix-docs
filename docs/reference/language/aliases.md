@@ -4,50 +4,46 @@ comments: false
 search:
   boost: 3
 ---
+# Aliases in Juvix
 
-# Aliases
+Aliases in Juvix are a powerful feature that allows developers to create shorthand or substitute names for existing ones. This can greatly enhance readability and maintainability of the code.
 
-Aliases in Juvix serve as shorthand for an existing name. An alias is introduced
-through the following declaration.
+## Syntax
+
+The syntax for creating an alias is as follows:
 
 ```text
 --8<-- "docs/reference/language/syntax.md:alias-syntax"
 ```
 
-These new names are interchangeable with the aliased name, and can be used in
-pattern matching, qualification, and module opening.
+Once declared, these aliases can be used interchangeably with the original name. They can be employed in various contexts such as pattern matching, qualification, and module opening.
 
 # Application of Aliases
 
-Aliases can be forward referenced. This means you can use an alias before it has
-been declared in your code. This feature can be particularly useful when you
-want to use a more intuitive or shorter name for something that is defined later
-in the code.
+One of the key features of aliases in Juvix is their ability to be forward referenced. This means you can use an alias before it has been officially declared in your code. This can be particularly useful when you want to use a more intuitive or shorter name for something that is defined later in the code.
 
-For instance, let's define the alias `Boolean` for the `Bool` type, and we could
-also alias the named constructors `true` and `false` for the Boolean type as `⊤`
-(top) and `⊥` (bottom) respectively.
+For instance, consider the following example where we define the alias `Boolean` for the `Bool` type. We also alias the named constructors `true` and `false` for the Boolean type as `⊤` (top) and `⊥` (bottom) respectively.
 
 ```juvix
 --8<------ "docs/reference/language/aliases.juvix:forward"
 ```
 
-Aliases can be used in local definitions, as shown in the `let` expression
-below.
+In addition to global scope, aliases can also be used in local definitions. The following `let` expression demonstrates this usage.
 
 ```juvix
 --8<------ "docs/reference/language/aliases.juvix:local-alias"
 ```
 
-Like any other name, aliases can be exported from a module.
+Just like any other name, aliases can be exported from a module to be used elsewhere. Here's how to do it:
 
 ```juvix
 --8<------ "docs/reference/language/aliases.juvix:export"
 ```
 
-We can create aliases for not only types but also terms, including functions.
-For example, the binary `||` function can be aliased as `or`.
+The versatility of aliases extends beyond types to terms, including functions
+(operators). For example, the binary `||` function can be aliased as `or` as
+shown below:
 
 ```juvix
---8<------ "docs/reference/language/aliases.juvix:or"
+--8<------ "docs/reference/language/aliases.juvix:or-inherit"
 ```

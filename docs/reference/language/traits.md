@@ -10,7 +10,7 @@ search:
 A trait is a special type of [record](./records.md) that can be used to define a
 set of functions that must be implemented for a given type.
 
-## Syntax
+## Syntax of Traits
 
 ### Trait declarations
 
@@ -33,6 +33,8 @@ For example, the following defines a trait `Show`. Any type `A` that implements
 
 An instance of a trait refers to a term of the corresponding record type, which
 must implement all methods stipulated by the trait.
+
+#### Syntax of instance declarations
 
 To declare a given term is an instance of a trait, we use the `instance`
 keyword. To define an instance of a trait, we use the trait constructor of the

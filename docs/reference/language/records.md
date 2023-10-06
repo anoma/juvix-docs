@@ -83,6 +83,12 @@ via the field names.
 --8<------ "docs/reference/language/records.juvix:viafields"
 ```
 
+One variant of the record term creation is as follows:
+
+```juvix
+--8<------ "docs/reference/language/records.juvix:syntax-variant-record-term"
+```
+
 By default, the fields of a record type are qualified by the type name. To
 access the fields without specifying the type name, use the `open` keyword to
 bring these names into scope.

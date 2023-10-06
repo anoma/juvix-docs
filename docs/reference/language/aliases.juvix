@@ -43,12 +43,21 @@ syntax operator || logical;
   | one _ := one;
 --8<-- [end:export]
 
---8<-- [start:or]
-syntax operator or logical; 
-syntax alias or := ||;
+module fixityInherit;
+--8<-- [start:or-inherit]
+    syntax alias or := ||;
+    newor (a b c : Binary) : Binary := (a or b) or c;
+--8<-- [end:or-inherit]
+end;
 
-or3 (a b c : Binary) : Binary := (a or b) or c;
---8<-- [end:or]
+module fixityNone;
+--8<-- [start:or-fixity-none]
+syntax operator or none; 
+syntax alias or := ||;
+or3 (a b c : Binary) : Binary := or (or a b) c;
+--8<-- [end:or-fixity-none]
+end;
+
 
 type Pair := mkPair Binary Binary;
 
