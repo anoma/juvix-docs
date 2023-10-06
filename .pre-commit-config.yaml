@@ -27,8 +27,8 @@ repos:
     rev: v3.0.0-alpha.6
     hooks:
       - id: prettier
-        types_or: [css, javascript, markdown, yaml, toml]
-        exclude: docs/juvix-packages.md
+        types_or: [css, javascript, yaml, toml]
+        exclude: docs/juvix-packages.md|docs/juvix.lock.yaml
 
   - repo: local
     hooks:

@@ -1,3 +1,10 @@
+---
+icon: material/flash-circle
+comments: false
+search:
+  boost: 5
+---
+
 # Quick Start
 
 To install Juvix, follow the instructions in the [installation

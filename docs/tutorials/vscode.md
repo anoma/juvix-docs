@@ -1,6 +1,8 @@
 ---
 icon: material/microsoft-visual-studio-code
 comments: true
+search:
+  boost: 2
 ---
 
 # Juvix VSCode extension tutorial
@@ -12,7 +14,7 @@ Once you've installed the Juvix extension, you can open a Juvix file.
 For example, create a `Hello.juvix` file with the following content.
 
 ```juvix
---8<------ "docs/examples/milestone/HelloWorld/HelloWorld.juvix"
+--8<------ "docs/howto/compilation/Main.juvix:Hello"
 ```
 
 Syntax should be automatically highlighted for any file with `.juvix`

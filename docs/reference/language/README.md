@@ -1,6 +1,8 @@
 ---
 icon: material/label-outline
 comments: false
+search:
+  boost: 4
 hide:
   - toc
 ---

@@ -1,44 +1,40 @@
 ---
 icon: octicons/terminal-16
 comments: true
+search:
+  boost: 5
 ---
 
 # Program Compilation
 
 ## Example: Hello World
 
-A Juvix file must declare a module with the same name as the file. For instance, `Hello.juvix` should declare a module `Hello`:
+A Juvix file must declare a module with the same name as the file. For instance, `HelloWorld.juvix` should declare a module `HelloWorld`:
 
 ```juvix
--- This is a comment.
-module Hello;
-
--- Importing the 'String' type from standard library prelude
-import Stdlib.Prelude open;
-
-main : String := "Hello world!";
+--8<------ "docs/howto/compilation/Main.juvix:Hello"
 ```
 
 The zero-argument function `main` is evaluated when running the program and must be defined in a file compiled to an executable.
 
-To compile `Hello.juvix`, type:
+To compile `HelloWorld.juvix`, type:
 
 ```shell
-juvix compile Hello.juvix
+--8<------ "docs/howto/compilation/CLI.yaml:compile"
 ```
 
 For all options of the `compile` command, type:
 
 ```shell
-juvix compile --help
+--8<------ "docs/howto/compilation/CLI.yaml:compile-help"
 ```
 
 ## Compilation Targets
 
-Juvix supports several targets specified with the `-t` option:
+Juvix supports several targets specified with the `-t` option. Continuing the example above, to compile `HelloWorld.juvix` to a WebAssembly binary, type, we type:
 
 ```shell
-juvix compile -t TARGET file.juvix
+--8<------ "docs/howto/compilation/CLI.yaml:compile-target-webassembly"
 ```
 
 Targets include:
@@ -61,11 +57,18 @@ To view all compilation options, type `juvix compile --help`. Commonly used opti
 
 ## Juvix Projects
 
-A Juvix project is a collection of Juvix modules in one main directory containing a `juvix.yaml` metadata file. Each module's name must match its file path, relative to the project's root directory. For instance, if the file is `root/Data/List.juvix`, the module should be called `Data.List`.
+A Juvix project is a collection of Juvix modules in one main directory
+containing a `juvix.yaml` metadata file. Each module's name must match its file
+path, relative to the project's root directory. For instance, if the file is
+`root/Data/List.juvix`, the module should be called `Data.List`.
 
 To initialize a Juvix project interactively in the current directory, use `juvix init`.
 
-To verify correct project root detection by Juvix, run `juvix dev root File.juvix`.
+To verify correct project root detection by Juvix, run, for instance,
+
+```shell
+--8<------ "docs/howto/compilation/CLI.yaml:dev-root"
+```
 
 Refer to: [Modules Reference](../reference/language/modules.md).
 
