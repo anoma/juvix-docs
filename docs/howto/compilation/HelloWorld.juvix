@@ -9,3 +9,4 @@ import Stdlib.Prelude open;
 
 main : String := "Hello world!";
 --8<-- [end:Hello]
+end;
