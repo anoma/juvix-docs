@@ -38,7 +38,7 @@ p1' : Pair T T :=
 --8<-- [end:viafields]
 
 --8<-- [start:syntax-variant-record-term]
-p1' : Pair T T :=
+p1'' : Pair T T :=
   mkPair@{
     fst := Pair.fst p1; 
     snd := Pair.snd p1
