@@ -1,0 +1,63 @@
+module traitShow;
+
+import Stdlib.Prelude open hiding {Show; mkShow; module Show};
+
+--8<-- [start:show]
+trait
+type Show A := mkShow {show : A → String};
+--8<-- [end:show]
+
+--8<-- [start:showInstances]
+instance
+showStringI : Show String := mkShow (show := id);
+
+instance
+showBoolI : Show Bool :=
+  mkShow (show := λ {x := if x "true" "false"});
+
+instance
+showNatI : Show Nat := mkShow (show := natToString);
+--8<-- [end:showInstances]
+
+--8<-- [start:showList]
+instance
+showListI {A} {{Show A}} : Show (List A) :=
+  let
+    showList {A} : {{Show A}} → List A → String
+      | nil := "nil"
+      | (h :: t) := Show.show h ++str " :: " ++str showList t;
+  in mkShow (show := showList);
+--8<-- [end:showList]
+
+--8<-- [start:showMaybe]
+showMaybe {A} {{Show A}} : Maybe A → String
+  | (just x) := "just (" ++str Show.show x ++str ")"
+  | nothing := "nothing";
+
+instance
+showMaybeI {A} {{Show A}} : Show (Maybe A) :=
+  mkShow (show := showMaybe);
+--8<-- [end:showMaybe]
+
+f {A} {{Show A}} : A → String
+  | x := Show.show x;
+
+--8<-- [start:implicit]
+f' {A} : {{Show A}} → A → String
+  | {{mkShow s}} x := s x;
+
+f'' {A} : {{Show A}} → A → String
+  | {{M}} x := Show.show {{M}} x;
+--8<-- [end:implicit]
+
+--8<-- [start:main]
+main : IO :=
+  printStringLn (Show.show true)
+    >> printStringLn (f false)
+    >> printStringLn (Show.show 3)
+    >> printStringLn (Show.show [true; false])
+    >> printStringLn (Show.show [1; 2; 3])
+    >> printStringLn (f' [1; 2])
+    >> printStringLn (f'' [true; false])
+    >> printStringLn (Show.show ["a"; "b"; "c"; "d"]);
+--8<-- [end:main]
