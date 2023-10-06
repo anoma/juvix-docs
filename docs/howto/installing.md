@@ -1,6 +1,8 @@
 ---
 icon: material/laptop
 comments: false
+search:
+  boost: 5
 ---
 
 # Installing Juvix

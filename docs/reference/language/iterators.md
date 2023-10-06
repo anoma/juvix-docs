@@ -1,20 +1,24 @@
 ---
 icon: material/reiterate
 comments: false
+search:
+  boost: 3
 ---
 
 # Iterators
 
 Any identifier can be declared as an iterator. The syntax to define an iterator is the following:
 
+## Syntax
+
 ```juvix
-syntax iterator iter;
+--8<-- "docs/reference/language/syntax.md:iterator-syntax-simple"
 ```
 
 or
 
 ```juvix
-syntax iterator iter {init := n ; range := k};
+--8<-- "docs/reference/language/syntax.md:iterator-syntax-simple-with-arguments"
 ```
 
 where `n` and `k` specify the number of _initializers_ (of the form `acc := a`) and _ranges_ (of the form `x in xs`) in iterator application. If the number of initializers or ranges is not specified, then any number is allowed in iterator application.

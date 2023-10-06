@@ -1,6 +1,8 @@
 ---
 icon: octicons/terminal-16
 comments: true
+search:
+  boost: 5
 ---
 
 # Program Compilation

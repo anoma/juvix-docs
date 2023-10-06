@@ -4,8 +4,7 @@ module example-multiply-by-two;
   --8<-- [start:multiplyByTwo]
   import Stdlib.Data.Nat open using {Nat; *};
 
-  multiplyByTwo : Nat -> Nat
-    | n := 2 * n;
+  multiplyByTwo (n : Nat) : Nat := 2 * n;
 --8<-- [end:multiplyByTwo]
 end;
 

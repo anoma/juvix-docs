@@ -1,6 +1,8 @@
 ---
 icon: material/microsoft-visual-studio-code
 comments: true
+search:
+  boost: 2
 ---
 
 # Juvix VSCode extension tutorial

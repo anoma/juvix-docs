@@ -1,6 +1,8 @@
 ---
 icon: material/equal
 comments: false
+search:
+  boost: 5
 ---
 
 # How to setup a Juvix project

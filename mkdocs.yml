@@ -53,15 +53,19 @@ theme:
     - content.code.annotate
     - content.code.copy
     - content.tooltips
-    - navigation.tracking
+    - navigation.footer
+    - navigation.footer
+    - navigation.indexes
+    - navigation.path
+    - navigation.prune
     - navigation.tabs
     - navigation.tabs.sticky
-    # - navigation.expand
-    - navigation.path
-    - navigation.footer
+    - navigation.tracking
+    - navigation.top
     # - navigation.instant
     - search.highlight
     - search.suggest
+    - search.share
     - toc.follow
 
   custom_dir: "docs/overrides"
@@ -115,7 +119,12 @@ markdown_extensions:
       custom_checkbox: true
 
 plugins:
-  - search
+  - search:
+      lang: en
+      pipeline:
+        - stemmer
+        - stopWordFilter
+        - trimmer
   - tags
   - mkdocstrings
 

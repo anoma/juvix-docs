@@ -1,6 +1,8 @@
 ---
 icon: material/office-building-plus-outline
 comments: false
+search:
+  boost: 3
 ---
 
 # Built-ins

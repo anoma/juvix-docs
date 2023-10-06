@@ -1,31 +1,39 @@
 ---
 icon: material/rename-outline
 comments: false
+search:
+  boost: 3
 ---
 
 # Aliases
 
-Aliases serve as shorthand for terms, functions, and types, enhancing
-readability. Introduced through the declaration,
+Aliases in Juvix serve as shorthand for an existing name. An alias is introduced
+through the following declaration.
 
 ```juvix
 syntax alias <originalName> := <AlternativeName>;
 ```
 
-these new names are interchangeable with the aliased name, applicable in pattern
-matching, qualification, and module opening.
+These new names are interchangeable with the aliased name, and can be used in
+pattern matching, qualification, and module opening.
 
 # Application of Aliases
 
-Aliases can be forward referenced, permitting their use prior to declaration.
-For instance, we define the alias Boolean for the `Bool` type, and their terms
-`true` and `false` as `⊤` and `⊥` respectively.
+Aliases can be forward referenced. This means you can use an alias before it has
+been declared in your code. This feature can be particularly useful when you
+want to use a more intuitive or shorter name for something that is defined later
+in the code.
+
+For instance, let's define the alias `Boolean` for the `Bool` type, and we could
+also alias the named constructors `true` and `false` for the Boolean type as `⊤`
+(top) and `⊥` (bottom) respectively.
 
 ```juvix
 --8<------ "docs/reference/language/aliases.juvix:forward"
 ```
 
-Aliases exhibit versatility in application. They can be used in local definitions, as shown in the `let` expression below.
+Aliases can be used in local definitions, as shown in the `let` expression
+below.
 
 ```juvix
 --8<------ "docs/reference/language/aliases.juvix:local-alias"
@@ -37,7 +45,8 @@ Like any other name, aliases can be exported from a module.
 --8<------ "docs/reference/language/aliases.juvix:export"
 ```
 
-We can create aliases for not only types but also terms, including functions. For example, the binary `||` function can be aliased as `or`.
+We can create aliases for not only types but also terms, including functions.
+For example, the binary `||` function can be aliased as `or`.
 
 ```juvix
 --8<------ "docs/reference/language/aliases.juvix:or"
