@@ -10,8 +10,8 @@ search:
 Aliases in Juvix serve as shorthand for an existing name. An alias is introduced
 through the following declaration.
 
-```juvix
-syntax alias <originalName> := <AlternativeName>;
+```text
+--8<-- "docs/reference/language/syntax.md:alias-syntax"
 ```
 
 These new names are interchangeable with the aliased name, and can be used in

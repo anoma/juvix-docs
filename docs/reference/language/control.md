@@ -22,12 +22,8 @@ enhancing code readability and maintainability.
 
 A case expression in Juvix is defined as follows:
 
-```juvix
-case <expression> of {
-  | <pattern1> := <branch1>
-  ..
-  | <patternN> := <branchN>
-}
+```text
+--8<-- "docs/reference/language/syntax.md:case-syntax"
 ```
 
 In this syntax:

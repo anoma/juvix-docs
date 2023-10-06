@@ -10,8 +10,8 @@ search:
 Axioms or postulates are used to introduce new terms or types without defining
 them. This is done using the `axiom` keyword.
 
-```juvix
-axiom <name> : <type>;
+```text
+--8<------ "docs/reference/language/syntax.md:axiom-syntax"
 ```
 
 ## Usage

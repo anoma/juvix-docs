@@ -7,6 +7,21 @@ module <name>;
 end;
 --8<-- [end:module-syntax]
 ```
+# Alias
+
+```text
+--8<-- [start:alias-syntax]
+syntax alias <originalName> := <AlternativeName>;
+--8<-- [end:alias-syntax]
+```
+
+# Axiom
+
+```text
+--8<-- [start:axiom-syntax]
+axiom <name> : <type>;
+--8<-- [end:axiom-syntax]
+```
 
 # Function
 
@@ -21,7 +36,6 @@ end;
 <funName> (<argName> : <argType>) : <returnType> := <body>;
 --8<-- [end:function-named-arguments]
 ```
-
 
 ```text
 --8<-- [start:function-pattern-matching]
@@ -125,4 +139,18 @@ syntax iterator <name> {init := <initVal>;  range := <ranges>};
 --8<-- [start:iterator-application-syntax]
 iter (acc1 := a1; ..; accn := an) (x1 in xs1; ..; xk in xsk) {body}
 --8<-- [end:iterator-application-syntax]
+```
+
+## Control
+
+### Case
+
+```text
+--8<-- [start:case-syntax]
+case <expression> of {
+  | <pattern1> := <branch1>
+  ..
+  | <patternN> := <branchN>
+}
+--8<-- [end:case-syntax]
 ```

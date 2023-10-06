@@ -10,7 +10,7 @@ Comments provides a way to document code for better understanding and
 readability for users and future developers. In Juvix, the commenting syntax
 follows that of `Haskell`.
 
-## Syntax and Usage
+## Syntax of Comments
 
 There are several types of comments you can use in Juvix. These include inline
 comments, region comments, Judoc inline comments, and Judoc block comments.
