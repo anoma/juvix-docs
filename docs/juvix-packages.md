@@ -24,7 +24,7 @@ hide:
 
         Add the following to your `juvix.yaml` file in the `dependencies` section:
 
-        ```juvix
+        ```yaml
         --8<------ "docs/juvix-packages/juvix.yaml:juvix-containers"
         ```
 
@@ -42,7 +42,7 @@ hide:
 
         Add the following to your `juvix.yaml` file in the `dependencies` section:
 
-        ```juvix
+        ```yaml
         --8<------ "docs/juvix-packages/juvix.yaml:juvix-quickcheck"
         ```
 
@@ -61,7 +61,7 @@ hide:
 
         Add the following to your `juvix.yaml` file in the `dependencies` section:
 
-        ```juvix
+        ```yaml
         --8<------ "docs/juvix-packages/juvix.yaml:juvix-stdlib"
         ```
 
@@ -77,7 +77,7 @@ hide:
 
         Add the following to your `juvix.yaml` file in the `dependencies` section:
 
-        ```juvix
+        ```yaml
         --8<------ "docs/juvix-packages/juvix.yaml:juvix-test"
         ```
 
@@ -99,7 +99,7 @@ hide:
 
         Add the following to your `juvix.yaml` file in the `dependencies` section:
 
-        ```juvix
+        ```yaml
         --8<------ "docs/juvix-packages/juvix.yaml:taiga-simulator"
         ```
     
