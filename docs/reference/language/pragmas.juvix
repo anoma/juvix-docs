@@ -1,7 +1,7 @@
 {-# format: false #-}
 module pragmas;
 
-import Stdlib.Prelude open;
+import Stdlib.Prelude open hiding {map; Natural; mkNatural};
 
 --8<-- [start:pragma-inline]
 {-# inline: true #-}
@@ -44,16 +44,42 @@ end;
 
 module specialisations;
 
---8<-- [start:pragma-specialise]
+--8<-- [start:pragma-specialise-arg]
+  {-# specialize: [f] #-}
+  map {A B} (f : A -> B) : List A -> List B
+    | nil := nil
+    | (x :: xs) := f x :: map f xs;
+--8<-- [end:pragma-specialise-arg]
 
--- {-# specialise: true #-} -- Need v0.5.3
+  axiom T : Type;
+  axiom T' : Type;
+
+--8<-- [start:pragma-map-g]
+  map_g : List T -> List T'
+    | nil := nil
+    | (x :: xs) := g x :: map_g xs;
+--8<-- [end:pragma-map-g]
+
+--8<-- [start:pragma-specialise-by]
+  {-# inline: true #-}
+  funa {A} (f : A -> A) (a : A) : A :=
+    let
+      {-# specialize-by: [f] #-}
+      go : Nat -> A
+        | zero := a
+        | (suc n) := f (go n);
+    in go 10;
+--8<-- [end:pragma-specialise-by]
+
+--8<-- [start:pragma-specialise-trait]
+{-# specialize: true #-}
 trait
 type Natural N := mkNatural {
   + : N -> N -> N;
   * : N -> N -> N;
   fromNat : Nat -> N;
 };
---8<-- [end:pragma-specialise]
+--8<-- [end:pragma-specialise-trait]
 
 {-
 
