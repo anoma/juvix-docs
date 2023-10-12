@@ -1,7 +1,7 @@
 {-# format: false #-}
 module pragmas;
 
-import Stdlib.Prelude open hiding {map; Natural; mkNatural};
+import Stdlib.Prelude open hiding {map; Natural; mkNatural; naturalNatI};
 
 --8<-- [start:pragma-inline]
 {-# inline: true #-}
@@ -81,14 +81,12 @@ type Natural N := mkNatural {
 };
 --8<-- [end:pragma-specialise-trait]
 
-{-
-
 axiom <body> : Natural Nat;
 
 --8<-- [start:pragma-specialise-instance]
+{-# specialize: true #-}
 instance
 naturalNatI : Natural Nat := <body>;
 --8<-- [end:pragma-specialise-instance]
 
--}
 end;
