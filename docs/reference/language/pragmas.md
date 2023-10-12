@@ -180,9 +180,7 @@ symbolizes a non-negative number.
   Declaring
 
   ```juvix
-  {-# specialize: true #-}
-  instance
-  naturalNatI : Natural Nat := ...
+  --8<-- "docs/reference/language/pragmas.juvix:pragma-specialise-instance"
   ```
 
   will result in specializing any function applied to `naturalNatI`.
@@ -190,9 +188,7 @@ symbolizes a non-negative number.
   Declaring
 
   ```juvix
-  {-# specialize: false #-}
-  instance
-  naturalNatI : Natural Nat := ...
+  --8<-- "docs/reference/language/pragmas.juvix:pragma-specialise-instance-false"
   ```
 
   will prevent specializing functions applied to `naturalNatI`, even
