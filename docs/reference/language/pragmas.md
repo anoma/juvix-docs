@@ -87,6 +87,14 @@ symbolizes a non-negative number.
   applied to. This pragma should be used sparingly. It is intended
   mainly for (standard) library developers.
 
+## Case value inlining
+
+- `inline: case`
+
+  This pragma specifies that a function should be inline whenever it
+  is matched on. Using this pragma makes most sense with small
+  functions that directly return a constructor application.
+
 ## Unrolling Recursion
 
 - `unroll: n`
