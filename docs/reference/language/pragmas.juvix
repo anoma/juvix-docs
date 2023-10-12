@@ -83,10 +83,20 @@ type Natural N := mkNatural {
 
 axiom <body> : Natural Nat;
 
+module X;
 --8<-- [start:pragma-specialise-instance]
 {-# specialize: true #-}
 instance
 naturalNatI : Natural Nat := <body>;
 --8<-- [end:pragma-specialise-instance]
+end;
+
+module Y;
+--8<-- [start:pragma-specialise-instance-false]
+{-# specialize: false #-}
+instance
+naturalNatI : Natural Nat := <body>;
+--8<-- [end:pragma-specialise-instance-false]
+end;
 
 end;
