@@ -2,7 +2,6 @@
 module Hash;
 
 import Stdlib.Prelude open;
-import Stdlib.Data.Nat.Ord open;
 
 {-# unroll: 30 #-}
 terminating

@@ -8,7 +8,6 @@ import Data.Map as Map;
 open Map using {Map};
 
 import Stdlib.Prelude open;
-import Stdlib.Data.Int.Ord open;
 
 --- Definitions related to Alice's intent
 --8<-- [start:aliceIntent]
@@ -20,10 +19,10 @@ module AliceIntent;
         createdHashes : List LogicHash :=
           map Resource.logicHash createdRs;
       in isCreated kind
-        || (quantityOfDenom Dolphin.denomination createdRs == 1
-          && quantityOfDenom A.denomination createdRs == 1)
-        || quantityOfDenom Dolphin.denomination createdRs == 1
-        && quantityOfDenom B.denomination createdRs == 2;
+        || (quantityOfDenom Dolphin.denomination createdRs == ofNat 1
+          && quantityOfDenom A.denomination createdRs == ofNat 1)
+        || quantityOfDenom Dolphin.denomination createdRs == ofNat 1
+        && quantityOfDenom B.denomination createdRs == ofNat 2;
 
   --- This will be computed from the logic function
   logicHash : LogicHash := 1;
