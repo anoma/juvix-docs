@@ -11,7 +11,7 @@ end;
 
 ```text
 --8<-- [start:alias-syntax]
-syntax alias <originalName> := <AlternativeName>;
+syntax alias <newName> := <originalName>;
 --8<-- [end:alias-syntax]
 ```
 
