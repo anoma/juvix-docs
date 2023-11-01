@@ -26,27 +26,7 @@ In this post, we will not be discussing the details of Vamp-IR or the circuit co
 For a simple example of a Juvix program that can be compiled to an arithmetic circuit via Vamp-IR, we consider computing the 6-bit mid-square hash of a 16-bit number.
 
 ```juvix
-module MidSquareHash;
-
-import Stdlib.Prelude open;
-import Stdlib.Data.Nat.Ord open;
-
---- `pow N` is 2 ^ N
-pow : Nat -> Nat
-  | zero := 1
-  | (suc n) := 2 * pow n;
-
---- `hash N` hashes a number with max N bits (i.e. smaller than 2^N) into 6 bits
---- (i.e. smaller than 64) using the mid-square algorithm.
-hash : Nat -> Nat -> Nat
-  | (suc n@(suc (suc m))) x :=
-    if
-      (x < pow n)
-      (hash n x)
-      (mod (div (x * x) (pow m)) (pow 6));
-  | _ x := x * x;
-
-main (x y : Nat) : Bool := hash 16 x == y;
+--8<------ "docs/blog/posts/vampir-circuits/MidSquareHash.juvix"
 ```
 
 To compile this file to Vamp-IR type

@@ -19,18 +19,16 @@ links:
 
 # Compiling to VampIR through Geb
 
-!!! note
-
-    The compilation described is currently not supported by the newest version of Juvix and Geb. Changes are forthcoming.
-
 [Before](https://docs.juvix.org/latest/blog/vampir-circuits/), we discussed the
 standard normalization approach to compiling Juvix programs to VampIR. An
 alternative backend is provided by the Geb project currently implemented in Lisp
-providing a categorical view of the needed translations.
+showcasing a categorical view of the needed translations.
 
 The post will be devoted to discussing the core ideas of Geb, the practical
 steps to take in order to use the corresponding pipeline, as well as the current
 limitations the backend faces.
+
+<!-- more -->
 
 We assume basic familiarity with categorical concepts and VampIR.
 
@@ -40,19 +38,15 @@ Geb is a developing language providing a useful interface for specifying
 categorical constructs and helping define compilers in terms of functors. The
 approach is inspired by a classical observation that instead of dealing with
 'good' compilation procedures one can instead specify functors between
-appropriate categories representing the languages one initially considers.
+appropriate categories representing the languages in question.
 
 In the current state of development, Geb is a fairly simple category in which
 one can do "basic arithmetic." It is a category freely spanned by
 terminal/initial objects and finite (co)products with additional constructs for
-objects representing `n`-bit natural numbers. The pipeline itself is a string of
-functors between categories:
+objects representing `n`-bit natural numbers and the distributivity axiom. The
+pipeline itself is a string of functors between categories:
 
-<!-- more -->
-
-$$
-\text {Lambda} \to \text {Geb} \to \text {Seq} \mathbb N
-$$
+$$ \text {Lambda} \to \text {Geb} \to \text {Seq} \mathbb N $$
 
 which are all implemented in Lisp. The morphisms in the final category have a
 fairly direct interpretation as VampIR programs.
@@ -88,78 +82,63 @@ Geb. We run
 juvix compile -t geb NotZero.juvix
 ```
 
-which generates a `NonZero.lisp` file with the following code:
+which generates a `NotZero.lisp` file with the following code:
 
 ```clojure
 (defpackage #:NotZero
   (:shadowing-import-from :geb.lambda.spec #:pair #:right #:left)
   (:shadowing-import-from :geb.spec #:case)
-  (:use #:common-lisp #:geb.lambda.trans #:geb.lambda.main #:geb.lambda.spec #:geb))
+  (:shadowing-import-from :geb.lambda.trans #:int)
+  (:use #:common-lisp #:geb.lambda.spec #:geb)
+  (:export :*entry*))
 
-(in-package :NonZero)
+(in-package :NotZero)
 
 (defparameter *entry*
-  (app (lamb (list (fun-type
-                        int
-                        (coprod
-                          so1
-                          so1)))
-               (lamb (list int)
-                      (case-on
-                        (app  (index 1)
-                              (list (index 0)))
-                        (bit-choice 0)
-                        (bit-choice 1))))
-        (list (lamb (list int)
-                      (case-on
-                        (lamb-eq
-                          (index 0)
-                          (bit-choice 0))
-                        (right
-                          so1
-                          (unit))
-                        (left
-                          so1
-                          (unit)))))))
+  (lamb
+    (list
+      int)
+    (case-on
+      (lamb-eq
+        (index 0)
+        (bit-choice 0))
+      (bit-choice 1)
+      (bit-choice 0))))
 
 ```
 
-The file generated will be used by the Geb binary where `*entry*` is a
-parameter for a term to be compiled. The Lambda code produced is similar to STLC
-with certain variations. In the above code, we have:
+The file generated will be used by the Geb binary where `*entry*` is a parameter
+for a term to be compiled. The Lambda code produced is similar to STLC with
+certain variations. In the above code, we have:
 
-1. Unit type is `so1`
-2. Unique element of the Unit type is `unit`
-3. Coproduct type of `a` and `b` is `coprod a b`
-4. `left` and `right` are appropriate sum-type injections
-5. Function type from `a` to `b` is `fun-type a b`
-6. `int` a stand-in for a type of 24-bit numbers
-7. `lamb` is lambda abstraction
-8. `app` is function application
-9. `case-on` is sum type induction
-10. `lamb-eq` predicate for checking number equality
-11. `index n` is an `n`-th DeBruijn index
-12. `bit-choice n` is a constructor for number `n`
+1. `int` a stand-in for a type of 24-bit numbers
+2. `lamb` is lambda abstraction
+3. `case-on` is sum type induction
+4. `lamb-eq` predicate for checking number equality
+5. `index n` is an `n`-th DeBruijn index
+6. `bit-choice n` is a constructor for number `n`
 
 ## From Lambda to VampIR
 
 After generating the file, one needs to go into the Geb repository, make a
-binary, creating `geb.image` file inside the `build` folder and inside it run
+binary, creating `geb.image` file inside the `build` folder. Next, copy the path
+of the `NotZero.lisp` file created, e.g. `/home/Juvix_Files/NotZero.lisp`.
+Afterwards, go to the `build` folder in Geb and feed in:
 
 ```shell
-./geb.image -i "NonZero.lisp" -e "NonZero:*entry*" -l -p -o "NonZero.pir"
+./geb.image -i "/home/Juvix_Files/NotZero.lisp" -e "NotZero:*entry*" -l -p -o "NotZero.pir"
 ```
 
-This will generate a `NonZero.pir` file in `build` with the inserted Lambda code
+This will generate a `NotZero.pir` file in `build` with the inserted Lambda code
 compiled to VampIR through Geb.
 
-One can remove `-o "NonZero.pir"` in order for the terminal to print the
+One can remove `-o "NotZero.pir"` in order for the terminal to print the
 relevant code instead of putting it in a separate file.
 
 In the build directory type
 
 ```shell
-./geb.image -i "NonZero.lisp" -e "NonZero:*entry*" -l -p
+./geb.image -i "NotZero.lisp" -e "NotZero:*entry*" -l -p
 ```
 
 Which returns
@@ -211,6 +190,29 @@ or to Seq$\mathbb N$ in the nil context by
 
 ```lisp
 TRANS> (to-seqn (lamb (list int) (index 0)))
+```
+
+Hence instead of using the binary, we could instead go to the REPL, enter
+`geb.lambda.trans` and type in the body of the compiled term:
+
+```lisp
+ (to-circuit (lamb
+    (list
+      int)
+    (case-on
+      (lamb-eq
+        (index 0)
+        (bit-choice 0))
+      (bit-choice 1)
+      (bit-choice 0))) :entry)
+```
+
+and get the same output:
+
+```shell
+(def entry x1 x2 = {
+   (1 - (iszero x1))
+ };)
 ```
 
 For further utility function discription, please consult the relevant
@@ -288,7 +290,7 @@ significantly enhance the expressive power of the language.
 While Geb seems like a good candidate to do "categorical arithmetic" in and
 hence to compile to arithmetic circuits, the fact that the primitive
 constructions are very minimal serves as a reason for an exponential blow-up. An
-object representing `n`-bit natural number `nat-wdth n` is analyzed as a `2^n`
+object representing `n`-bit natural number `nat-width n` is analyzed as a `2^n`
 coproduct of terminal objects. So even if we have primitives for natural
 numbers, for `curry` and `uncurry` operations the functions get analyzed
 bit-by-bit, causing a blow-up.
@@ -296,8 +298,14 @@ bit-by-bit, causing a blow-up.
 If one compiles complicated functions, even working with 2-bit numbers can cause
 a heap exhaust.
 
-However, there are forthcoming enhancements to the pipeline. Future
-optimizations of Lambda will include a "smart" version of beta-reduction
-allowing for the removal of unnecessary lambda and function application
-occurences. This will effectively eliminate all blow-up problems having to do
-with compiling relevant Juvix code.
+However, that is a problem that occurs when one wants to use Lambda separately
+and compile arbitrary terms. All the Juvix code that we compile become
+$\beta$-reduced with no function application or lambdas outside of the top of
+the term remaining. This solves our problem for using Geb as a Juvix backend.
+
+## Heap Exhaustion for Recursive Functions
+
+The way that we interpret recursive Juvix functions (similarly to the strategy
+of compiling directly to circuits) comes from unrolling recursion. Currently
+this creates big Lambda terms and due to current memory-managing constraints,
+can create a heap exhaust during compilation.

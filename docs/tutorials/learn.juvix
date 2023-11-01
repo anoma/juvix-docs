@@ -99,7 +99,6 @@ end;
 module max3-example;
   --8<-- [start:max3]
   import Stdlib.Prelude open;
-  import Stdlib.Data.Nat.Ord open;
 
   max3 (x y z : Nat) : Nat := if (x > y) (max x z) (max y z);
 --8<-- [end:max3]
@@ -150,7 +149,6 @@ module NList-example;
   --8<-- [end:nlength]
 
   --8<-- [start:nmaximum]
-  import Stdlib.Data.Nat.Ord open using {max};
 
   nmaximum : NList -> Nat
     | nnil := 0
@@ -269,7 +267,6 @@ end;
 
 module totality-example;
   import Stdlib.Prelude open;
-  import Stdlib.Data.Nat.Ord open;
 
   module fact-not-terminating-example;
     terminating
@@ -323,7 +320,6 @@ end;
 
 module Exercise-solutions;
   import Stdlib.Prelude open hiding {∘};
-  import Stdlib.Data.Nat.Ord open;
 
   module SolBool;
     --8<-- [start:SolBool]
@@ -418,10 +414,10 @@ module Exercise-solutions;
         | (suc zero) := true
         | n@(suc k) := if (mod x k == 0) false (go k);
     in case x of {
-      | zero := false
-      | suc zero := false
-      | suc k := go k
-    };
+         | zero := false
+         | suc zero := false
+         | suc k := go k
+       };
   --8<-- [end:SolPrime]
 
   --8<-- [start:SolHalf]

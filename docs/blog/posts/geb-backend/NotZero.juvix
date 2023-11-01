@@ -1,15 +1,11 @@
---8<-- [start:NotZero]
 module NotZero;
 
 import Stdlib.Data.Bool open;
 import Stdlib.Data.Nat open;
-import Stdlib.Data.Nat.Ord open;
-import Stdlib.Trait open;
 
 -- We need to name the module exactly the same name as the file
 intToBool (x : Nat) : Bool := not (x == 0);
 
 -- We need to include a function named main
 -- for the compilation to succeed
-main : Nat -> Bool := intToBool;
---8<-- [end:NotZero]
+main (x : Nat) : Nat := if (intToBool x) 0 1;
