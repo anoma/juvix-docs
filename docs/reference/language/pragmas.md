@@ -78,6 +78,23 @@ symbolizes a non-negative number.
   In the expression `compose f g`, the function `compose` will be inlined, but
   in `compose f`, it won't be.
 
+## Mandatory inlining
+
+- `inline: always`
+
+  This pragma specifies that a function should always be inlined,
+  regardless of the optimization level or how many arguments it is
+  applied to. This pragma should be used sparingly. It is intended
+  mainly for (standard) library developers.
+
+## Case value inlining
+
+- `inline: case`
+
+  This pragma specifies that a function should be inline whenever it
+  is matched on. Using this pragma makes most sense with small
+  functions that directly return a constructor application.
+
 ## Unrolling Recursion
 
 - `unroll: n`
@@ -101,8 +118,79 @@ symbolizes a non-negative number.
   the `format: false` pragma before a module makes the formatter ignore the
   module and output it verbatim.
 
-## Specializing Functions
+## Specializing Function Arguments
 
-- Allows specialization on a per-trait or per-instance basis.
+- `specialize: [arg1, .., argn]` or `specialize-args: [arg1, .., argn]`
 
-<!-- TODO for v0.5.2 -->
+  This pragma specifies that the arguments `arg1`, ..., `argn` should
+  be specialized in each fully applied function occurrence. Only
+  explicit and instance arguments can be specialized. The arguments
+  can be specified by name or by their position in the argument list
+  (ignoring implicit arguments). For example, with the definition
+
+  ```juvix
+  --8<-- "docs/reference/language/pragmas.juvix:pragma-specialise-arg"
+  ```
+
+  any occurrence of `map g lst` with `g : T -> T'` not a variable will
+  be replaced by an application `map_g lst` of a new function `map_g`
+  defined as:
+
+  ```juvix
+  --8<-- "docs/reference/language/pragmas.juvix:pragma-map-g"
+  ```
+
+  The argument `f` can also be specificed as the first non-implicit argument:
+  ```
+  {-# specialize: [1] #-}
+  ```
+
+- `specialize-by: [v1,..,vn]`
+
+  This pragma specifies that a local function should be specialized by
+  the values of the variables `v1,..,vn` from the surrounding
+  context. This is commonly used to specialize local functions by some
+  arguments of the enclosing function. For example, given
+
+  ```juvix
+  --8<-- "docs/reference/language/pragmas.juvix:pragma-specialise-by"
+  ```
+
+  whever the function `funa` gets inlined with a particular value `v`
+  for `f`, the function `go` will be specialized with that value `v`
+  substituted for `f`. Without the `specialize-by` pragma, after
+  inlining `f` the function `g` would have an additional argument `f`
+  -- the value `v` would be passed to `g` through this argument instead
+  of being "pasted" into the body of `g`.
+
+- `specialize: b`
+
+  When provided before a type or a value (zero-argument function)
+  definition, this pragma specifies whether values of the type or the
+  given value should always be used to specialize functions. For
+  example,
+
+  ```juvix
+  --8<-- "docs/reference/language/pragmas.juvix:pragma-specialise-trait"
+  ```
+
+  will result in specializing any function applied to an argument of
+  type `Natural N` for some `N`.
+
+  Declaring
+
+  ```juvix
+  --8<-- "docs/reference/language/pragmas.juvix:pragma-specialise-instance"
+  ```
+
+  will result in specializing any function applied to `naturalNatI`.
+
+  Declaring
+
+  ```juvix
+  --8<-- "docs/reference/language/pragmas.juvix:pragma-specialise-instance-false"
+  ```
+
+  will prevent specializing functions applied to `naturalNatI`, even
+  if the argument to which it is provided was declared for
+  specialization with `specialize` or `specialize-args`.
