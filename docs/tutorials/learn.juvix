@@ -149,7 +149,6 @@ module NList-example;
   --8<-- [end:nlength]
 
   --8<-- [start:nmaximum]
-
   nmaximum : NList -> Nat
     | nnil := 0
     | (ncons x xs) := max x (nmaximum xs);

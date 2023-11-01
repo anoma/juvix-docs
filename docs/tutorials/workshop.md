@@ -223,9 +223,6 @@ is to replace the `add-solution-here` with your solution.
 
     import Stdlib.Prelude open;
 
-    import Stdlib.Data.Nat.Ord;
-    import Stdlib.Data.Int.Ord as Int;
-
     -- Delete this function when you have completed the exercises
     axiom add-solution-here : {A : Type} -> A;
 
@@ -275,9 +272,6 @@ is to replace the `add-solution-here` with your solution.
     module Solutions;
 
     import Stdlib.Prelude open public;
-    import Stdlib.Data.Nat.Ord open public;
-
-    import Stdlib.Data.Int.Ord as Int;
 
     --- Write a function that computes the exponentation n^m
     exp (x : Nat) : Nat -> Nat

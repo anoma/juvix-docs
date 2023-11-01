@@ -321,11 +321,12 @@ Stdlib.Prelude> case 3 | suc n@(suc _) := n | _ := 0
 
 ## Comparisons and conditionals
 
-To use the comparison operators on natural numbers, one needs to import
-the `Stdlib.Data.Nat.Ord` module. The comparison operators are not in
-`Stdlib.Prelude` to avoid clashes with user-defined operators for other
-data types. The functions available in `Stdlib.Data.Nat.Org` include:
-`<`, `<=`, `>`, `>=`, `==`, `/=`, `min`, `max`.
+The standard library includes all the expected comparison operators:
+`<`, `<=`, `>`, `>=`, `==`, `/=`, `min`, `max`. Similarly to
+arithmetic operations, the comparisons are in fact defined generically
+for different datatypes using traits, which are out of the scope of
+this tutorial. For basic usage, one can assume that the comparisons
+operate on natural numbers.
 
 For example, one may define the function `max3` by:
 
