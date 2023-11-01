@@ -26,7 +26,7 @@
         <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../feed_rss_updated.xml">
       
       <link rel="icon" href="../../assets/images/favicon/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.4+insiders-4.42.1">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7+insiders-4.42.3">
     
     
       
@@ -34,7 +34,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.cbde490e.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.382dd0b9.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -90,7 +90,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://docs.juvix.org/latest/blog/geb-backend/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="Compiling to VampIR through Geb - Juvix Docs" />
+<meta property="twitter:title" content="Compiling to VampIR through Geb - Juvix Docs" />
 <meta property="twitter:description" content="The Official Documentation for Juvix" />
 <meta property="twitter:image" content="https://docs.juvix.org/latest/assets/images/social/blog/geb-backend.png" />
 </head>
@@ -1922,34 +1922,28 @@
 
 <!-- Page content -->
 <h1 id="compiling-to-vampir-through-geb">Compiling to VampIR through Geb<a class="headerlink" href="#compiling-to-vampir-through-geb" title="Permanent link">&para;</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The compilation described is currently not supported by the newest version of Juvix and Geb. Changes are forthcoming.</p>
-</div>
 <p><a href="https://docs.juvix.org/latest/blog/vampir-circuits/" target="_blank" rel="noopener">Before</a>, we discussed the
 standard normalization approach to compiling Juvix programs to VampIR. An
 alternative backend is provided by the Geb project currently implemented in Lisp
-providing a categorical view of the needed translations.</p>
+showcasing a categorical view of the needed translations.</p>
 <p>The post will be devoted to discussing the core ideas of Geb, the practical
 steps to take in order to use the corresponding pipeline, as well as the current
 limitations the backend faces.</p>
+<!-- more -->
+
 <p>We assume basic familiarity with categorical concepts and VampIR.</p>
 <h1 id="geb-pipeline">Geb Pipeline<a class="headerlink" href="#geb-pipeline" title="Permanent link">&para;</a></h1>
 <p>Geb is a developing language providing a useful interface for specifying
 categorical constructs and helping define compilers in terms of functors. The
 approach is inspired by a classical observation that instead of dealing with
 'good' compilation procedures one can instead specify functors between
-appropriate categories representing the languages one initially considers.</p>
+appropriate categories representing the languages in question.</p>
 <p>In the current state of development, Geb is a fairly simple category in which
 one can do "basic arithmetic." It is a category freely spanned by
 terminal/initial objects and finite (co)products with additional constructs for
-objects representing <code>n</code>-bit natural numbers. The pipeline itself is a string of
-functors between categories:</p>
-<!-- more -->
-
-<div class="arithmatex">\[
-\text {Lambda} \to \text {Geb} \to \text {Seq} \mathbb N
-\]</div>
+objects representing <code>n</code>-bit natural numbers and the distributivity axiom. The
+pipeline itself is a string of functors between categories:</p>
+<div class="arithmatex">\[ \text {Lambda} \to \text {Geb} \to \text {Seq} \mathbb N \]</div>
 <p>which are all implemented in Lisp. The morphisms in the final category have a
 fairly direct interpretation as VampIR programs.</p>
 <p>Here, Lambda stands for an extension of STLC with natural numbers types of
@@ -1966,12 +1960,10 @@ to compile Juvix code to VampIR using the Geb binary.</p>
 The translation can be done inside of Juvix itself.</p>
 <p>Let us create an example using one of the VampIR tests in the codebase. We
 create a file <code>NotZero.juvix</code> with body</p>
-<pre class="highlight"><code class="language-juvix">--8&lt;-- [start:NotZero]
-module NotZero;
+<pre class="highlight"><code class="language-juvix">module NotZero;
 
 import Stdlib.Data.Bool open;
 import Stdlib.Data.Nat open;
-import Stdlib.Data.Nat.Ord open;
 import Stdlib.Trait open;
 
 -- We need to name the module exactly the same name as the file
@@ -1979,55 +1971,37 @@ intToBool (x : Nat) : Bool := not (x == 0);
 
 -- We need to include a function named main
 -- for the compilation to succeed
-main : Nat -&gt; Bool := intToBool;
---8&lt;-- [end:NotZero]</code></pre>
+main : Nat -&gt; Bool := intToBool;</code></pre>
 <p>and we want to compile it to code that is readable by the Lisp implementation of
 Geb. We run</p>
 <pre class="highlight"><code class="language-shell">juvix compile -t geb NotZero.juvix</code></pre>
-<p>which generates a <code>NonZero.lisp</code> file with the following code:</p>
+<p>which generates a <code>NotZero.lisp</code> file with the following code:</p>
 <pre class="highlight"><code class="language-clojure">(defpackage #:NotZero
   (:shadowing-import-from :geb.lambda.spec #:pair #:right #:left)
   (:shadowing-import-from :geb.spec #:case)
-  (:use #:common-lisp #:geb.lambda.trans #:geb.lambda.main #:geb.lambda.spec #:geb))
+  (:shadowing-import-from :geb.lambda.trans #:int)
+  (:use #:common-lisp #:geb.lambda.spec #:geb)
+  (:export :*entry*))
 
-(in-package :NonZero)
+(in-package :NotZero)
 
 (defparameter *entry*
-  (app (lamb (list (fun-type
-                        int
-                        (coprod
-                          so1
-                          so1)))
-               (lamb (list int)
-                      (case-on
-                        (app  (index 1)
-                              (list (index 0)))
-                        (bit-choice 0)
-                        (bit-choice 1))))
-        (list (lamb (list int)
-                      (case-on
-                        (lamb-eq
-                          (index 0)
-                          (bit-choice 0))
-                        (right
-                          so1
-                          (unit))
-                        (left
-                          so1
-                          (unit)))))))
+  (lamb
+    (list
+      int)
+    (case-on
+      (lamb-eq
+        (index 0)
+        (bit-choice 0))
+      (bit-choice 1)
+      (bit-choice 0))))
 </code></pre>
-<p>The file generated will be used by the Geb binary where <code>*entry*</code> is a
-parameter for a term to be compiled. The Lambda code produced is similar to STLC
-with certain variations. In the above code, we have:</p>
+<p>The file generated will be used by the Geb binary where <code>*entry*</code> is a parameter
+for a term to be compiled. The Lambda code produced is similar to STLC with
+certain variations. In the above code, we have:</p>
 <ol>
-<li>Unit type is <code>so1</code></li>
-<li>Unique element of the Unit type is <code>unit</code></li>
-<li>Coproduct type of <code>a</code> and <code>b</code> is <code>coprod a b</code></li>
-<li><code>left</code> and <code>right</code> are appropriate sum-type injections</li>
-<li>Function type from <code>a</code> to <code>b</code> is <code>fun-type a b</code></li>
 <li><code>int</code> a stand-in for a type of 24-bit numbers</li>
 <li><code>lamb</code> is lambda abstraction</li>
-<li><code>app</code> is function application</li>
 <li><code>case-on</code> is sum type induction</li>
 <li><code>lamb-eq</code> predicate for checking number equality</li>
 <li><code>index n</code> is an <code>n</code>-th DeBruijn index</li>
@@ -2035,14 +2009,16 @@ with certain variations. In the above code, we have:</p>
 </ol>
 <h2 id="from-lambda-to-vampir">From Lambda to VampIR<a class="headerlink" href="#from-lambda-to-vampir" title="Permanent link">&para;</a></h2>
 <p>After generating the file, one needs to go into the Geb repository, make a
-binary, creating <code>geb.image</code> file inside the <code>build</code> folder and inside it run</p>
-<pre class="highlight"><code class="language-shell">./geb.image -i "NonZero.lisp" -e "NonZero:*entry*" -l -p -o "NonZero.pir"</code></pre>
-<p>This will generate a <code>NonZero.pir</code> file in <code>build</code> with the inserted Lambda code
+binary, creating <code>geb.image</code> file inside the <code>build</code> folder. Next, copy the path
+of the <code>NotZero.lisp</code> file created, e.g. <code>/home/Juvix_Files/NotZero.lisp</code>.
+Afterwards, go to the <code>build</code> folder in Geb and feed in:</p>
+<pre class="highlight"><code class="language-shell">./geb.image -i "/home/Juvix_Files/NotZero.lisp" -e "NotZero:*entry*" -l -p -o "NotZero.pir"</code></pre>
+<p>This will generate a <code>NotZero.pir</code> file in <code>build</code> with the inserted Lambda code
 compiled to VampIR through Geb.</p>
-<p>One can remove <code>-o "NonZero.pir"</code> in order for the terminal to print the
+<p>One can remove <code>-o "NotZero.pir"</code> in order for the terminal to print the
 relevant code instead of putting it in a separate file.</p>
 <p>In the build directory type</p>
-<pre class="highlight"><code class="language-shell">./geb.image -i "NonZero.lisp" -e "NonZero:*entry*" -l -p</code></pre>
+<pre class="highlight"><code class="language-shell">./geb.image -i "NotZero.lisp" -e "NotZero:*entry*" -l -p</code></pre>
 <p>Which returns</p>
 <pre class="highlight"><code class="language-shell">(def entry x1 x2 = {
    (1 - (iszero x1))
@@ -2069,6 +2045,21 @@ lambda term in an empty context and a name.</p>
 <pre class="highlight"><code class="language-lisp">TRANS&gt; (to-cat nil (lamb (list int) (index 0)))</code></pre>
 <p>or to Seq<span class="arithmatex">\(\mathbb N\)</span> in the nil context by</p>
 <pre class="highlight"><code class="language-lisp">TRANS&gt; (to-seqn (lamb (list int) (index 0)))</code></pre>
+<p>Hence instead of using the binary, we could instead go to the REPL, enter
+<code>geb.lambda.trans</code> and type in the body of the compiled term:</p>
+<pre class="highlight"><code class="language-lisp"> (to-circuit (lamb
+    (list
+      int)
+    (case-on
+      (lamb-eq
+        (index 0)
+        (bit-choice 0))
+      (bit-choice 1)
+      (bit-choice 0))) :entry)</code></pre>
+<p>and get the same output:</p>
+<pre class="highlight"><code class="language-shell">(def entry x1 x2 = {
+   (1 - (iszero x1))
+ };)</code></pre>
 <p>For further utility function discription, please consult the relevant
 documentation.</p>
 <h1 id="the-theory">The Theory<a class="headerlink" href="#the-theory" title="Permanent link">&para;</a></h1>
@@ -2125,17 +2116,21 @@ significantly enhance the expressive power of the language.</p>
 <p>While Geb seems like a good candidate to do "categorical arithmetic" in and
 hence to compile to arithmetic circuits, the fact that the primitive
 constructions are very minimal serves as a reason for an exponential blow-up. An
-object representing <code>n</code>-bit natural number <code>nat-wdth n</code> is analyzed as a <code>2^n</code>
+object representing <code>n</code>-bit natural number <code>nat-width n</code> is analyzed as a <code>2^n</code>
 coproduct of terminal objects. So even if we have primitives for natural
 numbers, for <code>curry</code> and <code>uncurry</code> operations the functions get analyzed
 bit-by-bit, causing a blow-up.</p>
 <p>If one compiles complicated functions, even working with 2-bit numbers can cause
 a heap exhaust.</p>
-<p>However, there are forthcoming enhancements to the pipeline. Future
-optimizations of Lambda will include a "smart" version of beta-reduction
-allowing for the removal of unnecessary lambda and function application
-occurences. This will effectively eliminate all blow-up problems having to do
-with compiling relevant Juvix code.</p>
+<p>However, that is a problem that occurs when one wants to use Lambda separately
+and compile arbitrary terms. All the Juvix code that we compile become
+<span class="arithmatex">\(\beta\)</span>-reduced with no function application or lambdas outside of the top of
+the term remaining. This solves our problem for using Geb as a Juvix backend.</p>
+<h2 id="heap-exhaustion-for-recursive-functions">Heap Exhaustion for Recursive Functions<a class="headerlink" href="#heap-exhaustion-for-recursive-functions" title="Permanent link">&para;</a></h2>
+<p>The way that we interpret recursive Juvix functions (similarly to the strategy
+of compiling directly to circuits) comes from unrolling recursion. Currently
+this creates big Lambda terms and due to current memory-managing constraints,
+can create a heap exhaust during compilation.</p>
 
 <!-- Source file information -->
 
@@ -2154,7 +2149,7 @@ with compiling relevant Juvix code.</p>
         <span class="md-icon" title="Last update">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
         </span>
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-09-20T02:12:54+02:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-20</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-01T17:31:10+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-01</span>
       </span>
     
     
@@ -2166,28 +2161,6 @@ with compiling relevant Juvix code.</p>
       </span>
     
     
-    
-      <span class="md-source-file__fact">
-        <span class="md-icon" title="Contributors">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
-        </span>
-        <span>GitHub</span>
-        <nav>
-          
-            <a href="https://github.com/jonaprieto" class="md-author" title="@jonaprieto" target="_blank" rel="noopener">
-              
-              <img src="../../assets/external/avatars.githubusercontent.com/u/1428088.5aea0b69.jpg" alt="jonaprieto">
-            </a>
-          
-            <a href="https://github.com/agureev" class="md-author" title="@agureev" target="_blank" rel="noopener">
-              
-              <img src="../../assets/external/avatars.githubusercontent.com/u/67437331.5aea0b69.jpg" alt="agureev">
-            </a>
-          
-          
-          
-        </nav>
-      </span>
     
   </aside>
 
@@ -2343,7 +2316,7 @@ with compiling relevant Juvix code.</p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a961bebd.min.js"></script>
+      <script src="../../assets/javascripts/bundle.59e7e423.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

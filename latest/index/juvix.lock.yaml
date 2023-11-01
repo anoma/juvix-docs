@@ -4,46 +4,46 @@
 dependencies:
   - git:
       name: stdlib
-      ref: 4facf14d9b2d06b81ce1be1882aa9050f768cb45
+      ref: 8493ff47a0c2fad4542c8e75f5736060ae7da0a4
       url: https://github.com/anoma/juvix-stdlib
     dependencies: []
   - git:
       name: taiga-simulator
-      ref: fd0ac317735bb2752e40f1fa0dd06b2de432bfd5
+      ref: bcb9971b32aed93bdb1121182f41057d9625e0a9
       url: https://github.com/anoma/taiga-simulator
     dependencies:
       - git:
           name: stdlib
-          ref: 4facf14d9b2d06b81ce1be1882aa9050f768cb45
+          ref: 8493ff47a0c2fad4542c8e75f5736060ae7da0a4
           url: https://github.com/anoma/juvix-stdlib
         dependencies: []
       - git:
           name: test
-          ref: a7ac74cac0db92e0b5e349f279d797c3788cdfdd
+          ref: 3214a53b09a90fa77684a30d0fb2e14c202e99b5
           url: https://github.com/anoma/juvix-test
         dependencies:
           - git:
               name: stdlib
-              ref: 4facf14d9b2d06b81ce1be1882aa9050f768cb45
+              ref: 8493ff47a0c2fad4542c8e75f5736060ae7da0a4
               url: https://github.com/anoma/juvix-stdlib
             dependencies: []
       - git:
           name: juvix-containers
-          ref: 2e988dee2651b780cc756082b04e70ed98efac55
+          ref: 7458d586a93caf9cc0ff678ef019c776c9f9b09f
           url: https://github.com/anoma/juvix-containers
         dependencies:
           - git:
               name: stdlib
-              ref: 4facf14d9b2d06b81ce1be1882aa9050f768cb45
+              ref: 8493ff47a0c2fad4542c8e75f5736060ae7da0a4
               url: https://github.com/anoma/juvix-stdlib
             dependencies: []
           - git:
               name: test
-              ref: a7ac74cac0db92e0b5e349f279d797c3788cdfdd
+              ref: 3214a53b09a90fa77684a30d0fb2e14c202e99b5
               url: https://github.com/anoma/juvix-test
             dependencies:
               - git:
                   name: stdlib
-                  ref: 4facf14d9b2d06b81ce1be1882aa9050f768cb45
+                  ref: 8493ff47a0c2fad4542c8e75f5736060ae7da0a4
                   url: https://github.com/anoma/juvix-stdlib
                 dependencies: []

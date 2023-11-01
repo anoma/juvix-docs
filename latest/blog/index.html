@@ -28,7 +28,7 @@
         <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../feed_rss_updated.xml">
       
       <link rel="icon" href="../assets/images/favicon/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.4+insiders-4.42.1">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7+insiders-4.42.3">
     
     
       
@@ -36,7 +36,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.cbde490e.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.382dd0b9.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -92,7 +92,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://docs.juvix.org/latest/blog/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="Juvix Blog - Juvix Docs" />
+<meta property="twitter:title" content="Juvix Blog - Juvix Docs" />
 <meta property="twitter:description" content="The Official Documentation for Juvix" />
 <meta property="twitter:image" content="https://docs.juvix.org/latest/assets/images/social/blog/index.png" />
 </head>
@@ -1752,29 +1752,13 @@
   </header>
   <div class="md-post__content md-typeset">
     <h2 id="compiling-to-vampir-through-geb"><a class="toclink" href="geb-backend/">Compiling to VampIR through Geb</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The compilation described is currently not supported by the newest version of Juvix and Geb. Changes are forthcoming.</p>
-</div>
 <p><a href="https://docs.juvix.org/latest/blog/vampir-circuits/" target="_blank" rel="noopener">Before</a>, we discussed the
 standard normalization approach to compiling Juvix programs to VampIR. An
 alternative backend is provided by the Geb project currently implemented in Lisp
-providing a categorical view of the needed translations.</p>
+showcasing a categorical view of the needed translations.</p>
 <p>The post will be devoted to discussing the core ideas of Geb, the practical
 steps to take in order to use the corresponding pipeline, as well as the current
 limitations the backend faces.</p>
-<p>We assume basic familiarity with categorical concepts and VampIR.</p>
-<h2 id="geb-pipeline"><a class="toclink" href="geb-backend/#geb-pipeline">Geb Pipeline</a></h2>
-<p>Geb is a developing language providing a useful interface for specifying
-categorical constructs and helping define compilers in terms of functors. The
-approach is inspired by a classical observation that instead of dealing with
-'good' compilation procedures one can instead specify functors between
-appropriate categories representing the languages one initially considers.</p>
-<p>In the current state of development, Geb is a fairly simple category in which
-one can do "basic arithmetic." It is a category freely spanned by
-terminal/initial objects and finite (co)products with additional constructs for
-objects representing <code>n</code>-bit natural numbers. The pipeline itself is a string of
-functors between categories:</p>
 
     <nav class="md-post__action">
       <a href="geb-backend/">
@@ -2132,7 +2116,7 @@ constructor argument.</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest", "search.share", "toc.follow"], "search": "../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.a961bebd.min.js"></script>
+      <script src="../assets/javascripts/bundle.59e7e423.min.js"></script>
       
         <script src="../js/timeago.min.js"></script>
       
