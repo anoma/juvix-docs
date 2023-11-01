@@ -51,8 +51,8 @@ module specialisations;
     | (x :: xs) := f x :: map f xs;
 --8<-- [end:pragma-specialise-arg]
 
-  axiom T : Type;
-  axiom T' : Type;
+  syntax alias T := Nat;
+  syntax alias T' := Nat;
 
 --8<-- [start:pragma-map-g]
   map_g : List T -> List T'
@@ -93,8 +93,8 @@ end;
 
 module Y;
 --8<-- [start:pragma-specialise-instance-false]
+-- instance -- TODO: revise this
 {-# specialize: false #-}
-instance
 naturalNatI : Natural Nat := <body>;
 --8<-- [end:pragma-specialise-instance-false]
 end;

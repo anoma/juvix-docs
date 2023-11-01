@@ -185,13 +185,13 @@ flowchart LR
     B -- VampIR --> C[PLONK or Halo2 circuit]
 ```
 
-``` shell
+```shell
 juvix compile -t vampir Hash.juvix
 ```
 
 The VampIR file can then be compiled to a PLONK circuit:
 
-``` shell
+```shell
 vamp-ir plonk setup -m 14 -o input.pp
 vamp-ir plonk compile -u input.pp -s Hash.pir -o c.plonk
 ```
@@ -199,7 +199,7 @@ vamp-ir plonk compile -u input.pp -s Hash.pir -o c.plonk
 A zero-knowledge proof that `hash 1367` is equal to `3` can then be generated
 from the circuit:
 
-``` shell
+```shell
 vamp-ir plonk prove -u input.pp \
                     -c c.plonk \
                     -o proof.plonk -i Hash.json
@@ -207,7 +207,7 @@ vamp-ir plonk prove -u input.pp \
 
 This proof can then be verified:
 
-``` shell
+```shell
 vamp-ir plonk verify -u input.pp -c c.plonk -p proof.plonk
 ```
 

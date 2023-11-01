@@ -42,6 +42,48 @@ function's body to return `2 * n`.
 --8<------ "docs/reference/language/functions.juvix:multiplyByTwo"
 ```
 
+### Default Values
+
+We can assign default values to function arguments. This feature allows a
+function to operate without explicit argument values by using the provided
+defaults.
+
+To specify a default value for an argument, use the `:=` operator followed by
+the desired value. In the following example, `x` and `y` are given default
+values of `0` and `1`, respectively:
+
+
+```juvix
+--8<------ "docs/reference/language/functions.juvix:defaultValues"
+```
+
+
+When calling this function without providing values for `x` and `y`, such as
+`f`, the function will use the default values and return `1`.
+
+!!! note
+
+    Here are some key points to remember about using default argument values in
+    Juvix:
+
+    1. **No Referencing Previous Arguments**: Default values cannot refer to
+      previous arguments. Therefore, the following code would result in a scope
+      error:
+
+        ```juvix
+        f {n : Nat := 0} {m : Nat := n + 1} ....
+        ```
+
+    2. **Function-Specific Feature**: Only functions can have default values. Other
+      constructs or types do not support this feature.
+
+    3. **Left-Hand Side Limitation**: Only arguments on the left-hand side (LHS) of
+      the `:` can have default values. The following syntax is invalid:
+
+        ```juvix
+        f : {n : Nat := 0} := ...
+        ```
+
 ## Pattern Matching in Function Declarations
 
 A function may consist of one or more function clauses instead of a single
