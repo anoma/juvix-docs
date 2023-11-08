@@ -84,6 +84,7 @@ end;
 module default-values;
   --8<-- [start:defaultValues]
   import Stdlib.Prelude open;
-  f {x : Nat := 0}  {y : Nat := 1} :  Nat := x + y;
-  --8<-- [end:defaultValues]
+
+  f {x : Nat := 0} {y : Nat := 1} : Nat := x + y;
+--8<-- [end:defaultValues]
 end;
