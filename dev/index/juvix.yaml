@@ -1,0 +1,11 @@
+name: docs
+dependencies:
+  - git:
+      url: https://github.com/anoma/juvix-stdlib
+      ref: 8493ff47a0c2fad4542c8e75f5736060ae7da0a4
+      name: stdlib
+  - git:
+      url: https://github.com/anoma/taiga-simulator
+      ref: bcb9971b32aed93bdb1121182f41057d9625e0a9
+      name: taiga-simulator
+version: 0.0.1
