@@ -126,5 +126,5 @@ sysroot](./doctor.md#download-the-wasi-sysroot-and-set-wasi_sysroot_path).
 
 The Juvix test suite uses [Wasmer](https://wasmer.io) as a Wasm runtime
 to execute compiled Wasm binaries. See [the Wasmer
-documentation](https://docs.wasmer.io/ecosystem/wasmer/getting-started)
+documentation](https://docs.wasmer.io/install)
 to see how to install it.
