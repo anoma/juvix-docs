@@ -1,5 +1,6 @@
 module IntentExample;
 
+{-
 import Simulator open;
 import Simulator.Resource open using {mkResource as mkResource'};
 import Apps.TwoPartyExchange.Asset open;
@@ -70,3 +71,4 @@ logicFunctions : Map LogicHash LogicFunction :=
   mkLogicFunctionMap
     ((AliceIntent.logicHash, AliceIntent.logicFunction) :: nil);
 --8<-- [end:logics]
+-}
