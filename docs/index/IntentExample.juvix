@@ -19,7 +19,8 @@ module AliceIntent;
         createdHashes : List LogicHash :=
           map Resource.logicHash createdRs;
       in isCreated kind
-        || (quantityOfDenom Dolphin.denomination createdRs == ofNat 1
+        || (quantityOfDenom Dolphin.denomination createdRs
+            == ofNat 1
           && quantityOfDenom A.denomination createdRs == ofNat 1)
         || quantityOfDenom Dolphin.denomination createdRs == ofNat 1
         && quantityOfDenom B.denomination createdRs == ofNat 2;

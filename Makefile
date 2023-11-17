@@ -211,21 +211,41 @@ install-pre-commit :
 pre-commit :
 	@pre-commit run --all-files
 
+JUVIX_PACKAGES_IN_REPO=$(shell find \
+	./docs \
+	-type d \( -name ".juvix-build" -o -name "examples" \) -prune -o \
+	-type f -name 'Package.juvix' -o \
+    -type f -name 'juvix.yaml' -print \
+	| xargs dirname | sort -u)
+
 JUVIXFILES=$(shell find ./docs \
 	-type d -name ".juvix-build" -prune -o \
 	-type d -name "examples" -prune -o \
 	-type f -name "*.juvix" -print)
 JUVIXFORMATFLAGS?=--in-place
 JUVIXTYPECHECKFLAGS?=--only-errors
-JUSTCHECK?=0
+JUSTCHECK ?= 0
 
 .PHONY: format-juvix-files
 format-juvix-files: juvix-bin
-	@cd docs && ${JUVIXBIN} format $(JUVIXFORMATFLAGS) .
+	@for p in $(JUVIX_PACKAGES_IN_REPO); do \
+		${JUVIXBIN} format $(JUVIXFORMATFLAGS) "$$p" > /dev/null 2>&1; \
+		exit_code=$$?; \
+		if [ $$exit_code -eq 0 ]; then \
+			echo "[OK] $$p is formatted"; \
+		else \
+			if [ ${JUSTCHECK} -eq 1 ]; then \
+				echo "[FAIL] $$p formatting failed"; \
+				exit 1; \
+			else \
+				echo "[MODIFY] formatting $$p"; \
+			fi; \
+		fi; \
+	done;
 
 .PHONY: check-format-juvix-files
 check-format-juvix-files: juvix-bin
-	@JUVIXFORMATFLAGS=--check JUSTCHECK=1 ${MAKE} format-juvix-files
+	@JUVIXFORMATFLAGS=--check ${MAKE} JUSTCHECK=1 format-juvix-files
 
 .PHONY: typecheck-juvix-files
 typecheck-juvix-files: juvix-bin
@@ -235,8 +255,8 @@ typecheck-juvix-files: juvix-bin
 		if [ $$exit_code -eq 0 ]; then \
 			echo "[OK] $$file typechecks"; \
 		else \
- 			echo "[FAIL] Typecking failed for $$file" && exit 1; \
-      	fi; \
+			echo "[FAIL] Typecking failed for $$file" && exit 1; \
+		fi; \
 	done
 
 SMOKE := $(shell command -v smoke 2> /dev/null)
