@@ -172,7 +172,7 @@ nav:
               - Aliases: ./reference/language/aliases.juvix.md
               - Iterators: ./reference/language/iterators.md
               - Fixities: ./reference/language/fixity.juvix.md
-              - Operators: ./reference/language/operator.juvix.md
+              - Operators: ./reference/language/operators.juvix.md
 
       - Standard library: ./reference/stdlib.md
       - Example programs: ./reference/examples.md
