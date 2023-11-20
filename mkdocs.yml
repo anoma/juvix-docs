@@ -163,7 +163,7 @@ nav:
           - Records: ./reference/language/records.md
           - Traits: ./reference/language/traits.md
           - Modules: ./reference/language/modules.md
-          - Local definitions: ./reference/language/let.md
+          - Local definitions: ./reference/language/lets.juvix.md
           - Control structures: ./reference/language/control.md
           - Comments: ./reference/language/comments.md
           - Pragmas: ./reference/language/pragmas.md

@@ -5,6 +5,10 @@ search:
   boost: 3
 ---
 
+```juvix hide
+module lets;
+import Stdlib.Prelude open;
+```
 
 # Local Definitions
 
@@ -30,7 +34,12 @@ In this syntax:
 Here's an example:
 
 ```juvix
---8<-- "docs/reference/language/lets.juvix:let-sum"
+sum (lst : List Nat) : Nat :=
+  let
+    go (acc : Nat) : List Nat -> Nat
+      | nil := acc
+      | (x :: xs) := go (acc + x) xs;
+  in go 0 lst;
 ```
 
 In this case, `x` is the identifier, `5` is the expression, and `x * x` is the
