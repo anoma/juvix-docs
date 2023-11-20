@@ -15,16 +15,13 @@ exclude_docs: |
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js
   - assets/js/highlight.js
-  - https://cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.min.js
-  - assets/js/juvix-highlight.js
   - assets/js/extra.js
   # - assets/js/mathjax.js
 
 extra_css:
   - assets/css/extra.css
-  - assets/css/juvix-highlight.css
+  - assets/css/juvix-highlighting.css
   - https://cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.css
 
 theme:
@@ -101,6 +98,9 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: juvix-standalone
+          class: juvix-standalone
+          format: !!python/name:mkdocs_juvix.standalone.render
   - pymdownx.snippets
   - pymdownx.arithmatex:
       generic: true
@@ -111,7 +111,8 @@ markdown_extensions:
         custom_icons:
           - overrides/.icons
   - pymdownx.highlight:
-      use_pygments: false
+      use_pygments: true
+      auto_title: false
   - pymdownx.keys
   - pymdownx.tabbed:
       alternate_style: true
@@ -127,6 +128,7 @@ plugins:
         - trimmer
   - tags
   - mkdocstrings
+  - juvix
 
 nav:
   - ./index.md
@@ -141,7 +143,6 @@ nav:
 
   - Tutorials:
       - Learn Juvix in minutes: ./tutorials/learn.md
-      # - Structuring Juvix projects: ./tutorials/structure.md
       - Juvix VSCode extension: ./tutorials/vscode.md
       - Juvix Emacs mode: ./tutorials/emacs.md
       - ZKSummit 10 Workshop: ./tutorials/workshop.md
@@ -151,13 +152,13 @@ nav:
       - Compiling programs: ./howto/compilation.md
       - Setting up a project: ./howto/project.md
       - Contributing: ./howto/contributing.md
-    # - Judoc documentation tool: ./howto/judoc.md
+      - Judoc documentation tool: ./howto/judoc.md
 
   - Reference:
       - Language reference:
           - About: ./reference/language/README.md
           - Functions: ./reference/language/functions.md
-          - Builtins: ./reference/language/builtins.md
+          - Builtins: ./reference/language/builtins.juvix.md
           - Data types: ./reference/language/datatypes.md
           - Records: ./reference/language/records.md
           - Traits: ./reference/language/traits.md

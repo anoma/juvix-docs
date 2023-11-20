@@ -69,3 +69,4 @@ docs/overrides/.icons/bootstrap**
 docs/overrides/.icons/codeicons/**
 juvix-src/
 python-env/
+**/.juvix-mkdocs/
