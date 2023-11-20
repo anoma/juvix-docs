@@ -1,5 +1,5 @@
 ---
-title: Juvix Packages and Projects
+title: Juvix Packagesjuvix Projects
 hide:
   - navigation
   - toc
@@ -22,10 +22,10 @@ hide:
         
     === "Install"
 
-        Add the following to your `juvix.yaml` file in the `dependencies` section:
+        Add the following to your `Package.juvix` file in the `dependencies` field:
 
-        ```yaml
-        --8<------ "docs/juvix-packages/juvix.yaml:juvix-containers"
+        ```text
+        --8<------ "docs/juvix-packages/Package.juvix:juvix-containers"
         ```
 
 - :octicons-mark-github-16: [`anoma/juvix-quickcheck`](https://github.com/anoma/juvix-quickcheck)
@@ -40,10 +40,10 @@ hide:
 
     === "Install"
 
-        Add the following to your `juvix.yaml` file in the `dependencies` section:
+        Add the following to your `Package.juvix` file in the `dependencies` field:
 
-        ```yaml
-        --8<------ "docs/juvix-packages/juvix.yaml:juvix-quickcheck"
+        ```text
+        --8<------ "docs/juvix-packages/Package.juvix:juvix-quickcheck"
         ```
 
 
@@ -59,10 +59,10 @@ hide:
 
     === "Install"
 
-        Add the following to your `juvix.yaml` file in the `dependencies` section:
+        Add the following to your `Package.juvix` file in the `dependencies` field:
 
-        ```yaml
-        --8<------ "docs/juvix-packages/juvix.yaml:juvix-stdlib"
+        ```text
+        --8<------ "docs/juvix-packages/Package.juvix:juvix-stdlib"
         ```
 
 - :octicons-mark-github-16: [`anoma/juvix-test`](https://github.com/anoma/juvix-test)
@@ -75,10 +75,10 @@ hide:
 
     === "Install"
 
-        Add the following to your `juvix.yaml` file in the `dependencies` section:
+        Add the following to your `Package.juvix` file in the `dependencies` field:
 
-        ```yaml
-        --8<------ "docs/juvix-packages/juvix.yaml:juvix-test"
+        ```text
+        --8<------ "docs/juvix-packages/Package.juvix:juvix-test"
         ```
 
 </div>
@@ -97,10 +97,10 @@ hide:
 
     === "Install"
 
-        Add the following to your `juvix.yaml` file in the `dependencies` section:
+        Add the following to your `Package.juvix` file in the `dependencies` field:
 
-        ```yaml
-        --8<------ "docs/juvix-packages/juvix.yaml:taiga-simulator"
+        ```text
+        --8<------ "docs/juvix-packages/Package.juvix:taiga-simulator"
         ```
     
 
