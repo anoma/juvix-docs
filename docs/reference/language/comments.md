@@ -27,7 +27,7 @@ Inline comments start with two hyphens (`--`). They extend to the end of the lin
 
 Region comments are multi-line comments. They start with `{ -` and end with `- }`.
 
-```juvix
+```text
 {-
     This is a region comment spanning multiple lines!
 -}
@@ -39,7 +39,7 @@ Judoc inline comments are used specifically to document functions and types.
 They begin with three hyphens (`---`). For more information on using Judoc
 comments, refer to the [Judoc documentation](./../judoc.md).
 
-```juvix
+```text
 --- This is a Judoc inline comment used for documenting functions or types!
 ```
 
@@ -49,7 +49,7 @@ Similar to region comments, Judoc block comments span multiple lines. They start
 with `{ --` and end with `-- }`. For more information on using Judoc comments,
 refer to the [Judoc documentation](./../judoc.md).
 
-```juvix
+```text
 {--
     This is a Judoc block comment used for documenting larger code blocks!
 --}

@@ -5,6 +5,10 @@ search:
   boost: 3
 ---
 
+```juvix hide
+module functions;
+```
+
 # Function Declarations in Juvix
 
 In Juvix, a function declaration is composed of a type signature and the body of
@@ -17,7 +21,7 @@ function clauses when pattern matching is employed.
 
 The syntax for a function declaration has the following form:
 
-```juvix
+```text
 --8<-- "docs/reference/language/syntax.md:function-syntax"
 ```
 
@@ -30,7 +34,7 @@ A named argument is an argument whose name is specified in the function type
 signature before the colon. This name is then available within the scope of the
 function's body.
 
-```juvix
+```text
 --8<-- "docs/reference/language/syntax.md:function-named-arguments"
 ```
 
@@ -39,7 +43,10 @@ number) and returns a `Nat`. The argument is named `n` and is used in the
 function's body to return `2 * n`.
 
 ```juvix
---8<------ "docs/reference/language/functions.juvix:multiplyByTwo"
+module example-multiply-by-two;
+  import Stdlib.Data.Nat open using {Nat; *};
+  multiplyByTwo (n : Nat) : Nat := 2 * n;
+end;
 ```
 
 ### Default Values
@@ -54,7 +61,10 @@ values of `0` and `1`, respectively:
 
 
 ```juvix
---8<------ "docs/reference/language/functions.juvix:defaultValues"
+module default-values;
+  import Stdlib.Prelude open;
+  f {x : Nat := 0} {y : Nat := 1} : Nat := x + y;
+end;
 ```
 
 
@@ -70,7 +80,7 @@ When calling this function without providing values for `x` and `y`, such as
       previous arguments. Therefore, the following code would result in a scope
       error:
 
-        ```juvix
+        ```text
         f {n : Nat := 0} {m : Nat := n + 1} ....
         ```
 
@@ -80,7 +90,7 @@ When calling this function without providing values for `x` and `y`, such as
     3. **Left-Hand Side Limitation**: Only arguments on the left-hand side (LHS) of
       the `:` can have default values. The following syntax is invalid:
 
-        ```juvix
+        ```text
         f : {n : Nat := 0} := ...
         ```
 
@@ -103,7 +113,13 @@ matches.
 For instance, consider the following function with two clauses:
 
 ```juvix
---8<-- "docs/reference/language/functions.juvix:negateBoolean"
+module example-negate-boolean;
+  import Stdlib.Data.Bool open;
+
+  neg : Bool -> Bool
+    | true := false
+    | false := true;
+end;
 ```
 
 When `neg` is called with `true`, the first clause is used and the function
@@ -124,19 +140,33 @@ of two arguments is as follows and can be extended to more arguments.
     be moved to the left of the colon in the function definition. For example,
 
     ```juvix
-    --8<-- "docs/reference/language/functions.juvix:moveToLeft"
+    module move-to-left;
+      import Stdlib.Data.Nat open;
+
+      add (n : Nat) : Nat -> Nat
+        | zero := n
+        | (suc m) := suc (add n m);
+    end;
     ```
 
     is equivalent to
 
     ```juvix
-    --8<-- "docs/reference/language/functions.juvix:add"
+      module example-add;
+        import Stdlib.Data.Nat open;
+        add : Nat -> Nat -> Nat
+          | n zero := n
+          | n (suc m) := suc (add n m);
+      end;
     ```
 
     If there is only one clause without any patterns, the pipe `|` must be omitted as we see earlier.
 
     ```juvix
-    --8<-- "docs/reference/language/functions.juvix:shortDefinitions"
+    module short-definitons;
+      import Stdlib.Data.Nat open;
+      multiplyByTwo (n : Nat) : Nat := n;
+    end;
     ```
 
 ## Mutually Recursive Functions
@@ -146,7 +176,19 @@ example, a function checks if a number is `even` by calling another function
 that verifies if the number is `odd`.
 
 ```juvix
---8<-- "docs/reference/language/functions.juvix:mutuallyRecursive"
+module mutually-recursive;
+  import Stdlib.Data.Nat open;
+  import Stdlib.Data.Bool open;
+  import Stdlib.Prelude open;
+
+  odd : Nat -> Bool
+    | zero := false
+    | (suc n) := even n;
+
+  even : Nat -> Bool
+    | zero := true
+    | (suc n) := odd n;
+end;
 ```
 
 Identifiers don't need to be defined before they are used, allowing for mutually
@@ -172,5 +214,19 @@ An anonymous function lists all clauses of a function without naming it. Any
 function declaration can be converted to use anonymous functions:
 
 ```juvix
---8<-- "docs/reference/language/functions.juvix:anonymousFunctions"
+module anonymous-functions;
+  import Stdlib.Prelude open;
+
+  odd : Nat -> Bool :=
+    \ {
+      | zero := false
+      | (suc n) := even n
+    };
+
+  even : Nat -> Bool :=
+    \ {
+      | zero := true
+      | (suc n) := odd n
+    };
+end;
 ```

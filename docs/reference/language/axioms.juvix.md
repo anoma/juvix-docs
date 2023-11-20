@@ -5,6 +5,10 @@ search:
   boost: 3
 ---
 
+```juvix hide
+module axioms;
+```
+
 # Axiom
 
 Axioms or postulates are used to introduce new terms or types without defining
@@ -21,7 +25,8 @@ type, and there exists a term _x_ that belongs to this type _A_. The syntax for
 such a program would be as follows:
 
 ```juvix
---8<------ "docs/reference/language/axioms.juvix"
+axiom A : Type;
+axiom x : A;
 ```
 
 ## Important Considerations
