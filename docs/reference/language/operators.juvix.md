@@ -5,6 +5,10 @@ search:
   boost: 3
 ---
 
+```juvix hide
+module operators;
+```
+
 # Operator Syntax
 
 The `syntax` keyword, paired with `operator`, caters for functions serving as
@@ -13,7 +17,7 @@ regular functions. The pairing associates a term with one [fixity](./fixity.juvi
 defining its arity and potentially its precedence and associativity. This syntax
 declaration has to precede the term declaration.
 
-```juvix
+```text
 syntax operator <name> <fixity>;
 ```
 
@@ -25,5 +29,7 @@ information.
 For instance, we can define the `×` operator as a binary operator as follows:
 
 ```juvix
---8<------ "docs/reference/language/operators.juvix:product"
+syntax fixity product := binary;
+syntax operator × product;
+type × (a : Type) (b : Type) := , : a → b → a × b;
 ```

@@ -161,18 +161,18 @@ nav:
           - Builtins: ./reference/language/builtins.juvix.md
           - Data types: ./reference/language/datatypes.juvix.md
           - Records: ./reference/language/records.juvix.md
-          - Traits: ./reference/language/traits.md
+          - Traits: ./reference/language/traits.juvix.md
           - Modules: ./reference/language/modules.md
           - Local definitions: ./reference/language/lets.juvix.md
           - Control structures: ./reference/language/control.md
           - Comments: ./reference/language/comments.md
-          - Pragmas: ./reference/language/pragmas.md
+          - Pragmas: ./reference/language/pragmas.juvix.md
           - Axioms: ./reference/language/axioms.juvix.md
           - Syntax extensions:
               - Aliases: ./reference/language/aliases.juvix.md
               - Iterators: ./reference/language/iterators.md
               - Fixities: ./reference/language/fixity.juvix.md
-              - Operators: ./reference/language/operators.md
+              - Operators: ./reference/language/operator.juvix.md
 
       - Standard library: ./reference/stdlib.md
       - Example programs: ./reference/examples.md

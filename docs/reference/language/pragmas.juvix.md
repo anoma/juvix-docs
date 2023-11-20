@@ -5,6 +5,11 @@ search:
   boost: 3
 ---
 
+```juvix hide
+module pragmas;
+import Stdlib.Prelude open using {Nat;zero;suc; List; ::; nil; module List};
+```
+
 # Pragmas in Juvix
 
 Pragmas in Juvix are used to provide additional information to the compiler
@@ -16,7 +21,7 @@ pragma comment just before the identifier declaration.
 
 The syntax for binding a pragma to an identifier is as follows:
 
-```juvix
+```text
 --8<-- "docs/reference/language/syntax.md:pragma-id-syntax"
 ```
 
@@ -24,20 +29,37 @@ For instance, the subsequent code associates the `inline` pragma with a value of
 `true` to the identifier `f`.
 
 ```juvix
---8<-- "docs/reference/language/pragmas.juvix:pragma-inline"
+{-# inline: true #-}
+f : Nat -> Nat
+  | x := x;
 ```
 
 Multiple pragmas can be linked with a single identifier, delineated by commas:
 
 ```juvix
---8<-- "docs/reference/language/pragmas.juvix:pragma-inline-with-unroll"
+{-# inline: true, unroll: 100 #-}
+g : Nat -> Nat
+  | x := x;
 ```
 
 Pragmas associated with a module are inherited by all definitions within the
 module, unless explicitly overridden. For example,
 
+```juvix hide
+axiom <body-f> : Nat -> Nat;
+axiom <body-g> : Nat -> Nat;
+axiom <body-h> : Nat -> Nat;
+```
+
 ```juvix
---8<-- "docs/reference/language/pragmas.juvix:pragma-inline-module"
+  {-# inline: true #-}
+  module M;
+    f : Nat -> Nat := <body-f>;
+    g : Nat -> Nat := <body-g>;
+
+    {-# inline: false #-}
+    h : Nat -> Nat := <body-h>;
+  end;
 ```
 
 In this scenario, inlining is enabled for `f`, `g` and disabled for `h`.
@@ -72,7 +94,9 @@ symbolizes a non-negative number.
   For example:
 
   ```juvix
-  --8<-- "docs/reference/language/pragmas.juvix:pragma-partial-inline"
+  {-# inline: 2 #-}
+  compose {A B C} (f : B -> C) (g : A -> B) (x : A) : C :=
+    f (g x);
   ```
 
   In the expression `compose f g`, the function `compose` will be inlined, but
@@ -129,19 +153,30 @@ symbolizes a non-negative number.
   (ignoring implicit arguments). For example, with the definition
 
   ```juvix
-  --8<-- "docs/reference/language/pragmas.juvix:pragma-specialise-arg"
+  {-# specialize: [f] #-}
+  map {A B} (f : A -> B) : List A -> List B
+    | nil := nil
+    | (x :: xs) := f x :: map f xs;
   ```
 
   any occurrence of `map g lst` with `g : T -> T'` not a variable will
   be replaced by an application `map_g lst` of a new function `map_g`
   defined as:
 
+  ```juvix hide
+  syntax alias T := Nat;
+  syntax alias T' := Nat;
+  ```
+
   ```juvix
-  --8<-- "docs/reference/language/pragmas.juvix:pragma-map-g"
+    map_g : List T -> List T'
+    | nil := nil
+    | (x :: xs) := g x :: map_g xs;
   ```
 
   The argument `f` can also be specificed as the first non-implicit argument:
-  ```
+
+  ```text
   {-# specialize: [1] #-}
   ```
 
@@ -153,7 +188,14 @@ symbolizes a non-negative number.
   arguments of the enclosing function. For example, given
 
   ```juvix
-  --8<-- "docs/reference/language/pragmas.juvix:pragma-specialise-by"
+   {-# inline: true #-}
+  funa {A} (f : A -> A) (a : A) : A :=
+    let
+      {-# specialize-by: [f] #-}
+      go : Nat -> A
+        | zero := a
+        | (suc n) := f (go n);
+    in go 10;
   ```
 
   whever the function `funa` gets inlined with a particular value `v`
@@ -171,7 +213,13 @@ symbolizes a non-negative number.
   example,
 
   ```juvix
-  --8<-- "docs/reference/language/pragmas.juvix:pragma-specialise-trait"
+  {-# specialize: true #-}
+  trait
+  type Natural N := mkNatural {
+    + : N -> N -> N;
+    * : N -> N -> N;
+    fromNat : Nat -> N;
+  };
   ```
 
   will result in specializing any function applied to an argument of
@@ -179,8 +227,16 @@ symbolizes a non-negative number.
 
   Declaring
 
+  ```juvix hide
+  axiom <body> : Natural Nat;
+  ```
+
   ```juvix
-  --8<-- "docs/reference/language/pragmas.juvix:pragma-specialise-instance"
+  module pragma-specialise-instance;
+  {-# specialize: true #-}
+  instance
+  naturalNatI : Natural Nat := <body>;
+  end;
   ```
 
   will result in specializing any function applied to `naturalNatI`.
@@ -188,7 +244,10 @@ symbolizes a non-negative number.
   Declaring
 
   ```juvix
-  --8<-- "docs/reference/language/pragmas.juvix:pragma-specialise-instance-false"
+  module pragma-specialise-instance-false;
+  {-# specialize: false #-}
+  naturalNatI : Natural Nat := <body>;
+  end;
   ```
 
   will prevent specializing functions applied to `naturalNatI`, even
