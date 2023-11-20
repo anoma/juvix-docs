@@ -12,10 +12,10 @@
         <meta name="author" content="The Juvix Team">
       
       
-        <link rel="canonical" href="https://docs.juvix.org/latest/tutorials/learn/">
+        <link rel="canonical" href="https://docs.juvix.org/0.5.4/tutorials/learn/">
       
       
-        <link rel="prev" href="../../blog/archive/2022/">
+        <link rel="prev" href="../../blog/">
       
       
         <link rel="next" href="../vscode/">
@@ -24,11 +24,8 @@
         
       
       
-        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../feed_rss_created.xml">
-        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../feed_rss_updated.xml">
-      
       <link rel="icon" href="../../assets/images/favicon/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7+insiders-4.42.3">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.5+insiders-4.42.1">
     
     
       
@@ -36,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.382dd0b9.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.13544b29.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -52,50 +49,27 @@
       
         
         
-        
-        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.d8e95e7a.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Flex:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto Flex";--md-code-font:"JetBrains Mono"}</style>
       
     
     
-      <link rel="stylesheet" href="../../css/timeago.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../assets/css/extra.css">
     
-      <link rel="stylesheet" href="../../assets/css/juvix-highlight.css">
+      <link rel="stylesheet" href="../../assets/css/juvix-highlighting.css">
     
-      <link rel="stylesheet" href="../../assets/external/cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-  
-
-
-  
-  
-
-<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-9R2Q766R16"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-9R2Q766R16",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-9R2Q766R16",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
-  
-    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-  
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Learn Juvix in minutes - Juvix Docs" />
-<meta property="og:description" content="The Official Documentation for Juvix" />
-<meta property="og:image" content="https://docs.juvix.org/latest/assets/images/social/tutorials/learn.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://docs.juvix.org/latest/tutorials/learn/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Learn Juvix in minutes - Juvix Docs" />
-<meta property="twitter:description" content="The Official Documentation for Juvix" />
-<meta property="twitter:image" content="https://docs.juvix.org/latest/assets/images/social/tutorials/learn.png" />
-</head>
+  </head>
   
   
     
@@ -123,22 +97,6 @@
       
     </div>
     
-      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
-        
-          <aside class="md-banner md-banner--warning">
-            <div class="md-banner__inner md-grid md-typeset">
-              
-  You're not viewing the latest version.
-  <a href="../../..">
-    <strong>Click here to go to latest.</strong>
-  </a>
-
-            </div>
-            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
-          </aside>
-        
-      </div>
-    
     
       
 
@@ -146,7 +104,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="https://docs.juvix.org" title="Juvix Docs" class="md-header__button md-logo" aria-label="Juvix Docs" data-md-component="logo" target="_blank" rel="noopener">
+    <a href="../.." title="Juvix Docs" class="md-header__button md-logo" aria-label="Juvix Docs" data-md-component="logo">
       
   <img src="../../assets/logo-juvix.svg" alt="logo">
 
@@ -249,7 +207,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/anoma/juvix" title="Go to repository" class="md-source" data-md-component="source" target="_blank" rel="noopener">
+        <a href="https://github.com/anoma/juvix" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -403,7 +361,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html#" class="md-tabs__link" target="_blank" rel="noopener">
+      <a href="https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html#" class="md-tabs__link">
         
   
     
@@ -437,7 +395,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="https://discord.gg/jwzaMZ2Sct" class="md-tabs__link" target="_blank" rel="noopener">
+      <a href="https://discord.gg/jwzaMZ2Sct" class="md-tabs__link">
         
   
     
@@ -477,7 +435,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://docs.juvix.org" title="Juvix Docs" class="md-nav__button md-logo" aria-label="Juvix Docs" data-md-component="logo" target="_blank" rel="noopener">
+    <a href="../.." title="Juvix Docs" class="md-nav__button md-logo" aria-label="Juvix Docs" data-md-component="logo">
       
   <img src="../../assets/logo-juvix.svg" alt="logo">
 
@@ -486,7 +444,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/anoma/juvix" title="Go to repository" class="md-source" data-md-component="source" target="_blank" rel="noopener">
+      <a href="https://github.com/anoma/juvix" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -712,10 +670,6 @@
           
         
       
-        
-      
-        
-      
     
     
     
@@ -749,11 +703,6 @@
 
             </a>
             
-              
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
           </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
@@ -767,112 +716,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../blog/archive/2023/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    
-  
-    Archive
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../blog/category/geb/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    
-  
-    Categories
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
               
             
           </ul>
@@ -1014,9 +857,7 @@
   <a href="#juvix-repl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Juvix REPL
-        </span>
+        Juvix REPL
       
     </span>
   </a>
@@ -1027,9 +868,7 @@
   <a href="#basic-expressions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Basic expressions
-        </span>
+        Basic expressions
       
     </span>
   </a>
@@ -1040,9 +879,7 @@
   <a href="#files-modules-and-compilation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Files, modules and compilation
-        </span>
+        Files, modules and compilation
       
     </span>
   </a>
@@ -1053,9 +890,7 @@
   <a href="#data-types-and-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Data types and functions
-        </span>
+        Data types and functions
       
     </span>
   </a>
@@ -1066,9 +901,7 @@
   <a href="#pattern-matching" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Pattern matching
-        </span>
+        Pattern matching
       
     </span>
   </a>
@@ -1079,9 +912,7 @@
   <a href="#comparisons-and-conditionals" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Comparisons and conditionals
-        </span>
+        Comparisons and conditionals
       
     </span>
   </a>
@@ -1092,9 +923,7 @@
   <a href="#local-definitions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Local definitions
-        </span>
+        Local definitions
       
     </span>
   </a>
@@ -1105,9 +934,7 @@
   <a href="#recursion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Recursion
-        </span>
+        Recursion
       
     </span>
   </a>
@@ -1118,9 +945,7 @@
   <a href="#partial-application-and-higher-order-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Partial application and higher-order functions
-        </span>
+        Partial application and higher-order functions
       
     </span>
   </a>
@@ -1131,9 +956,7 @@
   <a href="#polymorphism" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Polymorphism
-        </span>
+        Polymorphism
       
     </span>
   </a>
@@ -1144,9 +967,7 @@
   <a href="#tail-recursion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Tail recursion
-        </span>
+        Tail recursion
       
     </span>
   </a>
@@ -1158,9 +979,7 @@
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Conclusion
-        </span>
+        Conclusion
       
     </span>
   </a>
@@ -1176,9 +995,7 @@
   <a href="#iteration-over-data-structures" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Iteration over data structures
-        </span>
+        Iteration over data structures
       
     </span>
   </a>
@@ -1189,9 +1006,7 @@
   <a href="#totality-checking" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Totality checking
-        </span>
+        Totality checking
       
     </span>
   </a>
@@ -1202,9 +1017,7 @@
   <a href="#exercises" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Exercises
-        </span>
+        Exercises
       
     </span>
   </a>
@@ -1216,9 +1029,7 @@
   <a href="#warm-up-exercises" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Warm-up exercises
-        </span>
+        Warm-up exercises
       
     </span>
   </a>
@@ -1230,9 +1041,7 @@
   <a href="#boolean-operators" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Boolean operators
-        </span>
+        Boolean operators
       
     </span>
   </a>
@@ -1243,9 +1052,7 @@
   <a href="#the-maybe-type" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          The <code>Maybe</code> type
-        </span>
+        The Maybe type
       
     </span>
   </a>
@@ -1256,9 +1063,7 @@
   <a href="#list-exercises" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          List exercises
-        </span>
+        List exercises
       
     </span>
   </a>
@@ -1269,9 +1074,7 @@
   <a href="#function-composition" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Function composition
-        </span>
+        Function composition
       
     </span>
   </a>
@@ -1287,9 +1090,7 @@
   <a href="#more-exercises" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          More exercises
-        </span>
+        More exercises
       
     </span>
   </a>
@@ -1301,9 +1102,7 @@
   <a href="#prime-numbers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Prime numbers
-        </span>
+        Prime numbers
       
     </span>
   </a>
@@ -1314,9 +1113,7 @@
   <a href="#half" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Half
-        </span>
+        Half
       
     </span>
   </a>
@@ -1327,9 +1124,7 @@
   <a href="#suffixes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Suffixes
-        </span>
+        Suffixes
       
     </span>
   </a>
@@ -1340,9 +1135,7 @@
   <a href="#tree-map" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Tree map
-        </span>
+        Tree map
       
     </span>
   </a>
@@ -1353,9 +1146,7 @@
   <a href="#polymorphic-tree" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Polymorphic tree
-        </span>
+        Polymorphic tree
       
     </span>
   </a>
@@ -1366,9 +1157,7 @@
   <a href="#factorial" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Factorial
-        </span>
+        Factorial
       
     </span>
   </a>
@@ -1379,9 +1168,7 @@
   <a href="#list-function-compose" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          List function compose
-        </span>
+        List function compose
       
     </span>
   </a>
@@ -1505,6 +1292,8 @@
   
     
     
+      
+        
       
         
       
@@ -1656,6 +1445,34 @@
     
   
     Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../howto/judoc/" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 12h8v2H8v-2m2 8H6V4h7v5h5v3.1l2-2V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4v-2m-2-2h4.1l.9-.9V16H8v2m12.2-5c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Judoc documentation tool
   
 
     
@@ -1986,7 +1803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html#" class="md-nav__link" target="_blank" rel="noopener">
+      <a href="https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html#" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2036,7 +1853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="https://discord.gg/jwzaMZ2Sct" class="md-nav__link" target="_blank" rel="noopener">
+      <a href="https://discord.gg/jwzaMZ2Sct" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2085,9 +1902,7 @@
   <a href="#juvix-repl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Juvix REPL
-        </span>
+        Juvix REPL
       
     </span>
   </a>
@@ -2098,9 +1913,7 @@
   <a href="#basic-expressions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Basic expressions
-        </span>
+        Basic expressions
       
     </span>
   </a>
@@ -2111,9 +1924,7 @@
   <a href="#files-modules-and-compilation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Files, modules and compilation
-        </span>
+        Files, modules and compilation
       
     </span>
   </a>
@@ -2124,9 +1935,7 @@
   <a href="#data-types-and-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Data types and functions
-        </span>
+        Data types and functions
       
     </span>
   </a>
@@ -2137,9 +1946,7 @@
   <a href="#pattern-matching" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Pattern matching
-        </span>
+        Pattern matching
       
     </span>
   </a>
@@ -2150,9 +1957,7 @@
   <a href="#comparisons-and-conditionals" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Comparisons and conditionals
-        </span>
+        Comparisons and conditionals
       
     </span>
   </a>
@@ -2163,9 +1968,7 @@
   <a href="#local-definitions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Local definitions
-        </span>
+        Local definitions
       
     </span>
   </a>
@@ -2176,9 +1979,7 @@
   <a href="#recursion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Recursion
-        </span>
+        Recursion
       
     </span>
   </a>
@@ -2189,9 +1990,7 @@
   <a href="#partial-application-and-higher-order-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Partial application and higher-order functions
-        </span>
+        Partial application and higher-order functions
       
     </span>
   </a>
@@ -2202,9 +2001,7 @@
   <a href="#polymorphism" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Polymorphism
-        </span>
+        Polymorphism
       
     </span>
   </a>
@@ -2215,9 +2012,7 @@
   <a href="#tail-recursion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Tail recursion
-        </span>
+        Tail recursion
       
     </span>
   </a>
@@ -2229,9 +2024,7 @@
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Conclusion
-        </span>
+        Conclusion
       
     </span>
   </a>
@@ -2247,9 +2040,7 @@
   <a href="#iteration-over-data-structures" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Iteration over data structures
-        </span>
+        Iteration over data structures
       
     </span>
   </a>
@@ -2260,9 +2051,7 @@
   <a href="#totality-checking" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Totality checking
-        </span>
+        Totality checking
       
     </span>
   </a>
@@ -2273,9 +2062,7 @@
   <a href="#exercises" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Exercises
-        </span>
+        Exercises
       
     </span>
   </a>
@@ -2287,9 +2074,7 @@
   <a href="#warm-up-exercises" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Warm-up exercises
-        </span>
+        Warm-up exercises
       
     </span>
   </a>
@@ -2301,9 +2086,7 @@
   <a href="#boolean-operators" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Boolean operators
-        </span>
+        Boolean operators
       
     </span>
   </a>
@@ -2314,9 +2097,7 @@
   <a href="#the-maybe-type" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          The <code>Maybe</code> type
-        </span>
+        The Maybe type
       
     </span>
   </a>
@@ -2327,9 +2108,7 @@
   <a href="#list-exercises" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          List exercises
-        </span>
+        List exercises
       
     </span>
   </a>
@@ -2340,9 +2119,7 @@
   <a href="#function-composition" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Function composition
-        </span>
+        Function composition
       
     </span>
   </a>
@@ -2358,9 +2135,7 @@
   <a href="#more-exercises" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          More exercises
-        </span>
+        More exercises
       
     </span>
   </a>
@@ -2372,9 +2147,7 @@
   <a href="#prime-numbers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Prime numbers
-        </span>
+        Prime numbers
       
     </span>
   </a>
@@ -2385,9 +2158,7 @@
   <a href="#half" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Half
-        </span>
+        Half
       
     </span>
   </a>
@@ -2398,9 +2169,7 @@
   <a href="#suffixes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Suffixes
-        </span>
+        Suffixes
       
     </span>
   </a>
@@ -2411,9 +2180,7 @@
   <a href="#tree-map" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Tree map
-        </span>
+        Tree map
       
     </span>
   </a>
@@ -2424,9 +2191,7 @@
   <a href="#polymorphic-tree" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Polymorphic tree
-        </span>
+        Polymorphic tree
       
     </span>
   </a>
@@ -2437,9 +2202,7 @@
   <a href="#factorial" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Factorial
-        </span>
+        Factorial
       
     </span>
   </a>
@@ -2450,9 +2213,7 @@
   <a href="#list-function-compose" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          List function compose
-        </span>
+        List function compose
       
     </span>
   </a>
@@ -2543,7 +2304,7 @@
 
 
   
-    <a href="https://github.com/anoma/juvix-docs/edit/main/docs/tutorials/learn.md" title="Edit this page" class="md-content__button md-icon" target="_blank" rel="noopener">
+    <a href="https://github.com/anoma/juvix-docs/edit/main/docs/tutorials/learn.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-1.9l10-10V8l-6-6H6m7 1.5L18.5 9H13V3.5m7.1 9.5c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-2 1.8L12 20.9V23h2.1l6.1-6.1-2.1-2.1Z"/></svg>
     </a>
@@ -2552,7 +2313,7 @@
     
       
     
-    <a href="https://github.com/anoma/juvix-docs/raw/main/docs/tutorials/learn.md" title="View source of this page" class="md-content__button md-icon" target="_blank" rel="noopener">
+    <a href="https://github.com/anoma/juvix-docs/raw/main/docs/tutorials/learn.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5m-7.86-1.75L8.85 19l.29-.74C10.43 15.06 13.5 13 17 13c1.05 0 2.06.21 3 .56V8l-6-6H6c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4.5c-.55-.66-1-1.42-1.36-2.25M13 3.5 18.5 9H13V3.5Z"/></svg>
     </a>
@@ -2576,17 +2337,19 @@ Juvix's core concepts, ready to explore its advanced capabilities. Let's get
 started on your Juvix journey!</p>
 <h2 id="juvix-repl">Juvix REPL<a class="headerlink" href="#juvix-repl" title="Permanent link">&para;</a></h2>
 <p>After <a href="../../howto/installing/">installing Juvix</a>, launch the Juvix REPL:</p>
-<pre class="highlight"><code class="language-shell">juvix repl</code></pre>
+<div class="highlight"><pre><span></span><code>juvix<span class="w"> </span>repl
+</code></pre></div>
 <p>The response should be similar to:</p>
-<pre class="highlight"><code class="language-jrepl">Juvix REPL version 0.3: https://juvix.org. Run :help for help
+<div class="highlight"><pre><span></span><code>Juvix REPL version 0.3: https://juvix.org. Run :help for help
 OK loaded: ./.juvix-build/stdlib/Stdlib/Prelude.juvix
-Stdlib.Prelude&gt;</code></pre>
+Stdlib.Prelude&gt;
+</code></pre></div>
 <p>Currently, the REPL supports evaluating expressions but it does not yet
 support adding new definitions. To see the list of available REPL
 commands type <code>:help</code>.</p>
 <h2 id="basic-expressions">Basic expressions<a class="headerlink" href="#basic-expressions" title="Permanent link">&para;</a></h2>
 <p>You can try evaluating simple arithmetic expressions in the REPL:</p>
-<pre class="highlight"><code class="language-jrepl">Stdlib.Prelude&gt; 3 + 4
+<div class="highlight"><pre><span></span><code>Stdlib.Prelude&gt; 3 + 4
 7
 Stdlib.Prelude&gt; 1 + 3 * 7
 22
@@ -2597,12 +2360,13 @@ Stdlib.Prelude&gt; mod 35 4
 Stdlib.Prelude&gt; sub 35 4
 31
 Stdlib.Prelude&gt; sub 4 35
-0</code></pre>
+0
+</code></pre></div>
 <p>By default, Juvix operates on non-negative natural numbers. Natural number
 subtraction is implemented by the function <code>sub</code>. Subtracting a bigger
 natural number from a smaller one yields <code>0</code>.</p>
 <p>You can also try boolean expressions</p>
-<pre class="highlight"><code class="language-jrepl">Stdlib.Prelude&gt; true
+<div class="highlight"><pre><span></span><code>Stdlib.Prelude&gt; true
 true
 Stdlib.Prelude&gt; not true
 false
@@ -2611,24 +2375,27 @@ false
 Stdlib.Prelude&gt; true || false
 true
 Stdlib.Prelude&gt; if true 1 0
-1</code></pre>
+1
+</code></pre></div>
 <p>and strings, pairs and lists:</p>
-<pre class="highlight"><code class="language-jrepl">Stdlib.Prelude&gt; "Hello world!"
-"Hello world!"
+<div class="highlight"><pre><span></span><code>Stdlib.Prelude&gt; &quot;Hello world!&quot;
+&quot;Hello world!&quot;
 Stdlib.Prelude&gt; (1, 2)
 (1, 2)
 Stdlib.Prelude&gt; 1 :: 2 :: nil
-1 :: 2 :: nil</code></pre>
+1 :: 2 :: nil
+</code></pre></div>
 <p>In fact, you can use all functions and types from the
-<a href="https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html" target="_blank" rel="noopener">Stdlib.Prelude</a>
-module of the <a href="https://anoma.github.io/juvix-stdlib" target="_blank" rel="noopener">standard library</a>,
+<a href="https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html">Stdlib.Prelude</a>
+module of the <a href="https://anoma.github.io/juvix-stdlib">standard library</a>,
 which is preloaded by default.</p>
-<pre class="highlight"><code class="language-jrepl">Stdlib.Prelude&gt; length (1 :: 2 :: nil)
+<div class="highlight"><pre><span></span><code>Stdlib.Prelude&gt; length (1 :: 2 :: nil)
 3
 Stdlib.Prelude&gt; null (1 :: 2 :: nil)
 false
 Stdlib.Prelude&gt; swap (1, 2)
-(2, 1)</code></pre>
+(2, 1)
+</code></pre></div>
 <h2 id="files-modules-and-compilation">Files, modules and compilation<a class="headerlink" href="#files-modules-and-compilation" title="Permanent link">&para;</a></h2>
 <p>Currently, the REPL does not support adding new definitions. To define
 new functions or data types, you need to put them in a separate file
@@ -2640,13 +2407,14 @@ binary executable with <code>juvix compile file.juvix</code>.</p>
 <p>A Juvix file must declare a module whose name corresponds exactly to the
 name of the file. For example, a file <code>Hello.juvix</code> must declare a
 module <code>Hello</code>:</p>
-<pre class="highlight"><code class="language-juvix">-- Hello world example. This is a comment.
+<div class="highlight"><pre><span></span><code>-- Hello world example. This is a comment.
 module Hello;
-  -- Import the standard library prelude, including the 'String' type
+  -- Import the standard library prelude, including the &#39;String&#39; type
   import Stdlib.Prelude open;
 
-  main : String := "Hello world!";
-end;</code></pre>
+  main : String := &quot;Hello world!&quot;;
+end;
+</code></pre></div>
 <p>A file compiled to an executable must define the zero-argument
 function <code>main</code> which is evaluated when running the program. The
 definition of <code>main</code> can have any non-function type, e.g., <code>String</code>,
@@ -2654,21 +2422,24 @@ definition of <code>main</code> can have any non-function type, e.g., <code>Stri
 evaluating <code>main</code>.</p>
 <h2 id="data-types-and-functions">Data types and functions<a class="headerlink" href="#data-types-and-functions" title="Permanent link">&para;</a></h2>
 <p>To see the type of an expression, use the <code>:type</code> REPL command:</p>
-<pre class="highlight"><code class="language-jrepl">Stdlib.Prelude&gt; :type 1
+<div class="highlight"><pre><span></span><code>Stdlib.Prelude&gt; :type 1
 Nat
 Stdlib.Prelude&gt; :type true
-Bool</code></pre>
+Bool
+</code></pre></div>
 <p>The types <code>Nat</code> and <code>Bool</code> are defined in the standard library.</p>
 <p>The type <code>Bool</code> has two constructors <code>true</code> and <code>false</code>.</p>
-<pre class="highlight"><code class="language-juvix">  type Bool :=
+<div class="highlight"><pre><span></span><code>  type Bool :=
     | true
-    | false;</code></pre>
+    | false;
+</code></pre></div>
 <p>The constructors of a data type can be used to build elements of the
 type. They can also appear as patterns in function definitions. For
 example, the <code>not</code> function is defined in the standard library by:</p>
-<pre class="highlight"><code class="language-juvix">  not : Bool -&gt; Bool
+<div class="highlight"><pre><span></span><code>  not : Bool -&gt; Bool
     | true := false
-    | false := true;</code></pre>
+    | false := true;
+</code></pre></div>
 <p>The type of the definition is specified after the colon. In this case,
 <code>not</code> is a function from <code>Bool</code> to <code>Bool</code>. The type is followed by two
 <em>function clauses</em> which specify the function result depending on the
@@ -2680,21 +2451,25 @@ listed after the function. The general pattern for function application
 is: <code>func arg1 arg2 arg3 ...</code></p>
 <p>Initial arguments that are matched against variables or wildcards in
 all clauses can be moved to the left of the colon. For example,</p>
-<pre class="highlight"><code class="language-juvix">  or' (x : Bool) : Bool -&gt; Bool
+<div class="highlight"><pre><span></span><code>  or&#39; (x : Bool) : Bool -&gt; Bool
     | true := true
-    | _ := x;</code></pre>
+    | _ := x;
+</code></pre></div>
 <p>is equivalent to</p>
-<pre class="highlight"><code class="language-juvix">  or' : Bool -&gt; Bool -&gt; Bool
+<div class="highlight"><pre><span></span><code>  or&#39; : Bool -&gt; Bool -&gt; Bool
     | _ true := true
-    | x _ := x;</code></pre>
+    | x _ := x;
+</code></pre></div>
 <p>If there is only one clause and all arguments are to the left of the
 colon, the pipe <code>|</code> should be omitted:</p>
-<pre class="highlight"><code class="language-juvix">  id (x : Bool) : Bool := x;</code></pre>
+<div class="highlight"><pre><span></span><code>  id (x : Bool) : Bool := x;
+</code></pre></div>
 <p>A more complex example of a data type is the <code>Nat</code> type from the
 standard library:</p>
-<pre class="highlight"><code class="language-juvix">  type Nat :=
+<div class="highlight"><pre><span></span><code>  type Nat :=
     | zero : Nat
-    | suc : Nat -&gt; Nat;</code></pre>
+    | suc : Nat -&gt; Nat;
+</code></pre></div>
 <p>The constructor <code>zero</code> represents <code>0</code> and <code>suc</code> represents the successor
 function – <code>suc n</code> is the successor of <code>n</code>, i.e., <code>n+1</code>. For example,
 <code>suc zero</code> represents <code>1</code>. The number literals <code>0</code>, <code>1</code>, <code>2</code>, etc., are
@@ -2718,9 +2493,10 @@ syntax</em> like in the definition of <code>Bool</code>. The ADT syntax is simil
 data type definition syntax in functional languages like Haskell or
 OCaml: one lists the types of constructor arguments separated by
 spaces. In this syntax, the <code>Nat</code> type could be defined by</p>
-<pre class="highlight"><code class="language-juvix">  type Nat :=
+<div class="highlight"><pre><span></span><code>  type Nat :=
     | zero
-    | suc Nat;</code></pre>
+    | suc Nat;
+</code></pre></div>
 <p>If implemented directly, the above unary representation of natural
 numbers would be extremely inefficient. The Juvix compiler uses a binary
 number representation under the hood and implements arithmetic
@@ -2731,10 +2507,11 @@ by the user who does not need to worry about low-level arithmetic
 implementation details.</p>
 <p>One can use <code>zero</code> and <code>suc</code> in pattern matching, like any other
 constructors:</p>
-<pre class="highlight"><code class="language-juvix">  syntax operator + additive;
+<div class="highlight"><pre><span></span><code>  syntax operator + additive;
   + : Nat -&gt; Nat -&gt; Nat
     | zero b := b
-    | (suc a) b := suc (a + b);</code></pre>
+    | (suc a) b := suc (a + b);
+</code></pre></div>
 <p>The <code>syntax operator + additive</code> declares <code>+</code> to be an operator with
 the <code>additive</code> fixity. The <code>+</code> is an ordinary function, except that
 function application for <code>+</code> is written in infix notation. The
@@ -2744,16 +2521,20 @@ the left-hand sides.</p>
 are <em>variables</em> which match arbitrary values of the corresponding type.
 They can be used on the right-hand side to refer to the values matched.
 For example, when evaluating</p>
-<pre class="highlight"><code class="language-juvix">(suc (suc zero)) + zero</code></pre>
+<div class="highlight"><pre><span></span><code>(suc (suc zero)) + zero
+</code></pre></div>
 <p>the second clause of <code>+</code> matches, assigning <code>suc zero</code> to <code>a</code> and <code>zero</code>
 to <code>b</code>. Then the right-hand side of the clause is evaluated with <code>a</code> and
 <code>b</code> substituted by these values:</p>
-<pre class="highlight"><code class="language-juvix">suc (suc zero + zero)</code></pre>
+<div class="highlight"><pre><span></span><code>suc (suc zero + zero)
+</code></pre></div>
 <p>Again, the second clause matches, now with both <code>a</code> and <code>b</code> being
 <code>zero</code>. After replacing with the right-hand side, we obtain:</p>
-<pre class="highlight"><code class="language-juvix">suc (suc (zero + zero))</code></pre>
+<div class="highlight"><pre><span></span><code>suc (suc (zero + zero))
+</code></pre></div>
 <p>Now the first clause matches and finally we obtain the result</p>
-<pre class="highlight"><code class="language-juvix">suc (suc zero)</code></pre>
+<div class="highlight"><pre><span></span><code>suc (suc zero)
+</code></pre></div>
 <p>which is just <code>2</code>.</p>
 <p>The function <code>+</code> is defined like above in the standard library, but the
 Juvix compiler treats it specially and generates efficient code using
@@ -2763,29 +2544,34 @@ appropriate CPU instructions.</p>
 constructor – they may be arbitrarily deep. For example, here is an
 (inefficient) implementation of a function which checks whether a
 natural number is even:</p>
-<pre class="highlight"><code class="language-juvix">  even : Nat -&gt; Bool
+<div class="highlight"><pre><span></span><code>  even : Nat -&gt; Bool
     | zero := true
     | (suc zero) := false
-    | (suc (suc n)) := even n;</code></pre>
+    | (suc (suc n)) := even n;
+</code></pre></div>
 <p>This definition states that a natural number <code>n</code> is even if either <code>n</code>
 is <code>zero</code> or, recursively, <code>n-2</code> is even.</p>
 <p>If a subpattern is to be ignored, then one can use a wildcard <code>_</code>
 instead of naming the subpattern.</p>
-<pre class="highlight"><code class="language-juvix">  isPositive : Nat -&gt; Bool
+<div class="highlight"><pre><span></span><code>  isPositive : Nat -&gt; Bool
     | zero := false
-    | (suc _) := true;</code></pre>
+    | (suc _) := true;
+</code></pre></div>
 <p>The above function could also be written as:</p>
-<pre class="highlight"><code class="language-juvix">    isPositive : Nat -&gt; Bool
+<div class="highlight"><pre><span></span><code>    isPositive : Nat -&gt; Bool
       | zero := false
-      | _ := true;</code></pre>
+      | _ := true;
+</code></pre></div>
 <p>It is not necessary to define a separate function to perform pattern
 matching. One can use the <code>case</code> syntax to pattern match an expression
 directly.</p>
-<pre class="highlight"><code class="language-jrepl">Stdlib.Prelude&gt; case (1, 2) | (suc _, zero) := 0 | (suc _, suc x) := x | _ := 19
-1</code></pre>
+<div class="highlight"><pre><span></span><code>Stdlib.Prelude&gt; case (1, 2) | (suc _, zero) := 0 | (suc _, suc x) := x | _ := 19
+1
+</code></pre></div>
 <p>It is possible to name subpatterns with <code>@</code>.</p>
-<pre class="highlight"><code class="language-jrepl">Stdlib.Prelude&gt; case 3 | suc n@(suc _) := n | _ := 0
-2</code></pre>
+<div class="highlight"><pre><span></span><code>Stdlib.Prelude&gt; case 3 | suc n@(suc _) := n | _ := 0
+2
+</code></pre></div>
 <h2 id="comparisons-and-conditionals">Comparisons and conditionals<a class="headerlink" href="#comparisons-and-conditionals" title="Permanent link">&para;</a></h2>
 <p>The standard library includes all the expected comparison operators:
 <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, <code>/=</code>, <code>min</code>, <code>max</code>. Similarly to
@@ -2794,9 +2580,10 @@ for different datatypes using traits, which are out of the scope of
 this tutorial. For basic usage, one can assume that the comparisons
 operate on natural numbers.</p>
 <p>For example, one may define the function <code>max3</code> by:</p>
-<pre class="highlight"><code class="language-juvix">  import Stdlib.Prelude open;
+<div class="highlight"><pre><span></span><code>  import Stdlib.Prelude open;
 
-  max3 (x y z : Nat) : Nat := if (x &gt; y) (max x z) (max y z);</code></pre>
+  max3 (x y z : Nat) : Nat := if (x &gt; y) (max x z) (max y z);
+</code></pre></div>
 <p>The conditional <code>if</code> is a special function which is evaluated lazily,
 i.e., first the condition (the first argument) is evaluated, and then
 depending on its truth-value one of the branches (the second or the
@@ -2810,23 +2597,25 @@ functions</a>
 below).</p>
 <h2 id="local-definitions">Local definitions<a class="headerlink" href="#local-definitions" title="Permanent link">&para;</a></h2>
 <p>Juvix supports local definitions with let-expressions.</p>
-<pre class="highlight"><code class="language-juvix">  f (a : Nat) : Nat :=
+<div class="highlight"><pre><span></span><code>  f (a : Nat) : Nat :=
     let
       x : Nat := a + 5;
       y : Nat := a * 7 + x;
-    in x * y;</code></pre>
+    in x * y;
+</code></pre></div>
 <p>The variables <code>x</code> and <code>y</code> are not visible outside <code>f</code>.</p>
 <p>One can also use multi-clause definitions in <code>let</code>-expressions, with the
 same syntax as definitions inside a module. For example:</p>
-<pre class="highlight"><code class="language-juvix">  even : Nat -&gt; Bool :=
+<div class="highlight"><pre><span></span><code>  even : Nat -&gt; Bool :=
     let
-      even' : Nat -&gt; Bool
+      even&#39; : Nat -&gt; Bool
         | zero := true
-        | (suc n) := odd' n;
-      odd' : Nat -&gt; Bool
+        | (suc n) := odd&#39; n;
+      odd&#39; : Nat -&gt; Bool
         | zero := false
-        | (suc n) := even' n;
-    in even';</code></pre>
+        | (suc n) := even&#39; n;
+    in even&#39;;
+</code></pre></div>
 <p>The functions <code>even'</code> and <code>odd'</code> are not visible outside <code>even</code>.</p>
 <h2 id="recursion">Recursion<a class="headerlink" href="#recursion" title="Permanent link">&para;</a></h2>
 <p>Juvix is a purely functional language, which means that functions have
@@ -2842,15 +2631,17 @@ expressed using recursion. In many cases, the recursive definition of a
 function follows the inductive definition of a data structure the
 function analyses. For example, consider the following inductive type of
 lists of natural numbers:</p>
-<pre class="highlight"><code class="language-juvix">  type NList :=
+<div class="highlight"><pre><span></span><code>  type NList :=
     | nnil : NList
-    | ncons : Nat -&gt; NList -&gt; NList;</code></pre>
+    | ncons : Nat -&gt; NList -&gt; NList;
+</code></pre></div>
 <p>An element of <code>NList</code> is either <code>nnil</code> (empty) or <code>ncons x xs</code> where
 <code>x : Nat</code> and <code>xs : NList</code> (a list with head <code>x</code> and tail <code>xs</code>).</p>
 <p>A function computing the length of a list may be defined by:</p>
-<pre class="highlight"><code class="language-juvix">  nlength : NList -&gt; Nat
+<div class="highlight"><pre><span></span><code>  nlength : NList -&gt; Nat
     | nnil := 0
-    | (ncons _ xs) := nlength xs + 1;</code></pre>
+    | (ncons _ xs) := nlength xs + 1;
+</code></pre></div>
 <p>The definition follows the inductive definition of <code>NList</code>. There are
 two function clauses for the two constructors. The case for <code>nnil</code> is
 easy – the constructor has no arguments and the length of the empty list
@@ -2862,23 +2653,26 @@ case of <code>ncons _ xs</code>, we recursively call <code>nlength</code> on <co
 to the result.</p>
 <p>Let's consider another example – a function which returns the maximum of
 the numbers in a list or 0 for the empty list.</p>
-<pre class="highlight"><code class="language-juvix">  nmaximum : NList -&gt; Nat
+<div class="highlight"><pre><span></span><code>  nmaximum : NList -&gt; Nat
     | nnil := 0
-    | (ncons x xs) := max x (nmaximum xs);</code></pre>
+    | (ncons x xs) := max x (nmaximum xs);
+</code></pre></div>
 <p>Again, there is a clause for each constructor. In the case for <code>ncons</code>,
 we recursively call the function on the list tail and take the maximum
 of the result and the list head.</p>
 <p>For an example of a constructor with more than one inductive argument,
 consider binary trees with natural numbers in nodes.</p>
-<pre class="highlight"><code class="language-juvix">  type Tree :=
+<div class="highlight"><pre><span></span><code>  type Tree :=
     | leaf : Nat -&gt; Tree
-    | node : Nat -&gt; Tree -&gt; Tree -&gt; Tree;</code></pre>
+    | node : Nat -&gt; Tree -&gt; Tree -&gt; Tree;
+</code></pre></div>
 <p>The constructor <code>node</code> has two inductive arguments (the second and the
 third) which represent the left and the right subtree.</p>
 <p>A function which produces the mirror image of a tree may be defined by:</p>
-<pre class="highlight"><code class="language-juvix">  mirror : Tree -&gt; Tree
+<div class="highlight"><pre><span></span><code>  mirror : Tree -&gt; Tree
     | (leaf x) := leaf x
-    | (node x l r) := node x (mirror r) (mirror l);</code></pre>
+    | (node x l r) := node x (mirror r) (mirror l);
+</code></pre></div>
 <p>The definition of <code>mirror</code> follows the definition of <code>Tree</code>. There are
 two recursive calls for the two inductive constructors of <code>node</code> (the
 subtrees).</p>
@@ -2906,14 +2700,17 @@ it in parentheses.</p>
 <p>A function which takes a function as an argument is a <em>higher-order
 function</em>. An example is the <code>nmap</code> function which applies a given
 function to each element in a list of natural numbers.</p>
-<pre class="highlight"><code class="language-juvix">  nmap (f : Nat -&gt; Nat) : NList -&gt; NList
+<div class="highlight"><pre><span></span><code>  nmap (f : Nat -&gt; Nat) : NList -&gt; NList
     | nnil := nnil
-    | (ncons x xs) := ncons (f x) (nmap f xs);</code></pre>
+    | (ncons x xs) := ncons (f x) (nmap f xs);
+</code></pre></div>
 <p>The application</p>
-<pre class="highlight"><code class="language-juvix">nmap \{ x := div x 2 } lst</code></pre>
+<div class="highlight"><pre><span></span><code>nmap \{ x := div x 2 } lst
+</code></pre></div>
 <p>divides every element of <code>lst</code> by <code>2</code>, rounding down the result. The
 expression</p>
-<pre class="highlight"><code class="language-juvix">\{ x := div x 2 }</code></pre>
+<div class="highlight"><pre><span></span><code>\{ x := div x 2 }
+</code></pre></div>
 <p>is an unnamed function, or a <em>lambda</em>, which divides its argument by
 <code>2</code>.</p>
 <h2 id="polymorphism">Polymorphism<a class="headerlink" href="#polymorphism" title="Permanent link">&para;</a></h2>
@@ -2922,19 +2719,21 @@ elements to be natural numbers. It is possible to define lists
 <em>polymorphically</em>, parameterising them by the element type. This is
 similar to generics in languages like Java, C++ or Rust. Here is the
 polymorphic definition of lists from the standard library:</p>
-<pre class="highlight"><code class="language-juvix">  syntax operator :: cons;
+<div class="highlight"><pre><span></span><code>  syntax operator :: cons;
   type List A :=
     | nil : List A
-    | :: : A -&gt; List A -&gt; List A;</code></pre>
+    | :: : A -&gt; List A -&gt; List A;
+</code></pre></div>
 <p>The constructor <code>::</code> is declared as a right-associative infix
 operator. The definition has a parameter <code>A</code> which is the element
 type. Then <code>List Ty</code> is the type of lists with elements of type
 <code>Ty</code>. For example, <code>List Nat</code> is the type of lists of natural numbers,
 isomorphic to the type <code>NList</code> defined above.</p>
 <p>Now one can define the <code>map</code> function polymorphically:</p>
-<pre class="highlight"><code class="language-juvix">  map {A B} (f : A -&gt; B) : List A -&gt; List B
+<div class="highlight"><pre><span></span><code>  map {A B} (f : A -&gt; B) : List A -&gt; List B
     | nil := nil
-    | (h :: hs) := f h :: map f hs;</code></pre>
+    | (h :: hs) := f h :: map f hs;
+</code></pre></div>
 <p>This function has two <em>implicit type arguments</em> <code>A</code> and <code>B</code>. These
 arguments are normally omitted in function application – they are
 inferred automatically during type checking. The curly braces indicate
@@ -2945,7 +2744,8 @@ become implicit arguments of the constructors.</p>
 <p>Usually, the implicit arguments in a function application can be
 inferred. However, sometimes this is not possible and then the implicit
 arguments need to be provided explicitly by enclosing them in braces:</p>
-<pre class="highlight"><code class="language-juvix">f {implArg1} .. {implArgK} arg1 .. argN</code></pre>
+<div class="highlight"><pre><span></span><code>f {implArg1} .. {implArgK} arg1 .. argN
+</code></pre></div>
 <p>For example, <code>nil {Nat}</code> has type <code>List Nat</code> while <code>nil</code> by itself has
 type <code>{A : Type} -&gt; List A</code>.</p>
 <h2 id="tail-recursion">Tail recursion<a class="headerlink" href="#tail-recursion" title="Permanent link">&para;</a></h2>
@@ -2955,21 +2755,23 @@ environment. This means that each such call will use a constant amount
 of memory. For example, a function <code>sum</code> implemented as follows will use
 an additional amount of memory proportional to the length of the
 processed list:</p>
-<pre class="highlight"><code class="language-juvix">  sum : List Nat -&gt; Nat
+<div class="highlight"><pre><span></span><code>  sum : List Nat -&gt; Nat
     | nil := 0
-    | (x :: xs) := x + sum xs;</code></pre>
+    | (x :: xs) := x + sum xs;
+</code></pre></div>
 <p>This is not acceptable if you care about performance. In an imperative
 language, one would use a simple loop going over the list without any
 memory allocation. In pseudocode:</p>
-<pre class="highlight"><code class="language-delphi">var sum : Nat := 0;
+<div class="highlight"><pre><span></span><code><span class="k">var</span><span class="w"> </span><span class="nb">sum</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="o">;</span>
 
-while (lst /= nil) do
-begin
-  sum := sum + head lst;
-  lst := tail lst;
-end;
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">lst</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="k">nil</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<span class="k">begin</span>
+<span class="w">  </span><span class="nb">sum</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">head</span><span class="w"> </span><span class="n">lst</span><span class="o">;</span>
+<span class="w">  </span><span class="n">lst</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">tail</span><span class="w"> </span><span class="n">lst</span><span class="o">;</span>
+<span class="k">end</span><span class="o">;</span>
 
-result := sum;</code></pre>
+<span class="bp">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">sum</span><span class="o">;</span>
+</code></pre></div>
 <p>Fortunately, it is possible to rewrite this function to use <em>tail
 recursion</em>. A recursive call is <em>tail recursive</em> if its result is also
 the result of the calling function, i.e., the calling function returns
@@ -2979,12 +2781,13 @@ will be compiled to simple jumps without extra memory allocation. In a
 tail recursive call, instead of creating a new stack frame, the old one
 is reused.</p>
 <p>The following implementation of <code>sum</code> uses tail recursion.</p>
-<pre class="highlight"><code class="language-juvix">  sum' (lst : List Nat) : Nat :=
+<div class="highlight"><pre><span></span><code>  sum&#39; (lst : List Nat) : Nat :=
     let
       go (acc : Nat) : List Nat -&gt; Nat
         | nil := acc
         | (x :: xs) := go (acc + x) xs;
-    in go 0 lst;</code></pre>
+    in go 0 lst;
+</code></pre></div>
 <p>The first argument of <code>go</code> is an <em>accumulator</em> which holds the sum
 computed so far. It is analogous to the <code>sum</code> variable in the imperative
 loop above. The initial value of the accumulator is 0. The function <code>go</code>
@@ -2996,30 +2799,33 @@ and the loop condition into pattern matching. For example, here is an
 imperative pseudocode for computing the nth Fibonacci number in linear
 time. The variables <code>cur</code> and <code>next</code> hold the last two computed
 Fibonacci numbers.</p>
-<pre class="highlight"><code class="language-delphi">var cur : Nat := 0;
-var next : Nat := 1;
+<div class="highlight"><pre><span></span><code><span class="k">var</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="o">;</span>
+<span class="k">var</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="o">;</span>
 
-while (n /= 0) do
-begin
-  tmp := next;
-  next := cur + next;
-  cur := tmp;
-  n := n - 1;
-end;
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<span class="k">begin</span>
+<span class="w">  </span><span class="n">tmp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">next</span><span class="o">;</span>
+<span class="w">  </span><span class="n">next</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">next</span><span class="o">;</span>
+<span class="w">  </span><span class="n">cur</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">tmp</span><span class="o">;</span>
+<span class="w">  </span><span class="n">n</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">;</span>
+<span class="k">end</span><span class="o">;</span>
 
-result := cur;</code></pre>
+<span class="bp">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">cur</span><span class="o">;</span>
+</code></pre></div>
 <p>An equivalent functional program is:</p>
-<pre class="highlight"><code class="language-juvix">    fib : Nat -&gt; Nat :=
+<div class="highlight"><pre><span></span><code>    fib : Nat -&gt; Nat :=
       let
         go (cur next : Nat) : Nat -&gt; Nat
           | zero := cur
           | (suc n) := go next (cur + next) n;
-      in go 0 1;</code></pre>
+      in go 0 1;
+</code></pre></div>
 <p>A naive definition of the Fibonacci function runs in exponential time:</p>
-<pre class="highlight"><code class="language-juvix">    fib : Nat -&gt; Nat
+<div class="highlight"><pre><span></span><code>    fib : Nat -&gt; Nat
       | zero := 0
       | (suc zero) := 1
-      | (suc (suc n)) := fib n + fib (suc n);</code></pre>
+      | (suc (suc n)) := fib n + fib (suc n);
+</code></pre></div>
 <p>Tail recursion is less useful when the function needs to allocate
 memory anyway. For example, one could make the <code>map</code> function from the
 previous section tail recursive, but the time and memory use would
@@ -3027,12 +2833,13 @@ still be proportional to the length of the input because of the need
 to allocate the result list. In fact, a tail recursive <code>map</code>
 needs to allocate and discard an intermediate list which is
 reversed in the end to preserve the original element order:</p>
-<pre class="highlight"><code class="language-juvix">    map {A B} (f : A -&gt; B) : List A -&gt; List B :=
+<div class="highlight"><pre><span></span><code>    map {A B} (f : A -&gt; B) : List A -&gt; List B :=
       let
         go (acc : List B) : List A -&gt; List B
           | nil := reverse acc
           | (x :: xs) := go (f x :: acc) xs;
-      in go nil;</code></pre>
+      in go nil;
+</code></pre></div>
 <p>So we have replaced stack allocation with heap allocation. This
 actually decreases performance.</p>
 <h3 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h3>
@@ -3048,8 +2855,9 @@ recursive <code>sum</code> function fits this pattern.</p>
 iterator syntax. The standard library defines several list iterators,
 among them <code>for</code> and <code>rfor</code>. We can implement the <code>sum</code> function using
 <code>for</code>:</p>
-<pre class="highlight"><code class="language-juvix">  sum (l : List Nat) : Nat :=
-    for (acc := 0) (x in l) {x + acc};</code></pre>
+<div class="highlight"><pre><span></span><code>  sum (l : List Nat) : Nat :=
+    for (acc := 0) (x in l) {x + acc};
+</code></pre></div>
 <p>The braces around the body (in <code>{x + acc}</code>) are optional. A
 recommended style is to use braces if the body is on the same line.</p>
 <p>The above <code>for</code> iteration starts with the accumulator <code>acc</code> equal to
@@ -3062,15 +2870,18 @@ memory is allocated and the whole iteration is compiled to a loop.</p>
 <p>The <code>rfor</code> iterator is analogous to <code>for</code> except that it goes through
 the list from right to left (from end to beginning) and is not tail
 recursive. For example, one can implement <code>map</code> using <code>rfor</code>:</p>
-<pre class="highlight"><code class="language-juvix">  map {A B} (f : A -&gt; B) (l : List A) : List B :=
-    rfor (acc := nil) (x in l) {f x :: acc};</code></pre>
+<div class="highlight"><pre><span></span><code>  map {A B} (f : A -&gt; B) (l : List A) : List B :=
+    rfor (acc := nil) (x in l) {f x :: acc};
+</code></pre></div>
 <p>The iterators are just ordinary higher-order Juvix functions which can
 be used with the iterator syntax. In fact, the <code>map</code> function from the
 standard library can also be used with the iterator syntax. The
 expression</p>
-<pre class="highlight"><code class="language-juvix">map (x in l) {body}</code></pre>
+<div class="highlight"><pre><span></span><code>map (x in l) {body}
+</code></pre></div>
 <p>is equivalent to</p>
-<pre class="highlight"><code class="language-juvix">map \{x := body} l</code></pre>
+<div class="highlight"><pre><span></span><code>map \{x := body} l
+</code></pre></div>
 <p>Whenever possible, it is advised to use the standard library iterators
 instead of manually writing recursive functions. When reasonable,
 <code>for</code> should be preferred to <code>rfor</code>. The iterators provide a readable
@@ -3090,48 +2901,56 @@ Totality consists of:</p>
 recursive, i.e., all recursive call are on structurally smaller values –
 subpatterns of the matched pattern. For example, the termination checker
 rejects the definition</p>
-<pre class="highlight"><code class="language-juvix">    fact (x : Nat) : Nat := if (x == 0) 1 (x * fact (sub x 1));</code></pre>
+<div class="highlight"><pre><span></span><code>    fact (x : Nat) : Nat := if (x == 0) 1 (x * fact (sub x 1));
+</code></pre></div>
 <p>because the recursive call is not on a subpattern of a pattern matched
 on in the clause. One can reformulate this definition so that it is
 accepted by the termination checker:</p>
-<pre class="highlight"><code class="language-juvix">    fact : Nat -&gt; Nat
+<div class="highlight"><pre><span></span><code>    fact : Nat -&gt; Nat
       | zero := 1
-      | x@(suc n) := x * fact n;</code></pre>
+      | x@(suc n) := x * fact n;
+</code></pre></div>
 <p>Sometimes, such a reformulation is not possible. Then one can use the
 <code>terminating</code> keyword to forgo the termination check.</p>
-<pre class="highlight"><code class="language-juvix">  terminating
+<div class="highlight"><pre><span></span><code>  terminating
   log2 (n : Nat) : Nat :=
-    if (n &lt;= 1) 0 (suc (log2 (div n 2)));</code></pre>
+    if (n &lt;= 1) 0 (suc (log2 (div n 2)));
+</code></pre></div>
 <p>Coverage checking ensures that there are no unhandled patterns in
 function clauses or <code>case</code> expressions. For example, the following
 definition is rejected because the case <code>suc zero</code> is not handled:</p>
-<pre class="highlight"><code class="language-juvix">    even : Nat -&gt; Bool
+<div class="highlight"><pre><span></span><code>    even : Nat -&gt; Bool
       | zero := true
-      | (suc (suc n)) := even n;</code></pre>
+      | (suc (suc n)) := even n;
+</code></pre></div>
 <p>Since coverage checking forces the user to specify the function for all input
 values, it may be unclear how to implement functions which are typically
 partial. For example, the <code>tail</code> function on lists is often left undefined for
 the empty list. One solution is to return a default value. In the Juvix standard
 library, <code>tail</code> is implemented as follows, returning the empty list when the
 argument is empty.</p>
-<pre class="highlight"><code class="language-juvix">  tail {A} : List A -&gt; List A
+<div class="highlight"><pre><span></span><code>  tail {A} : List A -&gt; List A
     | (_ :: xs) := xs
-    | nil := nil;</code></pre>
+    | nil := nil;
+</code></pre></div>
 <p>Another solution is to wrap the result in the <code>Maybe</code> type from the standard
 library, which allows representing optional values. An element of <code>Maybe A</code> is
 either <code>nothing</code> or <code>just x</code> with <code>x : A</code>.</p>
-<pre class="highlight"><code class="language-juvix">  type Maybe A :=
+<div class="highlight"><pre><span></span><code>  type Maybe A :=
     | nothing : Maybe A
-    | just : A -&gt; Maybe A;</code></pre>
+    | just : A -&gt; Maybe A;
+</code></pre></div>
 <p>For example, one could define the tail function as:</p>
-<pre class="highlight"><code class="language-juvix">    tail' {A} : List A -&gt; Maybe (List A)
+<div class="highlight"><pre><span></span><code>    tail&#39; {A} : List A -&gt; Maybe (List A)
       | (_ :: xs) := just xs
-      | nil := nothing;</code></pre>
+      | nil := nothing;
+</code></pre></div>
 <p>Then the user needs to explicitly check if the result of the function contains a
 value or not:</p>
-<pre class="highlight"><code class="language-juvix">case (tail' lst)
+<div class="highlight"><pre><span></span><code>case (tail&#39; lst)
 | just x := ...
-| nothing := ...</code></pre>
+| nothing := ...
+</code></pre></div>
 <h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
 <p>You have now learnt the very basics of Juvix. To consolidate your
 understanding of Juvix and functional programming, try doing some of
@@ -3145,16 +2964,18 @@ and the <a href="../../reference/examples/">Juvix program examples</a>.</p>
 <h4 id="boolean-operators">Boolean operators<a class="headerlink" href="#boolean-operators" title="Permanent link">&para;</a></h4>
 <p>Let's start by defining some functions on booleans.</p>
 <p>The type for booleans is defined in the standard library like this:</p>
-<pre class="highlight"><code class="language-juvix">type Bool :=
+<div class="highlight"><pre><span></span><code>type Bool :=
   | true : Bool
-  | false : Bool;</code></pre>
+  | false : Bool;
+</code></pre></div>
 <p>Remember that you can import this definition by adding <code>import Stdlib.Prelude
 open</code> at the beginning of your module.</p>
 <p>Now, define the logical function <code>not</code> by using pattern matching.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The type of your function should be:</p>
-<pre class="highlight"><code class="language-juvix">    not : Bool -&gt; Bool;</code></pre>
+<div class="highlight"><pre><span></span><code>    not : Bool -&gt; Bool;
+</code></pre></div>
 </div>
 <p>Now, define the logical functions <code>and</code>, <code>or</code> by using pattern matching as well.
 Feel free to experiment and see what happens if your patterns are not
@@ -3164,7 +2985,7 @@ only if exactly one of its arguments is <code>true</code>. This time, instead of
 pattern matching, use the previously defined logical functions.</p>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">    not : Bool -&gt; Bool
+<div class="highlight"><pre><span></span><code>    not : Bool -&gt; Bool
       | false := true
       | true := false;
 
@@ -3176,71 +2997,82 @@ pattern matching, use the previously defined logical functions.</p>
       | true b := b
       | false _ := false;
 
-    xor (a b : Bool) : Bool := and (not (and a b)) (or a b);</code></pre>
+    xor (a b : Bool) : Bool := and (not (and a b)) (or a b);
+</code></pre></div>
 </details>
 <h4 id="the-maybe-type">The <code>Maybe</code> type<a class="headerlink" href="#the-maybe-type" title="Permanent link">&para;</a></h4>
 <p>The <code>NMaybe</code> type encapsulates an optional natural number (the preceding <code>N</code>
 stands for <code>Nat</code>). The <code>nnothing</code> constructor is used when the value is missing.
 On the other hand, the <code>njust</code> constructor is used when the value is present.</p>
-<pre class="highlight"><code class="language-juvix">type NMaybe :=
+<div class="highlight"><pre><span></span><code>type NMaybe :=
   | nnothing : NMaybe
-  | njust : Nat → NMaybe;</code></pre>
+  | njust : Nat → NMaybe;
+</code></pre></div>
 <p>Let's define a function <code>isJust : NMaybe -&gt; Bool</code> that returns <code>true</code> when the
 value is present.</p>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">    isJust : NMaybe -&gt; Bool
+<div class="highlight"><pre><span></span><code>    isJust : NMaybe -&gt; Bool
       | (njust _) := true
-      | nnothing := false;</code></pre>
+      | nnothing := false;
+</code></pre></div>
 </details>
 <p>Now let's define a function <code>fromMaybe : Nat -&gt; NMaybe -&gt; Nat</code> that given a
 <code>NMaybe</code>, returns its value if present and otherwise returns the first argument
 as a default value.</p>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">    fromMaybe (d : Nat) : NMaybe -&gt; Nat
+<div class="highlight"><pre><span></span><code>    fromMaybe (d : Nat) : NMaybe -&gt; Nat
       | (njust n) := n
-      | nnothing := d;</code></pre>
+      | nnothing := d;
+</code></pre></div>
 </details>
 <p>It would be useful to have a type that represents optional values of any type.
 In Juivx, we can define the polymorphic version of <code>NMaybe</code> like this:</p>
-<pre class="highlight"><code class="language-juvix">type Maybe A :=
+<div class="highlight"><pre><span></span><code>type Maybe A :=
   | nothing : Maybe A
-  | just : A → Maybe A;</code></pre>
+  | just : A → Maybe A;
+</code></pre></div>
 <p>In this definition, we parameterize the type <code>Maybe</code> with a generic type <code>A</code>.</p>
 <p>Implement again the <code>fromMaybe</code> function, but now, for the polymorphic <code>Maybe</code>
 type. Note that in function definitions we must specify the type variables. The definition of
 <code>fromMaybe</code> begin with:</p>
-<pre class="highlight"><code class="language-juvix">fromMaybe {A} (d : A) : Maybe A -&gt; A</code></pre>
+<div class="highlight"><pre><span></span><code>fromMaybe {A} (d : A) : Maybe A -&gt; A
+</code></pre></div>
 <p>Give the implementation.</p>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">    fromMaybe {A} (d : A) : Maybe A -&gt; A
+<div class="highlight"><pre><span></span><code>    fromMaybe {A} (d : A) : Maybe A -&gt; A
       | (just n) := n
-      | nothing := d;</code></pre>
+      | nothing := d;
+</code></pre></div>
 </details>
 <p>Neat! It is indeed very easy to define polymorphic functions in Juvix.</p>
 <p>To get some more practice, give an implementation for <code>maybe</code> which begins with:</p>
-<pre class="highlight"><code class="language-juvix">maybe {A B} (d : B) (f : A -&gt; B) : Maybe A -&gt; B</code></pre>
+<div class="highlight"><pre><span></span><code>maybe {A B} (d : B) (f : A -&gt; B) : Maybe A -&gt; B
+</code></pre></div>
 <p>This should return the value (if present) applied to the function <code>f</code>.
 Otherwise it should return the default value <code>d</code>.</p>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">    maybe {A B} (d : B) (f : A -&gt; B) : Maybe A -&gt; B
+<div class="highlight"><pre><span></span><code>    maybe {A B} (d : B) (f : A -&gt; B) : Maybe A -&gt; B
       | (just n) := f n
-      | nothing := d;</code></pre>
+      | nothing := d;
+</code></pre></div>
 </details>
 <h4 id="list-exercises">List exercises<a class="headerlink" href="#list-exercises" title="Permanent link">&para;</a></h4>
 <p>We can define polymorphic lists as follows:</p>
-<pre class="highlight"><code class="language-juvix">import Stdlib.Data.Fixity open;
+<div class="highlight"><pre><span></span><code>import Stdlib.Data.Fixity open;
 
 syntax operator :: cons;
 type List A :=
   | nil : List A
-  | :: : A -&gt; List A -&gt; List A;</code></pre>
+  | :: : A -&gt; List A -&gt; List A;
+</code></pre></div>
 <p>Let's define a function that returns the first element of a <code>List</code> if it exists.</p>
 <p>Do you beginning the definition as follows is appropriate? If not, why?</p>
-<pre class="highlight"><code class="language-juvix">head {A} : List A -&gt; A</code></pre>
+<div class="highlight"><pre><span></span><code>head {A} : List A -&gt; A
+</code></pre></div>
 <p>Try to give an implementation for it.</p>
 <details class="info">
 <summary>Solution</summary>
@@ -3248,9 +3080,10 @@ type List A :=
 But we cannot return anything when the list is empty.
 Therefore it makes sense to use the <code>Maybe</code> type that we defined in the previous section.
 The proper definition of <code>head</code> should be:</p>
-<pre class="highlight"><code class="language-juvix">head {A} : List A -&gt; Maybe A
+<div class="highlight"><pre><span></span><code>head {A} : List A -&gt; Maybe A
   | nil := nothing
-  | (h :: _) := just h;</code></pre>
+  | (h :: _) := just h;
+</code></pre></div>
 </details>
 <p>So far we have defined only functions that do not involve looping, but any
 non-trivial program will require some sort of repetition, so let's tackle that.</p>
@@ -3260,45 +3093,52 @@ itself, i.e., the name of the function appears in its body.</p>
 <p>The next exercise is to define a function which returns the last element of a
 list. This function will need to call itself until it reaches the last element
 of the list.</p>
-<pre class="highlight"><code class="language-juvix">last {A} : List A -&gt; Maybe A;</code></pre>
+<div class="highlight"><pre><span></span><code>last {A} : List A -&gt; Maybe A;
+</code></pre></div>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">    last {A} : List A -&gt; Maybe A
+<div class="highlight"><pre><span></span><code>    last {A} : List A -&gt; Maybe A
       | nil := nothing
       | (x :: nil) := just x
-      | (_ :: xs) := last xs;</code></pre>
+      | (_ :: xs) := last xs;
+</code></pre></div>
 </details>
 <p>Next, implement a function that concatenates two lists:</p>
-<pre class="highlight"><code class="language-juvix">  concat {A} : List A -&gt; List A -&gt; List A</code></pre>
+<div class="highlight"><pre><span></span><code>  concat {A} : List A -&gt; List A -&gt; List A
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>It is enough to pattern match the first list.</p>
 </div>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">        concat {A} : List A -&gt; List A -&gt; List A
+<div class="highlight"><pre><span></span><code>        concat {A} : List A -&gt; List A -&gt; List A
           | nil b := b
-          | (a :: as) b := a :: concat as b;</code></pre>
+          | (a :: as) b := a :: concat as b;
+</code></pre></div>
 </details>
 <p>Now write a function that concatenates a list of lists.</p>
-<pre class="highlight"><code class="language-juvix">  concatMany {A} : List (List A) -&gt; List A</code></pre>
+<div class="highlight"><pre><span></span><code>  concatMany {A} : List (List A) -&gt; List A
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p><code>concat</code> may be helpful.</p>
 </div>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">    concatMany {A} : List (List A) -&gt; List A
+<div class="highlight"><pre><span></span><code>    concatMany {A} : List (List A) -&gt; List A
       | nil := nil
-      | (a :: as) := concat a (concatMany as);</code></pre>
+      | (a :: as) := concat a (concatMany as);
+</code></pre></div>
 </details>
 <p>Can you give an alternative implementation that uses the <code>rfor</code> iterator? What
 would happen if you used <code>for</code> instead of <code>rfor</code>?</p>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">    concatMany-iter {A} (m : List (List A)) : List A :=
+<div class="highlight"><pre><span></span><code>    concatMany-iter {A} (m : List (List A)) : List A :=
       rfor (acc := nil) (l in m)
-        concat l acc;</code></pre>
+        concat l acc;
+</code></pre></div>
 </details>
 <p>In the previous solution, if you replace <code>rfor</code> by <code>for</code>, the resulting list
 will be as if the original list was reversed, but each of the nested lists keep
@@ -3311,15 +3151,17 @@ their original order.</p>
 <details class="info">
 <summary>Solution</summary>
 <p>Using the <code>for</code> iterator:</p>
-<pre class="highlight"><code class="language-juvix">    reverse {A} (xs : List A) : List A :=
-      for (acc := nil) (x in xs) {x :: acc};</code></pre>
+<div class="highlight"><pre><span></span><code>    reverse {A} (xs : List A) : List A :=
+      for (acc := nil) (x in xs) {x :: acc};
+</code></pre></div>
 <p>Using tail recursion:</p>
-<pre class="highlight"><code class="language-juvix">    reverse {A} : List A -&gt; List A :=
+<div class="highlight"><pre><span></span><code>    reverse {A} : List A -&gt; List A :=
       let
         go (acc : List A) : List A -&gt; List A
           | nil := acc
           | (x :: xs) := go (x :: acc) xs;
-      in go nil;</code></pre>
+      in go nil;
+</code></pre></div>
 </details>
 <h4 id="function-composition">Function composition<a class="headerlink" href="#function-composition" title="Permanent link">&para;</a></h4>
 <p>Let's try a different exercise. Define a function <code>compose</code> that
@@ -3329,12 +3171,14 @@ composes two functions <code>f</code> and <code>g</code>. It should take three a
 <details class="hint">
 <summary>Hint</summary>
 <p>The definition should start like this:</p>
-<pre class="highlight"><code class="language-juvix">    compose {A B C} ...</code></pre>
+<div class="highlight"><pre><span></span><code>    compose {A B C} ...
+</code></pre></div>
 </details>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">    compose {A B C} (f : B -&gt; C) (g : A -&gt; B) (x : A) : C :=
-      f (g x);</code></pre>
+<div class="highlight"><pre><span></span><code>    compose {A B C} (f : B -&gt; C) (g : A -&gt; B) (x : A) : C :=
+      f (g x);
+</code></pre></div>
 </details>
 <p>Congratulations! your warm-up is complete!</p>
 <h3 id="more-exercises">More exercises<a class="headerlink" href="#more-exercises" title="Permanent link">&para;</a></h3>
@@ -3348,7 +3192,7 @@ other than 1 and itself.</p>
 </div>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">  prime (x : Nat) : Bool :=
+<div class="highlight"><pre><span></span><code>  prime (x : Nat) : Bool :=
     let
       go : Nat -&gt; Bool
         | zero := true
@@ -3358,21 +3202,24 @@ other than 1 and itself.</p>
          | zero := false
          | suc zero := false
          | suc k := go k
-       };</code></pre>
+       };
+</code></pre></div>
 </details>
 <h4 id="half">Half<a class="headerlink" href="#half" title="Permanent link">&para;</a></h4>
 <p>Does Juvix accept the following definition?</p>
-<pre class="highlight"><code class="language-juvix">half : Nat -&gt; Nat := if (n &lt; 2) 0 (half (sub n 2) + 1);</code></pre>
+<div class="highlight"><pre><span></span><code>half : Nat -&gt; Nat := if (n &lt; 2) 0 (half (sub n 2) + 1);
+</code></pre></div>
 <p>How can you reformulate this definition so that it is accepted by
 Juvix?</p>
 <details class="info">
 <summary>Solution</summary>
 <p>The definition doesn't pass the termination checker.
 One way to reformulate it is as follows:</p>
-<pre class="highlight"><code class="language-juvix">  half : Nat -&gt; Nat
+<div class="highlight"><pre><span></span><code>  half : Nat -&gt; Nat
     | zero := 0
     | (suc zero) := 0
-    | (suc (suc n)) := half n + 1;</code></pre>
+    | (suc (suc n)) := half n + 1;
+</code></pre></div>
 </details>
 <h4 id="suffixes">Suffixes<a class="headerlink" href="#suffixes" title="Permanent link">&para;</a></h4>
 <p>A <em>suffix</em> of a list <code>l</code> is any list which can be obtained from <code>l</code> by removing
@@ -3387,23 +3234,27 @@ some initial elements. For example, the suffixes of <code>1 :: 2 :: 3 :: nil</co
 arranged in descending order of their lengths.</p>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">  suffixes {A} : List A -&gt; List (List A)
+<div class="highlight"><pre><span></span><code>  suffixes {A} : List A -&gt; List (List A)
     | nil := nil :: nil
-    | xs@(_ :: xs') := xs :: suffixes xs';</code></pre>
+    | xs@(_ :: xs&#39;) := xs :: suffixes xs&#39;;
+</code></pre></div>
 </details>
 <h4 id="tree-map">Tree map<a class="headerlink" href="#tree-map" title="Permanent link">&para;</a></h4>
 <p>Recall the <code>Tree</code> type from above.</p>
-<pre class="highlight"><code class="language-juvix">  type Tree :=
+<div class="highlight"><pre><span></span><code>  type Tree :=
     | leaf : Nat -&gt; Tree
-    | node : Nat -&gt; Tree -&gt; Tree -&gt; Tree;</code></pre>
+    | node : Nat -&gt; Tree -&gt; Tree -&gt; Tree;
+</code></pre></div>
 <p>Analogously to the <code>map</code> function for lists, define a function</p>
-<pre class="highlight"><code class="language-juvix">tmap : (Nat -&gt; Nat) -&gt; Tree -&gt; Tree;</code></pre>
+<div class="highlight"><pre><span></span><code>tmap : (Nat -&gt; Nat) -&gt; Tree -&gt; Tree;
+</code></pre></div>
 <p>which applies a function to all natural numbers stored in a tree.</p>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">    tmap (f : Nat -&gt; Nat) : Tree -&gt; Tree
+<div class="highlight"><pre><span></span><code>    tmap (f : Nat -&gt; Nat) : Tree -&gt; Tree
       | (leaf x) := leaf (f x)
-      | (node x l r) := node (f x) (tmap f l) (tmap f r);</code></pre>
+      | (node x l r) := node (f x) (tmap f l) (tmap f r);
+</code></pre></div>
 </details>
 <h4 id="polymorphic-tree">Polymorphic tree<a class="headerlink" href="#polymorphic-tree" title="Permanent link">&para;</a></h4>
 <p>Modify the <code>Tree</code> type from <a href="#exercise-5">Exercise 5</a> to be polymorphic in the
@@ -3411,128 +3262,75 @@ element type, and then repeat the previous exercise.</p>
 <details class="info">
 <summary>Solution</summary>
 <p>Only the types need to be changed.</p>
-<pre class="highlight"><code class="language-juvix">    type Tree A :=
+<div class="highlight"><pre><span></span><code>    type Tree A :=
       | leaf : A -&gt; Tree A
       | node : A -&gt; Tree A -&gt; Tree A -&gt; Tree A;
 
     tmap {A B} (f : A -&gt; B) : Tree A -&gt; Tree B
       | (leaf x) := leaf (f x)
-      | (node x l r) := node (f x) (tmap f l) (tmap f r);</code></pre>
+      | (node x l r) := node (f x) (tmap f l) (tmap f r);
+</code></pre></div>
 </details>
 <h4 id="factorial">Factorial<a class="headerlink" href="#factorial" title="Permanent link">&para;</a></h4>
 <p>Write a tail recursive function which computes the factorial of a natural
 number.</p>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">  fact : Nat -&gt; Nat :=
+<div class="highlight"><pre><span></span><code>  fact : Nat -&gt; Nat :=
     let
       go (acc : Nat) : Nat -&gt; Nat
         | zero := acc
-        | n@(suc n') := go (acc * n) n';
-    in go 1;</code></pre>
+        | n@(suc n&#39;) := go (acc * n) n&#39;;
+    in go 1;
+</code></pre></div>
 </details>
 <h4 id="list-function-compose">List function compose<a class="headerlink" href="#list-function-compose" title="Permanent link">&para;</a></h4>
 <p>Define a function</p>
-<pre class="highlight"><code class="language-juvix">comp {A} : List (A -&gt; A) -&gt; A -&gt; A</code></pre>
+<div class="highlight"><pre><span></span><code>comp {A} : List (A -&gt; A) -&gt; A -&gt; A
+</code></pre></div>
 <p>which composes all functions in a list. For example,</p>
-<pre class="highlight"><code class="language-juvix">comp (suc :: (*) 2 :: \{x := sub x 1} :: nil)</code></pre>
+<div class="highlight"><pre><span></span><code>comp (suc :: (*) 2 :: \{x := sub x 1} :: nil)
+</code></pre></div>
 <p>should be a function which given <code>x</code> computes <code>2(x - 1) + 1</code>.</p>
 <details class="info">
 <summary>Solution</summary>
-<pre class="highlight"><code class="language-juvix">  comp {A} (fs : List (A -&gt; A)) : A -&gt; A :=
-    for (acc := id) (f in fs) {acc ∘ f};</code></pre>
+<div class="highlight"><pre><span></span><code>  comp {A} (fs : List (A -&gt; A)) : A -&gt; A :=
+    for (acc := id) (f in fs) {acc ∘ f};
+</code></pre></div>
 <p>where <code>∘</code> is a composition function from the standard library:</p>
-<pre class="highlight"><code class="language-juvix">syntax operator ∘ composition;
-∘ {A B C} (f : B -&gt; C) (g : A -&gt; B) (x : A) : C := f (g x);</code></pre>
+<div class="highlight"><pre><span></span><code>syntax operator ∘ composition;
+∘ {A B C} (f : B -&gt; C) (g : A -&gt; B) (x : A) : C := f (g x);
+</code></pre></div>
 <p>The <code>∘</code> can be typed in Emacs or VSCode with <code>\o</code>.</p>
 </details>
 
 <!-- Source file information -->
 
-  
-  
-    
-  
-  
-    
-  
-
-
-  <aside class="md-source-file">
-    
-      <span class="md-source-file__fact">
-        <span class="md-icon" title="Last update">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
-        </span>
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-01T17:42:34+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-01</span>
-      </span>
-    
-    
-      <span class="md-source-file__fact">
-        <span class="md-icon" title="Created">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
-        </span>
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-17T12:59:20+02:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-17</span>
-      </span>
-    
-    
-    
-  </aside>
-
-
 
 <!-- Was this page helpful? -->
 
-  
 
-
-
-  <form class="md-feedback" name="feedback" hidden>
-    <fieldset>
-      <legend class="md-feedback__title">
-        Was this page helpful?
-      </legend>
-      <div class="md-feedback__inner">
-        <div class="md-feedback__list">
-          
-            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35Z"/></svg>
-            </button>
-          
-            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c.67 0 1.32.12 1.94.33L13 9.35l-4 5 3 7M16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35l-1-7 4.5-5-2.65-5.08C13.87 3.47 15.17 3 16.5 3Z"/></svg>
-            </button>
-          
-        </div>
-        <div class="md-feedback__note">
-          
-            <div data-md-value="1" hidden>
-              
-              
-                
-              
-              Thanks for your feedback!
-            </div>
-          
-            <div data-md-value="0" hidden>
-              
-              
-                
-              
-              Thanks for your feedback! Help us improve this page by opening an issue on GitHub.
-            </div>
-          
-        </div>
-      </div>
-    </fieldset>
-  </form>
 
 
 <!-- Comment system -->
 
   <h2 id="__comments">Comments</h2>
   <!-- Insert generated snippet here -->
-  <script src="https://giscus.app/client.js" data-repo="anoma/juvix-docs" data-repo-id="R_kgDOJXy1bw" data-category="General" data-category-id="DIC_kwDOJXy1b84CV1X1" data-mapping="title" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="en" data-loading="lazy" crossorigin="anonymous" async=>
+  <script src="https://giscus.app/client.js"
+  data-repo="anoma/juvix-docs"
+  data-repo-id="R_kgDOJXy1bw"
+  data-category="General"
+  data-category-id="DIC_kwDOJXy1b84CV1X1"
+  data-mapping="title"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="preferred_color_scheme"
+  data-lang="en"
+  data-loading="lazy"
+  crossorigin="anonymous"
+  async>
 </script>
   <!-- Synchronize Giscus theme with palette -->
   <script>
@@ -3588,7 +3386,7 @@ number.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../blog/archive/2022/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2022">
+          <a href="../../blog/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Juvix Blog">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M7.78 12.53a.75.75 0 0 1-1.06 0L2.47 8.28a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L4.81 7h7.44a.75.75 0 0 1 0 1.5H4.81l2.97 2.97a.75.75 0 0 1 0 1.06Z"/></svg>
@@ -3598,7 +3396,7 @@ number.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                2022
+                Juvix Blog
               </div>
             </div>
           </a>
@@ -3632,35 +3430,9 @@ number.</p>
     </div>
   
   
-</div>
-      
-        <div class="md-social">
-  
-    
-    
-    
-    
-      
-      
-    
-    <a href="https://github.com/anoma/juvix" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-    </a>
-  
-    
-    
-    
-    
-    <a href="https://discord.gg/jwzaMZ2Sct" target="_blank" rel="noopener" title="Juvix Discord" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M524.531 69.836a1.5 1.5 0 0 0-.764-.7A485.065 485.065 0 0 0 404.081 32.03a1.816 1.816 0 0 0-1.923.91 337.461 337.461 0 0 0-14.9 30.6 447.848 447.848 0 0 0-134.426 0 309.541 309.541 0 0 0-15.135-30.6 1.89 1.89 0 0 0-1.924-.91 483.689 483.689 0 0 0-119.688 37.107 1.712 1.712 0 0 0-.788.676C39.068 183.651 18.186 294.69 28.43 404.354a2.016 2.016 0 0 0 .765 1.375 487.666 487.666 0 0 0 146.825 74.189 1.9 1.9 0 0 0 2.063-.676A348.2 348.2 0 0 0 208.12 430.4a1.86 1.86 0 0 0-1.019-2.588 321.173 321.173 0 0 1-45.868-21.853 1.885 1.885 0 0 1-.185-3.126 251.047 251.047 0 0 0 9.109-7.137 1.819 1.819 0 0 1 1.9-.256c96.229 43.917 200.41 43.917 295.5 0a1.812 1.812 0 0 1 1.924.233 234.533 234.533 0 0 0 9.132 7.16 1.884 1.884 0 0 1-.162 3.126 301.407 301.407 0 0 1-45.89 21.83 1.875 1.875 0 0 0-1 2.611 391.055 391.055 0 0 0 30.014 48.815 1.864 1.864 0 0 0 2.063.7A486.048 486.048 0 0 0 610.7 405.729a1.882 1.882 0 0 0 .765-1.352c12.264-126.783-20.532-236.912-86.934-334.541ZM222.491 337.58c-28.972 0-52.844-26.587-52.844-59.239s23.409-59.241 52.844-59.241c29.665 0 53.306 26.82 52.843 59.239 0 32.654-23.41 59.241-52.843 59.241Zm195.38 0c-28.971 0-52.843-26.587-52.843-59.239s23.409-59.241 52.843-59.241c29.667 0 53.307 26.82 52.844 59.239 0 32.654-23.177 59.241-52.844 59.241Z"/></svg>
-    </a>
-  
-    
-    
-    
-    
-    <a href="https://twitter.com/juvixlang" target="_blank" rel="noopener" title="Juvix Twitter" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs Insiders
     </a>
   
 </div>
@@ -3675,26 +3447,16 @@ number.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.59e7e423.min.js"></script>
       
-        <script src="../../js/timeago.min.js"></script>
-      
-        <script src="../../js/timeago_mkdocs_material.js"></script>
-      
-        <script src="../../assets/external/polyfill.io/v3/polyfill.min.7596a0b8.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="../../assets/external/cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
-      
         <script src="../../assets/js/highlight.js"></script>
-      
-        <script src="../../assets/external/cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.min.js"></script>
-      
-        <script src="../../assets/js/juvix-highlight.js"></script>
       
         <script src="../../assets/js/extra.js"></script>
       

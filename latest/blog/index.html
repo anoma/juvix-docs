@@ -12,23 +12,20 @@
         <meta name="author" content="The Juvix Team">
       
       
-        <link rel="canonical" href="https://docs.juvix.org/latest/blog/">
+        <link rel="canonical" href="https://docs.juvix.org/0.5.4/blog/">
       
       
         <link rel="prev" href="../about/license/">
       
       
-        <link rel="next" href="category/geb/">
+        <link rel="next" href="../tutorials/learn/">
       
       
         
       
       
-        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../feed_rss_created.xml">
-        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../feed_rss_updated.xml">
-      
       <link rel="icon" href="../assets/images/favicon/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7+insiders-4.42.3">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.5+insiders-4.42.1">
     
     
       
@@ -36,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.382dd0b9.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.13544b29.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -52,50 +49,27 @@
       
         
         
-        
-        <link rel="stylesheet" href="../assets/external/fonts.googleapis.com/css.d8e95e7a.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Flex:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto Flex";--md-code-font:"JetBrains Mono"}</style>
       
     
     
-      <link rel="stylesheet" href="../css/timeago.css">
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../assets/css/extra.css">
     
-      <link rel="stylesheet" href="../assets/css/juvix-highlight.css">
+      <link rel="stylesheet" href="../assets/css/juvix-highlighting.css">
     
-      <link rel="stylesheet" href="../assets/external/cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-  
-
-
-  
-  
-
-<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-9R2Q766R16"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-9R2Q766R16",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-9R2Q766R16",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
-  
-    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-  
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Juvix Blog - Juvix Docs" />
-<meta property="og:description" content="The Official Documentation for Juvix" />
-<meta property="og:image" content="https://docs.juvix.org/latest/assets/images/social/blog/index.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://docs.juvix.org/latest/blog/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Juvix Blog - Juvix Docs" />
-<meta property="twitter:description" content="The Official Documentation for Juvix" />
-<meta property="twitter:image" content="https://docs.juvix.org/latest/assets/images/social/blog/index.png" />
-</head>
+  </head>
   
   
     
@@ -123,22 +97,6 @@
       
     </div>
     
-      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
-        
-          <aside class="md-banner md-banner--warning">
-            <div class="md-banner__inner md-grid md-typeset">
-              
-  You're not viewing the latest version.
-  <a href="../..">
-    <strong>Click here to go to latest.</strong>
-  </a>
-
-            </div>
-            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
-          </aside>
-        
-      </div>
-    
     
       
 
@@ -146,7 +104,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="https://docs.juvix.org" title="Juvix Docs" class="md-header__button md-logo" aria-label="Juvix Docs" data-md-component="logo" target="_blank" rel="noopener">
+    <a href=".." title="Juvix Docs" class="md-header__button md-logo" aria-label="Juvix Docs" data-md-component="logo">
       
   <img src="../assets/logo-juvix.svg" alt="logo">
 
@@ -249,7 +207,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/anoma/juvix" title="Go to repository" class="md-source" data-md-component="source" target="_blank" rel="noopener">
+        <a href="https://github.com/anoma/juvix" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -403,7 +361,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html#" class="md-tabs__link" target="_blank" rel="noopener">
+      <a href="https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html#" class="md-tabs__link">
         
   
     
@@ -437,7 +395,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="https://discord.gg/jwzaMZ2Sct" class="md-tabs__link" target="_blank" rel="noopener">
+      <a href="https://discord.gg/jwzaMZ2Sct" class="md-tabs__link">
         
   
     
@@ -477,7 +435,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://docs.juvix.org" title="Juvix Docs" class="md-nav__button md-logo" aria-label="Juvix Docs" data-md-component="logo" target="_blank" rel="noopener">
+    <a href=".." title="Juvix Docs" class="md-nav__button md-logo" aria-label="Juvix Docs" data-md-component="logo">
       
   <img src="../assets/logo-juvix.svg" alt="logo">
 
@@ -486,7 +444,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/anoma/juvix" title="Go to repository" class="md-source" data-md-component="source" target="_blank" rel="noopener">
+      <a href="https://github.com/anoma/juvix" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -714,10 +672,6 @@
           
         
       
-        
-      
-        
-      
     
     
     
@@ -751,11 +705,6 @@
 
             </a>
             
-              
-              <label class="md-nav__link md-nav__link--active" for="__nav_3" id="__nav_3_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
           </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
@@ -769,112 +718,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="archive/2023/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    
-  
-    Archive
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="category/geb/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    
-  
-    Categories
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
               
             
           </ul>
@@ -1078,6 +921,8 @@
       
         
       
+        
+      
     
     
     
@@ -1220,6 +1065,34 @@
     
   
     Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../howto/judoc/" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 12h8v2H8v-2m2 8H6V4h7v5h5v3.1l2-2V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4v-2m-2-2h4.1l.9-.9V16H8v2m12.2-5c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Judoc documentation tool
   
 
     
@@ -1550,7 +1423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html#" class="md-nav__link" target="_blank" rel="noopener">
+      <a href="https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html#" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1600,7 +1473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="https://discord.gg/jwzaMZ2Sct" class="md-nav__link" target="_blank" rel="noopener">
+      <a href="https://discord.gg/jwzaMZ2Sct" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1639,69 +1512,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#compiling-to-vampir-through-geb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Compiling to VampIR through Geb
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#compiling-juvix-programs-to-arithmetic-circuits-via-vamp-ir" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Compiling Juvix programs to arithmetic circuits via Vamp-IR
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#iterator-syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Iterator syntax
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#join-juvix-team-at-ethprague" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Join Juvix Team at ETHPrague
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#stay-positive-with-your-data-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Stay Positive with Your Data Types
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1709,304 +1519,97 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="juvix-blog">Juvix Blog<a class="headerlink" href="#juvix-blog" title="Permanent link">&para;</a></h1>
-<p>Welcome! Join us in our cozy corner as we explore functional programming and next-generation distributed apps, sharing insights on Juvix, its development, and discussing related concepts. Stay tuned for our upcoming events and let's embark on this exciting journey together!</p>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://github.com/agureev.png" alt="Artem Gureev">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-09-19 00:00:00">9/19/23</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/geb/" class="md-meta__link">geb</a>, 
-              <a href="category/vampir/" class="md-meta__link">vampir</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              15 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="compiling-to-vampir-through-geb"><a class="toclink" href="geb-backend/">Compiling to VampIR through Geb</a></h2>
-<p><a href="https://docs.juvix.org/latest/blog/vampir-circuits/" target="_blank" rel="noopener">Before</a>, we discussed the
-standard normalization approach to compiling Juvix programs to VampIR. An
-alternative backend is provided by the Geb project currently implemented in Lisp
-showcasing a categorical view of the needed translations.</p>
-<p>The post will be devoted to discussing the core ideas of Geb, the practical
-steps to take in order to use the corresponding pipeline, as well as the current
-limitations the backend faces.</p>
+            <div class="md-content" data-md-component="content">
+              
+                
 
-    <nav class="md-post__action">
-      <a href="geb-backend/">
-        Continue reading
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+    <li class="md-path__item">
+      <a href=".." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
       </a>
-    </nav>
-  </div>
-</article>
+    </li>
+  
+
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
+      
+        
+  
     
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://github.com/lukaszcz.png" alt="Łukasz Czajka">
-          </span>
-        
-      </nav>
     
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-06-15 00:00:00">6/15/23</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/vampir/" class="md-meta__link">vampir</a></li>
-        
-        
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
           
-          <li class="md-meta__item">
-            
-              15 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="compiling-juvix-programs-to-arithmetic-circuits-via-vamp-ir"><a class="toclink" href="vampir-circuits/">Compiling Juvix programs to arithmetic circuits via Vamp-IR</a></h2>
-<p>Since version 0.3.5, the Juvix compiler supports the <code>vampir</code> target which generates <a href="https://anoma.github.io/VampIR-Book/" target="_blank" rel="noopener">Vamp-IR</a> input files that can be compiled to various proof systems based on arithmetic circuits, like Plonk or Halo 2. Vamp-IR is a proof-system-agnostic language for writing arithmetic circuits.</p>
-<p>In this post, we will not be discussing the details of Vamp-IR or the circuit computation model. Instead, we will describe how high-level functional Juvix programs can be compiled to circuits, what the common pitfalls and current limitations are. The reader is assumed to have at least basic familiarity with <a href="https://anoma.github.io/VampIR-Book/" target="_blank" rel="noopener">Vamp-IR</a>.</p>
+  <span class="md-ellipsis">
+    Blog
+  </span>
 
-    <nav class="md-post__action">
-      <a href="vampir-circuits/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
+        </a>
+      </li>
     
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://github.com/lukaszcz.png" alt="Łukasz Czajka">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-06-08 00:00:00">6/8/23</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/language/" class="md-meta__link">language</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              15 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="iterator-syntax"><a class="toclink" href="iterators/">Iterator syntax</a></h2>
-<p>A common pattern in functional programming is the traversal of data structures,
-particularly lists, in a specified order accumulating some values. If you've
-used languages like Haskell or OCaml, you must have come across the "fold left"
-(<code>foldl</code>) and "fold right" (<code>foldr</code>) higher-order functions which implement this
-pattern. These functions are also <a href="https://anoma.github.io/juvix-stdlib/Stdlib.Data.List.Base.html" target="_blank" rel="noopener">available in Juvix</a>. In this
-blog post, I describe an iterator syntax I designed for Juvix which allows
-expressing folds (and maps, filters and more) in a readable manner.</p>
+  
 
-    <nav class="md-post__action">
-      <a href="iterators/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://github.com/vrom911.png" alt="Veronika Romashkina">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-06-07 00:00:00">6/7/23</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/conference/" class="md-meta__link">conference</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              5 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="join-juvix-team-at-ethprague"><a class="toclink" href="ethprague/">Join Juvix Team at ETHPrague</a></h2>
-<p>The Juvix team is excited to announce our participation in <a href="https://ethprague.com/" target="_blank" rel="noopener">ETHPrague
-2023</a>, an Ethereum-focused event happening in Prague, Czech Republic,
-from June 8-11.</p>
-<p>Join us for an immersive experience where you can learn about the current state
-of the Juvix language, explore and create real-world applications built with
-Juvix, and engage in discussions about the future possibilities and exciting
-plans we have in store.</p>
-<h3 id="the-event"><a class="toclink" href="ethprague/#the-event">The event</a></h3>
-<p>ETHPrague is a premier blockchain event that brings together the global Ethereum
-community to discuss the future of Ethereum, blockchain technology, and new
-concepts. It provides a platform for knowledge sharing, networking, and
-collaboration among enthusiasts, experts, and visionaries.</p>
-<p>The event features an impressive lineup of speakers, including the esteemed
-Vitalik Buterin. With engaging panels, workshops, and even a hackathon,
-ETHPrague offers abundant opportunities to learn, network, and connect with
-exceptional individuals and communities.</p>
-<p>The event will take place from June 8th to June 11th in the beautiful city of
-Prague, Czech Republic. For more information, please visit the <a href="https://ethprague.com/" target="_blank" rel="noopener">official event
-webpage</a>.</p>
-<p>Make sure to mark your calendar for the following key sessions:</p>
-<ul>
-<li>Talk by <strong>Veronika Romashkina</strong>: On <em>Saturday, June 10th, from 14:10 - 14:30</em>
-  at the <em>Institute of Cryptoanarchy</em>, Veronika, Developer Relations at Heliax,
-  will present a talk titled <strong>"Juvix: Toward a Functional Programming Language
-  for Decentralized Applications and Beyond."</strong></li>
-<li>Workshop by <strong>Paul Cadman</strong>: Also on <em>Saturday, June 10th, from 16:20 - 17:20</em>
-  at the <em>Paper Hub</em>, Paul, Compiler Engineer at Heliax, will host a workshop
-  titled <strong>"Discovering Juvix: The High-Level Functional Programming Language
-  for Building Next-Generation dApps."</strong></li>
-</ul>
+    </ol>
+  </nav>
 
-    <nav class="md-post__action">
-      <a href="ethprague/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://github.com/jonaprieto.png" alt="Jonathan Cubides">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-07-25 00:00:00">7/25/22</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/type-system/" class="md-meta__link">type-system</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              5 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="stay-positive-with-your-data-types"><a class="toclink" href="strictly-positive-data-types/">Stay Positive with Your Data Types</a></h2>
-<p>In this discussion, we will explore the concept of strictly positive inductive data types, a critical requirement within the Juvix framework for classifying a data type as well-typed.</p>
-<p>An <strong>inductive type</strong> is considered <em>strictly positive</em> if it either:</p>
-<ol>
-<li>Does not appear within the argument types of its constructors, or</li>
-<li>Appears strictly positively within the argument types of its constructors.</li>
-</ol>
-<p>A name is considered strictly positive for an inductive type if it never appears
-in a negative position within the argument types of its constructors. The term
-<em>negative position</em> denotes instances located to the left of an arrow in a type
-constructor argument.</p>
-
-    <nav class="md-post__action">
-      <a href="strictly-positive-data-types/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-      
-        
-          
+              
+              <article class="md-content__inner md-typeset">
+                
 
 
 
-<nav class="md-pagination">
+                  <!-- Tags -->
+
+  
+<nav class="md-tags" >
   
 </nav>
-        
-      
-    </div>
-  </div>
 
+
+<!-- Actions -->
+
+
+
+
+<!--
+  Hack: check whether the content contains a h1 headline. If it doesn't, the
+  page title (or respectively site name) is used as the main headline.
+-->
+
+
+<!-- Page content -->
+<h1 id="juvix-blog">Juvix Blog<a class="headerlink" href="#juvix-blog" title="Permanent link">&para;</a></h1>
+<p>Welcome! Join us in our cozy corner as we explore functional programming and next-generation distributed apps, sharing insights on Juvix, its development, and discussing related concepts. Stay tuned for our upcoming events and let's embark on this exciting journey together!</p>
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+
+
+
+
+<!-- Comment system -->
+
+                
+
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -2043,13 +1646,13 @@ constructor argument.</p>
         
         
           
-          <a href="category/geb/" class="md-footer__link md-footer__link--next" aria-label="Next: geb">
+          <a href="../tutorials/learn/" class="md-footer__link md-footer__link--next" aria-label="Next: Learn Juvix in minutes">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                geb
+                Learn Juvix in minutes
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2070,35 +1673,9 @@ constructor argument.</p>
     </div>
   
   
-</div>
-      
-        <div class="md-social">
-  
-    
-    
-    
-    
-      
-      
-    
-    <a href="https://github.com/anoma/juvix" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-    </a>
-  
-    
-    
-    
-    
-    <a href="https://discord.gg/jwzaMZ2Sct" target="_blank" rel="noopener" title="Juvix Discord" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M524.531 69.836a1.5 1.5 0 0 0-.764-.7A485.065 485.065 0 0 0 404.081 32.03a1.816 1.816 0 0 0-1.923.91 337.461 337.461 0 0 0-14.9 30.6 447.848 447.848 0 0 0-134.426 0 309.541 309.541 0 0 0-15.135-30.6 1.89 1.89 0 0 0-1.924-.91 483.689 483.689 0 0 0-119.688 37.107 1.712 1.712 0 0 0-.788.676C39.068 183.651 18.186 294.69 28.43 404.354a2.016 2.016 0 0 0 .765 1.375 487.666 487.666 0 0 0 146.825 74.189 1.9 1.9 0 0 0 2.063-.676A348.2 348.2 0 0 0 208.12 430.4a1.86 1.86 0 0 0-1.019-2.588 321.173 321.173 0 0 1-45.868-21.853 1.885 1.885 0 0 1-.185-3.126 251.047 251.047 0 0 0 9.109-7.137 1.819 1.819 0 0 1 1.9-.256c96.229 43.917 200.41 43.917 295.5 0a1.812 1.812 0 0 1 1.924.233 234.533 234.533 0 0 0 9.132 7.16 1.884 1.884 0 0 1-.162 3.126 301.407 301.407 0 0 1-45.89 21.83 1.875 1.875 0 0 0-1 2.611 391.055 391.055 0 0 0 30.014 48.815 1.864 1.864 0 0 0 2.063.7A486.048 486.048 0 0 0 610.7 405.729a1.882 1.882 0 0 0 .765-1.352c12.264-126.783-20.532-236.912-86.934-334.541ZM222.491 337.58c-28.972 0-52.844-26.587-52.844-59.239s23.409-59.241 52.844-59.241c29.665 0 53.306 26.82 52.843 59.239 0 32.654-23.41 59.241-52.843 59.241Zm195.38 0c-28.971 0-52.843-26.587-52.843-59.239s23.409-59.241 52.843-59.241c29.667 0 53.307 26.82 52.844 59.239 0 32.654-23.177 59.241-52.844 59.241Z"/></svg>
-    </a>
-  
-    
-    
-    
-    
-    <a href="https://twitter.com/juvixlang" target="_blank" rel="noopener" title="Juvix Twitter" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs Insiders
     </a>
   
 </div>
@@ -2113,26 +1690,16 @@ constructor argument.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest", "search.share", "toc.follow"], "search": "../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest", "search.share", "toc.follow"], "search": "../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.59e7e423.min.js"></script>
       
-        <script src="../js/timeago.min.js"></script>
-      
-        <script src="../js/timeago_mkdocs_material.js"></script>
-      
-        <script src="../assets/external/polyfill.io/v3/polyfill.min.7596a0b8.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="../assets/external/cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
-      
         <script src="../assets/js/highlight.js"></script>
-      
-        <script src="../assets/external/cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.min.js"></script>
-      
-        <script src="../assets/js/juvix-highlight.js"></script>
       
         <script src="../assets/js/extra.js"></script>
       

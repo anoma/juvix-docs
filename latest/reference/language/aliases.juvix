@@ -23,9 +23,9 @@ not2 (b : Boolean) : Boolean :=
     syntax alias yes := ⊤;
     syntax alias no := ⊥;
   in case b of {
-    | no := yes
-    | yes := no
-  };
+       | no := yes
+       | yes := no
+     };
 --8<-- [end:inside-body]
 
 --8<-- [start:export]
@@ -44,20 +44,21 @@ syntax operator || logical;
 --8<-- [end:export]
 
 module fixityInherit;
---8<-- [start:or-inherit]
-    syntax alias or := ||;
-    newor (a b c : Binary) : Binary := (a or b) or c;
+  --8<-- [start:or-inherit]
+  syntax alias or := ||;
+
+  newor (a b c : Binary) : Binary := (a or b) or c;
 --8<-- [end:or-inherit]
 end;
 
 module fixityNone;
---8<-- [start:or-fixity-none]
-syntax operator or none; 
-syntax alias or := ||;
-or3 (a b c : Binary) : Binary := or (or a b) c;
+  --8<-- [start:or-fixity-none]
+  syntax operator or none;
+  syntax alias or := ||;
+
+  or3 (a b c : Binary) : Binary := or (or a b) c;
 --8<-- [end:or-fixity-none]
 end;
-
 
 type Pair := mkPair Binary Binary;
 
