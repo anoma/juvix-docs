@@ -4,6 +4,12 @@ comments: false
 search:
   boost: 3
 ---
+
+```juvix hide
+module aliases;
+import Stdlib.Data.Fixity open;
+```
+
 # Aliases in Juvix
 
 Aliases in Juvix are a powerful feature that allows developers to create shorthand or substitute names for existing ones. This can greatly enhance readability and maintainability of the code.
@@ -25,19 +31,47 @@ One of the key features of aliases in Juvix is their ability to be forward refer
 For instance, consider the following example where we define the alias `Boolean` for the `Bool` type. We also alias the named constructors `true` and `false` for the Boolean type as `⊤` (top) and `⊥` (bottom) respectively.
 
 ```juvix
---8<------ "docs/reference/language/aliases.juvix:forward"
+syntax alias Boolean := Bool;
+syntax alias ⊥ := false;
+syntax alias ⊤ := true;
+
+type Bool :=
+  | false
+  | true;
+
+not : Boolean -> Boolean
+  | ⊥ := ⊤
+  | ⊤ := ⊥;
 ```
 
 In addition to global scope, aliases can also be used in local definitions. The following `let` expression demonstrates this usage.
 
 ```juvix
---8<------ "docs/reference/language/aliases.juvix:local-alias"
+not2 (b : Boolean) : Boolean :=
+  let
+    syntax alias yes := ⊤;
+    syntax alias no := ⊥;
+  in case b of {
+       | no := yes
+       | yes := no
+     };
 ```
 
 Just like any other name, aliases can be exported from a module to be used elsewhere. Here's how to do it:
 
 ```juvix
---8<------ "docs/reference/language/aliases.juvix:export"
+module ExportAlias;
+  syntax alias Binary := Bool;
+  syntax alias one := ⊤;
+  syntax alias zero := ⊥;
+end;
+
+open ExportAlias;
+
+syntax operator || logical;
+|| : Binary -> Binary -> Binary
+  | zero b := b
+  | one _ := one;
 ```
 
 The versatility of aliases extends beyond types to terms, including functions
@@ -45,5 +79,6 @@ The versatility of aliases extends beyond types to terms, including functions
 shown below:
 
 ```juvix
---8<------ "docs/reference/language/aliases.juvix:or-inherit"
+syntax alias or := ||;
+newor (a b c : Binary) : Binary := (a or b) or c;
 ```
