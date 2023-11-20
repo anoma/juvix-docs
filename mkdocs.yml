@@ -160,7 +160,7 @@ nav:
           - Functions: ./reference/language/functions.juvix.md
           - Builtins: ./reference/language/builtins.juvix.md
           - Data types: ./reference/language/datatypes.juvix.md
-          - Records: ./reference/language/records.md
+          - Records: ./reference/language/records.juvix.md
           - Traits: ./reference/language/traits.md
           - Modules: ./reference/language/modules.md
           - Local definitions: ./reference/language/lets.juvix.md

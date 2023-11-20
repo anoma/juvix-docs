@@ -48,7 +48,7 @@ In this syntax:
   the type of the declared data type.
 
 While there are variations in the syntax for declaring a data type (see the [ADT
-syntax](#adt-syntax) and [record syntax](./records.md)), the most general syntax
+syntax](#adt-syntax) and [record syntax](./records.juvix.md)), the most general syntax
 is the one outlined above.
 
 !!! info "Note"

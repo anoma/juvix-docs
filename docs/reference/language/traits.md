@@ -7,7 +7,7 @@ search:
 
 # Traits
 
-A trait is a special type of [record](./records.md) that can be used to define a
+A trait is a special type of [record](./records.juvix.md) that can be used to define a
 set of functions that must be implemented for a given type.
 
 ## Syntax of Traits
