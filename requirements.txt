@@ -14,4 +14,4 @@ lxml
 pillow
 cairosvg
 pre-commit
-juvix-mkdocs
+mkdocs-juvix-plugin
