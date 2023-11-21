@@ -82,10 +82,7 @@ extra:
   generator: false
   version:
     provider: mike
-  # alternate:
-  #   - name: English
-  #     link: /en/
-  #     lang: en
+
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/anoma/juvix

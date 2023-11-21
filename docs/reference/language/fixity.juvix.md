@@ -126,8 +126,6 @@ standard library.
 
 ```juvix
 module examples-from-stdlib;
-
---8<-- [start:stdlib]
 syntax fixity rapp := binary {assoc := right};
 syntax fixity lapp := binary {assoc := left; same := rapp};
 syntax fixity seq := binary {assoc := left; above := [lapp]};
