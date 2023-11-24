@@ -1,0 +1,60 @@
+/* Color palette based on https://github.com/ayu-theme/ayu-colors */
+
+.juvix-error {
+  font-weight: bold;
+  color: #ff3333;
+}
+
+.ju-comment {
+  color: #a8a8a8;
+}
+
+.ju-inductive {
+  color: #86b300;
+}
+
+.ju-constructor {
+  color: #a37acc;
+}
+
+.ju-function {
+  color: #f2ae49;
+}
+
+.ju-axiom {
+  color: #f07171;
+}
+
+.ju-string {
+  color: #f07171;
+}
+
+.ju-keyword {
+  color: #399ee6;
+}
+
+.ju-delimiter {
+  color: #0b0b0b;
+}
+
+.ju-var {
+  color: #2d2e2e;
+}
+
+.ju-number {
+  color: #000000;
+}
+
+.ju-define {
+  font-weight: bold;
+}
+
+a:hover,
+a.hover-highlight {
+  background-color: #dadbdc;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
