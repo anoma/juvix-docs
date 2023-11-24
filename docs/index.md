@@ -265,7 +265,7 @@ vamp-ir plonk verify -u input.pp -c c.plonk -p proof.plonk
     Master the essentials of Juvix through a series of
     tailored examples, tutorials and technical explanations.
 
-    [:octicons-arrow-right-24: Learn Juvix in 5 minutes](./tutorials/learn.md)
+    [:octicons-arrow-right-24: Learn Juvix in 5 minutes](./tutorials/learn.juvix.md)
 
 <!-- -  :fontawesome-solid-book-open:{ .lg .middle } __Explanations__
 

@@ -420,7 +420,7 @@ By default, evaluation in Juvix is _eager_ (or _strict_), meaning that the
 arguments to a function are fully evaluated before applying the function. Only
 `if`, `||` and `&&` are treated specially and evaluated lazily. These special
 functions cannot be partially applied (see [Partial application and higher-order
-functions](./learn.md#partial-application-and-higher-order-functions) below).
+functions](./learn.juvix.md#partial-application-and-higher-order-functions) below).
 
 ## Local definitions
 
