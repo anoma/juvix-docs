@@ -142,7 +142,7 @@ nav:
       - blog/index.md
 
   - Tutorials:
-      - Learn Juvix in minutes: ./tutorials/learn.md
+      - Learn Juvix in minutes: ./tutorials/learn.juvix.md
       - Juvix VSCode extension: ./tutorials/vscode.md
       - Juvix Emacs mode: ./tutorials/emacs.md
       - ZKSummit 10 Workshop: ./tutorials/workshop.md
