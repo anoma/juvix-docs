@@ -109,8 +109,8 @@ the file in the REPL with `:load file.juvix`, evaluate it with the shell command
 `juvix eval file.juvix`, or compile it to a binary executable with `juvix
 compile file.juvix`.
 
-To conveniently edit Juvix files, an [Emacs mode](./emacs.md) and a [VSCode
-extension](./vscode.md) are available.
+To conveniently edit Juvix files, an [Emacs mode](./emacs.juvix.md) and a [VSCode
+extension](./vscode.juvix.md) are available.
 
 A Juvix file must declare a module whose name corresponds exactly to the name of
 the file. For example, a file `Hello.juvix` must declare a module `Hello`:
