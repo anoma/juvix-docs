@@ -5,6 +5,10 @@ search:
   boost: 3
 ---
 
+```juvix hide
+module fixity;
+```
+
 # Fixities
 
 Fixities in Juvix refers to the precedence and associativity of operators. A
@@ -21,7 +25,7 @@ associativity, and precedence.
 For an operator with no specified precedence or associativity, the arity can be
 declared as follows:
 
-```juvix
+```text
 --8<------ "docs/reference/language/syntax.md:fixity-arity-syntax"
 ```
 
@@ -32,7 +36,7 @@ In this syntax,
 
 This declaration is equivalent to:
 
-```juvix
+```text
 syntax fixity <name> := <arity> {};
 ```
 
@@ -41,7 +45,7 @@ syntax fixity <name> := <arity> {};
 For an operator with no specified precedence, its associativity can be declared
 as:
 
-```juvix
+```text
 syntax fixity <name> := <arity> { assoc := <associativity> };
 ```
 
@@ -54,20 +58,20 @@ relative to other operators.
 
 - If it has equal precedence to another operator:
 
-  ```juvix
+  ```text
   syntax fixity <name> := <arity> { same := otherOperatorName };
   ```
 
 - If it has higher precedence than other operators:
 
-  ```juvix
+  ```text
   syntax fixity <name> := <arity> {
       above := [otherOperatorName1;...; otherOperatorNameN] };
   ```
 
 - If it has lower precedence than other operators:
 
-  ```juvix
+  ```text
   syntax fixity <name> := <arity> {
       below := [otherOperatorName1;...; otherOperatorNameN] };
   ```
@@ -76,7 +80,7 @@ relative to other operators.
 
 For an operator with both associativity and precedence:
 
-```juvix
+```text
 syntax fixity <name> := <arity> {
     assoc := <associativity>;
     above := [otherOperatorName1;...; otherOperatorNameN]
@@ -92,15 +96,27 @@ predictability when using aliases in place of their corresponding operators.
 Consider a scenario where the `or` operator is an alias of the `||` operator.
 The `or` operator will inherit the fixity of the `||` operator by default.
 
+```juvix hide
+import aliases open;
+```
+
 ```juvix
---8<------ "docs/reference/language/aliases.juvix:or-inherit"
+module fixityInherit;
+  syntax alias or := ||;
+  newor (a b c : Bool) : Bool := (a or b) or c;
+end;
 ```
 
 However, if you want to override this behavior, you can declare the alias with
-`none` as its fixity.
+`none` as its fixity. Make sure to import `Stdlib.Data.Fixity`.   
 
 ```juvix
---8<------ "docs/reference/language/aliases.juvix:or-fixity-none"
+module fixityNone;
+  import Stdlib.Data.Fixity open;
+  syntax operator or none;
+  syntax alias or := ||;
+  or3 (a b c : Bool) : Bool := or (or a b) c;
+end;
 ```
 
 ## Examples of Fixity Declarations
@@ -109,5 +125,25 @@ Here are some examples of common fixity declarations for operators in Juvix's
 standard library.
 
 ```juvix
---8<------ "docs/reference/language/fixity.juvix:stdlib"
+module examples-from-stdlib;
+syntax fixity rapp := binary {assoc := right};
+syntax fixity lapp := binary {assoc := left; same := rapp};
+syntax fixity seq := binary {assoc := left; above := [lapp]};
+
+syntax fixity functor := binary {assoc := right};
+
+syntax fixity logical := binary {assoc := right; above := [seq]};
+syntax fixity comparison := binary {assoc := none; above := [logical]};
+
+syntax fixity pair := binary {assoc := right};
+syntax fixity cons := binary {assoc := right; above := [pair]};
+
+syntax fixity step := binary {assoc := right};
+syntax fixity range := binary {assoc := right; above := [step]};
+
+syntax fixity additive := binary {assoc := left; above := [comparison; range; cons]};
+syntax fixity multiplicative := binary {assoc := left; above := [additive]};
+
+syntax fixity composition := binary {assoc := right; above := [multiplicative]};
+end;
 ```

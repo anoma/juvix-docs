@@ -291,7 +291,7 @@ vamp-ir plonk verify -u input.pp -c c.plonk -p proof.plonk
     Explore the Language reference, milestone examples, and tooling
     documentation!
 
-    [:octicons-arrow-right-24: Reference](./reference/language/functions.md)
+    [:octicons-arrow-right-24: Reference](./reference/language/functions.juvix.md)
 
 -   :material-account-group:{ .lg .middle } __Blog__
 

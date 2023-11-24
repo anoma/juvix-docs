@@ -5,9 +5,14 @@ search:
   boost: 3
 ---
 
+```juvix hide
+module traits;
+import Stdlib.Prelude open hiding {Show; mkShow; module Show};
+```
+
 # Traits
 
-A trait is a special type of [record](./records.md) that can be used to define a
+A trait is a special type of [record](./records.juvix.md) that can be used to define a
 set of functions that must be implemented for a given type.
 
 ## Syntax of Traits
@@ -26,7 +31,8 @@ For example, the following defines a trait `Show`. Any type `A` that implements
 `Show` must provide a function `show` that takes an `A` and returns a `String`.
 
 ```juvix
---8<------ "docs/reference/language/traitShow.juvix:show"
+trait
+type Show A := mkShow {show : A → String};
 ```
 
 ### Instance declarations
@@ -48,14 +54,28 @@ For example, we could define three instances of `Show` for `String`, `Bool`, and
 `Nat` as follows:
 
 ```juvix
---8<------ "docs/reference/language/traitShow.juvix:showInstances"
+instance
+showStringI : Show String := mkShow (show := id);
+
+instance
+showBoolI : Show Bool :=
+  mkShow (show := λ {x := if x "true" "false"});
+
+instance
+showNatI : Show Nat := mkShow (show := natToString);
 ```
 
 One more involved example is the following, which defines an instance of `Show`
 for the type of lists:
 
 ```juvix
---8<------ "docs/reference/language/traitShow.juvix:showList"
+instance
+showListI {A} {{Show A}} : Show (List A) :=
+  let
+    showList {A} : {{Show A}} → List A → String
+      | nil := "nil"
+      | (h :: t) := Show.show h ++str " :: " ++str showList t;
+  in mkShow (show := showList);
 ```
 
 ## Usage
@@ -65,7 +85,21 @@ takes a `Nat` and returns a `String`. One possible implementation is the
 following:
 
 ```juvix
---8<------ "docs/reference/language/traits.juvix:usage"
+module usage-example;
+  type Nat :=
+    | Z
+    | S Nat;
+
+  trait
+  type Show A := mkShow {show : A → String};
+
+  NatToString : Nat -> String
+    | Z := "Z"
+    | (S n) := "S " ++str NatToString n;
+
+  instance
+  showNat : Show Nat := mkShow (show := NatToString);
+end;
 ```
 
 To prevent looping during instance search, we ensure a structural decrease in
@@ -77,8 +111,8 @@ type Box A := box A;
 trait
 type T A := mkT { pp : A → A };
 
-instance
-boxT {A} : {{T (Box A)}} → T (Box A) := mkT (λ{x := x});
+-- instance
+-- boxT {A} : {{T (Box A)}} → T (Box A) := mkT (λ{x := x});
 ```
 
 We check whether each parameter is a strict subterm of some trait parameter in
@@ -91,12 +125,27 @@ It is possible to manually provide an instance and to match on implicit
 instances, as shown below:
 
 ```juvix
---8<------ "docs/reference/language/traitShow.juvix:implicit"
+f {A} {{Show A}} : A → String
+  | x := Show.show x;
+  
+f' {A} : {{Show A}} → A → String
+  | {{mkShow s}} x := s x;
+
+f'' {A} : {{Show A}} → A → String
+  | {{M}} x := Show.show {{M}} x;
 ```
 
 Finally, using the `Show` trait and the function `printStringLn` and `IO` from
 the standard library, we could use the instances of `Show` as follows:
 
 ```juvix
---8<------ "docs/reference/language/traitShow.juvix:main"
+main : IO :=
+  printStringLn (Show.show true)
+    >> printStringLn (f false)
+    >> printStringLn (Show.show 3)
+    >> printStringLn (Show.show [true; false])
+    >> printStringLn (Show.show [1; 2; 3])
+    >> printStringLn (f' [1; 2])
+    >> printStringLn (f'' [true; false])
+    >> printStringLn (Show.show ["a"; "b"; "c"; "d"]);
 ```

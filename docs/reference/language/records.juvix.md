@@ -5,9 +5,13 @@ search:
   boost: 3
 ---
 
+```juvix hide
+module records;
+```
+
 # Records
 
-Records are a special kind of [data type](./datatypes.md). Each data constructor
+Records are a special kind of [data type](./datatypes.juvix.md). Each data constructor
 within a record has named type arguments. This feature is reminiscent of
 declaring a structure in languages such as C++ or Java, or akin to defining a
 record in a database system.
@@ -31,7 +35,7 @@ In this syntax:
 - `<record name>` is a unique identifier for the declared record type. This name should be unique within its scope and it is case sensitive.
 
 - `<type parameters>` are optional and represent the generic parameters that the
-  record type may take, see [data types](./datatypes.md) for more information.
+  record type may take, see [data types](./datatypes.juvix.md) for more information.
   They allow for greater flexibility and reusability of the record type.
 
 - `<type-constructor>` represents the different constructors that the record type can have. Each constructor can have a different set of fields.
@@ -56,7 +60,8 @@ For example, here we declare the `newType` record type with the `mkNewtype` type
 constructor and one field named `f`.
 
 ```juvix
---8<------ "docs/reference/language/records.juvix:declaringnewtype"
+type T := constructT : T;
+type newtype := mkNewtype {f : T};
 ```
 
 Records with multiple constructors can also be defined. Consider the `Pair`
@@ -65,14 +70,19 @@ type constructor that takes two arguments, named `fst` and `snd`, of type
 parameters `A` and `B`, respectively.
 
 ```juvix
---8<------ "docs/reference/language/records.juvix:pair"
+type Pair (A B : Type) :=
+  mkPair {
+    fst : A;
+    snd : B
+  };
 ```
 
 To utilize this type, create a `Pair` type term (a pair) using the `mkPair` type
 constructor and provide values for each field.
 
 ```juvix
---8<------ "docs/reference/language/records.juvix:declaringpair"
+p1 : Pair T T :=
+  mkPair (fst := constructT; snd := constructT);
 ```
 
 Field names allow access to their corresponding values. For example, another
@@ -80,13 +90,18 @@ pair equivalent to the one defined above can be declared using values retrieved
 via the field names.
 
 ```juvix
---8<------ "docs/reference/language/records.juvix:viafields"
+p1' : Pair T T :=
+  mkPair (fst := Pair.fst p1; snd := Pair.snd p1);
 ```
 
 One variant of the record term creation is as follows:
 
 ```juvix
---8<------ "docs/reference/language/records.juvix:syntax-variant-record-term"
+p1'' : Pair T T :=
+  mkPair@{
+    fst := Pair.fst p1;
+    snd := Pair.snd p1
+  };
 ```
 
 By default, the fields of a record type are qualified by the type name. To
@@ -94,11 +109,26 @@ access the fields without specifying the type name, use the `open` keyword to
 bring these names into scope.
 
 ```juvix
---8<------ "docs/reference/language/records.juvix:openrecord"
+open Pair;
+
+flipP : Pair T T := mkPair (fst := snd p1; snd := fst p1);
 ```
 
 Finally, consider the declaration of a record with multiple constructors.
 
 ```juvix
---8<------ "docs/reference/language/records.juvix:declaringenum"
+type EnumRecord :=
+  | C1 {
+      c1a : T;
+      c1b : T
+    }
+  | C2 {
+      c2a : T;
+      c2b : T
+    };
+
+p2 : Pair EnumRecord EnumRecord :=
+  mkPair
+    (fst := C1 (c1a := constructT; c1b := constructT);
+    snd := C2 (c2a := constructT; c2b := constructT));
 ```

@@ -11,13 +11,13 @@ Any identifier can be declared as an iterator. The syntax to define an iterator 
 
 ## Syntax
 
-```juvix
+```text
 --8<-- "docs/reference/language/syntax.md:iterator-syntax-simple"
 ```
 
 or
 
-```juvix
+```text
 --8<-- "docs/reference/language/syntax.md:iterator-syntax-simple-with-arguments"
 ```
 
@@ -25,7 +25,7 @@ where `n` and `k` specify the number of _initializers_ (of the form `acc := a`) 
 
 An application of an iterator `iter` has the general form
 
-```juvix
+```text
 iter (acc1 := a1; ..; accn := an) (x1 in xs1; ..; xk in xsk) {body}
 ```
 
@@ -33,6 +33,6 @@ where `acci`, `xi` are patterns, `ai`, `xsi` are expressions, and `body` is an e
 
 The iterator application syntax is equivalent to
 
-```juvix
+```text
 iter \{acc1 .. accn x1 .. xk := body} a1 .. an xs1 .. xsk
 ```

@@ -5,6 +5,11 @@ search:
   boost: 3
 ---
 
+```juvix hide
+module datatypes;
+import Stdlib.Data.Fixity open;
+```
+
 # Defining Data Types in Juvix
 
 A crucial aspect of any programming language is the ability to define custom
@@ -15,7 +20,9 @@ Consider as a first example where we define a data type `Bool` with two
 constructors, `true` and `false`.
 
 ```juvix
---8<------ "docs/reference/language/datatypes.juvix:typeBool"
+type Bool :=
+  | true : Bool
+  | false : Bool;
 ```
 
 ## Syntax of Data Type Declaration
@@ -41,7 +48,7 @@ In this syntax:
   the type of the declared data type.
 
 While there are variations in the syntax for declaring a data type (see the [ADT
-syntax](#adt-syntax) and [record syntax](./records.md)), the most general syntax
+syntax](#adt-syntax) and [record syntax](./records.juvix.md)), the most general syntax
 is the one outlined above.
 
 !!! info "Note"
@@ -56,7 +63,7 @@ is the one outlined above.
 The `Unit` type, the simplest data type, has a single constructor named `unit`.
 
 ```juvix
---8<------ "docs/reference/language/datatypes.juvix:unit"
+type Unit := unit : Unit;
 ```
 
 We then declare the `Nat` type, representing unary natural numbers. It
@@ -64,7 +71,9 @@ introduces two constructors: `zero` and `suc`. For instance, `suc zero`
 represents one, while `suc (suc zero)` represents two.
 
 ```juvix
---8<------ "docs/reference/language/datatypes.juvix:typeNat"
+type Nat :=
+  | zero : Nat
+  | suc : Nat -> Nat;
 ```
 
 These constructors function as regular functions or patterns in pattern matching
@@ -72,7 +81,10 @@ when defining functions. Here is an example of a function adding two natural
 numbers:
 
 ```juvix
---8<------ "docs/reference/language/datatypes.juvix:addNat"
+syntax operator + additive;
++ : Nat -> Nat -> Nat
+  | zero b := b
+  | (suc a) b := suc (a + b);
 ```
 
 # ADT syntax
@@ -98,14 +110,22 @@ the type of the data type being declared.
 For example, the `Nat` type can be declared as follows:
 
 ```juvix
---8<------ "docs/reference/language/datatypes.juvix:natADT"
+module Nat-ADT;
+  type Nat :=
+    | Z
+    | S Nat;
+end;
 ```
 
 Another example is the `List` type, which is polymorphic in the type of its
 elements.
 
 ```juvix
---8<------ "docs/reference/language/datatypes.juvix:listADT"
+module List-ADT;
+  type List A :=
+    | Nil
+    | Cons A (List A);
+end;
 ```
 
 ## Polymorphic data type
@@ -117,13 +137,22 @@ A classic example of this concept is the `List` type, which is polymorphic in
 the type of its list elements.
 
 ```juvix
---8<------ "docs/reference/language/datatypes.juvix:typeList"
+  syntax operator :: cons;
+  type List (A : Type) :=
+    | nil : List A
+    | :: : A -> List A -> List A;
 ```
 
 The following function determines whether an element is in a list or not.
 
 ```juvix
---8<------ "docs/reference/language/datatypes.juvix:elemList"
+module membership;
+import Stdlib.Data.Bool open using {Bool; false; ||};
+
+elem {A} (eq : A -> A -> Bool) (s : A) : List A -> Bool
+  | nil := false
+  | (x :: xs) := eq s x || elem eq s xs;
+end;
 ```
 
 For more examples of inductive types and how to use them, see [the Juvix

@@ -1,4 +1,4 @@
-site_url: https://docs.juvix.org
+site_url: "https://docs.juvix.org/"
 site_name: Juvix Docs
 site_description: The Official Documentation for Juvix
 site_author: The Juvix Team
@@ -157,22 +157,22 @@ nav:
   - Reference:
       - Language reference:
           - About: ./reference/language/README.md
-          - Functions: ./reference/language/functions.md
+          - Functions: ./reference/language/functions.juvix.md
           - Builtins: ./reference/language/builtins.juvix.md
-          - Data types: ./reference/language/datatypes.md
-          - Records: ./reference/language/records.md
-          - Traits: ./reference/language/traits.md
+          - Data types: ./reference/language/datatypes.juvix.md
+          - Records: ./reference/language/records.juvix.md
+          - Traits: ./reference/language/traits.juvix.md
           - Modules: ./reference/language/modules.md
-          - Local definitions: ./reference/language/let.md
+          - Local definitions: ./reference/language/lets.juvix.md
           - Control structures: ./reference/language/control.md
           - Comments: ./reference/language/comments.md
-          - Pragmas: ./reference/language/pragmas.md
-          - Axioms: ./reference/language/axioms.md
+          - Pragmas: ./reference/language/pragmas.juvix.md
+          - Axioms: ./reference/language/axioms.juvix.md
           - Syntax extensions:
-              - Aliases: ./reference/language/aliases.md
+              - Aliases: ./reference/language/aliases.juvix.md
               - Iterators: ./reference/language/iterators.md
-              - Fixities: ./reference/language/fixity.md
-              - Operators: ./reference/language/operators.md
+              - Fixities: ./reference/language/fixity.juvix.md
+              - Operators: ./reference/language/operators.juvix.md
 
       - Standard library: ./reference/stdlib.md
       - Example programs: ./reference/examples.md
