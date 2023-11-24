@@ -1,5 +1,6 @@
 INHERIT: mkdocs.yml
 plugins:
+  - juvix
   - offline:
       enabled: !ENV [OFFLINE, false]
   - privacy:
