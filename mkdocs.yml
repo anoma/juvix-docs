@@ -17,19 +17,17 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - assets/js/highlight.js
   - assets/js/extra.js
-  # - assets/js/mathjax.js
 
 extra_css:
   - assets/css/extra.css
   - assets/css/juvix-highlighting.css
-  - https://cdn.jsdelivr.net/npm/highlightjs-juvix/dist/juvix.css
 
 theme:
   language: en
   name: material
   palette:
     # Palette toggle for light mode
-    - scheme: default
+    - scheme: juvix-light
       primary: deep orange
       accent: orange
       toggle:
@@ -37,7 +35,7 @@ theme:
         name: Switch to dark mode
 
     # Palette toggle for dark mode
-    - scheme: slate
+    - scheme: juvix-dark
       primary: deep orange
       accent: deep orange
       toggle:

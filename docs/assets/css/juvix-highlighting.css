@@ -1,60 +1,67 @@
 /* Color palette based on https://github.com/ayu-theme/ayu-colors */
 
-.juvix-error {
-  font-weight: bold;
-  color: #ff3333;
-}
-
-.ju-comment {
-  color: #a8a8a8;
+.src-content {
+  background-color: var(--md-juvix-background);
 }
 
 .ju-inductive {
-  color: #86b300;
+  color: var(--md-juvix-inductive);
 }
 
 .ju-constructor {
-  color: #a37acc;
+  color: var(--md-juvix-constructor);
 }
 
 .ju-function {
-  color: #f2ae49;
+  color: var(--md-juvix-function);
 }
 
 .ju-axiom {
-  color: #f07171;
+  color: var(--md-juvix-axiom);
 }
 
 .ju-string {
-  color: #f07171;
+  color: var(--md-juvix-string);
 }
 
 .ju-keyword {
-  color: #399ee6;
+  color: var(--md-juvix-keyword);
 }
 
 .ju-delimiter {
-  color: #0b0b0b;
+  color: var(--md-juvix-delimiter);
 }
 
 .ju-var {
-  color: #2d2e2e;
+  color: var(--md-juvix-var);
+}
+
+.ju-fixity {
+  color: var(--md-juvix-fixity);
+}
+
+.ju-comment {
+  color: var(--md-juvix-comment);
+}
+
+.ju-judoc {
+  color: var(--md-juvix-judoc);
 }
 
 .ju-number {
-  color: #000000;
+  color: var√(--md-juvix-number);
 }
 
 .ju-define {
   font-weight: bold;
 }
 
-a:hover,
-a.hover-highlight {
-  background-color: #dadbdc;
+.src-content a:hover,
+.src-content a.hover-highlight {
+  background-color: var(--md-juvix-hover);
 }
 
-a:link,
-a:visited {
+.src-content a:link,
+.src-content a:visited {
   text-decoration: none;
 }
