@@ -109,8 +109,8 @@ the file in the REPL with `:load file.juvix`, evaluate it with the shell command
 `juvix eval file.juvix`, or compile it to a binary executable with `juvix
 compile file.juvix`.
 
-To conveniently edit Juvix files, an [Emacs mode](./emacs.md) and a [VSCode
-extension](./vscode.md) are available.
+To conveniently edit Juvix files, an [Emacs mode](./emacs.juvix.md) and a [VSCode
+extension](./vscode.juvix.md) are available.
 
 A Juvix file must declare a module whose name corresponds exactly to the name of
 the file. For example, a file `Hello.juvix` must declare a module `Hello`:
@@ -420,7 +420,7 @@ By default, evaluation in Juvix is _eager_ (or _strict_), meaning that the
 arguments to a function are fully evaluated before applying the function. Only
 `if`, `||` and `&&` are treated specially and evaluated lazily. These special
 functions cannot be partially applied (see [Partial application and higher-order
-functions](./learn.md#partial-application-and-higher-order-functions) below).
+functions](./learn.juvix.md#partial-application-and-higher-order-functions) below).
 
 ## Local definitions
 

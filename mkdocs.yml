@@ -143,8 +143,8 @@ nav:
 
   - Tutorials:
       - Learn Juvix in minutes: ./tutorials/learn.juvix.md
-      - Juvix VSCode extension: ./tutorials/vscode.md
-      - Juvix Emacs mode: ./tutorials/emacs.md
+      - Juvix VSCode extension: ./tutorials/vscode.juvix.md
+      - Juvix Emacs mode: ./tutorials/emacs.juvix.md
       - ZKSummit 10 Workshop: ./tutorials/workshop.md
 
   - How-to guides:
@@ -181,7 +181,7 @@ nav:
           - Documentation Tool: ./reference/judoc.md
           - Command line interface: ./reference/tooling/CLI.md
           - Doctor: ./reference/tooling/doctor.md
-          - Emacs mode: ./reference/tooling/emacs.md
+          - Emacs mode: ./reference/tooling/emacs.juvix.md
           - Haskell test suite: ./reference/tooling/testing.md
       - Compiler Dev Reference:
           - notes/lsp.md
