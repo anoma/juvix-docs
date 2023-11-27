@@ -19,7 +19,7 @@ comments, region comments, Judoc inline comments, and Judoc block comments.
 
 Inline comments start with two hyphens (`--`). They extend to the end of the line.
 
-```juvix
+```text
 -- This is an inline comment!
 ```
 
