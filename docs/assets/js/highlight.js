@@ -1,6 +1,6 @@
 var highlight = function (on) {
   return function () {
-    var links = document.getElementsByTagName("a");
+    var links = document.querySelectorAll(".src-content a");
     for (var i = 0; i < links.length; i++) {
       var that = links[i];
 
@@ -18,7 +18,7 @@ var highlight = function (on) {
 };
 
 window.onload = function () {
-  var links = document.getElementsByTagName("a");
+  var links = document.querySelectorAll(".src-content a");
   for (var i = 0; i < links.length; i++) {
     links[i].onmouseover = highlight(true);
     links[i].onmouseout = highlight(false);
