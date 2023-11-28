@@ -14,8 +14,8 @@ for your modules, types and functions. Also, you'll be able to export the
 documentation in a beautiful html format.
 
 Let's look at an example:
-```juvix
---8<------ "docs/howto/compilation/Main.juvix"
+```text
+--8<------ "docs/howto/judoc/Main.juvix"
 ```
 
 As you can see, when we want to write `Judoc` comments, we write three dashes `---`.
