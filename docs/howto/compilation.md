@@ -11,8 +11,8 @@ search:
 
 A Juvix file must declare a module with the same name as the file. For instance, `HelloWorld.juvix` should declare a module `HelloWorld`:
 
-```juvix
---8<------ "docs/howto/compilation/Main.juvix:Hello"
+```text
+--8<------ "docs/howto/compilation/HelloWorld.juvix:Hello"
 ```
 
 The zero-argument function `main` is evaluated when running the program and must be defined in a file compiled to an executable.
