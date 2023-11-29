@@ -1,9 +1,0 @@
-module Package;
-
-import PackageDescription.V1 open;
-
-package : Package := defaultPackage {name := "my-package";
-  dependencies := [
-    -- your dependency goes here, separeted by `;`
-  ]
-};
