@@ -192,7 +192,7 @@ dev: pre-build
 latest: pre-build
 	mike delete ${VERSION} ${MIKEFLAGS} > /dev/null 2>&1 || true
 	${MAKE} mike
-	mike alias ${VERSION} latest -u --no-redirect ${MIKEFLAGS}
+	mike alias ${VERSION} latest -u ${MIKEFLAGS}
 	mike set-default ${MIKEFLAGS} ${VERSION}
 	git tag -d v${VERSION} > /dev/null 2>&1 || true
 	git tag -a v${VERSION} -m "Release v${VERSION}"
