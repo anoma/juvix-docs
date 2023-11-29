@@ -1,0 +1,11 @@
+module Package;
+
+import Stdlib.Prelude open;
+import PackageDescription.V1 open;
+
+package : Package :=
+  defaultPackage
+    {name := "Judoc";
+     version := mkVersion 0 1 0;
+     dependencies := [];
+     main := just "Main.juvix"};
