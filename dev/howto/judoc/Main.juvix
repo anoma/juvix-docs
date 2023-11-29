@@ -1,0 +1,14 @@
+--- This is a well documented module
+module Main;
+
+--- ;Maybe; represents an optional value.
+type Maybe (A : Type) :=
+ --- The value is missing
+ nothing
+ | --- The value is here
+ just A;
+
+--- Retrieves a value from a ;Maybe; or returns the default value if missing.
+fromMaybe {A} (default : A) : Maybe A -> A
+  | nothing := default
+  | (just x) := x;
