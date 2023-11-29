@@ -1,0 +1,125 @@
+-- Inductives:
+type Eq {
+  mkEq : Π A : Type, (A → A → Bool) → Eq A;
+};
+type × {
+  , : Π A : Type, Π B : Type, A → B → × A B;
+};
+type Maybe {
+  nothing : Π A : Type, Maybe A;
+  just : Π A : Type, A → Maybe A;
+};
+type Unit {
+  unit : Unit;
+};
+-- Identifiers:
+def intToNat : Int → Int;
+def literalIntToInt : Int → Int;
+def not : Bool → Bool;
+def eq : Π A : Type, Eq A → A → A → Bool;
+def boolEqI : Eq Bool;
+def eqUnitI : Eq (Unit);
+def eqListI : Π A : Type, Eq A → Eq (List A);
+def eqMaybeI : Π A : Type, Eq A → Eq (Maybe A);
+def eqNatI : Eq Int;
+def == : String → String → Bool;
+def eqStringI : Eq String;
+def eqIntI : Eq Int;
+def eqProductI : Π A : Type, Π B : Type, Eq A → Eq B → Eq (× A B);
+def intToBool : Int → Bool;
+def main : Int → Bool;
+
+-- Axioms:
+
+-- Context:
+def intToNat : Int → Int := λ(x : Int) x;
+def literalIntToInt : Int → Int := λ(x : Int) x;
+def not : Bool → Bool :=
+  λ(_X : Bool)
+    case _X of {
+      false := true;
+      true := false
+    };
+def eq : Π A : Type, Eq A → A → A → Bool :=
+  λ(_ω776 : Type)
+    λ(_X : Eq _ω776)
+      case _X of {
+        mkEq (_X' : Type) (a : _ω776 → _ω776 → Bool) := a
+      };
+def boolEqI : Eq Bool :=
+  mkEq Bool (λ(_X : Bool)
+    λ(_X' : Bool)
+      case _X of {
+        false := case _X' of {
+          false := true;
+          _ := false
+        };
+        true := if _X' then true else false
+      });
+def eqUnitI : Eq (Unit) :=
+  mkEq (Unit) (λ(_X : Unit)
+    λ(_X' : Unit)
+      case _X of {
+        unit := case _X' of {
+          unit := true
+        }
+      });
+def eqListI : Π A : Type, Eq A → Eq (List A) :=
+  λ(A : Type)
+    λ(_ω715 : Eq A)
+      letrec go : List A → List A → Bool := λ(_X : List A)
+        λ(_X' : List A)
+          case _X of {
+            nil (_X'0 : Type) := case _X' of {
+              nil (_X'1 : Type) := true;
+              _ := false
+            };
+            :: (_X'0 : Type) (x : A) (xs : List A) := case _X' of {
+              nil (_X'1 : Type) := false;
+              :: (_X'1 : Type) (y : A) (ys : List A) := if eq A _ω715 x y then go xs ys else false
+            }
+          } in mkEq (List A) go;
+def eqMaybeI : Π A : Type, Eq A → Eq (Maybe A) :=
+  λ(A : Type)
+    λ(_ω722 : Eq A)
+      mkEq (Maybe A) (λ(_X : Maybe A)
+        λ(_X' : Maybe A)
+          case _X of {
+            nothing (_X'0 : Type) := case _X' of {
+              nothing (_X'1 : Type) := true;
+              _ := false
+            };
+            just (_X'0 : Type) (a1 : A) := case _X' of {
+              just (_X'1 : Type) (a2 : A) := eq A _ω722 a1 a2;
+              _ := false
+            }
+          });
+def eqNatI : Eq Int :=
+  mkEq Int (λ(_X : Int) λ(_X' : Int) = _X _X');
+def == : String → String → Bool :=
+  λ(_X : String) λ(_X' : String) = _X _X';
+def eqStringI : Eq String := mkEq String ==;
+def eqIntI : Eq Int :=
+  mkEq Int (λ(_X : Int) λ(_X' : Int) = _X _X');
+def eqProductI : Π A : Type, Π B : Type, Eq A → Eq B → Eq (× A B) :=
+  λ(A : Type)
+    λ(B : Type)
+      λ(_X : Eq A)
+        λ(_X' : Eq B)
+          case _X of {
+            mkEq (_X'0 : Type) (eq-a : A → A → Bool) := case _X' of {
+              mkEq (_X'1 : Type) (eq-b : B → B → Bool) := mkEq (× A B) (λ(_X'2 : × A B)
+                λ(_X'3 : × A B)
+                  case _X'2 of {
+                    , (_X'4 : Type) (_X'5 : Type) (a1 : A) (b1 : B) := case _X'3 of {
+                      , (_X'6 : Type) (_X'7 : Type) (a2 : A) (b2 : B) := if eq-a a1 a2 then eq-b b1 b2 else false
+                    }
+                  })
+            }
+          };
+def intToBool : Int → Bool :=
+  λ(x : Int) not (eq Int eqNatI x 0);
+def main : Int → Bool := intToBool;
+-- Main:
+
+main
