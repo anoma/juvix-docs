@@ -10,7 +10,7 @@ search:
 If you want to share your Juvix code with others, or even for your own sake, it
 is important that you properly document your code. Juvix has a builtin simple
 documentation language called `Judoc` that you can use to write documentation
-for your modules, types and functions. Also, you'll be able to export the
+for your modules, types, and functions. Also, you'll be able to export the
 documentation in a beautiful html format.
 
 Let's look at an example:
