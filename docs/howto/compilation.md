@@ -11,8 +11,8 @@ search:
 
 A Juvix file must declare a module with the same name as the file. For instance, `HelloWorld.juvix` should declare a module `HelloWorld`:
 
-```juvix
---8<------ "docs/howto/compilation/Main.juvix:Hello"
+```text
+--8<------ "docs/howto/compilation/HelloWorld.juvix:Hello"
 ```
 
 The zero-argument function `main` is evaluated when running the program and must be defined in a file compiled to an executable.
@@ -20,13 +20,13 @@ The zero-argument function `main` is evaluated when running the program and must
 To compile `HelloWorld.juvix`, type:
 
 ```shell
---8<------ "docs/howto/compilation/CLI.yaml:compile"
+juvix compile HelloWorld.juvix
 ```
 
 For all options of the `compile` command, type:
 
 ```shell
---8<------ "docs/howto/compilation/CLI.yaml:compile-help"
+juvix compile --help
 ```
 
 ## Compilation Targets
@@ -34,7 +34,7 @@ For all options of the `compile` command, type:
 Juvix supports several targets specified with the `-t` option. Continuing the example above, to compile `HelloWorld.juvix` to a WebAssembly binary, type, we type:
 
 ```shell
---8<------ "docs/howto/compilation/CLI.yaml:compile-target-webassembly"
+juvix compile -t wasm32-wasi HelloWorld.juvix
 ```
 
 Targets include:
@@ -67,7 +67,7 @@ To initialize a Juvix project interactively in the current directory, use `juvix
 To verify correct project root detection by Juvix, run, for instance,
 
 ```shell
---8<------ "docs/howto/compilation/CLI.yaml:dev-root"
+juvix dev root
 ```
 
 Refer to: [Modules Reference](../reference/language/modules.md).
