@@ -28,6 +28,7 @@ For more information about the syntax of the `Judoc` markup language, you can
 refer to its [`reference`](../reference/judoc.md).
 
 ## Generating html
+
 As mentioned before, we can generate html documentation by running the following command:
 ```
 juvix html Main.juvix --open
