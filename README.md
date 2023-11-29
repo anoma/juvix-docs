@@ -1,6 +1,6 @@
 # [Juvix Official Documentation](https://docs.juvix.org)
 
-<a href="https://github.com/anoma/juvix"><img align="right" width="300" alt="Tara the Juvix mascot" src="https://github.com/anoma/juvix/raw/main/assets/images/tara-seating.svg" /></a>
+<a href="https://github.com/anoma/juvix"><img align="right" width="300" alt="Tara the Juvix mascot" src="https://github.com/anoma/juvix/raw/main/assets/images/tara-smiling.svg" /></a>
 
 [![Juvix-Docs CI](https://github.com/anoma/juvix-docs/actions/workflows/ci.yml/badge.svg)](https://github.com/anoma/juvix-docs/actions/workflows/ci.yml)
 
