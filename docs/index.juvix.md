@@ -5,6 +5,8 @@ description: Juvix is a high-level programming language for writing privacy-pres
 hide:
   - navigation
   - toc
+social:
+  cards: false
 ---
 
 ```juvix hide
