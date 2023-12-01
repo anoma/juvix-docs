@@ -9,22 +9,22 @@ defaultPackage
 dependencies := 
 [
  --8<-- [start:juvix-containers]
-github "anoma" "juvix-containers" "v0.7.1"
+github "anoma" "juvix-containers" "v0.9.0"
 --8<-- [end:juvix-containers]
 ; 
 --8<-- [start:juvix-test]
-github "anoma" "juvix-test" "v0.6.1"
+github "anoma" "juvix-test" "v0.8.0"
 --8<-- [end:juvix-test]
 ;
 --8<- [start:juvix-quickcheck]
-github "anoma" "juvix-quickcheck" "v0.8.0"
+github "anoma" "juvix-quickcheck" "v0.9.0"
 --8-- [end:juvix-quickcheck]
 ; 
 --8<-- [start:juvix-stdlib]
-github "anoma" "juvix-stdlib" "86f9e82c34395f3e0447c58566bc92347603ebd3"
+github "anoma" "juvix-stdlib" "v0.1.0"
 --8<-- [end:juvix-stdlib]
 ;
 --8<- [start:taiga-simulator]
-github "anoma" "taiga-simulator" "fd0ac317735bb2752e40f1fa0dd06b2de432bfd5"
+github "anoma" "taiga-simulator" "b4ca947a2772a2b5c1b862621754767188a008e3"
 --8<-- [end:taiga-simulator]
 ]};

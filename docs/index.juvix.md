@@ -7,6 +7,18 @@ hide:
   - toc
 ---
 
+```juvix hide
+module index;
+  import Simulator open;
+  import Simulator.Resource open using {mkResource as mkResource'};
+  import Apps.TwoPartyExchange.Asset open;
+
+  import Data.Map as Map;
+  open Map using {Map};
+
+  import Stdlib.Prelude open;
+```
+
 
 # **Juvix** a language for *intent-centric* and *declarative decentralized* applications
 
@@ -95,26 +107,78 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
 
 ## :octicons-mark-github-16: [`anoma/taiga-simulator`](https://github.com/anoma/taiga-simulator)
 
+=== "Alice Intent"
+
+    ```juvix
+    module AliceIntent;
+      import Stdlib.Trait.Eq open;
+
+      logicFunction : ResourceKind -> PartialTx -> Bool
+        | kind tx :=
+          let
+            createdRs : List Resource := createdResources tx;
+            createdHashes : List LogicHash :=
+              map Resource.logicHash createdRs;
+          in isCreated kind
+            || (quantityOfDenom Dolphin.denomination createdRs == ofNat 1
+              && quantityOfDenom A.denomination createdRs == ofNat 1)
+            || quantityOfDenom Dolphin.denomination createdRs == ofNat 1
+            && quantityOfDenom B.denomination createdRs == ofNat 2;
+
+      --- This will be computed from the logic function
+      logicHash : LogicHash := 1;
+
+      staticData : ByteString := 3 :: nil;
+
+      denomination : Denomination := 1 :: staticData;
+
+      mkResource (n : Int) : Resource :=
+        mkResource'
+          (logicHash := logicHash;
+          staticData := staticData;
+          dynamicData := nil;
+          quantity := n);
+    end;
+    ```
 
 === "Partial transactions"
 
     ```juvix
-    --8<------ "docs/index/IntentExample.juvix:partialTxs"
-    ```
+    module Alice;
+    -- Alice is willing to exchange either 2 B or 1 A for 1 Dolphin.
+    partialTransaction : PartialTx :=
+      mkPartialTx
+        (consumedPair := A.mkResource 1, B.mkResource 2;
+        createdPair := AliceIntent.mkResource 1, dummyResource);
+    end;
 
-=== "Alice Intent"
+    module Bob;
+      partialTransaction : PartialTx :=
+        mkPartialTx
+          (consumedPair := Dolphin.mkResource 1, dummyResource;
+          createdPair := A.mkResource 1, dummyResource);
+    end;
 
-    ```juvix
-    --8<------ "docs/index/IntentExample.juvix:aliceIntent"
+    module Solver;
+      partialTransaction : PartialTx :=
+        mkPartialTx
+          (consumedPair := AliceIntent.mkResource 1, dummyResource;
+          createdPair := Dolphin.mkResource 1, B.mkResource 2);
+    end;
     ```
 
 === "Logics"
 
     ```juvix
-    --8<------ "docs/index/IntentExample.juvix:logics"
+    logicFunctions : Map LogicHash LogicFunction :=
+      mkLogicFunctionMap
+        ((AliceIntent.logicHash, AliceIntent.logicFunction) :: nil);
     ```
 
     ```juvix
+    import Test.JuvixUnit open;
+
+    {-
     twoPartyExchange : Test :=
         let
             txs : List PartialTx :=
@@ -127,6 +191,7 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
             (assertTrue
             "expected two-party exchange transactions to validate"
             (checkTransaction logicFunctions txs));
+    -}
     ```
 
 <!-- !!!info "Note"
@@ -220,13 +285,40 @@ vamp-ir plonk verify -u input.pp -c c.plonk -p proof.plonk
 === "Hash.juvix"
 
     ```juvix
-    --8<------ "docs/index/Hash.juvix:hash"
+    module Hash;
+
+      import Stdlib.Prelude open;
+
+      {-# unroll: 30 #-}
+      terminating
+      power' (acc a b : Nat) : Nat :=
+        let
+          acc' : Nat := if (mod b 2 == 0) acc (acc * a);
+        in if (b == 0) acc (power' acc' (a * a) (div b 2));
+
+      power : Nat → Nat := power' 1 2;
+
+      hash' : Nat -> Nat -> Nat
+        | (suc n@(suc (suc m))) x :=
+          if
+            (x < power n)
+            (hash' n x)
+            (mod (div (x * x) (power m)) (power 6))
+        | _ x := x * x;
+
+      hash : Nat -> Nat := hash' 16;
+
+      main : Nat -> Nat := hash;
+    end;
     ```
 
 === "Hash.json"
 
-    ```juvix
-    --8<------ "docs/index/Hash.json"
+    ```json
+    {
+    "in": "1367",
+    "out": "3"
+    }
     ```
 
 
