@@ -1,7 +1,7 @@
 --8<-- [start:Package]
 module Package;
 
-import PackageDescription.V1 open;
+import PackageDescription.V2 open;
 
 package : Package := defaultPackage;
 --8<-- [end:Package]
