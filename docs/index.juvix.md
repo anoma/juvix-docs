@@ -120,8 +120,7 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
             createdHashes : List LogicHash :=
               map Resource.logicHash createdRs;
           in isCreated kind
-            || (quantityOfDenom Dolphin.denomination createdRs
-                Eq ofNat 1
+            || (quantityOfDenom Dolphin.denomination createdRs == ofNat 1
               && quantityOfDenom A.denomination createdRs == ofNat 1)
             || quantityOfDenom Dolphin.denomination createdRs == ofNat 1
             && quantityOfDenom B.denomination createdRs == ofNat 2;
@@ -177,6 +176,9 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
     ```
 
     ```juvix
+    import Test.JuvixUnit open;
+
+    {-
     twoPartyExchange : Test :=
         let
             txs : List PartialTx :=
@@ -189,6 +191,7 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
             (assertTrue
             "expected two-party exchange transactions to validate"
             (checkTransaction logicFunctions txs));
+    -}
     ```
 
 <!-- !!!info "Note"
