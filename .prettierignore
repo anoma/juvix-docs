@@ -2,7 +2,7 @@
 **/.svn
 **/.hg
 **/node_modules
-docs/index.md
+docs/index.juvix.md
 
 # Ignore artifacts:
 build
