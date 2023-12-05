@@ -85,7 +85,7 @@ hand, is willing to exchange one unit of resource `A` for 1 `Dolphin`. How can w
 write these intents in Juvix? The conditions for Alice's intent is presented in
 Juvix on the right, a **logic function** that validates the transaction.
 
-See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.html#1184) the full Juvix code for this example.
+See [here](https://anoma.github.io/abstract-resource-machine-simulator/Apps.TwoPartyExchange-src.html#1184) the full Juvix code for this example.
 
 <div class="grid cards" style="text-align:center" markdown>
 
@@ -107,7 +107,7 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
 
 <div markdown>
 
-## :octicons-mark-github-16: [`anoma/taiga-simulator`](https://github.com/anoma/taiga-simulator)
+## :octicons-mark-github-16: [`anoma/abstract-resource-machine-simulator`](https://github.com/anoma/abstract-resource-machine-simulator)
 
 === "Alice Intent"
 
@@ -198,7 +198,7 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
 
 <!-- !!!info "Note"
 
-    See also the Sudoku intent example: [here](https://anoma.github.io/taiga-simulator/Apps.Sudoku.html#). -->
+    See also the Sudoku intent example: [here](https://anoma.github.io/abstract-resource-machine-simulator/Apps.Sudoku.html#). -->
 
 </div>
 </div>
@@ -208,7 +208,7 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
 
     How to write intents in Juvix to validate transactions in Anoma is further
     elaborated in both the [Taiga
-    Simulator](https://github.com/anoma/taiga-simulator) repository and the [Juvix
+    Simulator](https://github.com/anoma/abstract-resource-machine-simulator) repository and the [Juvix
     Workshop](https://github.com/anoma/juvix-workshop).
 
 === "Transaction lifecycle"
