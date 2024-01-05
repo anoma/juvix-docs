@@ -39,7 +39,7 @@ This should generate the `MidSquareHash.pir` file containing the Vamp-IR code.
 
 The exact details of the hashing algorithm are not essential here. What matters is that Juvix can compile this ordinary high-level program, which uses recursion, pattern-matching, etc., into low-level Vamp-IR representation. The user does not need to understand arithmetic circuits or Vamp-IR beyond the basics.
 
-The Juvix `main` function is compiled to a Vamp-IR `main` function which is then used in an equation which connects the inputs (arguments of `main`) to the ouput of `main`. For example, for the program above the generated equation is:
+The Juvix `main` function is compiled to a Vamp-IR `main` function which is then used in an equation which connects the inputs (arguments of `main`) to the output of `main`. For example, for the program above the generated equation is:
 
 ```text
 main x y = 1;
@@ -109,7 +109,7 @@ Neither arithmetic circuits nor the Vamp-IR intermediate representation support 
 hash : Nat -> Nat -> Nat;
 ```
 
-would limit the recusion depth (i.e. the number of possible nested recursive calls) for `hash` to 16. It is the responsibility of the user to ensure that the recursion unrolling depth is sufficient for all arguments that the function might be applied to in the program. In the above example, `hash` recurses on its first argument and the call to `hash` in `main` provides `16` as the first argument. Hence, no more than 16 nested recursive calls to `hash` are possible.
+would limit the recursion depth (i.e. the number of possible nested recursive calls) for `hash` to 16. It is the responsibility of the user to ensure that the recursion unrolling depth is sufficient for all arguments that the function might be applied to in the program. In the above example, `hash` recurses on its first argument and the call to `hash` in `main` provides `16` as the first argument. Hence, no more than 16 nested recursive calls to `hash` are possible.
 
 If the recursion unrolling depth is too small, i.e. smaller than the actual number of nested recursive calls, then the computation result may be incorrect. On the other hand, the circuit size grows with the unrolling depth, so it's advised to keep it as small as possible.
 
@@ -142,7 +142,7 @@ power : Nat → Nat → Nat := power' 1;
 
 makes the Juvix compiler hang. The pragma `unroll: 30` doesn't help, because 2^30 = 1073741824 is still a large number - this is the factor by which the program size increases during compilation.
 
-However, the fast power function may be reformulated to use only one recusive call:
+However, the fast power function may be reformulated to use only one recursive call:
 
 ```juvix
 {-# unroll: 30 #-}

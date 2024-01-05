@@ -9144,7 +9144,7 @@
             [122624, 129023, o.TEXCLASS.ORD, "mo"],
             [129024, 129279, o.TEXCLASS.REL, "mo"],
             [129280, 129535, o.TEXCLASS.ORD, "mo"],
-            [131072, 195103, o.TEXCLASS.ORD, "mi", "normnal"],
+            [131072, 195103, o.TEXCLASS.ORD, "mi", "normal"],
           ]),
           (e.getRange = function (t) {
             var r,
@@ -15952,7 +15952,7 @@
               SANSSERIFITALIC: "sans-serif-italic",
               SANSSERIFBOLDITALIC: "sans-serif-bold-italic",
               MONOSPACE: "monospace",
-              INITIAL: "inital",
+              INITIAL: "initial",
               TAILED: "tailed",
               LOOPED: "looped",
               STRETCHED: "stretched",
@@ -24896,7 +24896,7 @@
               }),
               (e.prototype.makeBevelled = function (t) {
                 var e = this.adaptor;
-                e.setAttribute(this.chtml, "bevelled", "ture");
+                e.setAttribute(this.chtml, "bevelled", "true");
                 var r = e.append(this.chtml, this.html("mjx-num"));
                 this.childNodes[0].toCHTML(r), this.bevel.toCHTML(this.chtml);
                 var n = e.append(this.chtml, this.html("mjx-den"));
@@ -60689,8 +60689,8 @@
               "infixop" === e.type &&
               1 === e.contentNodes.length &&
               a.isMembership(e.contentNodes[0]) &&
-              (e.addAnnotation("set", "intensional"),
-              e.contentNodes[0].addAnnotation("set", "intensional"));
+              (e.addAnnotation("set", "intentional"),
+              e.contentNodes[0].addAnnotation("set", "intentional"));
           }
           getPunctuationInRow_(t) {
             if (t.length <= 1) return t;

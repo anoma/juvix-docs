@@ -132,7 +132,7 @@ Here's how to define a function type:
 add1 (n : Nat) : Nat;
 ```
 
-Yet imputting this into a file produces an error as we're missing a function
+Yet inputting this into a file produces an error as we're missing a function
 clause. The symbol `:=` separates the arguments from the body of the clause.
 
 ```juvix
@@ -307,7 +307,7 @@ You will find the following content, and your task is to replace the
     -- Delete this function when you have completed the exercises
     axiom add-solution-here : {A : Type} -> A;
 
-    --- Write a function that computes the exponentation n^m
+    --- Write a function that computes the exponentiation n^m
     exp : Nat -> Nat -> Nat := add-solution-here;
 
     --- Write a function that returns the last element in a list
@@ -355,7 +355,7 @@ You will find the following content, and your task is to replace the
 
     import Stdlib.Prelude open public;
 
-    --- Write a function that computes the exponentation n^m
+    --- Write a function that computes the exponentiation n^m
     exp (x : Nat) : Nat -> Nat
     | zero := 1
     | (suc n) := x * exp x n;

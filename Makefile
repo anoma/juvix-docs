@@ -1,6 +1,6 @@
 # Last official Juvix release
 VERSION?=$(shell cat VERSION)
-# The documention also contains descriptions of features that are not yet
+# The documentation also contains descriptions of features that are not yet
 # released. This flag enables the documentation of these features.
 # By default, dev is shown as the version number.
 DEV?=true

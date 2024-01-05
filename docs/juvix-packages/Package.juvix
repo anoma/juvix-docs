@@ -4,6 +4,6 @@ import PackageDescription.V2 open;
 
 package : Package := defaultPackage {name := "my-package";
   dependencies := [
-    -- your dependency goes here, separeted by `;`
+    -- your dependency goes here, separated by `;`
   ]
 };

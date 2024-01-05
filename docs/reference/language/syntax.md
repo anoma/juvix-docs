@@ -54,7 +54,7 @@ axiom <name> : <type>;
 --8<-- [end:function-pattern-matching]
 ```
 
-It may have multiple patters:
+It may have multiple patterns:
 
 ```
 --8<-- [start:function-pattern-matching-multiple-arguments]
