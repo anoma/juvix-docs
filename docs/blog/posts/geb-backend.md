@@ -215,7 +215,7 @@ and get the same output:
  };)
 ```
 
-For further utility function discription, please consult the relevant
+For further utility function description, please consult the relevant
 documentation.
 
 # The Theory

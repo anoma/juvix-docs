@@ -174,7 +174,7 @@ symbolizes a non-negative number.
     | (x :: xs) := g x :: map_g xs;
   ```
 
-  The argument `f` can also be specificed as the first non-implicit argument:
+  The argument `f` can also be specified as the first non-implicit argument:
 
   ```text
   {-# specialize: [1] #-}
@@ -198,7 +198,7 @@ symbolizes a non-negative number.
     in go 10;
   ```
 
-  whever the function `funa` gets inlined with a particular value `v`
+  wherever the function `funa` gets inlined with a particular value `v`
   for `f`, the function `go` will be specialized with that value `v`
   substituted for `f`. Without the `specialize-by` pragma, after
   inlining `f` the function `g` would have an additional argument `f`
