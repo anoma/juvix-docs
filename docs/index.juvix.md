@@ -32,7 +32,7 @@ module index;
   <img src="assets/images/tara-smiling.svg" width="220" />
 </div>
 
-[Install Juvix on your machine](http://docs.juvix.org/howto/installing/#shell-script){ .md-button .md-button--primary}
+[Install Juvix on your machine](./howto/installing.md#shell-script){ .md-button .md-button--primary}
 
 [:fontawesome-regular-circle-dot:{ .heart }  Try Juvix now on Codespaces](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=102404734&machine=standardLinux32gb&location=WestEurope){ .md-button  }
 
