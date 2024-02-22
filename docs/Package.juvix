@@ -25,6 +25,6 @@ github "anoma" "juvix-stdlib" "v0.1.0"
 --8<-- [end:juvix-stdlib]
 ;
 --8<- [start:abstract-resource-machine-simulator]
-github "anoma" "abstract-resource-machine-simulator" "b4ca947a2772a2b5c1b862621754767188a008e3"
+github "anoma" "abstract-resource-machine-simulator" "3605b8f401118170a1a233305a5558d4a0f0e477"
 --8<-- [end:abstract-resource-machine-simulator]
 ]};
