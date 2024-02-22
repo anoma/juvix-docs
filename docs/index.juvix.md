@@ -43,7 +43,7 @@ module index;
 Juvix is an open-source functional language with static typing and strict
 semantics. It is the programming language for the [Anoma][anoma]'s blockchain. The
 primary purpose of this language is to encode [Anoma's intents][anoma], enabling
-private and transparent execution through [Taiga][taiga] on the Anoma
+private and transparent execution through [RM][RM] on the Anoma
 blockchain.
 
 Juvix, initially designed for Anoma, provides features typical of any high-level
@@ -85,7 +85,7 @@ hand, is willing to exchange one unit of resource `A` for 1 `Dolphin`. How can w
 write these intents in Juvix? The conditions for Alice's intent is presented in
 Juvix on the right, a **logic function** that validates the transaction.
 
-See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.html#1184) the full Juvix code for this example.
+See [here](https://anoma.github.io/abstract-resource-machine-simulator/Apps.TwoPartyExchange-src.html#1184) the full Juvix code for this example.
 
 <div class="grid cards" style="text-align:center" markdown>
 
@@ -93,7 +93,7 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
 
     ```mermaid
     flowchart LR
-        A((Alice)) -- "Intent 1:\ntrade 1 A or 2 B for 1 Dolphin" ---> B[Taiga]
+        A((Alice)) -- "Intent 1:\ntrade 1 A or 2 B for 1 Dolphin" ---> B[RM]
         X((Bob)) -- "Intent 2:\ntrade 1 Dolphin for 1 A" ---> B
         B --> P[Pool]
         S((Solver)) <----> P
@@ -107,7 +107,7 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
 
 <div markdown>
 
-## :octicons-mark-github-16: [`anoma/taiga-simulator`](https://github.com/anoma/taiga-simulator)
+## :octicons-mark-github-16: [`anoma/abstract-resource-machine-simulator`](https://github.com/anoma/abstract-resource-machine-simulator)
 
 === "Alice Intent"
 
@@ -198,38 +198,38 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
 
 <!-- !!!info "Note"
 
-    See also the Sudoku intent example: [here](https://anoma.github.io/taiga-simulator/Apps.Sudoku.html#). -->
+    See also the Sudoku intent example: [here](https://anoma.github.io/abstract-resource-machine-simulator/Apps.Sudoku.html#). -->
 
 </div>
 </div>
 
 
-=== "Taiga Simulator"
+=== "Abstract Resource Machine Simulator"
 
     How to write intents in Juvix to validate transactions in Anoma is further
-    elaborated in both the [Taiga
-    Simulator](https://github.com/anoma/taiga-simulator) repository and the [Juvix
+    elaborated in both the [RM
+    Simulator](https://github.com/anoma/abstract-resource-machine-simulator) repository and the [Juvix
     Workshop](https://github.com/anoma/juvix-workshop).
 
 === "Transaction lifecycle"
 
     ```mermaid
     sequenceDiagram
-        UserWallet ->>Taiga API: use intent to create ptxs
-        Taiga API  -->>UserWallet: returns ptxs
+        UserWallet ->>RM API: use intent to create ptxs
+        RM API  -->>UserWallet: returns ptxs
         UserWallet  ->>Solvers: send a ptxs
         Solvers   ->>Solvers: match/broadcast ptxs
-        Solvers  -->>Taiga API: create helper ptxs
-        Taiga API  -->>Solvers: gives helper ptxs
-        Solvers   ->>Taiga API: create a tx
-        Taiga API  -->>Solvers: returns a finalized tx
+        Solvers  -->>RM API: create helper ptxs
+        RM API  -->>Solvers: gives helper ptxs
+        Solvers   ->>RM API: create a tx
+        RM API  -->>Solvers: returns a finalized tx
         Solvers  ->>Finaliser : submit finalized transaction
-            Finaliser ->> Taiga API: verify the finalized transaction
-        Taiga API ->> Finaliser: return the result (valid/invalid)
+            Finaliser ->> RM API: verify the finalized transaction
+        RM API ->> Finaliser: return the result (valid/invalid)
         Finaliser -->> Blockchain: commit a (balanced) tx
         Blockchain ->> Blockchain: run consensus Typhon alg.
-        Blockchain ->> Taiga API: verify the transaction
-        Taiga API -->> Blockchain: return the result (valid/invalid)
+        Blockchain ->> RM API: verify the transaction
+        RM API -->> Blockchain: return the result (valid/invalid)
     ```
 
 
@@ -425,7 +425,7 @@ vamp-ir plonk verify -u input.pp -c c.plonk -p proof.plonk
 [repo]: https://github.com/anoma/juvix
 [stdlib-codespace]: https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=102404734&machine=standardLinux32gb&location=WestEurope
 [stdlib]: https://github.com/anoma/juvix-stdlib
-[taiga]: https://github.com/anoma/taiga
+[RM]: https://github.com/anoma/RM
 [twitter]: https://twitter.com/juvixlang
 [anomaTwitter]: https://twitter.com/anoma
 [vampir]: https://github.com/anoma/vamp-ir

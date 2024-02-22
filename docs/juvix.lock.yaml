@@ -40,9 +40,9 @@ dependencies:
     url: https://github.com/anoma/juvix-stdlib
   dependencies: []
 - git:
-    name: anoma_taiga-simulator
+    name: anoma_RM-simulator
     ref: b4ca947a2772a2b5c1b862621754767188a008e3
-    url: https://github.com/anoma/taiga-simulator
+    url: https://github.com/anoma/RM-simulator
   dependencies:
   - git:
       name: anoma_juvix-stdlib
