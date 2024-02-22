@@ -11,8 +11,8 @@ social:
 
 ```juvix hide
 module index;
-  import Simulator open;
-  import Simulator.Resource open using {mkResource as mkResource'};
+  import Anoma open;
+  import Anoma.Resource open using {mkResource as mkResource'};
   import Apps.TwoPartyExchange.Asset open;
 
   import Data.Map as Map;
@@ -112,88 +112,25 @@ See [here](https://anoma.github.io/abstract-resource-machine-simulator/Apps.TwoP
 === "Alice Intent"
 
     ```juvix
-    module AliceIntent;
-      import Stdlib.Trait.Eq open;
+    module Exchange;
+      import Anoma open;
+      import Anoma.Prelude open hiding {for; any; all};
+      import Anoma.IntentDsl open;
+      import Apps.TwoPartyExchange.Asset open;
 
-      logicFunction : ResourceKind -> PartialTx -> Bool
-        | kind tx :=
-          let
-            createdRs : List Resource := createdResources tx;
-            createdHashes : List LogicHash :=
-              map Resource.logicHash createdRs;
-          in isCreated kind
-            || (quantityOfDenom Dolphin.denomination createdRs == ofNat 1
-              && quantityOfDenom A.denomination createdRs == ofNat 1)
-            || quantityOfDenom Dolphin.denomination createdRs == ofNat 1
-            && quantityOfDenom B.denomination createdRs == ofNat 2;
+      -- Two party exchange intents for assets a, b, and dolphin
+      aliceIntent : PartialTx :=
+        exchangeIntent@{
+          ownedAssets := [1 of_ a; 2 of_ b];
+          clauses := [want (1 of_ dolphin) for any ownedAssets]
+        };
 
-      --- This will be computed from the logic function
-      logicHash : LogicHash := 1;
-
-      staticData : ByteString := 3 :: nil;
-
-      denomination : Denomination := 1 :: staticData;
-
-      mkResource (n : Int) : Resource :=
-        mkResource'
-          (logicHash := logicHash;
-          staticData := staticData;
-          dynamicData := nil;
-          quantity := n);
+      bobIntent : PartialTx :=
+        exchangeIntent@{
+          ownedAssets := [1 of_ dolphin];
+          clauses := [want (1 of_ a) for exactly (1 of_ dolphin)]
+        };
     end;
-    ```
-
-=== "Partial transactions"
-
-    ```juvix
-    module Alice;
-    -- Alice is willing to exchange either 2 B or 1 A for 1 Dolphin.
-    partialTransaction : PartialTx :=
-      mkPartialTx
-        (consumedPair := A.mkResource 1, B.mkResource 2;
-        createdPair := AliceIntent.mkResource 1, dummyResource);
-    end;
-
-    module Bob;
-      partialTransaction : PartialTx :=
-        mkPartialTx
-          (consumedPair := Dolphin.mkResource 1, dummyResource;
-          createdPair := A.mkResource 1, dummyResource);
-    end;
-
-    module Solver;
-      partialTransaction : PartialTx :=
-        mkPartialTx
-          (consumedPair := AliceIntent.mkResource 1, dummyResource;
-          createdPair := Dolphin.mkResource 1, B.mkResource 2);
-    end;
-    ```
-
-=== "Logics"
-
-    ```juvix
-    logicFunctions : Map LogicHash LogicFunction :=
-      mkLogicFunctionMap
-        ((AliceIntent.logicHash, AliceIntent.logicFunction) :: nil);
-    ```
-
-    ```juvix
-    import Test.JuvixUnit open;
-
-    {-
-    twoPartyExchange : Test :=
-        let
-            txs : List PartialTx :=
-            Alice.partialTransaction
-                :: Bob.partialTransaction
-                :: Solver.partialTransaction
-                :: nil;
-        in testCase
-            "two party exchange"
-            (assertTrue
-            "expected two-party exchange transactions to validate"
-            (checkTransaction logicFunctions txs));
-    -}
     ```
 
 <!-- !!!info "Note"
