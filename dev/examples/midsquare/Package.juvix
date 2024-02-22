@@ -1,7 +1,0 @@
-module Package;
-
-import PackageDescription.V2 open;
-
-package : Package :=
-  defaultPackage
-    {name := "midsquare"; version := mkVersion 0 1 0};
