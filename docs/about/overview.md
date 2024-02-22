@@ -49,7 +49,7 @@ alt="Nightly build, release and benchmark" /></a>
 </table>
 
 Juvix is an open-source, constantly evolving functional programming language
-designed for writing privacy-preserving decentralized applications. Using Juvix, developers can write high-level programs which can be compiled to WASM directly, or through [VampIR][vampir] to circuits for private execution with [RM][RM] on [Anoma][anoma] or Ethereum.
+designed for writing privacy-preserving decentralized applications. Using Juvix, developers can write high-level programs which can be compiled to WASM directly, or to circuits for private execution within the *Resource Machine* on [Anoma][anoma] or Ethereum.
 
 ## Getting Started
 
@@ -85,17 +85,6 @@ documented using Juvix's built-in documentation generation tool, see for
 example, [the Juvix standard library's website][stdlib]. For further details,
 please refer to [the Juvix book][juvix-book] which includes
 our [latest updates][changelog].
-
-## Related projects
-
-If you're interested in Juvix, you may also want to explore the following related projects:
-
-<!-- prettier-ignore -->
-| Project | Description |
-| ------- | ----------- |
-| [GEB][geb] | Intermediate language for writing compilers and one of the Juvix backends. |
-| [VampIR][vampir] | Proof-system-agnostic language for writing arithmetic circuits and one of the GEB backends.|
-| [RM][RM] | A framework for generalized shielded state transitions. |
 
 ## Resources
 
@@ -171,8 +160,6 @@ Juvix is open-source software released under the GNU General Public License v3.0
 [repo]: https://github.com/anoma/juvix
 [stdlib-codespace]: https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=102404734&machine=standardLinux32gb&location=WestEurope
 [stdlib]: https://github.com/anoma/juvix-stdlib
-[RM]: https://github.com/anoma/RM
 [twitter]: https://twitter.com/juvixlang
-[vampir]: https://github.com/anoma/vamp-ir
 [vscode-plugin]: https://github.com/anoma/vscode-juvix
 [website]: https://juvix.org
