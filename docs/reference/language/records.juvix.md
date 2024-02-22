@@ -114,6 +114,30 @@ open Pair;
 flipP : Pair T T := mkPair (fst := snd p1; snd := fst p1);
 ```
 
+The values of record fields can be updated. For example consider a pair of
+natural numbers:
+
+```juvix hide
+import Stdlib.Data.Nat open;
+```
+
+```juvix
+intPair : Pair Nat Nat := mkPair@{fst := 1; snd := 2};
+```
+
+We can update the value of the `fst` field from `1` to `2` as follows:
+
+```juvix
+updateIntPair : Pair Nat Nat := intPair@Pair{fst := 2};
+```
+
+The original value of the record field is in scope when updating. In the
+following example the value of the `snd` field is updated from `2` to `3`.:
+
+```
+incrementIntPair : Pair Nat Nat := intPair@Pair{snd := snd + 1}
+```
+
 Finally, consider the declaration of a record with multiple constructors.
 
 ```juvix
