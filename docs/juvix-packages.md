@@ -101,20 +101,20 @@ the directory of your project.
 
 <div class="grid cards" markdown>
 
-- :octicons-mark-github-16: [`anoma/taiga-simulator`](https://github.com/anoma/taiga-simulator)
+- :octicons-mark-github-16: [`anoma/abstract-resource-machine-simulator`](https://github.com/anoma/abstract-resource-machine-simulator)
 
     ***
 
     === "Description"
 
-        The Taiga Simulator is a [Juvix](https://juvix.org) function that simulates the [Taiga](https://github.com/anoma/taiga) execution model.
+        The Abstract Resource Machine Simulator is a [Juvix](https://juvix.org) function that simulates the [RM](https://github.com/anoma/RM) execution model.
 
     === "Install"
 
         Add the following to your `Package.juvix` file in the `dependencies` field:
 
         ```text
-        --8<------ "docs/Package.juvix:taiga-simulator"
+        --8<------ "docs/Package.juvix:abstract-resource-machine-simulator"
         ```
     
 

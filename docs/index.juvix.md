@@ -11,8 +11,8 @@ social:
 
 ```juvix hide
 module index;
-  import Simulator open;
-  import Simulator.Resource open using {mkResource as mkResource'};
+  import Anoma open;
+  import Anoma.Resource open using {mkResource as mkResource'};
   import Apps.TwoPartyExchange.Asset open;
 
   import Data.Map as Map;
@@ -32,7 +32,7 @@ module index;
   <img src="assets/images/tara-smiling.svg" width="220" />
 </div>
 
-[Install Juvix on your machine](http://docs.juvix.org/howto/installing/#shell-script){ .md-button .md-button--primary}
+[Install Juvix on your machine](./howto/installing.md#shell-script){ .md-button .md-button--primary}
 
 [:fontawesome-regular-circle-dot:{ .heart }  Try Juvix now on Codespaces](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=102404734&machine=standardLinux32gb&location=WestEurope){ .md-button  }
 
@@ -43,13 +43,12 @@ module index;
 Juvix is an open-source functional language with static typing and strict
 semantics. It is the programming language for the [Anoma][anoma]'s blockchain. The
 primary purpose of this language is to encode [Anoma's intents][anoma], enabling
-private and transparent execution through [Taiga][taiga] on the Anoma
+private and transparent execution through the [Abstract Resource Machine](https://art.anoma.net/list.html#paper-10498993) on the Anoma
 blockchain.
 
 Juvix, initially designed for Anoma, provides features typical of any high-level
 programming language with many more on the horizon. It can compile programs into
-native executable, WASM, and arithmetic circuits using [VampIR][vampir] or
-[Geb][geb], facilitating zero-knowledge proofs.
+native executable, WASM, and arithmetic circuits facilitating zero-knowledge proofs.
 
 Stay tuned for Juvix updates! Follow us on [:material-twitter: Twitter][twitter]
 and join our [:fontawesome-brands-discord: Discord][Discord] community.
@@ -85,7 +84,7 @@ hand, is willing to exchange one unit of resource `A` for 1 `Dolphin`. How can w
 write these intents in Juvix? The conditions for Alice's intent is presented in
 Juvix on the right, a **logic function** that validates the transaction.
 
-See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.html#1184) the full Juvix code for this example.
+See [here](https://anoma.github.io/abstract-resource-machine-simulator/Apps.TwoPartyExchange-src.html#1184) the full Juvix code for this example.
 
 <div class="grid cards" style="text-align:center" markdown>
 
@@ -93,7 +92,7 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
 
     ```mermaid
     flowchart LR
-        A((Alice)) -- "Intent 1:\ntrade 1 A or 2 B for 1 Dolphin" ---> B[Taiga]
+        A((Alice)) -- "Intent 1:\ntrade 1 A or 2 B for 1 Dolphin" ---> B[RM]
         X((Bob)) -- "Intent 2:\ntrade 1 Dolphin for 1 A" ---> B
         B --> P[Pool]
         S((Solver)) <----> P
@@ -107,129 +106,66 @@ See [here](https://anoma.github.io/taiga-simulator/Apps.TwoPartyExchange-src.htm
 
 <div markdown>
 
-## :octicons-mark-github-16: [`anoma/taiga-simulator`](https://github.com/anoma/taiga-simulator)
+## :octicons-mark-github-16: [`anoma/abstract-resource-machine-simulator`](https://github.com/anoma/abstract-resource-machine-simulator)
 
 === "Alice Intent"
 
     ```juvix
-    module AliceIntent;
-      import Stdlib.Trait.Eq open;
+    module Exchange;
+      import Anoma open;
+      import Anoma.Prelude open hiding {for; any; all};
+      import Anoma.IntentDsl open;
+      import Apps.TwoPartyExchange.Asset open;
 
-      logicFunction : ResourceKind -> PartialTx -> Bool
-        | kind tx :=
-          let
-            createdRs : List Resource := createdResources tx;
-            createdHashes : List LogicHash :=
-              map Resource.logicHash createdRs;
-          in isCreated kind
-            || (quantityOfDenom Dolphin.denomination createdRs == ofNat 1
-              && quantityOfDenom A.denomination createdRs == ofNat 1)
-            || quantityOfDenom Dolphin.denomination createdRs == ofNat 1
-            && quantityOfDenom B.denomination createdRs == ofNat 2;
+      -- Two party exchange intents for assets a, b, and dolphin
+      aliceIntent : PartialTx :=
+        exchangeIntent@{
+          ownedAssets := [1 of_ a; 2 of_ b];
+          clauses := [want (1 of_ dolphin) for any ownedAssets]
+        };
 
-      --- This will be computed from the logic function
-      logicHash : LogicHash := 1;
-
-      staticData : ByteString := 3 :: nil;
-
-      denomination : Denomination := 1 :: staticData;
-
-      mkResource (n : Int) : Resource :=
-        mkResource'
-          (logicHash := logicHash;
-          staticData := staticData;
-          dynamicData := nil;
-          quantity := n);
+      bobIntent : PartialTx :=
+        exchangeIntent@{
+          ownedAssets := [1 of_ dolphin];
+          clauses := [want (1 of_ a) for exactly (1 of_ dolphin)]
+        };
     end;
-    ```
-
-=== "Partial transactions"
-
-    ```juvix
-    module Alice;
-    -- Alice is willing to exchange either 2 B or 1 A for 1 Dolphin.
-    partialTransaction : PartialTx :=
-      mkPartialTx
-        (consumedPair := A.mkResource 1, B.mkResource 2;
-        createdPair := AliceIntent.mkResource 1, dummyResource);
-    end;
-
-    module Bob;
-      partialTransaction : PartialTx :=
-        mkPartialTx
-          (consumedPair := Dolphin.mkResource 1, dummyResource;
-          createdPair := A.mkResource 1, dummyResource);
-    end;
-
-    module Solver;
-      partialTransaction : PartialTx :=
-        mkPartialTx
-          (consumedPair := AliceIntent.mkResource 1, dummyResource;
-          createdPair := Dolphin.mkResource 1, B.mkResource 2);
-    end;
-    ```
-
-=== "Logics"
-
-    ```juvix
-    logicFunctions : Map LogicHash LogicFunction :=
-      mkLogicFunctionMap
-        ((AliceIntent.logicHash, AliceIntent.logicFunction) :: nil);
-    ```
-
-    ```juvix
-    import Test.JuvixUnit open;
-
-    {-
-    twoPartyExchange : Test :=
-        let
-            txs : List PartialTx :=
-            Alice.partialTransaction
-                :: Bob.partialTransaction
-                :: Solver.partialTransaction
-                :: nil;
-        in testCase
-            "two party exchange"
-            (assertTrue
-            "expected two-party exchange transactions to validate"
-            (checkTransaction logicFunctions txs));
-    -}
     ```
 
 <!-- !!!info "Note"
 
-    See also the Sudoku intent example: [here](https://anoma.github.io/taiga-simulator/Apps.Sudoku.html#). -->
+    See also the Sudoku intent example: [here](https://anoma.github.io/abstract-resource-machine-simulator/Apps.Sudoku.html#). -->
 
 </div>
 </div>
 
 
-=== "Taiga Simulator"
+=== "Abstract Resource Machine Simulator"
 
     How to write intents in Juvix to validate transactions in Anoma is further
-    elaborated in both the [Taiga
-    Simulator](https://github.com/anoma/taiga-simulator) repository and the [Juvix
+    elaborated in both the [RM
+    Simulator](https://github.com/anoma/abstract-resource-machine-simulator) repository and the [Juvix
     Workshop](https://github.com/anoma/juvix-workshop).
 
 === "Transaction lifecycle"
 
     ```mermaid
     sequenceDiagram
-        UserWallet ->>Taiga API: use intent to create ptxs
-        Taiga API  -->>UserWallet: returns ptxs
+        UserWallet ->>RM API: use intent to create ptxs
+        RM API  -->>UserWallet: returns ptxs
         UserWallet  ->>Solvers: send a ptxs
         Solvers   ->>Solvers: match/broadcast ptxs
-        Solvers  -->>Taiga API: create helper ptxs
-        Taiga API  -->>Solvers: gives helper ptxs
-        Solvers   ->>Taiga API: create a tx
-        Taiga API  -->>Solvers: returns a finalized tx
+        Solvers  -->>RM API: create helper ptxs
+        RM API  -->>Solvers: gives helper ptxs
+        Solvers   ->>RM API: create a tx
+        RM API  -->>Solvers: returns a finalized tx
         Solvers  ->>Finaliser : submit finalized transaction
-            Finaliser ->> Taiga API: verify the finalized transaction
-        Taiga API ->> Finaliser: return the result (valid/invalid)
+            Finaliser ->> RM API: verify the finalized transaction
+        RM API ->> Finaliser: return the result (valid/invalid)
         Finaliser -->> Blockchain: commit a (balanced) tx
         Blockchain ->> Blockchain: run consensus Typhon alg.
-        Blockchain ->> Taiga API: verify the transaction
-        Taiga API -->> Blockchain: return the result (valid/invalid)
+        Blockchain ->> RM API: verify the transaction
+        RM API -->> Blockchain: return the result (valid/invalid)
     ```
 
 
@@ -425,7 +361,7 @@ vamp-ir plonk verify -u input.pp -c c.plonk -p proof.plonk
 [repo]: https://github.com/anoma/juvix
 [stdlib-codespace]: https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=102404734&machine=standardLinux32gb&location=WestEurope
 [stdlib]: https://github.com/anoma/juvix-stdlib
-[taiga]: https://github.com/anoma/taiga
+[RM]: https://github.com/anoma/RM
 [twitter]: https://twitter.com/juvixlang
 [anomaTwitter]: https://twitter.com/anoma
 [vampir]: https://github.com/anoma/vamp-ir

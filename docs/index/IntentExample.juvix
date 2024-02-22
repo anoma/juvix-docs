@@ -1,8 +1,8 @@
 module IntentExample;
 
 {-
-import Simulator open;
-import Simulator.Resource open using {mkResource as mkResource'};
+import Anoma open;
+import Anoma.Resource open using {mkResource as mkResource'};
 import Apps.TwoPartyExchange.Asset open;
 
 import Data.Map as Map;
