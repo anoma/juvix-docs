@@ -79,7 +79,7 @@ and we want to compile it to code that is readable by the Lisp implementation of
 Geb. We run
 
 ```shell
-juvix compile -t geb NotZero.juvix
+juvix compile geb NotZero.juvix
 ```
 
 which generates a `NotZero.lisp` file with the following code:
