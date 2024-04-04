@@ -60,10 +60,6 @@ plugins:
       enabled: true
       strict: true
 
-  - git-committers:
-      repository: anoma/juvix-docs
-      branch: main
-
   - rss:
       match_path: blog/posts/.*
       date_from_meta:
