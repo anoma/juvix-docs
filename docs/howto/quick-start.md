@@ -41,7 +41,7 @@ juvix compile path/to/source.juvix
 Compile a source file into a WebAssembly binary:
 
 ```shell
-juvix compile -t wasm32-wasi path/to/source.juvix
+juvix compile wasi path/to/source.juvix
 ```
 
 Launch the REPL:
@@ -80,7 +80,7 @@ a file called `HelloWorld.juvix` and run the following command from the
 directory containing it:
 
 ```shell
-juvix compile HelloWorld.juvix
+juvix compile native HelloWorld.juvix
 ./HelloWorld
 ```
 
@@ -92,6 +92,6 @@ How-to](./installing.md) for more
 information. You can also run `juvix doctor` to check your setup.
 
 ```shell
-juvix compile --target wasm32-wasi HelloWorld.juvix
+juvix compile wasi HelloWorld.juvix
 wasmer HelloWorld.wasm
 ```

@@ -32,7 +32,7 @@ For a simple example of a Juvix program that can be compiled to an arithmetic ci
 To compile this file to Vamp-IR type
 
 ```shell
-juvix compile -t vampir MidSquareHash.juvix
+juvix compile vampir MidSquareHash.juvix
 ```
 
 This should generate the `MidSquareHash.pir` file containing the Vamp-IR code.
