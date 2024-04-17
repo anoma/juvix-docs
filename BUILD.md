@@ -1,5 +1,11 @@
 # Building the Juvix Documentation
 
+> **Note** 
+> This document is intended for advanced users and Juvix documentation
+> maintainers.
+
+
+
 The documentation is built with [MkDocs](https://www.mkdocs.org) and the [MkDocs
 Material](https://squidfunk.github.io/mkdocs-material) theme. In principle, the
 documentation is built automatically by the CI whenever a pull request is merged

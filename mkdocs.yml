@@ -1,5 +1,8 @@
-site_url: "https://docs.juvix.org/"
-site_name: Juvix Docs
+site_url: !ENV [SITE_URL,"https://docs.juvix.org/"]
+site_name: !ENV [SITE_NAME, "Juvix Docs"]
+site_dir: !ENV [SITE_DIR, site]
+use_directory_urls: false
+
 site_description: The Official Documentation for Juvix
 site_author: The Juvix Team
 

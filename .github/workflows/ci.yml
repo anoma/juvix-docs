@@ -5,7 +5,7 @@ name: Juvix Docs CI
       build-type:
         type: choice
         description: "Docs build type"
-        default: "dev"
+        default: "latest"
         options:
           - "dev"
           - "latest"

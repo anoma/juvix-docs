@@ -70,3 +70,5 @@ docs/overrides/.icons/codeicons/**
 juvix-src/
 python-env/
 **/.juvix-mkdocs/
+env/
+.hooks/

@@ -1,12 +1,9 @@
 mkdocs
-mkdocs-material
-mkdocstrings
-mkdocs-blog-plugin
 mkdocs-git-revision-date-plugin
-mkdocs-pdf-export-plugin
 mkdocs-git-revision-date-localized-plugin
 mkdocs-git-authors-plugin
-mkdocs-rss-plugin
+mkdocs-material
+mkdocs-material[imaging]
 mike
 html5lib
 lxml

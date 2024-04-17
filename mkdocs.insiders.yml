@@ -14,6 +14,7 @@ plugins:
   - social
   - tags
   - typeset
+  
   - blog:
       enabled: true
       blog_dir: blog
@@ -79,17 +80,17 @@ extra:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/juvixlang
       name: Juvix Twitter
-  extra:
-    consent:
-      title: Cookie consent
-      description: >-
-        We use cookies to recognize your repeated visits and preferences, as well
-        as to measure the effectiveness of our documentation and whether users
-        find what they're searching for. With your consent, you're helping us to
-        make our documentation better.
-      actions:
-        - accept
-        - manage
+  
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+    actions:
+      - accept
+      - manage
 
   analytics:
     provider: google
