@@ -10,7 +10,7 @@ module emacs;
 # Juvix Emacs mode tutorial
 
 First, follow the instructions in the [Emacs Mode
-Reference](../reference/tooling/emacs.juvix.md) to install the Juvix Emacs mode.
+Reference](./reference/tooling/emacs.juvix.md) to install the Juvix Emacs mode.
 Once you've successfully set it up, create a file `Hello.juvix` with the
 following content.
 

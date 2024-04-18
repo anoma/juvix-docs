@@ -99,15 +99,15 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: juvix-standalone
-          class: juvix-standalone
-          format: !!python/name:mkdocs_juvix.standalone.render
+        # - name: juvix-standalone
+        #   class: juvix-standalone
+        #   format: !!python/name:mkdocs_juvix.standalone.render
   - pymdownx.snippets
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
       options:
         custom_icons:
           - overrides/.icons
@@ -199,3 +199,14 @@ nav:
   - Standard library: https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html#
   - Packages and Projects: ./juvix-packages.md
   - Discord: https://discord.gg/jwzaMZ2Sct
+
+
+validation:
+  nav:
+    omitted_files: ignore
+    not_found: warn
+    absolute_links: ignore
+  links:
+    not_found: ignore
+    absolute_links: ignore
+    unrecognized_links: warn
