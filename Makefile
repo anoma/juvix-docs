@@ -179,7 +179,7 @@ mike:
 	@echo "Branch: ${GITBRANCH}"
 	mike deploy ${VERSION} ${MIKEFLAGS}
 
-mike-serve: docs
+mike-serve:
 	mike serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
 .PHONY: dev

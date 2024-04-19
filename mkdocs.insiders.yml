@@ -17,7 +17,6 @@ plugins:
   - redirects:
       redirect_maps:
         'index.md': 'README.juvix.md'
-
   - blog:
       enabled: !ENV [BLOG, true]
       blog_dir: blog
@@ -38,7 +37,6 @@ plugins:
       pagination: true
       # pagination_per_page: 1
       pagination_keep_content: false
-
   - git-revision-date-localized:
       type: timeago
       custom_format: "%d. %B %Y"
@@ -54,7 +52,6 @@ plugins:
         - LICENSE.md
       enabled: true
       strict: true
-
   - rss:
       match_path: blog/posts/.*
       date_from_meta:
