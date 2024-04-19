@@ -6,6 +6,7 @@ mkdocs-material
 mkdocs-material[imaging]
 mkdocs-juvix-plugin
 mkdocs-redirects
+mkdocstrings
 mike
 html5lib
 lxml
