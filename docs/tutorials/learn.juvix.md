@@ -3,6 +3,10 @@ icon: material/notebook-heart
 comments: true
 search:
   boost: 2
+tags:
+  - tutorial
+  - beginner
+  - functional-programming
 ---
 
 ```juvix hide

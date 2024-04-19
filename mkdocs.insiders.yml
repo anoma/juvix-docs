@@ -66,8 +66,8 @@ plugins:
   - mike:
       canonical_version: latest
       version_selector: true
-      css_dir: assets/css
-      javascript_dir: assets/js
+      css_dir: docs/assets/css
+      javascript_dir: docs/assets/js
 
 extra:
   homepage: https://docs.juvix.org
