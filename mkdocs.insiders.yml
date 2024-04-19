@@ -14,6 +14,9 @@ plugins:
   - social
   - tags
   - typeset
+  - redirects:
+      redirect_maps:
+        'index.md': 'README.juvix.md'
 
   - blog:
       enabled: !ENV [BLOG, true]
