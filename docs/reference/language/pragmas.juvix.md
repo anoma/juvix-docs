@@ -231,7 +231,7 @@ symbolizes a non-negative number.
   axiom <body> : Natural Nat;
   ```
 
-  ```juvix
+  ```juvix extract-module-statements
   module pragma-specialise-instance;
   {-# specialize: true #-}
   instance
@@ -243,7 +243,7 @@ symbolizes a non-negative number.
 
   Declaring
 
-  ```juvix
+  ```juvix extract-module-statements
   module pragma-specialise-instance-false;
   {-# specialize: false #-}
   naturalNatI : Natural Nat := <body>;

@@ -144,7 +144,7 @@ The types `Nat` and `Bool` are defined in the standard library.
 
 The type `Bool` has two constructors `true` and `false`.
 
-```juvix
+```juvix extract-module-statements
 module Bool;
 
   type Bool :=
@@ -157,7 +157,7 @@ The constructors of a data type can be used to build elements of the type. They
 can also appear as patterns in function definitions. For example, the `not`
 function is defined in the standard library by:
 
-```juvix
+```juvix extract-module-statements 1
 module Bool-Not;
 
   open Bool;
@@ -181,7 +181,7 @@ function. The general pattern for function application is: `func arg1 arg2 arg3
 Initial arguments that are matched against variables or wildcards in all clauses
 can be moved to the left of the colon. For example,
 
-```juvix
+```juvix extract-module-statements 1
 module Bool-Or;
   open Bool;
 
@@ -193,7 +193,7 @@ end;
 
 is equivalent to
 
-```juvix
+```juvix extract-module-statements 1
 module Bool-Or-Altl;
   open Bool;
 
@@ -205,7 +205,7 @@ end;
 If there is only one clause and all arguments are to the left of the colon, the
 pipe `|` should be omitted:
 
-```juvix
+```juvix extract-module-statements 1
 module Bool-Id;
   open Bool;
 
@@ -216,7 +216,7 @@ end;
 A more complex example of a data type is the `Nat` type from the standard
 library:
 
-```juvix
+```juvix extract-module-statements 
 module Nat;
 
   type Nat :=
@@ -250,7 +250,7 @@ in functional languages like Haskell or OCaml: one lists the types of
 constructor arguments separated by spaces. In this syntax, the `Nat` type could
 be defined by
 
-```juvix
+```juvix extract-module-statements
 module Nat-Alt;
 
   type Nat :=
@@ -269,7 +269,7 @@ arithmetic implementation details.
 
 One can use `zero` and `suc` in pattern matching, like any other constructors:
 
-```juvix
+```juvix extract-module-statements 2
 module Nat-Add;
   import Stdlib.Data.Fixity open;
   open Nat;
@@ -329,7 +329,7 @@ The patterns in function clauses do not have to match on a single constructor �
 they may be arbitrarily deep. For example, here is an (inefficient)
 implementation of a function which checks whether a natural number is even:
 
-```juvix
+```juvix extract-module-statements 2
 module Even;
   open Nat;
   open Bool;
@@ -347,7 +347,7 @@ or, recursively, `n-2` is even.
 If a subpattern is to be ignored, then one can use a wildcard `_` instead of
 naming the subpattern.
 
-```juvix
+```juvix extract-module-statements 2
 module Positive;
   open Nat;
   open Bool;
@@ -360,7 +360,7 @@ end;
 
 The above function could also be written as:
 
-```juvix
+```juvix extract-module-statements 2
 module Positive-Alt;
   open Nat;
   open Bool;
@@ -397,7 +397,7 @@ assume that the comparisons operate on natural numbers.
 For example, one may define the function `max3` by using the type Nat, functions
 `>` ,and `max` provided in the Standard Library:
 
-```juvix
+```juvix extract-module-statements 1
 module max3-example;
   import Stdlib.Prelude open;
 
@@ -420,7 +420,7 @@ functions](./learn.juvix.md#partial-application-and-higher-order-functions) belo
 
 Juvix supports local definitions with let-expressions.
 
-```juvix
+```juvix extract-module-statements 1
 module Let-Mult;
   import Stdlib.Prelude open;
 
@@ -437,7 +437,7 @@ The variables `x` and `y` are not visible outside `f`.
 One can also use multi-clause definitions in `let`-expressions, with the same
 syntax as definitions inside a module. For example:
 
-```juvix
+```juvix extract-module-statements 1
 module Let-Even;
   open Nat;
   open Bool;
@@ -471,7 +471,7 @@ using recursion. In many cases, the recursive definition of a function follows
 the inductive definition of a data structure the function analyses. For example,
 consider the following inductive type of lists of natural numbers:
 
-```juvix
+```juvix extract-module-statements 1
 module NList;
   import Stdlib.Prelude open;
 
@@ -486,7 +486,7 @@ and `xs : NList` (a list with head `x` and tail `xs`).
 
 A function computing the length of a list may be defined by:
 
-```juvix
+```juvix extract-module-statements 2
 module NLength;
   import Stdlib.Prelude open;
   open NList;
@@ -509,7 +509,7 @@ second argument). In the case of `ncons _ xs`, we recursively call `nlength` on
 Let's consider another example – a function which returns the maximum of the
 numbers in a list or 0 for the empty list.
 
-```juvix
+```juvix extract-module-statements 2
 module NMaximum;
   import Stdlib.Prelude open;
   open NList;
@@ -527,7 +527,7 @@ result and the list head.
 For an example of a constructor with more than one inductive argument, consider
 binary trees with natural numbers in nodes.
 
-```juvix
+```juvix extract-module-statements 1
 module Tree;
   open Nat;
 
@@ -542,7 +542,7 @@ which represent the left and the right subtree.
 
 A function which produces the mirror image of a tree may be defined by:
 
-```juvix
+```juvix extract-module-statements 1
 module Mirror;
   open Tree;
 
@@ -581,7 +581,7 @@ A function which takes a function as an argument is a _higher-order function_.
 An example is the `nmap` function which applies a given function to each element
 in a list of natural numbers.
 
-```juvix
+```juvix extract-module-statements 2
 module NMap;
   import Stdlib.Prelude open;
   open NList;
@@ -614,7 +614,7 @@ parameterising them by the element type. This is similar to generics in
 languages like Java, C++ or Rust. Here is the polymorphic definition of lists
 from the standard library:
 
-```juvix
+```juvix extract-module-statements 1
 module List;
   import Stdlib.Data.Fixity open;
 
@@ -632,7 +632,7 @@ lists of natural numbers, isomorphic to the type `NList` defined above.
 
 Now one can define the `map` function polymorphically:
 
-```juvix
+```juvix extract-module-statements 1
 module Map;
   open List;
 
@@ -670,7 +670,7 @@ means that each such call will use a constant amount of memory. For example, a
 function `sum` implemented as follows will use an additional amount of memory
 proportional to the length of the processed list:
 
-```juvix
+```juvix extract-module-statements 1
 module List-Sum;
   import Stdlib.Prelude open;
 
@@ -706,7 +706,7 @@ stack frame, the old one is reused.
 
 The following implementation of `sum` uses tail recursion.
 
-```juvix
+```juvix extract-module-statements 1
 module List-Sum-Tail;
   import Stdlib.Prelude open;
 
@@ -748,7 +748,7 @@ result := cur;
 
 An equivalent functional program is:
 
-```juvix
+```juvix extract-module-statements 1
 module Fibonacci-tail;
   import Stdlib.Prelude open;
 
@@ -763,7 +763,7 @@ end;
 
 A naive definition of the Fibonacci function runs in exponential time:
 
-```juvix
+```juvix extract-module-statements 1
 module Fibonacci-Pattern;
   import Stdlib.Prelude open;
 
@@ -781,7 +781,7 @@ of the input because of the need to allocate the result list. In fact, a tail
 recursive `map` needs to allocate and discard an intermediate list which is
 reversed in the end to preserve the original element order:
 
-```juvix
+```juvix extract-module-statements 1
 module List-Map-Tail;
   import Stdlib.Prelude open hiding {map};
 
@@ -812,7 +812,7 @@ Juvix provides special support for data structure traversals with the iterator
 syntax. The standard library defines several list iterators, among them `for`
 and `rfor`. We can implement the `sum` function using `for`:
 
-```juvix
+```juvix extract-module-statements 1
 module List-Sum-For;
   import Stdlib.Prelude open;
 
@@ -835,7 +835,7 @@ The `rfor` iterator is analogous to `for` except that it goes through the list
 from right to left (from end to beginning) and is not tail recursive. For
 example, one can implement `map` using `rfor`:
 
-```juvix
+```juvix extract-module-statements 1
 module List-Map-rfor;
   import Stdlib.Prelude open hiding {map};
 
@@ -881,7 +881,7 @@ the matched pattern.
 However, we can still make Juvix accept a non-terminating function via the
 `terminating` keyword, skipping the termination check.
 
-```juvix
+```juvix extract-module-statements 1
 module Non-Terminating-Log;
   import Stdlib.Prelude open;
 
@@ -894,11 +894,11 @@ end;
 Let us look at other examples. The termination checker rejects the exponent
 definition
 
-```juvix
+```juvix extract-module-statements 1
 module Fact-Non-Terminating;
   import Stdlib.Prelude open;
-  terminating
-
+  
+  terminating -- remove this line to see the error
   fact (x : Nat) : Nat := if (x == 0) 1 (x * fact (sub x 1));
 end;
 ```
@@ -907,7 +907,7 @@ without the 'terminating' keyword because the recursive call is not on a
 subpattern of a pattern matched on in the clause. One can reformulate this
 definition so that it is accepted by the termination checker:
 
-```juvix
+```juvix extract-module-statements 1
 module Fact-Terminating;
   import Stdlib.Prelude open;
 
@@ -938,7 +938,7 @@ the empty list. One solution is to return a default value. In the Juvix standard
 library, `tail` is implemented as follows, returning the empty list when the
 argument is empty.
 
-```juvix
+```juvix extract-module-statements 1
 module List-Tail;
   open List;
 
@@ -952,7 +952,7 @@ Another solution is to wrap the result in the `Maybe` type from the standard
 library, which allows representing optional values. An element of `Maybe A` is
 either `nothing` or `just x` with `x : A`.
 
-```juvix
+```juvix extract-module-statements 1
 module Maybe;
 
   type Maybe A :=
@@ -963,7 +963,7 @@ end;
 
 For example, one could define the tail function as:
 
-```juvix
+```juvix extract-module-statements 2
 module Maybe-List-Tail;
   open List;
   open Maybe;
@@ -1001,7 +1001,7 @@ Let's start by defining some functions on booleans.
 
 The type for booleans is defined in the standard library like this:
 
-```juvix
+```juvix extract-module-statements 1
 module Bool-Ex;
 
   type Bool :=
@@ -1038,7 +1038,7 @@ pattern matching, use the previously defined logical functions.
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements
     module SolBool;
 
       type Bool :=
@@ -1066,7 +1066,7 @@ The `NMaybe` type encapsulates an optional natural number (the preceding `N`
 stands for `Nat`). The `nnothing` constructor is used when the value is missing.
 On the other hand, the `njust` constructor is used when the value is present.
 
-```juvix
+```juvix extract-module-statements 1
 module NMaybe;
   import Stdlib.Prelude open;
 
@@ -1081,7 +1081,7 @@ value is present.
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements 1
       module SolNMaybe-Just;
         import Stdlib.Prelude open;
 
@@ -1101,7 +1101,7 @@ as a default value.
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements 1
     module SolNMaybe-From;
       import Stdlib.Prelude open;
 
@@ -1118,7 +1118,7 @@ as a default value.
 It would be useful to have a type that represents optional values of any type.
 In Juvix, we can define the polymorphic version of `NMaybe` like this:
 
-```juvix
+```juvix extract-module-statements
 module NMaybe-Poly;
 
   type Maybe A :=
@@ -1141,7 +1141,7 @@ Give the implementation.
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements
     module SolNMaybe-Poly-From;
       import Stdlib.Prelude open;
 
@@ -1164,7 +1164,7 @@ it should return the default value `d`.
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements
     module SolMaybe-Maybe;
       import Stdlib.Prelude open;
 
@@ -1178,8 +1178,8 @@ it should return the default value `d`.
 
 We can define polymorphic lists as follows:
 
-```juvix
-module List-Ex;
+```juvix extract-module-statements
+module List-Ex; 
   import Stdlib.Data.Fixity open;
 
   syntax operator :: cons;
@@ -1206,7 +1206,7 @@ Try to give an implementation for it.
     Therefore it makes sense to use the `Maybe` type that we defined in the previous section.
     The proper definition of `head` should be:
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Head;
       import Stdlib.Prelude open;
 
@@ -1233,7 +1233,7 @@ last {A} : List A -> Maybe A;
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Last;
       import Stdlib.Prelude open;
 
@@ -1256,7 +1256,7 @@ Next, implement a function that concatenates two lists:
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Concat;
       import Stdlib.Prelude open;
 
@@ -1278,7 +1278,7 @@ Now write a function that concatenates a list of lists.
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Concat-Many;
       import Stdlib.Prelude open;
 
@@ -1297,7 +1297,7 @@ would happen if you used `for` instead of `rfor`?
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Concat-rfor;
       import Stdlib.Prelude open;
       import Stdlib.Data.Fixity open;
@@ -1325,7 +1325,7 @@ Write a function that reverses a list:
 
     Using the `for` iterator:
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Reverse-For;
       import Stdlib.Prelude open;
 
@@ -1336,7 +1336,7 @@ Write a function that reverses a list:
 
     Using tail recursion:
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Reverse-Tail;
       import Stdlib.Prelude open;
 
@@ -1367,7 +1367,7 @@ Can you make the `compose` function polymorphic and as general as possible?
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Compose;
 
       compose {A B C} (f : B -> C) (g : A -> B) (x : A) : C :=
@@ -1391,7 +1391,7 @@ is prime.
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Prime;
       import Stdlib.Prelude open;
 
@@ -1424,7 +1424,7 @@ If not, how can you reformulate this definition so that it is accepted by Juvix?
     The definition doesn't pass the termination checker.
     One way to reformulate it is as follows:
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Half;
       import Stdlib.Prelude open;
 
@@ -1450,7 +1450,7 @@ arranged in descending order of their lengths.
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Suffixes;
       import Stdlib.Prelude open;
 
@@ -1464,7 +1464,7 @@ arranged in descending order of their lengths.
 
 Recall the `Tree` type from above.
 
-```juvix
+```juvix extract-module-statements
 module Tree-Ex;
   import Stdlib.Prelude open;
 
@@ -1484,7 +1484,7 @@ which applies a function to all natural numbers stored in a tree.
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Tree;
       import Stdlib.Prelude open;
 
@@ -1507,7 +1507,7 @@ element type, and then repeat the previous exercise.
 
     Only the types need to be changed.
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Tree-Poly;
 
       type Tree A :=
@@ -1523,7 +1523,7 @@ number.
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Factorial;
       import Stdlib.Prelude open;
 
@@ -1554,7 +1554,7 @@ should be a function which given `x` computes `2(x - 1) + 1`.
 
 ??? info "Solution"
 
-    ```juvix
+    ```juvix extract-module-statements
     module Sol-Comp;
       import Stdlib.Prelude open;
 
@@ -1565,7 +1565,7 @@ should be a function which given `x` computes `2(x - 1) + 1`.
 
     where `∘` is a composition function from the standard library:
 
-    ```juvix
+    ```juvix extract-module-statements
     module Comp-Syntax;
       import Stdlib.Data.Fixity open;
 

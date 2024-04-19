@@ -42,7 +42,7 @@ For example, consider the function `multiplyByTwo` which takes a `Nat` (natural
 number) and returns a `Nat`. The argument is named `n` and is used in the
 function's body to return `2 * n`.
 
-```juvix
+```juvix extract-module-statements 1
 module example-multiply-by-two;
   import Stdlib.Data.Nat open using {Nat; *};
   multiplyByTwo (n : Nat) : Nat := 2 * n;
@@ -60,7 +60,7 @@ the desired value. In the following example, `x` and `y` are given default
 values of `0` and `1`, respectively:
 
 
-```juvix
+```juvix extract-module-statements 1
 module default-values;
   import Stdlib.Prelude open;
   f {x : Nat := 0} {y : Nat := 1} : Nat := x + y;
@@ -112,7 +112,7 @@ matches.
 
 For instance, consider the following function with two clauses:
 
-```juvix
+```juvix extract-module-statements 1
 module example-negate-boolean;
   import Stdlib.Data.Bool open;
 
@@ -139,7 +139,7 @@ of two arguments is as follows and can be extended to more arguments.
     Initial function arguments that match variables or wildcards in all clauses can
     be moved to the left of the colon in the function definition. For example,
 
-    ```juvix
+    ```juvix extract-module-statements 1
     module move-to-left;
       import Stdlib.Data.Nat open;
 
@@ -151,7 +151,7 @@ of two arguments is as follows and can be extended to more arguments.
 
     is equivalent to
 
-    ```juvix
+    ```juvix extract-module-statements 1
       module example-add;
         import Stdlib.Data.Nat open;
         add : Nat -> Nat -> Nat
@@ -162,7 +162,7 @@ of two arguments is as follows and can be extended to more arguments.
 
     If there is only one clause without any patterns, the pipe `|` must be omitted as we see earlier.
 
-    ```juvix
+    ```juvix extract-module-statements 1
     module short-definitons;
       import Stdlib.Data.Nat open;
       multiplyByTwo (n : Nat) : Nat := n;
@@ -175,7 +175,7 @@ Functions in Juvix can depend on each other recursively. In the following
 example, a function checks if a number is `even` by calling another function
 that verifies if the number is `odd`.
 
-```juvix
+```juvix extract-module-statements 3
 module mutually-recursive;
   import Stdlib.Data.Nat open;
   import Stdlib.Data.Bool open;
@@ -213,7 +213,7 @@ alternative `λ` to denote an anonymous function.
 An anonymous function lists all clauses of a function without naming it. Any
 function declaration can be converted to use anonymous functions:
 
-```juvix
+```juvix extract-module-statements 1
 module anonymous-functions;
   import Stdlib.Prelude open;
 

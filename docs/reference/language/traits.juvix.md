@@ -84,7 +84,7 @@ Using the `Show` trait defined above, we can define a function `showNat` that
 takes a `Nat` and returns a `String`. One possible implementation is the
 following:
 
-```juvix
+```juvix extract-module-statements
 module usage-example;
   type Nat :=
     | Z

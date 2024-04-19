@@ -36,7 +36,7 @@ builtin nat-plus
 
 ## Builtin axiom definitions
 
-```juvix 
+```juvix extract-module-statements 
 module example-print-nat;
   
   builtin IO
