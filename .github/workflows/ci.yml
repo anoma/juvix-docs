@@ -59,7 +59,7 @@ jobs:
           MSG: "The build is in progress. Please wait for the preview link."
           GH_FLAGS: pr -R anoma/juvix-docs comment ${{ github.event.pull_request.number }}
 
-      
+
       - name: Install Linux dependencies
         run: sudo apt-get install -y libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev pngquant graphviz
 
