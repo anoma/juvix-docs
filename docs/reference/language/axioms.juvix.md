@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module axioms;
+module reference.language.axioms;
 ```
 
 # Axiom

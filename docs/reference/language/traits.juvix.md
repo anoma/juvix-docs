@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module traits;
+module reference.language.traits;
 import Stdlib.Prelude open hiding {Show; mkShow; module Show};
 ```
 

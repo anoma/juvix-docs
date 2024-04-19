@@ -10,7 +10,8 @@ social:
 ---
 
 ```juvix hide
-module index;
+module README;
+
   import Anoma open;
   import Anoma.Resource open using {mkResource as mkResource'};
   import Apps.TwoPartyExchange.Asset open;
@@ -189,7 +190,7 @@ flowchart LR
 ```
 
 ```shell
-juvix compile -t vampir Hash.juvix
+juvix compile vampir Hash.juvix
 ```
 
 The VampIR file can then be compiled to a PLONK circuit:

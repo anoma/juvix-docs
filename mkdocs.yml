@@ -3,14 +3,14 @@ site_name: !ENV [SITE_NAME, "Juvix Docs"]
 site_dir: !ENV [SITE_DIR, site]
 use_directory_urls: false
 
-site_description: The Official Documentation for Juvix
+site_description: The official documentation for Juvix
 site_author: The Juvix Team
 
 repo_name: anoma/juvix
 repo_url: https://github.com/anoma/juvix
 edit_uri: https://github.com/anoma/juvix-docs/edit/main/docs
 
-copyright: "Made with 🤍 by the Juvix team - Copyright © Heliax AG"
+copyright: "Juvix is a project by Anoma Foundation and GitHub contributors."
 
 exclude_docs: |
   */**/.juvix-build/
@@ -57,10 +57,7 @@ theme:
     - navigation.path
     - navigation.prune
     - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.tracking
-    - navigation.top
-    # - navigation.instant
     - search.highlight
     - search.suggest
     - search.share
@@ -99,9 +96,6 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-        # - name: juvix-standalone
-        #   class: juvix-standalone
-        #   format: !!python/name:mkdocs_juvix.standalone.render
   - pymdownx.snippets
   - pymdownx.arithmatex:
       generic: true
@@ -130,9 +124,13 @@ plugins:
   - tags
   - mkdocstrings
   - juvix
+  - blog
+  - redirects:
+      redirect_maps:
+        'index.md': 'README.juvix.md'
 
 nav:
-  - ./index.juvix.md
+  - ./README.juvix.md
   - About:
       - Overview: ./about/overview.md
       - Changelog: ./CHANGELOG.md
@@ -182,7 +180,7 @@ nav:
           - Documentation Tool: ./reference/judoc.md
           - Command line interface: ./reference/tooling/CLI.md
           - Doctor: ./reference/tooling/doctor.md
-          - Emacs mode: ./reference/tooling/emacs.juvix.md
+          - Emacs mode: ./reference/tooling/emacs.md
           - Haskell test suite: ./reference/tooling/testing.md
       - Compiler Dev Reference:
           - notes/lsp.md
@@ -207,6 +205,6 @@ validation:
     not_found: warn
     absolute_links: ignore
   links:
-    not_found: ignore
-    absolute_links: ignore
+    not_found: warn
+    absolute_links: warn
     unrecognized_links: warn

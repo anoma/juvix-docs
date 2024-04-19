@@ -258,14 +258,3 @@ typecheck-juvix-files: juvix-bin
 			echo "[FAIL] Typecking failed for $$file" && exit 1; \
 		fi; \
 	done
-
-SMOKE := $(shell command -v smoke 2> /dev/null)
-
-.PHONY : smoke-only
-smoke-only:
-	@$(if $(SMOKE),, $(error "Smoke not found, please install it from https://github.com/jonaprieto/smoke"))
-	@smoke $(shell find tests -name '*.smoke.yaml')
-
-.PHONY : smoke
-smoke: install submodules
-	@${MAKE} smoke-only

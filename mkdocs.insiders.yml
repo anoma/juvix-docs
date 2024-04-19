@@ -14,15 +14,16 @@ plugins:
   - social
   - tags
   - typeset
-  
+
   - blog:
-      enabled: true
+      enabled: !ENV [BLOG, true]
       blog_dir: blog
       blog_toc: true
       draft: false
       authors: true
       authors_file: blog/.authors.yml
       draft_on_serve: true
+      post_dir: "{blog}/posts"
       post_date_format: short
       post_readtime: true
       post_url_date_format: yyyy/MM/dd
@@ -76,11 +77,17 @@ extra:
       link: https://github.com/anoma/juvix
     - icon: fontawesome/brands/discord
       link: https://discord.gg/jwzaMZ2Sct
-      name: Juvix Discord
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/juvixlang
-      name: Juvix Twitter
-  
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/juvixlang
+    - icon: fontawesome/solid/blog
+      link: https://anoma.net/blog
+    - icon: fontawesome/brands/discourse
+      link: https://research.anoma.net
+    - icon: fontawesome/brands/youtube
+      link: https://youtube.com/anoma
+    - icon: material/email
+      link: mailto:arts@heliax.dev
+
   consent:
     title: Cookie consent
     description: >-

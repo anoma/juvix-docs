@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module zkworkshop;
+module tutorials.workshop;
   import Stdlib.Prelude open;
 ```
 

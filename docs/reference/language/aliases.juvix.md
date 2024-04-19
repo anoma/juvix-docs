@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module aliases;
+module reference.language.aliases;
 import Stdlib.Data.Fixity open;
 ```
 

@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module builtins;
+module reference.language.builtins;
 import Stdlib.Data.Fixity open;
 ```
 

@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module operators;
+module reference.language.operators;
 ```
 
 # Operator Syntax

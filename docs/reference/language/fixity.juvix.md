@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module fixity;
+module reference.language.fixity;
 ```
 
 # Fixities
@@ -97,7 +97,7 @@ Consider a scenario where the `or` operator is an alias of the `||` operator.
 The `or` operator will inherit the fixity of the `||` operator by default.
 
 ```juvix hide
-import aliases open;
+import reference.language.aliases open;
 ```
 
 ```juvix

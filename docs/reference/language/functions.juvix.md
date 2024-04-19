@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module functions;
+module reference.language.functions;
 ```
 
 # Function Declarations in Juvix

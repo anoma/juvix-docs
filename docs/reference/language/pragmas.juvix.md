@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module pragmas;
+module reference.language.pragmas;
 import Stdlib.Prelude open using {Nat;zero;suc; List; ::; nil; module List};
 ```
 

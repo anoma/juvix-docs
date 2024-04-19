@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module learn;
+module tutorials.learn;
 ```
 
 # Juvix tutorial
@@ -30,7 +30,7 @@ juvix repl
 The response should be similar to:
 
 ```jrepl
-Juvix REPL version 0.3: https://juvix.org. Run :help for help
+Juvix REPL version 0.6.1: https://juvix.org. Run :help for help
 OK loaded: ./.juvix-build/stdlib/Stdlib/Prelude.juvix
 Stdlib.Prelude>
 ```
@@ -921,7 +921,7 @@ Coverage checking ensures that there are no unhandled patterns in function
 clauses or `case` expressions. For example, the following definition is rejected
 because the case `suc zero` is not handled:
 
-```juvix
+```
 module Even-Not-Pass-Coverage;
   import Stdlib.Prelude open;
 

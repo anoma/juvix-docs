@@ -4,10 +4,11 @@ mkdocs-git-revision-date-localized-plugin
 mkdocs-git-authors-plugin
 mkdocs-material
 mkdocs-material[imaging]
+mkdocs-juvix-plugin
+mkdocs-redirects
 mike
 html5lib
 lxml
 pillow
 cairosvg
 pre-commit
-mkdocs-juvix-plugin

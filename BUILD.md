@@ -1,6 +1,6 @@
 # Building the Juvix Documentation
 
-> **Note** 
+> **Note**
 > This document is intended for advanced users and Juvix documentation
 > maintainers.
 
