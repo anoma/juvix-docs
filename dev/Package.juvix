@@ -1,0 +1,30 @@
+{-# format: false #-}
+module Package;
+
+import PackageDescription.V2 open;
+
+package : Package :=
+defaultPackage
+{name := "juvix-docs";
+dependencies := 
+[
+ --8<-- [start:juvix-containers]
+github "anoma" "juvix-containers" "v0.10.0"
+--8<-- [end:juvix-containers]
+; 
+--8<-- [start:juvix-test]
+github "anoma" "juvix-test" "v0.9.0"
+--8<-- [end:juvix-test]
+;
+--8<- [start:juvix-quickcheck]
+github "anoma" "juvix-quickcheck" "v0.10.0"
+--8-- [end:juvix-quickcheck]
+; 
+--8<-- [start:juvix-stdlib]
+github "anoma" "juvix-stdlib" "v0.2.0"
+--8<-- [end:juvix-stdlib]
+;
+--8<- [start:abstract-resource-machine-simulator]
+github "anoma" "abstract-resource-machine-simulator" "2fbb90b1282c249ea9cf87d212370561dc07f2d4"
+--8<-- [end:abstract-resource-machine-simulator]
+]};
