@@ -129,12 +129,6 @@ which is evaluated when running the program. The definition of `main` can have
 any non-function type, e.g., `String`, `Bool` or `Nat`. The generated executable
 prints the result of evaluating `main`.
 
-All the examples we will showcase will be located in separate modules to
-showcase all dependencies used explicitly. Note that all the formatted Juvix
-code one sees in the tutorial is contained in one Juvix file with no imports.
-Hence when we `open` a module without importing, this is due to the fact that
-the opened module is already contained in the file.
-
 ## Data types and functions
 
 To see the type of an expression, use the `:type` REPL command:
@@ -802,11 +796,6 @@ end;
 
 So we have replaced stack allocation with heap allocation. This actually
 decreases performance.
-
-As a side-note, notice that we used the `hiding` option while declaring the use
-of `Stdlib.Prelude`. This is due to the fact that the standard library already
-has a function named `map`. Since names are absolute, we need to hide the name
-in the standard library in order to define it in our module.
 
 ### Conclusion
 
