@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module zkworkshop;
+module tutorials.workshop;
   import Stdlib.Prelude open;
 ```
 
@@ -75,7 +75,7 @@ In the clone of the repository we made before, change directory to the
 ```shell
 cd juvix-workshop
 cd hello-world
-juvix compile HelloWorld.juvix
+juvix compile native HelloWorld.juvix
 ./HelloWorld
 ```
 

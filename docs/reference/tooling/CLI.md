@@ -54,6 +54,7 @@ juvix [Global options] ((-v|--version) | (-h|--help) | COMPILER_CMD | UTILITY_CM
 juvix dev COMMAND
 ```
 
+- `compile` Compile a Juvix file to an internal language
 - `parse` Parse a Juvix file
 - `scope` Parse and scope a Juvix file
 - `highlight` Highlight a Juvix file

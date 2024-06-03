@@ -1,4 +1,4 @@
-module HelloWorld;
+module howto.compilation.HelloWorld;
 
 --8<-- [start:Hello]
 -- This is a comment.

@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module builtins;
+module reference.language.builtins;
 import Stdlib.Data.Fixity open;
 ```
 
@@ -36,7 +36,7 @@ builtin nat-plus
 
 ## Builtin axiom definitions
 
-```juvix 
+```juvix extract-module-statements 
 module example-print-nat;
   
   builtin IO

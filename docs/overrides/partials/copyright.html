@@ -1,0 +1,17 @@
+<div class="md-copyright">
+    {% if config.copyright %}
+      <div class="md-copyright__highlight">
+        {{ config.copyright }}
+      </div>
+    {% endif %}
+
+    <ul>
+      <li><a href="https://anoma.net/" target="_blank">Anoma</a> | <a href="https://anoma.net/blog" target="_blank">Anoma Blog</a> | <a href="https://anoma.net/talks" target="_blank">Anoma Talks</a></li>
+      <li>
+      <!-- include time  -->
+      Last updated: {{ build_date_utc.strftime('%Y-%m-%d %H:%M:%S %Z') }}
+        </li>
+      </li>
+      </ul>
+
+  </div>

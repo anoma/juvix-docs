@@ -5,7 +5,7 @@ name: Juvix Docs CI
       build-type:
         type: choice
         description: "Docs build type"
-        default: "dev"
+        default: "latest"
         options:
           - "dev"
           - "latest"
@@ -26,6 +26,7 @@ name: Juvix Docs CI
       - reopened
       - synchronize
       - ready_for_review
+      - closed
 
 concurrency:
   group: "${{ github.workflow }}-${{ github.head_ref || github.run_id }}"
@@ -35,6 +36,11 @@ env:
   GIT_COMMITTER_NAME: juvix-docs-ci
   GIT_COMMITTER_EMAIL: juvix@heliax.dev
   SKIP: ${{ github.event.inputs.skip }}
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   build-and-deploy:
@@ -44,6 +50,18 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      - name: comment on PR (Pull Request)
+        if: >-
+          github.event_name == 'pull_request'
+        run: gh $GH_FLAGS --edit-last --body "$MSG" || gh $GH_FLAGS --body "$MSG" || true
+        env:
+          MSG: "The build is in progress. Please wait for the preview link."
+          GH_FLAGS: pr -R anoma/juvix-docs comment ${{ github.event.pull_request.number }}
+
+
+      - name: Install Linux dependencies
+        run: sudo apt-get install -y libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev pngquant graphviz
 
       - name: Install the latest Juvix compiler (for latest build-type)
         uses: jaxxstorm/action-install-gh-release@v1.10.0
@@ -60,7 +78,7 @@ jobs:
 
       - name: Install the corresponding Juvix compiler
         uses: jaxxstorm/action-install-gh-release@v1.10.0
-        if: github.event_name != 'workflow_dispatch' || ( github.event_name != 'workflow_dispatch' || github.event.inputs.build-type == 'dev')
+        if: github.event_name != 'workflow_dispatch' || github.event.inputs.build-type == 'dev'
         with:
           repo: anoma/juvix
           tag: v${{ steps.juvix-version.outputs.number }}
@@ -68,11 +86,6 @@ jobs:
       - name: See the exact version of the Juvix compiler installed
         run: |
           juvix --version
-
-      - uses: actions/cache@v3
-        with:
-          key: ${{ github.ref }}
-          path: .cache
 
       - uses: actions/setup-python@v4
         with:
@@ -95,9 +108,19 @@ jobs:
         run: |
           make pre-build
 
-      - name: Test building without material-insiders
+      - name: Build MkDocs (Pull Request)
+        if: >-
+          github.event_name == 'pull_request'
         run: |
-          MKDOCSCONFIG=mkdocs.yml make docs
+          mkdocs build --clean --config-file mkdocs.yml --site-dir $SITE_DIR
+        env:
+          SITE_DIR: pull-${{ github.event.pull_request.number }}
+          SITE_URL: https://docs.juvix.org/pull-${{ github.event.pull_request.number }}
+
+      - name: comment on PR (Pull Request)
+        if: failure() && github.event_name == 'pull_request'
+        run: |
+          gh pr -R anoma/juvix-docs comment ${{ github.event.pull_request.number }} --edit-last --body "The build failed. Please check the logs." || true
 
       - name: Setup Git
         run: |
@@ -105,25 +128,74 @@ jobs:
           git config --global user.email "${GIT_COMMITTER_EMAIL}"
 
       - name: Install material-insiders
-        if: >-
-          github.ref == 'refs/heads/main'
-        run: |
-          pip install --user -r insiders.requirements.txt
+        if: github.ref == 'refs/heads/main'
+        run: pip install --user -r insiders.requirements.txt
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: Deploy documentation via GitHub (for releases)
+      - name: Test Build MkDocs Insiders (Pull Request)
+        if: github.event_name == 'pull_request'
+        id: test-build-mkdocs-insiders
+        run: |
+          mkdocs build --clean --config-file mkdocs.insiders.yml --site-dir $SITE_DIR
+        env:
+          SITE_DIR: pull-${{ github.event.pull_request.number }}
+          SITE_URL: https://docs.juvix.org/pull-${{ github.event.pull_request.number }}
+
+      - name: Deploy Preview comment (Pull Request)
+        if: github.event_name == 'pull_request' &&
+            steps.test-build-mkdocs-insiders.outcome == 'success'
+        run: |
+          gh pr -R anoma/juvix-docs comment ${{ github.event.pull_request.number }} --edit-last --body "Basic build successful and build with MkDocs Insiders successful. We are now deploying the preview." || true
+
+      - name: Deploy Preview (Pull Request)
+        if: github.event_name == 'pull_request' && success()
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: pull-${{ github.event.pull_request.number }}
+          target-folder: pull-${{ github.event.pull_request.number }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          clean: false
+
+      - name: Report PR preview link (Pull Request)
+        if: >-
+           github.event_name == 'pull_request' && success()
+        run: gh pr -R anoma/juvix-docs comment ${{ github.event.pull_request.number }} --edit-last --body "$MSG" || true
+        env:
+          MSG: "Success! The preview of this PR will be available at https://docs.juvix.org/pull-${{ github.event.pull_request.number }}/ in a few minutes.\n\nPlease note that this link will be deleted when the PR is closed or merged."
+
+      - name: Failed preview build comment (Pull Request)
+        if: >-
+          github.event_name == 'pull_request' && failure()
+        run: |
+          gh pr -R anoma/juvix-docs comment ${{ github.event.pull_request.number }} --edit-last --body "The preview of this PR failed to build. Please check the logs." || true
+
+      - name: Delete the PR preview if the PR is closed or merged (Pull Request)
+        if: github.event_name == 'pull_request' && (github.event.pull_request.merged == true || github.event.action == 'closed')
+        run: |
+          git checkout gh-pages
+          if [-d "pull-${{ github.event.pull_request.number }}"]; then
+            rm -rf "pull-${{ github.event.pull_request.number }}"
+            git add .
+            git commit -m "Delete preview for PR #${{ github.event.pull_request.number }}"
+            git push
+          fi
+          gh pr -R anoma/juvix-docs comment ${{ github.event.pull_request.number }} --edit-last --body "The preview of this PR has been deleted." || true
+
+      # -------------------------------------------------------------
+
+      - name: Run MkDocs Insiders (Main branch Workflow Dispatch)
         if: >-
           github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
         run: |
           MKDOCSCONFIG=mkdocs.insiders.yml make ${{ github.event.inputs.build-type }}
-        env:
-          RUN_GITHUB_ACTION: ${{ secrets.RUN_GITHUB_ACTION }}
 
-      - name: By default, deploy DEV documentation via pushes to main
+      - name: Run MkDocs Insiders (Main branch - Push)
         if: >-
           github.ref == 'refs/heads/main' && github.event_name != 'workflow_dispatch'
         run: |
           MKDOCSCONFIG=mkdocs.insiders.yml make dev
         env:
-          RUN_GITHUB_ACTION: ${{ secrets.RUN_GITHUB_ACTION }}
+          SITE_DIR: dev
+          SITE_URL: https://docs.juvix.org/dev/

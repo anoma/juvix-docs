@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module pragmas;
+module reference.language.pragmas;
 import Stdlib.Prelude open using {Nat;zero;suc; List; ::; nil; module List};
 ```
 
@@ -231,7 +231,7 @@ symbolizes a non-negative number.
   axiom <body> : Natural Nat;
   ```
 
-  ```juvix
+  ```juvix extract-module-statements
   module pragma-specialise-instance;
   {-# specialize: true #-}
   instance
@@ -243,7 +243,7 @@ symbolizes a non-negative number.
 
   Declaring
 
-  ```juvix
+  ```juvix extract-module-statements
   module pragma-specialise-instance-false;
   {-# specialize: false #-}
   naturalNatI : Natural Nat := <body>;

@@ -1,5 +1,5 @@
 --8<-- [start:hash]
-module Hash;
+module index.Hash;
 
 import Stdlib.Prelude open;
 

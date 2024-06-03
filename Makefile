@@ -23,6 +23,7 @@ MIKEFLAGS?=--push  \
 	--remote origin  \
 	--branch gh-pages  \
 	--config-file ${MKDOCSCONFIG}
+GITBRANCH?=$(shell git rev-parse --abbrev-ref HEAD)
 
 EXAMPLEHTMLOUTPUT=docs/examples/html
 EXAMPLEMILESTONE=${COMPILERSOURCES}/examples/milestone
@@ -174,14 +175,15 @@ mike:
 	@git fetch --all
 	@git checkout gh-pages
 	@git pull origin gh-pages --rebase
-	@git checkout main
+	@git checkout ${GITBRANCH}
+	@echo "Branch: ${GITBRANCH}"
 	mike deploy ${VERSION} ${MIKEFLAGS}
 
-mike-serve: docs
+mike-serve:
 	mike serve --dev-addr localhost:${PORT} --config-file ${MKDOCSCONFIG}
 
 .PHONY: dev
-dev: pre-build
+dev:
 	export DEV=true
 	mike delete ${DEVALIAS} ${MIKEFLAGS} > /dev/null 2>&1 || true
 	VERSION=${DEVALIAS} ${MAKE} mike
@@ -189,7 +191,7 @@ dev: pre-build
 # Call this with `DEV=true make latest` if you want to use
 # the latest overview/change log from the main branch.
 .PHONY: latest
-latest: pre-build
+latest:
 	mike delete ${VERSION} ${MIKEFLAGS} > /dev/null 2>&1 || true
 	${MAKE} mike
 	mike alias ${VERSION} latest -u ${MIKEFLAGS}
@@ -258,14 +260,3 @@ typecheck-juvix-files: juvix-bin
 			echo "[FAIL] Typecking failed for $$file" && exit 1; \
 		fi; \
 	done
-
-SMOKE := $(shell command -v smoke 2> /dev/null)
-
-.PHONY : smoke-only
-smoke-only:
-	@$(if $(SMOKE),, $(error "Smoke not found, please install it from https://github.com/jonaprieto/smoke"))
-	@smoke $(shell find tests -name '*.smoke.yaml')
-
-.PHONY : smoke
-smoke: install submodules
-	@${MAKE} smoke-only

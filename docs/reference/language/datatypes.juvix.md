@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module datatypes;
+module reference.language.datatypes;
 import Stdlib.Data.Fixity open;
 ```
 
@@ -109,7 +109,7 @@ the type of the data type being declared.
 
 For example, the `Nat` type can be declared as follows:
 
-```juvix
+```juvix extract-module-statements
 module Nat-ADT;
   type Nat :=
     | Z
@@ -120,7 +120,7 @@ end;
 Another example is the `List` type, which is polymorphic in the type of its
 elements.
 
-```juvix
+```juvix extract-module-statements
 module List-ADT;
   type List A :=
     | Nil
@@ -145,7 +145,7 @@ the type of its list elements.
 
 The following function determines whether an element is in a list or not.
 
-```juvix
+```juvix extract-module-statements  1
 module membership;
 import Stdlib.Data.Bool open using {Bool; false; ||};
 

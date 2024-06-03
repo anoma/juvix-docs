@@ -13,9 +13,9 @@ links:
   - FStar's Inductive Type Families: https://www.fstar-lang.org/tutorial/book/part2/part2_inductive_type_families.html
 ---
 
-# Stay Positive with Your Data Types
+# Stay Positive
 
-In this discussion, we will explore the concept of strictly positive inductive data types, a critical requirement within the Juvix framework for classifying a data type as well-typed.
+Let us explore the concept of strictly positive inductive data types, a critical requirement within the Juvix framework for classifying a data type as well-typed.
 
 An **inductive type** is considered _strictly positive_ if it either:
 

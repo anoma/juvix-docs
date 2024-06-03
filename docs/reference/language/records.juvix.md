@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module records;
+module reference.language.records;
 ```
 
 # Records
