@@ -13,7 +13,6 @@ plugins:
         - trimmer
   - social
   - tags
-  - typeset
   - redirects:
       redirect_maps:
         'index.md': 'README.juvix.md'
