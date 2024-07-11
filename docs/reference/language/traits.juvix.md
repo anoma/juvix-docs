@@ -59,7 +59,7 @@ showStringI : Show String := mkShow (show := id);
 
 instance
 showBoolI : Show Bool :=
-  mkShow (show := λ {x := if x "true" "false"});
+  mkShow (show := λ {x := ite x "true" "false"});
 
 instance
 showNatI : Show Nat := mkShow (show := natToString);
@@ -127,7 +127,7 @@ instances, as shown below:
 ```juvix
 f {A} {{Show A}} : A → String
   | x := Show.show x;
-  
+
 f' {A} : {{Show A}} → A → String
   | {{mkShow s}} x := s x;
 
@@ -141,11 +141,11 @@ the standard library, we could use the instances of `Show` as follows:
 ```juvix
 main : IO :=
   printStringLn (Show.show true)
-    >> printStringLn (f false)
-    >> printStringLn (Show.show 3)
-    >> printStringLn (Show.show [true; false])
-    >> printStringLn (Show.show [1; 2; 3])
-    >> printStringLn (f' [1; 2])
-    >> printStringLn (f'' [true; false])
-    >> printStringLn (Show.show ["a"; "b"; "c"; "d"]);
+    >>> printStringLn (f false)
+    >>> printStringLn (Show.show 3)
+    >>> printStringLn (Show.show [true; false])
+    >>> printStringLn (Show.show [1; 2; 3])
+    >>> printStringLn (f' [1; 2])
+    >>> printStringLn (f'' [true; false])
+    >>> printStringLn (Show.show ["a"; "b"; "c"; "d"]);
 ```

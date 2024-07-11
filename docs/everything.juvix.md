@@ -5,7 +5,6 @@ import README;
 
 import tutorials.vscode;
 import tutorials.emacs;
-import tutorials.workshop;
 import tutorials.learn;
 import reference.language.lets;
 import reference.language.aliases;

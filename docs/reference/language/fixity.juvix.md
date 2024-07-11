@@ -108,7 +108,7 @@ end;
 ```
 
 However, if you want to override this behavior, you can declare the alias with
-`none` as its fixity. Make sure to import `Stdlib.Data.Fixity`.   
+`none` as its fixity. Make sure to \import `Stdlib.Data.Fixity`.
 
 ```juvix extract-module-statements
 module fixityNone;

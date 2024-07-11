@@ -72,3 +72,4 @@ python-env/
 **/.juvix-mkdocs/
 env/
 .hooks/
+venv/

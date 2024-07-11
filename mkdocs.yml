@@ -144,7 +144,6 @@ nav:
       - Learn Juvix in minutes: ./tutorials/learn.juvix.md
       - Juvix VSCode extension: ./tutorials/vscode.juvix.md
       - Juvix Emacs mode: ./tutorials/emacs.juvix.md
-      - ZKSummit 10 Workshop: ./tutorials/workshop.juvix.md
 
   - How-to guides:
       - Installing Juvix: ./howto/installing.md

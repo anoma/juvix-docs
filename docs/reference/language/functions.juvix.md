@@ -194,7 +194,7 @@ end;
 Identifiers don't need to be defined before they are used, allowing for mutually
 recursive functions/types without any special syntax. However, exceptions exist.
 A symbol `f` cannot be forward-referenced in a statement `s` if a local module,
-import statement, or open statement exists between `s` and the definition of
+\import statement, or open statement exists between `s` and the definition of
 `f`.
 
 ## Anonymous Functions (Lambdas)

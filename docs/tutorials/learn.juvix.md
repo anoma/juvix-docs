@@ -289,7 +289,7 @@ The `syntax operator + additive` declares `+` to be an operator with the
 `additive` fixity. The `+` is an ordinary function, except that function
 application for `+` is written in infix notation. The definitions of the clauses
 of `+` still need the prefix notation on the left-hand sides. Note that to use
-this definition in the code one needs to import and open `Stdlib.Data.Fixity`.
+this definition in the code one needs to \import and open `Stdlib.Data.Fixity`.
 
 The `a` and `b` in the patterns on the left-hand sides of the clauses are
 _variables_ which match arbitrary values of the corresponding type. They can be
@@ -405,11 +405,11 @@ For example, one may define the function `max3` by using the type Nat, functions
 module max3-example;
   import Stdlib.Prelude open;
 
-  max3 (x y z : Nat) : Nat := if (x > y) (max x z) (max y z);
+  max3 (x y z : Nat) : Nat := ite (x > y) (max x z) (max y z);
 end;
 ```
 
-The conditional `if` is a special function which is evaluated lazily, i.e.,
+The conditional `ite` is a special function which is evaluated lazily, i.e.,
 first the condition (the first argument) is evaluated, and then depending on its
 truth-value one of the branches (the second or the third argument) is evaluated
 and returned.
@@ -891,7 +891,7 @@ module Non-Terminating-Log;
 
   terminating
   log2 (n : Nat) : Nat :=
-    if (n <= 1) 0 (suc (log2 (div n 2)));
+    ite (n <= 1) 0 (suc (log2 (div n 2)));
 end;
 ```
 
@@ -903,7 +903,7 @@ module Fact-Non-Terminating;
   import Stdlib.Prelude open;
   
   terminating -- remove this line to see the error
-  fact (x : Nat) : Nat := if (x == 0) 1 (x * fact (sub x 1));
+  fact (x : Nat) : Nat := ite (x == 0) 1 (x * fact (sub x 1));
 end;
 ```
 
@@ -1014,7 +1014,7 @@ module Bool-Ex;
 end;
 ```
 
-Remember that you can import this definition by adding `import Stdlib.Prelude
+Remember that you can \import this definition by adding `import Stdlib.Prelude
 open` at the beginning of your module.
 
 Now, define the logical function `not` by using pattern matching.
@@ -1404,7 +1404,7 @@ is prime.
         go : Nat -> Bool
           | zero := true
           | (suc zero) := true
-          | n@(suc k) := if (mod x k == 0) false (go k);
+          | n@(suc k) := ite (mod x k == 0) false (go k);
       in case x of {
            | zero := false
            | suc zero := false
@@ -1563,7 +1563,7 @@ should be a function which given `x` computes `2(x - 1) + 1`.
       import Stdlib.Prelude open;
 
       comp {A} (fs : List (A -> A)) : A -> A :=
-      for (acc := id) (f in fs) {acc ∘ f};
+      for (acc := id) (f in fs) {f >> acc};
     end;
     ```
 
@@ -1573,9 +1573,7 @@ should be a function which given `x` computes `2(x - 1) + 1`.
     module Comp-Syntax;
       import Stdlib.Data.Fixity open;
 
-      syntax operator ∘ composition;
-      ∘ {A B C} (f : B -> C) (g : A -> B) (x : A) : C := f (g x);
+      syntax operator >> composition;
+      >> {A B C} (f : B -> C) (g : A -> B) (x : A) : C := f (g x);
     end;
     ```
-
-    The `∘` can be typed in Emacs or VSCode with `\o`.
