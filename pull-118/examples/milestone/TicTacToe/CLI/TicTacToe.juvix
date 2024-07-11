@@ -1,0 +1,31 @@
+--- Tic-tac-toe is a paper-and-pencil game for two players who take turns marking the spaces
+--- in a three-by-three grid with X or O.
+--- The player who succeeds in placing three of their marks in a horizontal, vertical, or
+--- diagonal row is the winner. It is a solved game, with a forced draw assuming best play from both players.
+--- The module Logic.Game contains the game logic.
+module CLI.TicTacToe;
+
+import Stdlib.Prelude open;
+import Logic.Game open;
+
+--- A ;String; that prompts the user for their input
+prompt (x : GameState) : String :=
+  "\n" ++str showGameState x ++str "\nPlayer " ++str showSymbol (player x) ++str ": ";
+
+nextMove (s : GameState) : String → GameState := stringToNat >> validMove >> flip playMove s;
+
+--- Main loop
+terminating
+run : GameState → IO
+  | (state b p (terminate msg)) :=
+    printStringLn ("\n" ++str showGameState (state b p noError) ++str "\n" ++str msg)
+  | (state b p (continue msg)) :=
+    printString (msg ++str prompt (state b p noError))
+      >>> readLn (run << nextMove (state b p noError))
+  | x := printString (prompt x) >>> readLn (run << nextMove x);
+
+--- The welcome message
+welcome : String := "MiniTicTacToe\n-------------\n\nType a number then ENTER to make a move";
+
+--- The entry point of the program
+main : IO := printStringLn welcome >>> run beginState;
