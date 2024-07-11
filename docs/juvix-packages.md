@@ -15,9 +15,12 @@ setup a Juvix project*](./howto/project.md). For now, one example is
 provided below. Put the following in your `Package.juvix` file within 
 the directory of your project.
 
-```text
- --8<------ "docs/reference/language/Package.juvix"
-```
+??? example "Package.juvix"
+
+    ```text
+    --8<------ "docs/blog/posts/strictly-positive-data-types/Package.juvix"
+    ```
+
 
 <div class="grid cards" markdown>
 
@@ -129,6 +132,4 @@ the directory of your project.
 Please let us know if you are using Juvix in your project. Opening an issue or a
 pull request to add it to this list.
 
-## Other Small Example Programs
-
---8<-- "docs/reference/examples.md:8:"
+Check out other examples of Juvix programs in the [examples/milestone](./reference/examples.md).

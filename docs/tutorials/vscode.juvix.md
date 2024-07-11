@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module vscode;
+module tutorials.vscode;
 ```
 
 # Juvix VSCode extension tutorial

@@ -6,7 +6,7 @@ search:
 ---
 
 ```juvix hide
-module fixity;
+module reference.language.fixity;
 ```
 
 # Fixities
@@ -97,10 +97,10 @@ Consider a scenario where the `or` operator is an alias of the `||` operator.
 The `or` operator will inherit the fixity of the `||` operator by default.
 
 ```juvix hide
-import aliases open;
+import reference.language.aliases open;
 ```
 
-```juvix
+```juvix extract-module-statements
 module fixityInherit;
   syntax alias or := ||;
   newor (a b c : Bool) : Bool := (a or b) or c;
@@ -108,9 +108,9 @@ end;
 ```
 
 However, if you want to override this behavior, you can declare the alias with
-`none` as its fixity. Make sure to import `Stdlib.Data.Fixity`.   
+`none` as its fixity. Make sure to \import `Stdlib.Data.Fixity`.
 
-```juvix
+```juvix extract-module-statements
 module fixityNone;
   import Stdlib.Data.Fixity open;
   syntax operator or none;
@@ -124,7 +124,7 @@ end;
 Here are some examples of common fixity declarations for operators in Juvix's
 standard library.
 
-```juvix
+```juvix extract-module-statements
 module examples-from-stdlib;
 syntax fixity rapp := binary {assoc := right};
 syntax fixity lapp := binary {assoc := left; same := rapp};

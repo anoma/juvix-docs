@@ -20,40 +20,17 @@ The zero-argument function `main` is evaluated when running the program and must
 To compile `HelloWorld.juvix`, type:
 
 ```shell
-juvix compile HelloWorld.juvix
-```
-
-For all options of the `compile` command, type:
-
-```shell
-juvix compile --help
+juvix compile native HelloWorld.juvix
 ```
 
 ## Compilation Targets
 
-Juvix supports several targets specified with the `-t` option. Continuing the example above, to compile `HelloWorld.juvix` to a WebAssembly binary, type, we type:
+Juvix supports several targets, including `native`, `wasi` (for web assembly),
+`anoma` and `cairo` among others. To see the full list use:
 
 ```shell
-juvix compile -t wasm32-wasi HelloWorld.juvix
+juvix compile --help
 ```
-
-Targets include:
-
-1.  `native`: Default target producing a native 64bit executable.
-2.  `wasm32-wasi`: Produces a WebAssembly binary using the WASI runtime.
-3.  `vampir`: Creates a [VampIR](https://github.com/anoma/vamp-ir) input file.
-4.  `geb`: Generates a [GEB](https://anoma.github.io/geb/) input file.
-5.  `core`: Produces `.jvc` file.
-6.  `asm`: Produces `.jva` file.
-
-## Compilation Options
-
-To view all compilation options, type `juvix compile --help`. Commonly used options include:
-
-- `-t TARGET`: Target specification.
-- `-g`: Debug information and runtime assertions generation.
-- `-O LEVEL`: Optimization level setting (default: 1, or 0 with `-g`).
-- `-o FILE`: Output file specification.
 
 ## Juvix Projects
 

@@ -13,15 +13,18 @@ plugins:
         - trimmer
   - social
   - tags
-  - typeset
+  - redirects:
+      redirect_maps:
+        'index.md': 'README.juvix.md'
   - blog:
-      enabled: true
+      enabled: !ENV [BLOG, true]
       blog_dir: blog
       blog_toc: true
       draft: false
       authors: true
       authors_file: blog/.authors.yml
       draft_on_serve: true
+      post_dir: "{blog}/posts"
       post_date_format: short
       post_readtime: true
       post_url_date_format: yyyy/MM/dd
@@ -33,7 +36,6 @@ plugins:
       pagination: true
       # pagination_per_page: 1
       pagination_keep_content: false
-
   - git-revision-date-localized:
       type: timeago
       custom_format: "%d. %B %Y"
@@ -49,7 +51,6 @@ plugins:
         - LICENSE.md
       enabled: true
       strict: true
-
   - rss:
       match_path: blog/posts/.*
       date_from_meta:
@@ -61,8 +62,8 @@ plugins:
   - mike:
       canonical_version: latest
       version_selector: true
-      css_dir: assets/css
-      javascript_dir: assets/js
+      css_dir: docs/assets/css
+      javascript_dir: docs/assets/js
 
 extra:
   homepage: https://docs.juvix.org
@@ -75,21 +76,27 @@ extra:
       link: https://github.com/anoma/juvix
     - icon: fontawesome/brands/discord
       link: https://discord.gg/jwzaMZ2Sct
-      name: Juvix Discord
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/juvixlang
-      name: Juvix Twitter
-  extra:
-    consent:
-      title: Cookie consent
-      description: >-
-        We use cookies to recognize your repeated visits and preferences, as well
-        as to measure the effectiveness of our documentation and whether users
-        find what they're searching for. With your consent, you're helping us to
-        make our documentation better.
-      actions:
-        - accept
-        - manage
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/juvixlang
+    - icon: fontawesome/solid/blog
+      link: https://anoma.net/blog
+    - icon: fontawesome/brands/discourse
+      link: https://research.anoma.net
+    - icon: fontawesome/brands/youtube
+      link: https://youtube.com/anoma
+    - icon: material/email
+      link: mailto:arts@heliax.dev
+
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+    actions:
+      - accept
+      - manage
 
   analytics:
     provider: google
