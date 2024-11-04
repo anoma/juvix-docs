@@ -33,15 +33,18 @@ module README;
 
 <div markdown>
 
-Juvix is an open-source functional language with static typing and strict
-semantics. It is the programming language for the [Anoma][anoma]'s blockchain. The
-primary purpose of this language is to encode [Anoma's intents][anoma], enabling
-private and transparent execution through the [Abstract Resource Machine](https://art.anoma.net/list.html#paper-10498993) on the Anoma
+Juvix is an open-source functional language with static typing and
+strict semantics. It is the programming language for the
+[Anoma][anoma]'s blockchain. The primary purpose of this language is
+to encode [Anoma's intents][anoma], enabling private and transparent
+execution through the [Abstract Resource
+Machine](https://art.anoma.net/list.html#paper-10498993) on the Anoma
 blockchain.
 
-Juvix, initially designed for Anoma, provides features typical of any high-level
-programming language with many more on the horizon. It can compile programs into
-native executable, WASM, and arithmetic circuits facilitating zero-knowledge proofs.
+Juvix, initially designed for Anoma, provides features typical of any
+high-level programming language with many more on the horizon. It can
+compile programs into native executable, WASM, Cairo bytecode and
+arithmetic circuits facilitating zero-knowledge proofs.
 
 Stay tuned for Juvix updates! Follow us on [:material-twitter: Twitter][twitter]
 and join our [:fontawesome-brands-discord: Discord][Discord] community.

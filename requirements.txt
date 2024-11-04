@@ -4,7 +4,7 @@ mkdocs-git-revision-date-localized-plugin
 mkdocs-git-authors-plugin
 mkdocs-material
 mkdocs-material[imaging]
-mkdocs-juvix-plugin
+mkdocs-juvix-plugin==0.2.7
 mkdocs-redirects
 mkdocs-rss-plugin
 mkdocstrings

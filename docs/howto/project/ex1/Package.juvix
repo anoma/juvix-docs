@@ -4,12 +4,8 @@ import PackageDescription.V2 open;
 
 --8<-- [start:Example]
 package : Package :=
-  defaultPackage
-    {name := "my-package";
+  defaultPackage@{name := "my-package";
      version := mkVersion 0 1 0;
-     dependencies := [ defaultStdlib
-                     ; github "anoma" "juvix-containers" "v0.7.1"
-                     ];
      main := just "Main.juvix"
     };
 --8<-- [end:Example]

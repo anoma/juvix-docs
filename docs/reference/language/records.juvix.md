@@ -61,7 +61,7 @@ constructor and one field named `f`.
 
 ```juvix
 type T := constructT : T;
-type newtype := mkNewtype {f : T};
+type newtype := mkNewtype@{f : T};
 ```
 
 Records with multiple constructors can also be defined. Consider the `Pair`
@@ -71,18 +71,21 @@ parameters `A` and `B`, respectively.
 
 ```juvix
 type Pair (A B : Type) :=
-  mkPair {
+  mkPair@{
     fst : A;
     snd : B
   };
 ```
 
-To utilize this type, create a `Pair` type term (a pair) using the `mkPair` type
+To use this type, create a `Pair` type term (a pair) using the `mkPair` type
 constructor and provide values for each field.
 
 ```juvix
 p1 : Pair T T :=
-  mkPair (fst := constructT; snd := constructT);
+  mkPair@{
+    fst := constructT;
+    snd := constructT
+  };
 ```
 
 Field names allow access to their corresponding values. For example, another
@@ -91,7 +94,10 @@ via the field names.
 
 ```juvix
 p1' : Pair T T :=
-  mkPair (fst := Pair.fst p1; snd := Pair.snd p1);
+  mkPair@{
+    fst := Pair.fst p1;
+    snd := Pair.snd p1;
+  };
 ```
 
 One variant of the record term creation is as follows:
@@ -111,7 +117,8 @@ bring these names into scope.
 ```juvix
 open Pair;
 
-flipP : Pair T T := mkPair (fst := snd p1; snd := fst p1);
+flipP : Pair T T :=
+  mkPair (snd p1) (fst p1);
 ```
 
 The values of record fields can be updated. For example consider a pair of
@@ -142,17 +149,18 @@ Finally, consider the declaration of a record with multiple constructors.
 
 ```juvix
 type EnumRecord :=
-  | C1 {
+  | C1@{
       c1a : T;
       c1b : T
     }
-  | C2 {
+  | C2@{
       c2a : T;
       c2b : T
     };
 
 p2 : Pair EnumRecord EnumRecord :=
-  mkPair
-    (fst := C1 (c1a := constructT; c1b := constructT);
-    snd := C2 (c2a := constructT; c2b := constructT));
+  mkPair@{
+    fst := C1@{c1a := constructT; c1b := constructT};
+    snd := C2@{c2a := constructT; c2b := constructT};
+  };
 ```

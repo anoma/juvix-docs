@@ -220,7 +220,7 @@ end;
 A more complex example of a data type is the `Nat` type from the standard
 library:
 
-```juvix extract-module-statements 
+```juvix extract-module-statements
 module Nat;
 
   type Nat :=
@@ -901,7 +901,7 @@ definition
 ```juvix extract-module-statements 1
 module Fact-Non-Terminating;
   import Stdlib.Prelude open;
-  
+
   terminating -- remove this line to see the error
   fact (x : Nat) : Nat := ite (x == 0) 1 (x * fact (sub x 1));
 end;
@@ -1183,7 +1183,7 @@ it should return the default value `d`.
 We can define polymorphic lists as follows:
 
 ```juvix extract-module-statements
-module List-Ex; 
+module List-Ex;
   import Stdlib.Data.Fixity open;
 
   syntax operator :: cons;

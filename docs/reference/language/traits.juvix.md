@@ -32,7 +32,7 @@ For example, the following defines a trait `Show`. Any type `A` that implements
 
 ```juvix
 trait
-type Show A := mkShow {show : A → String};
+type Show A := mkShow@{show : A → String};
 ```
 
 ### Instance declarations
@@ -55,14 +55,19 @@ For example, we could define three instances of `Show` for `String`, `Bool`, and
 
 ```juvix
 instance
-showStringI : Show String := mkShow (show := id);
+showStringI : Show String := mkShow@{show := id};
 
 instance
 showBoolI : Show Bool :=
-  mkShow (show := λ {x := ite x "true" "false"});
+  mkShow@{
+    show := λ{x := ite x "true" "false"}
+  };
 
 instance
-showNatI : Show Nat := mkShow (show := natToString);
+showNatI : Show Nat :=
+  mkShow@{
+    show := natToString
+  };
 ```
 
 One more involved example is the following, which defines an instance of `Show`
@@ -71,11 +76,11 @@ for the type of lists:
 ```juvix
 instance
 showListI {A} {{Show A}} : Show (List A) :=
-  let
-    showList {A} : {{Show A}} → List A → String
-      | nil := "nil"
-      | (h :: t) := Show.show h ++str " :: " ++str showList t;
-  in mkShow (show := showList);
+   mkShow@{
+     show {A} {{Show A}} : List A -> String
+       | nil := "nil"
+       | (h :: t) := Show.show h ++str " :: " ++str show t;
+   };
 ```
 
 ## Usage
@@ -91,14 +96,14 @@ module usage-example;
     | S Nat;
 
   trait
-  type Show A := mkShow {show : A → String};
+  type Show A := mkShow@{show : A → String};
 
   NatToString : Nat -> String
     | Z := "Z"
     | (S n) := "S " ++str NatToString n;
 
   instance
-  showNat : Show Nat := mkShow (show := NatToString);
+  showNat : Show Nat := mkShow@{show := NatToString};
 end;
 ```
 
@@ -109,10 +114,10 @@ the trait parameters of instance types. Therefore, the following is rejected:
 type Box A := box A;
 
 trait
-type T A := mkT { pp : A → A };
+type T A := mkT@{ pp : A → A };
 
 -- instance
--- boxT {A} : {{T (Box A)}} → T (Box A) := mkT (λ{x := x});
+-- boxT {A} {{T (Box A)}} : T (Box A) := mkT (λ{x := x});
 ```
 
 We check whether each parameter is a strict subterm of some trait parameter in
@@ -125,8 +130,8 @@ It is possible to manually provide an instance and to match on implicit
 instances, as shown below:
 
 ```juvix
-f {A} {{Show A}} : A → String
-  | x := Show.show x;
+f {A} {{Show A}} (x : A) : String :=
+  Show.show x;
 
 f' {A} : {{Show A}} → A → String
   | {{mkShow s}} x := s x;
