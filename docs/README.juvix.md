@@ -59,7 +59,7 @@ Discord][anomaDiscord]. -->
 
 <div style="text-align:center" markdown>
 
-## ... a brief of what Juvix is about
+## ... a brief overview of what Juvix is about
 
 </div>
 
