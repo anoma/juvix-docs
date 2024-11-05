@@ -76,7 +76,7 @@ Stdlib.Prelude> true && false
 false
 Stdlib.Prelude> true || false
 true
-Stdlib.Prelude> if true 1 0
+Stdlib.Prelude> if | true := 1 | else := 0
 1
 ```
 
@@ -87,9 +87,10 @@ Stdlib.Prelude> "Hello world!"
 "Hello world!"
 Stdlib.Prelude> (1, 2)
 (1, 2)
-Stdlib.Prelude> 1 :: 2 :: nil
-1 :: 2 :: nil
+Stdlib.Prelude> [1; 2; 3]
+1 :: 2 :: 3 :: nil
 ```
+The notation `[a; b; c]` is an abbreviation for `a :: b :: c :: nil`, where `::` is a list "cons" operator and `nil` (also `[]`) denotes the empty list.
 
 In fact, you can use all functions and types from the
 [Stdlib.Prelude](https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html)
@@ -97,12 +98,12 @@ module of the [standard library](https://anoma.github.io/juvix-stdlib), which is
 preloaded by default.
 
 ```jrepl
-Stdlib.Prelude> length (1 :: 2 :: nil)
-3
-Stdlib.Prelude> null (1 :: 2 :: nil)
+Stdlib.Prelude> length [1; 2]
+2
+Stdlib.Prelude> isEmpty [1; 2]
 false
 Stdlib.Prelude> swap (1, 2)
-(2, 1)
+2, 1
 ```
 
 ## Files, modules and compilation
@@ -111,7 +112,7 @@ Currently, the REPL does not support adding new definitions. To define new
 functions or data types, you need to put them in a separate file and either load
 the file in the REPL with `:load file.juvix`, evaluate it with the shell command
 `juvix eval file.juvix`, or compile it to a binary executable with `juvix
-compile file.juvix`.
+compile native file.juvix`.
 
 To conveniently edit Juvix files, an [Emacs mode](./emacs.juvix.md) and a [VSCode
 extension](./vscode.juvix.md) are available.
@@ -130,7 +131,7 @@ end;
 
 A file compiled to an executable must define the zero-argument function `main`
 which is evaluated when running the program. The definition of `main` can have
-any non-function type, e.g., `String`, `Bool` or `Nat`. The generated executable
+any non-function type, e.g., `String`, `Bool`, `Nat` or `Int`. The generated executable
 prints the result of evaluating `main`.
 
 ## Data types and functions
@@ -140,11 +141,13 @@ To see the type of an expression, use the `:type` REPL command:
 ```jrepl
 Stdlib.Prelude> :type 1
 Nat
+Stdlib.Prelude> :type -1
+Int
 Stdlib.Prelude> :type true
 Bool
 ```
 
-The types `Nat` and `Bool` are defined in the standard library.
+The types `Nat`, `Int` and `Bool` are defined in the standard library.
 
 The type `Bool` has two constructors `true` and `false`.
 
@@ -178,9 +181,8 @@ a function call is evaluated, the first clause that matches the arguments is
 used.
 
 In contrast to languages like Python, Java or C/C++, Juvix doesn't require
-parentheses for function calls. All the arguments are just listed after the
-function. The general pattern for function application is: `func arg1 arg2 arg3
-...`
+parentheses for function calls. All arguments are just listed after the
+function. The general pattern for function application is: `func arg1 arg2 arg3 ...`
 
 Initial arguments that are matched against variables or wildcards in all clauses
 can be moved to the left of the colon. For example,
@@ -289,7 +291,7 @@ The `syntax operator + additive` declares `+` to be an operator with the
 `additive` fixity. The `+` is an ordinary function, except that function
 application for `+` is written in infix notation. The definitions of the clauses
 of `+` still need the prefix notation on the left-hand sides. Note that to use
-this definition in the code one needs to \import and open `Stdlib.Data.Fixity`.
+this definition in the code one needs to import and open `Stdlib.Data.Fixity`.
 
 The `a` and `b` in the patterns on the left-hand sides of the clauses are
 _variables_ which match arbitrary values of the corresponding type. They can be
@@ -327,6 +329,16 @@ The function `+` is defined like above in the standard library, but the Juvix
 compiler treats it specially and generates efficient code using appropriate CPU
 instructions.
 
+### Evaluation order
+
+By default, evaluation in Juvix is _eager_ (or _strict_), meaning that
+the arguments to a function are fully evaluated before applying the
+function. Only logical operators `||` and `&&` are treated specially
+and evaluated lazily. These special functions cannot be partially
+applied (see [Partial application and higher-order
+functions](./learn.juvix.md#partial-application-and-higher-order-functions)
+below).
+
 ## Pattern matching
 
 The patterns in function clauses do not have to match on a single constructor –
@@ -338,10 +350,10 @@ module Even;
   open Nat;
   open Bool;
 
-  even : Nat -> Bool
+  isEven : Nat -> Bool
     | zero := true
     | (suc zero) := false
-    | (suc (suc n)) := even n;
+    | (suc (suc n)) := isEven n;
 end;
 ```
 
@@ -379,46 +391,39 @@ It is not necessary to define a separate function to perform pattern matching.
 One can use the `case` syntax to pattern match an expression directly.
 
 ```jrepl
-Stdlib.Prelude> case (1, 2) | (suc _, zero) := 0 | (suc _, suc x) := x | _ := 19
+Stdlib.Prelude> case (1, 2) of (suc _, zero) := 0 | (suc _, suc x) := x | _ := 19
 1
 ```
 
 It is possible to name subpatterns with `@`.
 
 ```jrepl
-Stdlib.Prelude> case 3 | suc n@(suc _) := n | _ := 0
+Stdlib.Prelude> case 3 of suc n@(suc _) := n | _ := 0
 2
 ```
 
 ## Comparisons and conditionals
 
-The standard library includes all the expected comparison operators: `<`, `<=`,
-`>`, `>=`, `==`, `/=`, `min`, `max`. Similarly to arithmetic operations, the
-comparisons are in fact defined generically for different datatypes using
-traits, which are out of the scope of this tutorial. For basic usage, one can
-assume that the comparisons operate on natural numbers.
+The standard library includes all the expected comparison operators:
+`<`, `<=`, `>`, `>=`, `==`, `/=`. Similarly to arithmetic operations,
+the comparisons are in fact defined generically for different
+datatypes using traits, which are out of the scope of this
+tutorial. For basic usage, one can assume that the comparisons operate
+on natural numbers.
 
-For example, one may define the function `max3` by using the type Nat, functions
-`>` ,and `max` provided in the Standard Library:
+For example, one may define the function `max3` using `>` and `max`
+from the standard library:
 
 ```juvix extract-module-statements 1
 module max3-example;
   import Stdlib.Prelude open;
 
-  max3 (x y z : Nat) : Nat := ite (x > y) (max x z) (max y z);
+  max3 (x y z : Nat) : Nat :=
+    if
+      | x > y := max x z
+      | else := max y z;
 end;
 ```
-
-The conditional `ite` is a special function which is evaluated lazily, i.e.,
-first the condition (the first argument) is evaluated, and then depending on its
-truth-value one of the branches (the second or the third argument) is evaluated
-and returned.
-
-By default, evaluation in Juvix is _eager_ (or _strict_), meaning that the
-arguments to a function are fully evaluated before applying the function. Only
-`if`, `||` and `&&` are treated specially and evaluated lazily. These special
-functions cannot be partially applied (see [Partial application and higher-order
-functions](./learn.juvix.md#partial-application-and-higher-order-functions) below).
 
 ## Local definitions
 
@@ -446,19 +451,19 @@ module Let-Even;
   open Nat;
   open Bool;
 
-  even : Nat -> Bool :=
+  isEven : Nat -> Bool :=
     let
-      even' : Nat -> Bool
+      isEven' : Nat -> Bool
         | zero := true
-        | (suc n) := odd' n;
-      odd' : Nat -> Bool
+        | (suc n) := isOdd' n;
+      isOdd' : Nat -> Bool
         | zero := false
-        | (suc n) := even' n;
-    in even';
+        | (suc n) := isEven' n;
+    in isEven';
 end;
 ```
 
-The functions `even'` and `odd'` are not visible outside `even`.
+The functions `isEven'` and `isOdd'` are not visible outside `isEven`.
 
 ## Recursion
 
@@ -599,13 +604,13 @@ end;
 The application
 
 ```text
-nmap \{ x := div x 2 } lst
+nmap \{x := div x 2} lst
 ```
 
 divides every element of `lst` by `2`, rounding down the result. The expression
 
 ```text
-\{ x := div x 2 }
+\{x := div x 2}
 ```
 
 is an unnamed function, or a _lambda_, which divides its argument by `2`.
@@ -663,8 +668,7 @@ be provided explicitly by enclosing them in braces:
 f {implArg1} .. {implArgK} arg1 .. argN
 ```
 
-For example, `nil {Nat}` has type `List Nat` while `nil` by itself has type `{A
-: Type} -> List A`.
+For example, `nil {Nat}` has type `List Nat` while `nil` by itself has type `{A : Type} -> List A`.
 
 ## Tail recursion
 
@@ -825,14 +829,11 @@ module List-Sum-For;
 end;
 ```
 
-The braces around the body (in `{x + acc}`) are optional. A recommended style is
-to use braces if the body is on the same line.
-
 The above `for` iteration starts with the accumulator `acc` equal to `0` and
 goes through the list `l` from left to right (from beginning to end), at each
 step updating the accumulator to `x + acc` where `x` is the current list element
 and `acc` is the previous accumulator value. The final value of the iteration is
-the final value of the accumulator. The `for`` iterator is tail recursive, i.e.,
+the final value of the accumulator. The `for` iterator is tail recursive, i.e.,
 no stack memory is allocated and the whole iteration is compiled to a loop.
 
 The `rfor` iterator is analogous to `for` except that it goes through the list
@@ -891,25 +892,33 @@ module Non-Terminating-Log;
 
   terminating
   log2 (n : Nat) : Nat :=
-    ite (n <= 1) 0 (suc (log2 (div n 2)));
+    if
+      | n <= 1 := 0
+      | else := suc (log2 (div n 2));
 end;
 ```
 
-Let us look at other examples. The termination checker rejects the exponent
-definition
+Let us look at other examples. The termination checker rejects the
+following definition of the factorial function (when the `terminating`
+keyword is removed):
 
 ```juvix extract-module-statements 1
 module Fact-Non-Terminating;
   import Stdlib.Prelude open;
 
-  terminating -- remove this line to see the error
-  fact (x : Nat) : Nat := ite (x == 0) 1 (x * fact (sub x 1));
+  -- remove `terminating` to see the error
+  terminating
+  fact (x : Nat) : Nat :=
+    if
+      | x == 0 := 1
+      | else := x * fact (sub x 1);
 end;
 ```
 
-without the 'terminating' keyword because the recursive call is not on a
-subpattern of a pattern matched on in the clause. One can reformulate this
-definition so that it is accepted by the termination checker:
+To ensure termination, the argument to the recursive call must be a
+proper subpattern of a pattern matched on in the clause. One can
+reformulate this definition so that it is accepted by the termination
+checker:
 
 ```juvix extract-module-statements 1
 module Fact-Terminating;
@@ -926,13 +935,9 @@ clauses or `case` expressions. For example, the following definition is rejected
 because the case `suc zero` is not handled:
 
 ```
-module Even-Not-Pass-Coverage;
-  import Stdlib.Prelude open;
-
-  even : Nat -> Bool
+  isEven : Nat -> Bool
     | zero := true
-    | (suc (suc n)) := even n;
-end;
+    | (suc (suc n)) := isEven n;
 ```
 
 Since coverage checking forces the user to specify the function for all input
@@ -956,7 +961,7 @@ Another solution is to wrap the result in the `Maybe` type from the standard
 library, which allows representing optional values. An element of `Maybe A` is
 either `nothing` or `just x` with `x : A`.
 
-```juvix extract-module-statements 1
+```juvix extract-module-statements
 module Maybe;
 
   type Maybe A :=
@@ -982,7 +987,7 @@ Then the user needs to explicitly check if the result of the function contains a
 value or not:
 
 ```text
-case (tail' lst)
+case tail' lst of
 | just x := ...
 | nothing := ...
 ```
@@ -1135,7 +1140,7 @@ In this definition, we parameterize the type `Maybe` with a generic type `A`.
 
 Implement again the `fromMaybe` function, but now, for the polymorphic `Maybe`
 type. Note that in function definitions we must specify the type variables. The
-definition of `fromMaybe` begin with:
+definition of `fromMaybe` begins with:
 
 ```text
 fromMaybe {A} (d : A) : Maybe A -> A
@@ -1404,12 +1409,14 @@ is prime.
         go : Nat -> Bool
           | zero := true
           | (suc zero) := true
-          | n@(suc k) := ite (mod x k == 0) false (go k);
-      in case x of {
+          | n@(suc k) :=
+            if
+              | mod x k == 0 := false
+              | else := go k;
+      in case x of
            | zero := false
            | suc zero := false
-           | suc k := go k
-         };
+           | suc k := go k;
     end;
     ```
 
@@ -1418,7 +1425,10 @@ is prime.
 Does Juvix accept the following definition?
 
 ```text
-half : Nat -> Nat := if (n < 2) 0 (half (sub n 2) + 1);
+half : Nat -> Nat :=
+  if
+    | n < 2 := 0
+    | else := half (sub n 2) + 1;
 ```
 
 If not, how can you reformulate this definition so that it is accepted by Juvix?
@@ -1567,7 +1577,7 @@ should be a function which given `x` computes `2(x - 1) + 1`.
     end;
     ```
 
-    where `∘` is a composition function from the standard library:
+    where `>>` is a composition function from the standard library:
 
     ```juvix extract-module-statements
     module Comp-Syntax;
