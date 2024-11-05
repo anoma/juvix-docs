@@ -27,9 +27,9 @@ module Hello;
 end;
 ```
 
-The name of the top module should necessarily coincide with the file name.
+The name of the top module must coincide with the file name.
 
-Syntax should be automatically highlighted for any file with `.juvix` extension.
+Syntax should be automatically highlighted for any file with the `.juvix` extension.
 You can jump to the definition of an identifier by pressing ++f12++ or
 control-clicking it. To apply the Juvix code formatter to the current file, use
 ++shift+ctrl+i++.
@@ -44,8 +44,9 @@ functions of the buttons are as follows.
 - Typecheck (++shift+alt+t++). Type-checks the current file.
 - Compile (++shift+alt+c++). Compiles the current file. The resulting native
   executable will be left in the directory of the file.
-- Run (++shift+alt+x++). Compiles and runs the current file. The output of the
-  executable run is displayed in a separate window.
+- Evaluate (++shift+alt+x++). Evaluates the current file in the Juvix
+  evaluator. The output of the program evaluation is displayed in a separate
+  window.
 - Html preview. Generates HTML documentation for the current file and displays
   it in a separate window.
 
