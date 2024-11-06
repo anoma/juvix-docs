@@ -184,7 +184,7 @@ nav:
           - notes/lsp.md
           - notes/runtime-benchmark-results.md
 
-  - Standard library: https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html#
+  - Standard library: https://anoma.github.io/juvix-stdlib/index.html
   - Packages and Projects: ./juvix-packages.md
   - Discord: https://discord.gg/jwzaMZ2Sct
 

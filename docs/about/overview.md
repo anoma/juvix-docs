@@ -51,7 +51,7 @@ alt="Nightly build, release and benchmark" /></a>
 </table>
 
 Juvix is an open-source, constantly evolving functional programming language
-designed for writing privacy-preserving decentralized applications. Using Juvix, developers can write high-level programs which can be compiled to WASM directly, or to circuits for private execution within the *Resource Machine* on [Anoma][anoma] or Ethereum.
+designed for writing privacy-preserving intent-centric decentralized applications. Using Juvix, developers can write high-level programs which can be compiled to Cairo bytecode for private execution within the *Resource Machine* on [Anoma][anoma].
 
 ## Getting Started
 
@@ -65,15 +65,14 @@ ready to use with Juvix and the Haskell toolchain installed.
 
 ## Language features
 
-Juvix is designed with a focus on safety. The Juvix compiler runs several
-static analyses which guarantee the absence of runtime errors. Analyses
-performed include termination and type checking. As a result, functional
-programs, especially validity predicates, can be written with greater confidence
-in their correctness.
+Juvix is designed with a focus on safety. The Juvix compiler runs
+several static analyses which guarantee the absence of runtime
+errors. Analyses performed include termination and type checking. As a
+result, functional programs can be written with greater confidence in
+their correctness.
 
 Some language features in Juvix include:
 
-- Haskell/Agda-like syntax with support for Unicode
 - Type inference
 - Parametric polymorphism
 - User defined inductive data types

@@ -11,12 +11,12 @@ icon: octicons/people-16
 - Paul Cadman
 - Jonathan Cubides
 - Łukasz Czajka
-- Artem Gureev
 - Jan Mas Rovira
 
 ## Anoma contributors
 
 - Christopher Goes
+- Artem Gureev
 - Jeremy Orleans
 - Terence Rokop
 
