@@ -31,7 +31,7 @@ rest of the blog post will teach you how to use them in a nice iterator syntax.
 
 The problem with folds is that they are hard to read and understand, which
 results in code that is difficult to maintain. From a fold application, e.g.,
-`foldr \{ acc x := body } a xs`, it is not always immediately apparent how the
+`foldr \{acc x := body} a xs`, it is not always immediately apparent how the
 list traversal proceeds. This is especially the case when the function argument
 is big and spans several lines - then the initial value `a` of the accumulator
 and the list `xs` are syntactically "disconnected" from the accumulator variable
@@ -70,7 +70,7 @@ Iterator application has the syntax:
 for (acc := a) (x in xs) {body}
 ```
 
-The braces around `body` are optional.
+If `body` is an atom, the braces can be omitted.
 
 The above `for` iteration starts with the accumulator `acc` equal to `a` and
 goes through the list `xs` from left to right (from beginning to end), at each
@@ -101,13 +101,21 @@ for (acc := nil) (x in xs) {x :: acc}
 Counting odd numbers in a list:
 
 ```juvix
-for (acc := 0) (x in xs) {if (mod x 2 == 0) acc (acc + 1)}
+for (acc := 0) (x in xs) {
+  if
+    | mod x 2 == 0 := acc
+    | else := acc + 1
+}
 ```
 
 Sum of squares of positive numbers in a list:
 
 ```juvix
-for (acc := 0) (x in xs) {if (x > 0) (acc + x * x) acc}
+for (acc := 0) (x in xs) {
+  if
+   | x > 0 := acc + x * x
+   | else := acc
+}
 ```
 
 The `for` iterator is complemented by the `rfor` iterator which goes through the
@@ -131,7 +139,11 @@ rfor (acc := nil) (x in xs) {f x :: acc}
 Filtering a list with a predicate `p`:
 
 ```juvix
-rfor (acc := nil) (x in xs) {if (p x) (x :: acc) acc}
+rfor (acc := nil) (x in xs) {
+  if
+    | p x := x :: acc
+    | else := acc
+}
 ```
 
 The above keeps only the elements that satisfy `p`. The order of the elements
@@ -160,13 +172,13 @@ rfor (acc := nil) (x in xs) {(body) :: acc}
 or if you're familiar with the standard `map` function:
 
 ```juvix
-map \{ x := body } xs
+map \{x := body} xs
 ```
 
 Similarly, one can use the notation
 
 ```juvix
-filter (x in xs) p x
+filter (x in xs) {p x}
 ```
 
 to filter `xs` with the predicate `p`.
@@ -191,7 +203,12 @@ For example, to compute the largest and the second-largest element of a list of
 non-negative numbers one can use:
 
 ```juvix
-for (n, n' := 0, 0) (x in lst) {if (x >= n) (x, n) (if (x > n') (n, x) (n, n'))}
+for (n, n' := 0, 0) (x in lst) {
+  if
+    | x >= n := (x, n)
+    | x > n' := (n, x)
+    | else := (n, n')
+}
 ```
 
 where `n` is the largest and `n'` the second-largest element found so far.
@@ -227,7 +244,7 @@ func (acc1 := a1; ..; accn := an) (x1 in xs1; ..; xk in xsk) {body}
 is automatically replaced by
 
 ```juvix
-func \{ acc1 .. accn x1 .. xk := body } acc1 .. accn xs1 .. xsk
+func \{acc1 .. accn x1 .. xk := body} acc1 .. accn xs1 .. xsk
 ```
 
 The replacement is entirely syntactic and happens before type-checking.
@@ -247,4 +264,4 @@ More information on iterators can be found in the [Juvix language reference][juv
 [juvix-folds]: https://anoma.github.io/juvix-stdlib/Stdlib.Data.List.Base.html
 [juvix-stdlib]: https://anoma.github.io/juvix-stdlib
 [juvix-reference-iterators]: https://docs.juvix.org/latest/reference/language/iterators
-[juvix-tutorial-iterators]: https://docs.juvix.org/latest/tutorials/learn/#iteration-over-data-structures
+[juvix-tutorial-iterators]: https://docs.juvix.org/latest/tutorials/learn.html#iteration-over-data-structures
