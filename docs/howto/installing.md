@@ -132,9 +132,10 @@ If you want to compile to WebAssembly, you need to install:
 
 - [wasmer](https://wasmer.io)
 - [wasi-sdk](https://github.com/WebAssembly/wasi-sdk/releases)
-- [wasm-ld](https://lld.llvm.org) - the LLVM linker for WASM (NB: On
-  Linux you may need to install the `lld` package; on macOS this is
-  installed as part of `llvm`).
+- [wasm-ld](https://lld.llvm.org) - the LLVM linker for WASM. On Linux
+  and newer versions of macOS, you may need to install the `lld`
+  package. On older macOS versions, this is installed as part of
+  `llvm`.
 
 To install `wasi-sdk` you need to download `libclang_rt` and
 `wasi-sysroot` precompiled archives from the [wasi-sdk release

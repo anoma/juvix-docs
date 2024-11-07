@@ -35,7 +35,7 @@ juvix compile --help
 ## Juvix Projects
 
 A Juvix project is a collection of Juvix modules in one main directory
-containing a `juvix.yaml` metadata file. Each module's name must match its file
+containing a `Package.juvix` metadata file. Each module's name must match its file
 path, relative to the project's root directory. For instance, if the file is
 `root/Data/List.juvix`, the module should be called `Data.List`.
 
@@ -48,46 +48,3 @@ juvix dev root
 ```
 
 Refer to: [Modules Reference](../reference/language/modules.md).
-
-## Compiling to VampIR Backend
-
-For the [VampIR](https://github.com/anoma/vamp-ir) backend, the `main` function must have type:
-
-```text
-Ty1 -> ... -> Tyn -> TyR
-```
-
-Here, `Tyi`,`TyR` are `Nat`, `Int` or `Bool`. The compiler adds an equation to the generated VampIR file that states the relationship between the input and output of the `main` function:
-
-```text
-main arg1 .. argn = out
-```
-
-Here, `arg1`, ... ,`argn` are the argument names of `main` found in the source code. If `main` returns a boolean (`Bool`), the compiler uses `1` (true) instead of `out`.
-
-The variables `argi`,`out` in the generated file are unbound VampIR variables for which VampIR solicits witnesses during proof generation.
-
-For example:
-
-```juvix
-main (x y : Nat) : Bool := x + y > 0;
-```
-
-Generates the equation:
-
-```text
-main x y = 1
-```
-
-The `main` input argument names in the generated VampIR file can also be specified with the `argnames` pragma:
-
-```juvix
-{-# argnames: [a, b] #-}
-main (x y : Nat) : Bool := x + y > 0;
-```
-
-Generates the equation:
-
-```text
-main a b = 1
-```

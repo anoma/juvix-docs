@@ -35,13 +35,13 @@ juvix eval path/to/source.juvix
 Compile a source file into a native executable:
 
 ```shell
-juvix compile path/to/source.juvix
+juvix compile native path/to/source.juvix
 ```
 
-Compile a source file into a WebAssembly binary:
+Compile a source file into a Nockma binary:
 
 ```shell
-juvix compile wasi path/to/source.juvix
+juvix compile anoma path/to/source.juvix
 ```
 
 Launch the REPL:
@@ -84,14 +84,12 @@ juvix compile native HelloWorld.juvix
 ./HelloWorld
 ```
 
-You should see the output: `hello world!`
+You should see the output: `hello world!`.
 
-The source code can also be compiled to a WebAssembly binary. This
-requires some additional setup. See the [Installation
-How-to](./installing.md) for more
-information. You can also run `juvix doctor` to check your setup.
+You can also evaluate the file without compiling it first by executing
 
 ```shell
-juvix compile wasi HelloWorld.juvix
-wasmer HelloWorld.wasm
+juvix eval HelloWorld.juvix
 ```
+
+The output should be the same : `hello world!`.

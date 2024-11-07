@@ -17,10 +17,9 @@ Codespace][juvix-codespace]
 
 1. Fork the repository.
 2. Clone your forked repository to your local machine.
-3. Install [Stack][stack] if you haven't already.
-4. Build the project by running `stack build`. To build the project with
-   optimizations, run `stack build --fast`. To install the binaries to your
-   local `~/.local/bin`, run `stack install`.
+3. Install [Stack][stack] and [just][just] if you haven't already.
+4. Build the project by running `just build`. To install the binaries to your
+   local `~/.local/bin`, run `just install`.
 5. Run the tests by running `stack test`.
 6. Make sure to install the [pre-commit][pre-commit] binary, so you can run the
    pre-commit hooks by running `make precommit` in the root directory of the
@@ -72,5 +71,6 @@ Thank you for contributing to Juvix!
 [installation]: https://docs.juvix.org/dev/howto/installing/
 [juvix-codespace]: https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=102404734&machine=standardLinux32gb&location=WestEurope
 [stack]: https://docs.haskellstack.org/en/stable/README/
+[just]: https://just.systems
 [pre-commit]: https://pre-commit.com/
 [discord]: https://discord.gg/PfaaFVErHt
