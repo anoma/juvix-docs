@@ -13,7 +13,7 @@ module reference.language.functions;
 
 In Juvix, a function declaration is composed of a type signature and the body of
 the function. The type signature specifies the types of the arguments and the
-return type of the function. Constants are considered as functions with no
+return type of the function. Constants are considered to be functions with no
 arguments. The body of a function can either be a single expression or a set of
 function clauses when pattern matching is employed.
 
@@ -66,7 +66,6 @@ module default-values;
   f {x : Nat := 0} {y : Nat := 1} : Nat := x + y;
 end;
 ```
-
 
 When calling this function without providing values for `x` and `y`, such as
 `f`, the function will use the default values and return `1`.
@@ -181,13 +180,13 @@ module mutually-recursive;
   import Stdlib.Data.Bool open;
   import Stdlib.Prelude open;
 
-  odd : Nat -> Bool
+  isOdd : Nat -> Bool
     | zero := false
-    | (suc n) := even n;
+    | (suc n) := isEven n;
 
-  even : Nat -> Bool
+  isEven : Nat -> Bool
     | zero := true
-    | (suc n) := odd n;
+    | (suc n) := isOdd n;
 end;
 ```
 
@@ -215,18 +214,7 @@ function declaration can be converted to use anonymous functions:
 
 ```juvix extract-module-statements 1
 module anonymous-functions;
-  import Stdlib.Prelude open;
-
-  odd : Nat -> Bool :=
-    \ {
-      | zero := false
-      | (suc n) := even n
-    };
-
-  even : Nat -> Bool :=
-    \ {
-      | zero := true
-      | (suc n) := odd n
-    };
+  import Stdlib.Data.Nat open;
+  multiplyByTwo : Nat -> Nat := \{n := 2 * n};
 end;
 ```

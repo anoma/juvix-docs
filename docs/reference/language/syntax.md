@@ -111,7 +111,7 @@ Instances:
 ```text
 --8<-- [start:instance-syntax]
 instance
-<term> : {{<trait>}} := <trait constructor>@{
+<term> : <trait> := <trait constructor>@{
     field1 := <term1>;
     ...
     fieldn := <termn>;
