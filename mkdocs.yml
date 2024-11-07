@@ -131,11 +131,6 @@ plugins:
 
 nav:
   - ./README.juvix.md
-  - About:
-      - Overview: ./about/overview.md
-      - Changelog: ./CHANGELOG.md
-      - Team: ./about/team.md
-      - License: ./about/license.md
 
   - Blog:
       - blog/index.md
@@ -180,9 +175,6 @@ nav:
           - Doctor: ./reference/tooling/doctor.md
           - Emacs mode: ./reference/tooling/emacs.md
           - Haskell test suite: ./reference/tooling/testing.md
-      - Compiler Dev Reference:
-          - notes/lsp.md
-          - notes/runtime-benchmark-results.md
 
   - Standard library: https://anoma.github.io/juvix-stdlib/index.html
   - Packages and Projects: ./juvix-packages.md
