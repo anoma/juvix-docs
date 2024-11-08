@@ -12,7 +12,7 @@ dependencies :=
 github "anoma" "juvix-test" "v0.15.0"
 --8<-- [end:juvix-test]
 ;
---8<- [start:juvix-quickcheck]
+--8<-- [start:juvix-quickcheck]
 github "anoma" "juvix-quickcheck" "v0.15.0"
 --8-- [end:juvix-quickcheck]
 ;
