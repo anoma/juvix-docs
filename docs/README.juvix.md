@@ -84,7 +84,7 @@ Discord][anomaDiscord]. -->
     Master the essentials of Juvix through a series of
     tailored examples, tutorials and technical explanations.
 
-    [:octicons-arrow-right-24: Learn Juvix in 5 minutes](./tutorials/learn.juvix.md)
+    [:octicons-arrow-right-24: Learn Juvix in 5 minutes](./tutorials/learn.html)
 
 <!-- -  :fontawesome-solid-book-open:{ .lg .middle } __Explanations__
 
@@ -110,7 +110,7 @@ Discord][anomaDiscord]. -->
     Explore the Language reference, milestone examples, and tooling
     documentation!
 
-    [:octicons-arrow-right-24: Reference](./reference/language/functions.juvix.md)
+    [:octicons-arrow-right-24: Reference](./reference/language/README.md)
 
 -   :material-account-group:{ .lg .middle } __Blog__
 
