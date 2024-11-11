@@ -49,6 +49,17 @@ module example-multiply-by-two;
 end;
 ```
 
+The argument `n` can then be provided to `multiplyByTwo` explicitly by
+name:
+
+```juvix extract-module-statements 2
+module example-multiply-by-two-application;
+  import Stdlib.Data.Nat open using {Nat; *};
+  multiplyByTwo (n : Nat) : Nat := 2 * n;
+  four : Nat := multiplyByTwo@{n := 2};
+end;
+```
+
 ### Default Values
 
 We can assign default values to function arguments. This feature allows a
@@ -125,8 +136,7 @@ When `neg` is called with `true`, the first clause is used and the function
 returns `false`. Similarly, when `neg` is called with `false`, the second clause
 is used and the function returns `true`.
 
-Note that one may pattern match multiple arguments at once. The syntax in case
-of two arguments is as follows and can be extended to more arguments.
+Note that one may pattern match multiple arguments at once. The syntax in for two arguments is as follows and can be extended to more arguments.
 
 ```text
 --8<-- "docs/reference/language/syntax.md:function-pattern-matching-multiple-arguments"
@@ -159,7 +169,7 @@ of two arguments is as follows and can be extended to more arguments.
       end;
     ```
 
-    If there is only one clause without any patterns, the pipe `|` must be omitted as we see earlier.
+    If there is only one clause without any patterns, the pipe `|` must be omitted.
 
     ```juvix extract-module-statements 1
     module short-definitons;
@@ -195,6 +205,18 @@ recursive functions/types without any special syntax. However, exceptions exist.
 A symbol `f` cannot be forward-referenced in a statement `s` if a local module,
 \import statement, or open statement exists between `s` and the definition of
 `f`.
+
+Functions with zero arguments (variable definitions) are not
+recursive. For example, in the following `let`, the variable `x` is
+not defined recursively but assigned the value of the function argument `x`
+increased by `1`. For example, the value of `g 2` is `3`.
+
+```juvix extract-module-statements 1
+module non-recursive-functions;
+  import Stdlib.Data.Nat open;
+  g (x : Nat) : Nat := let x := x + 1 in x;
+end;
+```
 
 ## Anonymous Functions (Lambdas)
 
