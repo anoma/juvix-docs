@@ -92,7 +92,7 @@ type <name> <type-parameters> :=
 [trait]
 --8<-- [start:record-syntax]
 type <record name> <type parameters> :=
-    | <type-constructor1>@{
+    | <type-constructor-1>@{
         <field1-1> : <type-1-1>;
         ...
         <field1-n> : <type-1-n>
