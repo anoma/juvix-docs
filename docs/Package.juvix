@@ -9,15 +9,15 @@ name := "juvix-docs";
 dependencies :=
 [
 --8<-- [start:juvix-test]
-github "anoma" "juvix-test" "v0.15.0"
+github "anoma" "juvix-test" "v0.16.0"
 --8<-- [end:juvix-test]
 ;
 --8<-- [start:juvix-quickcheck]
-github "anoma" "juvix-quickcheck" "v0.15.0"
---8-- [end:juvix-quickcheck]
+github "anoma" "juvix-quickcheck" "v0.16.0"
+--8<-- [end:juvix-quickcheck]
 ;
 --8<-- [start:juvix-stdlib]
-github "anoma" "juvix-stdlib" "v0.7.0"
+github "anoma" "juvix-stdlib" "v0.8.0"
 --8<-- [end:juvix-stdlib]
 ;
 --8<-- [start:anoma-applib]
