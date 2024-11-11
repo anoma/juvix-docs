@@ -101,7 +101,7 @@ Discord][anomaDiscord]. -->
     A collection of talks and workshop videos showcasing Juvix. Gain valuable
     insights and inspiration from our presentations at various conferences.
 
-    [:octicons-arrow-right-24: Juvix videos](./about/talks.md)
+    [:octicons-arrow-right-24: Juvix videos](./talks.md)
 
 -   :fontawesome-solid-lines-leaning:{ .lg .middle } __Reference__
 
@@ -121,15 +121,13 @@ Discord][anomaDiscord]. -->
 
     [:octicons-arrow-right-24: Blog](./blog/index.md)
 
-    [:octicons-arrow-right-24: Join us](./about/community.md)
-
 -   :material-scale-balance:{ .lg .middle } __Open Source, GPL3.0__
 
     ---
 
     Juvix is licensed under GPL3 and available on [GitHub].
 
-    [:octicons-arrow-right-24: License](./about/license.md)
+    [:octicons-arrow-right-24: License](https://github.com/anoma/juvix/blob/main/LICENSE.md)
 
 </div>
 

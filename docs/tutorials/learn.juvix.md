@@ -1449,31 +1449,6 @@ If not, how can you reformulate this definition so that it is accepted by Juvix?
     end;
     ```
 
-#### Suffixes
-
-A _suffix_ of a list `l` is any list which can be obtained from `l` by removing
-some initial elements. For example, the suffixes of `1 :: 2 :: 3 :: nil` are:
-
-- `1 :: 2 :: 3 :: nil`,
-- `2 :: 3 :: nil`,
-- `3 :: nil`, and
-- `nil`.
-
-Define a function which computes the list of all suffixes of a given list,
-arranged in descending order of their lengths.
-
-??? info "Solution"
-
-    ```juvix extract-module-statements
-    module Sol-Suffixes;
-      import Stdlib.Prelude open;
-
-      suffixes {A} : List A -> List (List A)
-        | nil := nil :: nil
-        | xs@(_ :: xs') := xs :: suffixes xs';
-    end;
-    ```
-
 #### Tree map
 
 Recall the `Tree` type from above.
@@ -1514,12 +1489,12 @@ which applies a function to all natural numbers stored in a tree.
 
 #### Polymorphic tree
 
-Modify the `Tree` type from [Exercise 5](#exercise-5) to be polymorphic in the
-element type, and then repeat the previous exercise.
+Modify the `Tree` type to be polymorphic in the element type, and then
+repeat the previous exercise.
 
 ??? info "Solution"
 
-    Only the types need to be changed.
+    The `Tree` type and the `tmap` function need to be made polymorphic in the element types.
 
     ```juvix extract-module-statements
     module Sol-Tree-Poly;
@@ -1527,6 +1502,37 @@ element type, and then repeat the previous exercise.
       type Tree A :=
         | leaf : A -> Tree A
         | node : A -> Tree A -> Tree A -> Tree A;
+
+      tmap {A B} (f : A -> B) : Tree A -> Tree B
+        | (leaf x) := leaf (f x)
+        | (node x l r) := node (f x) (tmap f l) (tmap f r);
+    end;
+    ```
+
+    Note that only the types needed to be changed.
+
+#### Suffixes
+
+A _suffix_ of a list `l` is any list which can be obtained from `l` by removing
+some initial elements. For example, the suffixes of `1 :: 2 :: 3 :: nil` are:
+
+- `1 :: 2 :: 3 :: nil`,
+- `2 :: 3 :: nil`,
+- `3 :: nil`, and
+- `nil`.
+
+Define a function which computes the list of all suffixes of a given list,
+arranged in descending order of their lengths.
+
+??? info "Solution"
+
+    ```juvix extract-module-statements
+    module Sol-Suffixes;
+      import Stdlib.Prelude open;
+
+      suffixes {A} : List A -> List (List A)
+        | nil := nil :: nil
+        | xs@(_ :: xs') := xs :: suffixes xs';
     end;
     ```
 
@@ -1577,7 +1583,7 @@ should be a function which given `x` computes `2(x - 1) + 1`.
     end;
     ```
 
-    where `>>` is a composition function from the standard library:
+    where `>>` is the composition function from the standard library:
 
     ```juvix extract-module-statements
     module Comp-Syntax;

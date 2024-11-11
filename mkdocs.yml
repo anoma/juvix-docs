@@ -132,20 +132,17 @@ plugins:
 nav:
   - ./README.juvix.md
 
-  - Blog:
-      - blog/index.md
-
-  - Tutorials:
-      - Learn Juvix in minutes: ./tutorials/learn.juvix.md
-      - Juvix VSCode extension: ./tutorials/vscode.juvix.md
-      - Juvix Emacs mode: ./tutorials/emacs.juvix.md
-
   - How-to guides:
       - Installing Juvix: ./howto/installing.md
       - Compiling programs: ./howto/compilation.md
       - Setting up a project: ./howto/project.md
       - Contributing: ./howto/contributing.md
       - Judoc documentation tool: ./howto/judoc.md
+
+  - Tutorials:
+      - Learn Juvix in minutes: ./tutorials/learn.juvix.md
+      - Juvix VSCode extension: ./tutorials/vscode.juvix.md
+      - Juvix Emacs mode: ./tutorials/emacs.juvix.md
 
   - Reference:
       - Language reference:
@@ -175,9 +172,14 @@ nav:
           - Doctor: ./reference/tooling/doctor.md
           - Emacs mode: ./reference/tooling/emacs.md
           - Haskell test suite: ./reference/tooling/testing.md
+      - Compiler implementation: ./reference/compiler.md
 
   - Standard library: https://anoma.github.io/juvix-stdlib/index.html
   - Packages and Projects: ./juvix-packages.md
+  - Blog:
+      - blog/index.md
+  - Talks:
+      - talks.md
   - Discord: https://discord.gg/jwzaMZ2Sct
 
 
