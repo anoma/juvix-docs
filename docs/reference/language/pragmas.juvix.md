@@ -12,14 +12,17 @@ import Stdlib.Prelude open using {Nat;zero;suc; List; ::; nil; module List};
 
 # Pragmas in Juvix
 
-Pragmas in Juvix are used to provide additional information to the compiler
-about how to handle specific identifiers or modules. They offer a way to control
-the compilation process and can be associated with identifiers by placing a
-pragma comment just before the identifier declaration.
+Pragmas in Juvix are used to provide additional information to the
+compiler about how to handle specific identifiers or modules. They
+offer a way to control the compilation process and can be associated
+with identifiers by placing a pragma comment just before the
+identifier declaration. The pragmas do not have any semantic significance,
+i.e., removing all pragmas can affect efficiency but should have no
+effect on the meaning of programs.
 
-## Syntax of Pragma
+## Syntax of pragmas
 
-The syntax for binding a pragma to an identifier is as follows:
+The syntax for a pragma associated to an identifier is as follows:
 
 ```text
 --8<-- "docs/reference/language/syntax.md:pragma-id-syntax"
@@ -64,8 +67,8 @@ axiom <body-h> : Nat -> Nat;
 
 In this scenario, inlining is enabled for `f`, `g` and disabled for `h`.
 
-Pragmas are mappings in [YAML](https://yaml.org/) syntax, albeit the outermost
-braces are not mandated for the top-level mapping if it's on a single line. If
+Pragmas are mappings in [YAML](https://yaml.org/) syntax, except that the outermost
+braces are not mandatory for the top-level mapping if it's on a single line. If
 the compiler encounters any unrecognized pragmas, they will be disregarded to
 ensure backwards compatibility. Although pragmas influence the compilation
 process, they don't carry any semantic significance - eliminating all pragmas
@@ -115,7 +118,7 @@ symbolizes a non-negative number.
 
 - `inline: case`
 
-  This pragma specifies that a function should be inline whenever it
+  This pragma specifies that a function should be inlined whenever it
   is matched on. Using this pragma makes most sense with small
   functions that directly return a constructor application.
 
