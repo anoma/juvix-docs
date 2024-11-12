@@ -4,13 +4,14 @@ import PackageDescription.V2 open;
 
 --8<-- [start:Dependencies]
 package : Package :=
-  defaultPackage
-    {name := "my-package";
-     version := mkVersion 0 1 0;
-     dependencies := [ defaultStdlib
-                     ; github "anoma" "juvix-containers" "v0.7.1"
-                     ; git "my-dependency" "https://my-git-repo-url" "my-git-ref"
-                     ; path "a/path/to/a/juvix/package"
-                     ]
-    };
+  defaultPackage@{
+    name := "my-package";
+    version := mkVersion 0 1 0;
+    dependencies :=
+      [
+        defaultStdlib;
+        git "my-dependency" "https://my-git-repo-url" "my-git-ref";
+        path "a/path/to/a/juvix/package";
+      ];
+  };
 --8<-- [end:Dependencies]

@@ -22,7 +22,7 @@ module Hello;
 end;
 ```
 
-The name of the top module should necessarily coincide with the file name.
+The name of the top module must coincide with the file name.
 
 Type ++ctrl+c+ctrl+l++ to run the scoper and highlight the syntax.
 
@@ -35,10 +35,9 @@ underlined with the error message "Symbol not in scope".
 
 ```text
 module Hello-Print;
-  open import Stdlib.Prelude;
+  import Stdlib.Prelude open;
 
-  main : IO;
-  main := printStringLna "Hello world!";
+  main : IO := printStringLna "Hello world!";
 end;
 ```
 

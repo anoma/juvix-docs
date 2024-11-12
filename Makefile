@@ -77,13 +77,13 @@ python-requirements:
 .PHONY: juvix-sources
 juvix-sources:
 	@if [ ! -d ${COMPILERSOURCES} ]; then \
-		git clone -b main https://github.com/anoma/juvix.git ${COMPILERSOURCES}; \
+		git clone --quiet -b main https://github.com/anoma/juvix.git ${COMPILERSOURCES}; \
 	fi
 	@cd ${COMPILERSOURCES} && \
-		git fetch --all && \
+		git fetch --quiet --all && \
 		if [ "${DEV}" = true ]; then \
 			git checkout main > /dev/null 2>&1; \
-			git pull origin main --rebase; \
+			git pull origin main --rebase --quiet; \
 		else \
 			git checkout v${VERSION} > /dev/null 2>&1; \
 		fi;
@@ -225,7 +225,7 @@ JUVIXFILES=$(shell find ./docs \
 	-type d -name "examples" -prune -o \
 	-type f -name "*.juvix" -print)
 JUVIXFORMATFLAGS?=--in-place
-JUVIXTYPECHECKFLAGS?=--only-errors
+JUVIXTYPECHECKFLAGS?=--log-level error
 JUSTCHECK ?= 0
 
 .PHONY: format-juvix-files

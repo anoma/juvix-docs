@@ -33,15 +33,18 @@ module README;
 
 <div markdown>
 
-Juvix is an open-source functional language with static typing and strict
-semantics. It is the programming language for the [Anoma][anoma]'s blockchain. The
-primary purpose of this language is to encode [Anoma's intents][anoma], enabling
-private and transparent execution through the [Abstract Resource Machine](https://art.anoma.net/list.html#paper-10498993) on the Anoma
+Juvix is an open-source functional language with static typing and
+strict semantics. It is the programming language for the
+[Anoma][anoma]'s blockchain. The primary purpose of this language is
+to encode [Anoma's intents][anoma], enabling private and transparent
+execution through the [Abstract Resource
+Machine](https://art.anoma.net/list.html#paper-10498993) on the Anoma
 blockchain.
 
-Juvix, initially designed for Anoma, provides features typical of any high-level
-programming language with many more on the horizon. It can compile programs into
-native executable, WASM, and arithmetic circuits facilitating zero-knowledge proofs.
+Juvix, initially designed for Anoma, provides features typical of any
+high-level programming language with many more on the horizon. It can
+compile programs into native executable, WASM, Cairo bytecode and
+arithmetic circuits facilitating zero-knowledge proofs.
 
 Stay tuned for Juvix updates! Follow us on [:material-twitter: Twitter][twitter]
 and join our [:fontawesome-brands-discord: Discord][Discord] community.
@@ -56,7 +59,7 @@ Discord][anomaDiscord]. -->
 
 <div style="text-align:center" markdown>
 
-## ... a brief of what Juvix is about
+## ... a brief overview of what Juvix is about
 
 </div>
 
@@ -81,7 +84,7 @@ Discord][anomaDiscord]. -->
     Master the essentials of Juvix through a series of
     tailored examples, tutorials and technical explanations.
 
-    [:octicons-arrow-right-24: Learn Juvix in 5 minutes](./tutorials/learn.juvix.md)
+    [:octicons-arrow-right-24: Learn Juvix in 5 minutes](./tutorials/learn.html)
 
 <!-- -  :fontawesome-solid-book-open:{ .lg .middle } __Explanations__
 
@@ -98,7 +101,7 @@ Discord][anomaDiscord]. -->
     A collection of talks and workshop videos showcasing Juvix. Gain valuable
     insights and inspiration from our presentations at various conferences.
 
-    [:octicons-arrow-right-24: Juvix videos](./about/talks.md)
+    [:octicons-arrow-right-24: Juvix videos](./talks.md)
 
 -   :fontawesome-solid-lines-leaning:{ .lg .middle } __Reference__
 
@@ -107,7 +110,7 @@ Discord][anomaDiscord]. -->
     Explore the Language reference, milestone examples, and tooling
     documentation!
 
-    [:octicons-arrow-right-24: Reference](./reference/language/functions.juvix.md)
+    [:octicons-arrow-right-24: Reference](./reference/language/README.md)
 
 -   :material-account-group:{ .lg .middle } __Blog__
 
@@ -118,15 +121,13 @@ Discord][anomaDiscord]. -->
 
     [:octicons-arrow-right-24: Blog](./blog/index.md)
 
-    [:octicons-arrow-right-24: Join us](./about/community.md)
-
 -   :material-scale-balance:{ .lg .middle } __Open Source, GPL3.0__
 
     ---
 
     Juvix is licensed under GPL3 and available on [GitHub].
 
-    [:octicons-arrow-right-24: License](./about/license.md)
+    [:octicons-arrow-right-24: License](https://github.com/anoma/juvix/blob/main/LICENSE.md)
 
 </div>
 

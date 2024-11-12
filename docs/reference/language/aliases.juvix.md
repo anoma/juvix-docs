@@ -12,7 +12,7 @@ import Stdlib.Data.Fixity open;
 
 # Aliases in Juvix
 
-Aliases in Juvix are a powerful feature that allows developers to create shorthand or substitute names for existing ones. This can greatly enhance readability and maintainability of the code.
+Aliases in Juvix allow to create shorthand or substitute names for existing ones. This can greatly enhance readability and maintainability of the code.
 
 ## Syntax
 
@@ -24,7 +24,7 @@ The syntax for creating an alias is as follows:
 
 Once declared, these aliases can be used interchangeably with the original name. They can be employed in various contexts such as pattern matching, qualification, and module opening.
 
-# Application of Aliases
+## Use of Aliases
 
 One of the key features of aliases in Juvix is their ability to be forward referenced. This means you can use an alias before it has been officially declared in your code. This can be particularly useful when you want to use a more intuitive or shorter name for something that is defined later in the code.
 

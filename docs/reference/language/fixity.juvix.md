@@ -11,7 +11,7 @@ module reference.language.fixity;
 
 # Fixities
 
-Fixities in Juvix refers to the precedence and associativity of operators. A
+Fixities in Juvix refer to the precedence and associativity of operators. A
 fixity declaration is defined using the `syntax` keyword followed by `fixity`.
 It specifies how an operator should be parsed in relation to other operators.
 
@@ -87,7 +87,7 @@ syntax fixity <name> := <arity> {
     };
 ```
 
-# Operator Alias Fixity
+## Operator Alias Fixity
 
 In Juvix, when an operator is aliased, the new alias automatically inherits the
 fixity of the original operator. This behavior ensures consistency and
@@ -108,7 +108,7 @@ end;
 ```
 
 However, if you want to override this behavior, you can declare the alias with
-`none` as its fixity. Make sure to \import `Stdlib.Data.Fixity`.
+`none` as its fixity. Make sure to import `Stdlib.Data.Fixity`.
 
 ```juvix extract-module-statements
 module fixityNone;

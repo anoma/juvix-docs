@@ -21,7 +21,7 @@ Let's look at an example:
 As you can see, when we want to write `Judoc` comments, we write three dashes `---`.
 
 We can write Juvix expressions inside `Judoc` comments too. We do so by
-delimiting it with `;`. Then, the Juvix code inside will be properly scoped and
+delimiting them with `;`. Then, the Juvix code inside will be properly scoped and
 highlighted. Remember that only things that are in scope can be referenced.
 
 For more information about the syntax of the `Judoc` markup language, you can

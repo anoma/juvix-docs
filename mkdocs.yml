@@ -131,19 +131,6 @@ plugins:
 
 nav:
   - ./README.juvix.md
-  - About:
-      - Overview: ./about/overview.md
-      - Changelog: ./CHANGELOG.md
-      - Team: ./about/team.md
-      - License: ./about/license.md
-
-  - Blog:
-      - blog/index.md
-
-  - Tutorials:
-      - Learn Juvix in minutes: ./tutorials/learn.juvix.md
-      - Juvix VSCode extension: ./tutorials/vscode.juvix.md
-      - Juvix Emacs mode: ./tutorials/emacs.juvix.md
 
   - How-to guides:
       - Installing Juvix: ./howto/installing.md
@@ -151,6 +138,11 @@ nav:
       - Setting up a project: ./howto/project.md
       - Contributing: ./howto/contributing.md
       - Judoc documentation tool: ./howto/judoc.md
+
+  - Tutorials:
+      - Learn Juvix in minutes: ./tutorials/learn.juvix.md
+      - Juvix VSCode extension: ./tutorials/vscode.juvix.md
+      - Juvix Emacs mode: ./tutorials/emacs.juvix.md
 
   - Reference:
       - Language reference:
@@ -162,7 +154,7 @@ nav:
           - Traits: ./reference/language/traits.juvix.md
           - Modules: ./reference/language/modules.md
           - Local definitions: ./reference/language/lets.juvix.md
-          - Control structures: ./reference/language/control.md
+          - Control structures: ./reference/language/control.juvix.md
           - Comments: ./reference/language/comments.md
           - Pragmas: ./reference/language/pragmas.juvix.md
           - Axioms: ./reference/language/axioms.juvix.md
@@ -174,27 +166,20 @@ nav:
 
       - Standard library: ./reference/stdlib.md
       - Example programs: ./reference/examples.md
-      # - Benchmarks: ./reference/benchmarks.md
-      - Tooling: # ./reference/tooling/README.md
+      - Tooling:
           - Documentation Tool: ./reference/judoc.md
           - Command line interface: ./reference/tooling/CLI.md
           - Doctor: ./reference/tooling/doctor.md
           - Emacs mode: ./reference/tooling/emacs.md
           - Haskell test suite: ./reference/tooling/testing.md
-      - Compiler Dev Reference:
-          - notes/lsp.md
-          - notes/runtime-benchmark-results.md
+      - Compiler implementation: ./reference/compiler.md
 
-  # - Explanations:
-  # - About: ./explanations/README.md
-  # - Type theory: ./explanations/typetheory.md
-  # - Totality checking:
-  #     - Termination: ./explanations/totality/termination.md
-  # - Strictly positive data types: ./explanations/totality/positive.md
-  # - Coverage checking: ./explanations/totality/coverage.md
-
-  - Standard library: https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html#
+  - Standard library: https://anoma.github.io/juvix-stdlib/index.html
   - Packages and Projects: ./juvix-packages.md
+  - Blog:
+      - blog/index.md
+  - Talks:
+      - talks.md
   - Discord: https://discord.gg/jwzaMZ2Sct
 
 

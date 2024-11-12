@@ -37,7 +37,7 @@ Consider the following data type `X` where `A` and `B` are types in scope:
 --8<------ "docs/blog/posts/strictly-positive-data-types/Main.juvix:typeX"
 ```
 
-In this example, the type `X` occurs strictly positive in the constructor `c0`,
+In this example, the type `X` occurs strictly positively in the constructor `c0`,
 but negatively in the constructor `c1` in the type argument `X -> A`. Therefore,
 `X` is not strictly positive.
 
@@ -58,7 +58,7 @@ Let us consider another example:
 ```
 
 In this example, the type `T0` is strictly positive, while the type `T1` is not.
-It is only after unfolding the type application `T0 (T1 A)` in the data
+It is only after unfolding the type application `T0 T1` in the data
 constructor `c1` that we can determine `T1` occurs in a negative position due to
 `T0`. More specifically, the type parameter `A` of `T0` is negative.
 

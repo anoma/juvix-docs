@@ -3,12 +3,13 @@ module howto.judoc.Main;
 
 --- ;Maybe; represents an optional value.
 type Maybe (A : Type) :=
- --- The value is missing
- nothing
- | --- The value is here
- just A;
+  | --- The value is missing
+    nothing
+  | --- The value is here
+    just A;
 
 --- Retrieves a value from a ;Maybe; or returns the default value if missing.
-fromMaybe {A} (default : A) : Maybe A -> A
-  | nothing := default
-  | (just x) := x;
+fromMaybe {A} (default : A) (maybeValue : Maybe A) : A :=
+  case maybeValue of
+    | nothing := default
+    | just value := value;

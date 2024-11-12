@@ -2,9 +2,9 @@ module Package;
 
 import PackageDescription.V2 open;
 
-package : Package := defaultPackage
-  { dependencies := [
-  github "anoma" "juvix-stdlib" "f68b0614ad695eaa13ead42f3466e0a78219f826"
-  ]
-  }
-;
+package : Package := defaultPackage@{
+dependencies :=
+[
+  github "anoma" "juvix-stdlib" "v0.7.0"
+]
+};

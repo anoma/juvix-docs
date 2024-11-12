@@ -92,13 +92,13 @@ type <name> <type-parameters> :=
 [trait]
 --8<-- [start:record-syntax]
 type <record name> <type parameters> :=
-    | <type-constructor1> {
+    | <type-constructor-1>@{
         <field1-1> : <type-1-1>;
         ...
         <field1-n> : <type-1-n>
         }
     | ...
-    | <type-constructor-n> {
+    | <type-constructor-n>@{
         <fieldn-1> : <type-n-1>;
         ...
         <fieldn-n> : <type-n-n>
@@ -111,11 +111,11 @@ Instances:
 ```text
 --8<-- [start:instance-syntax]
 instance
-<term> : {{<trait>}} := <trait constructor> (
+<term> : <trait> := <trait constructor>@{
     field1 := <term1>;
     ...
     fieldn := <termn>;
-);
+};
 --8<-- [end:instance-syntax]
 ```
 
@@ -170,4 +170,16 @@ case <expression> of {
   | <patternN> := <branchN>
 }
 --8<-- [end:case-syntax]
+```
+
+### If
+
+```text
+--8<-- [start:if-syntax]
+if
+  | <expression-1> := <branch-1>
+  ..
+  | <expression-n> := <branch-n>
+  | else := <branch-else>
+--8<-- [end:if-syntax]
 ```

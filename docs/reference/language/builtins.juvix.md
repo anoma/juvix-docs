@@ -12,7 +12,7 @@ import Stdlib.Data.Fixity open;
 
 # Built-ins
 
-Juvix has support for the built-in natural type and a few functions that
+Juvix has support for the built-in natural numbers type and a few functions that
 are compiled to efficient primitives.
 
 ## Built-in inductive definitions
@@ -36,9 +36,9 @@ builtin nat-plus
 
 ## Builtin axiom definitions
 
-```juvix extract-module-statements 
+```juvix extract-module-statements
 module example-print-nat;
-  
+
   builtin IO
   axiom IO : Type;
 

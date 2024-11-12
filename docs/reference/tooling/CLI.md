@@ -20,17 +20,19 @@ juvix [Global options] ((-v|--version) | (-h|--help) | COMPILER_CMD | UTILITY_CM
 ## Global Command flags
 
 - `--no-colors` Disable globally ANSI formatting
+- `--vscode` Enable VSCode compatible output
 - `--show-name-ids` Show the unique number of each identifier when
   pretty printing
-- `--only-errors` Only print errors in a uniform format (used by
-  juvix-mode)
 - `--no-termination` Disable termination checking
 - `--no-positivity` Disable positivity checking for inductive types
 - `--no-coverage` Disable coverage checking for patterns
 - `--no-stdlib` Do not use the standard library
 - `--internal-build-dir BUILD_DIR` Directory for compiler internal output
 - `--stdin` Read from Stdin
-- `--unroll ARG` Recursion unrolling limit (default: 140)
+- `--offline` Disable access to network resources
+- `--log-level LOG_LEVEL`  Determines how much log the compiler produces.error < warn < info < progress < verbose < debug
+- `--dev-show-thread-ids` [DEV] Show the thread id when compiling a module
+- `-N,--threads THREADS` Number of physical threads to run (default: auto)
 
 ## Main Commands
 
@@ -63,8 +65,9 @@ juvix dev COMMAND
 - `root` Show the root path for a Juvix project
 - `termination` Subcommands related to termination checking
 - `internal` Subcommands related to Internal
-- `minic` Translate a Juvix file to a subset of C
-- `geb` Subcommands related to JuvixGeb
+- `casm` Subcommands related to Cairo Assembly
+- `anoma` Subcommands related to Anoma
+- `nockma` Subcommands related to Nockma
 - `runtime` Subcommands related to the Juvix runtime
 - `repl` Run the Juvix dev REPL
 
