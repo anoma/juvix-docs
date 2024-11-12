@@ -6,9 +6,8 @@ search:
 ---
 # Commenting in Juvix
 
-Comments provides a way to document code for better understanding and
-readability for users and future developers. In Juvix, the commenting syntax
-follows that of `Haskell`.
+Comments provide a way to document code for better understanding and
+readability. In Juvix, the comment syntax is similar to that of `Haskell`.
 
 ## Syntax of Comments
 
@@ -25,7 +24,7 @@ Inline comments start with two hyphens (`--`). They extend to the end of the lin
 
 ### Region Comment
 
-Region comments are multi-line comments. They start with `{ -` and end with `- }`.
+Region comments are multi-line comments. They start with `{-` and end with `-}`.
 
 ```text
 {-
