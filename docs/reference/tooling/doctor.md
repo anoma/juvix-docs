@@ -27,9 +27,6 @@ Use [Homebrew](https://brew.sh):
 brew install llvm
 ```
 
-NB: The distribution of Clang that comes with XCode does not support the
-`Wasm` target so you must install the standard Clang distribution.
-
 ### Debian / Ubuntu Linux
 
 ```shell
@@ -44,18 +41,16 @@ sudo pacman -S llvm lld
 
 ## Could not find the wasm-ld command
 
-The Juvix compiler required `wasm-ld` (the Wasm linker) to produce
-`Wasm` binaries.
+The Juvix compiler requires `wasm-ld` (the Wasm linker) to produce
+WebAssembly binaries. If you don't want to compile to WebAssembly, you
+can ignore this message.
 
 Recommended installation method:
 
 ### MacOS
 
-`wasm-ld` is included in the [Homebrew](https://brew.sh) llvm
-distribution:
-
 ```shell
-brew install llvm
+brew install lld
 ```
 
 ### Debian / Ubuntu Linux
@@ -82,10 +77,12 @@ Juvix requires Clang version 13 or above. See the documentation on
 
 ## Clang does not support the wasm32-wasi target
 
-Juvix uses [WASI - The Wasm System Interface](https://wasi.dev) to
+Juvix optionally uses [WASI - The Wasm System Interface](https://wasi.dev) to
 produce binaries that can be executed using a Wasm runtime. The files
 necessary to setup Clang with `wasm32-wasi` support are available at
 [wasi-sdk](https://github.com/WebAssembly/wasi-sdk/releases).
+
+You can ignore this message if you don't want to compile to WebAssembly.
 
 To install the `wasm32-wasi` target for Clang you need to do two things:
 
@@ -122,9 +119,13 @@ Set the `WASI_SYSROOT_PATH` to the directory where you installed the
 `wasi-sdk` sysroot files. See [installing the WASI
 sysroot](./doctor.md#download-the-wasi-sysroot-and-set-wasi_sysroot_path).
 
+You can ignore this message if you don't want to compile to WebAssembly.
+
 ## Could not find the wasmer command
 
 The Juvix test suite uses [Wasmer](https://wasmer.io) as a Wasm runtime
 to execute compiled Wasm binaries. See [the Wasmer
 documentation](https://docs.wasmer.io/install)
 to see how to install it.
+
+You can ignore this message if you don't want to compile to WebAssembly.

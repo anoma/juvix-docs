@@ -24,7 +24,7 @@ Or using `Stack`:
 stack test
 ```
 
-To run tests, ignoring all the WASM tests:
+To run only quick tests, ignoring all slow tests:
 
 ```shell
 stack test --ta '-p "! /slow tests/"'

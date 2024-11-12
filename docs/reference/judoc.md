@@ -15,7 +15,7 @@ blocks_ to the following entities:
 - A module.
 - A type definition.
 - A constructor definition.
-- A type signature of a function.
+- A function definition.
 - An axiom definition.
 
 In order to attach documentation to any of these entities, write _blocks_ of
@@ -40,18 +40,16 @@ type Nat : Type :=
     suc : Nat -> Nat;
 ```
 
-- For type signatures (and likewise for axioms):
+- For functions (and likewise for axioms):
 
 ```juvix
 --- The polymorphic identity function
-id : {A : Type} -> A -> A;
+id {A} (x : A) : A := x;
 ```
-
-Next we define the syntax of Judoc _blocks_.
 
 ## Block
 
-A _block_ can be one of these:
+A _block_ can be one of:
 
 1. A _paragraph_.
 2. An _example_.
