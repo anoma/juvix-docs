@@ -171,3 +171,15 @@ case <expression> of {
 }
 --8<-- [end:case-syntax]
 ```
+
+### If
+
+```text
+--8<-- [start:if-syntax]
+if
+  | <expression-1> := <branch-1>
+  ..
+  | <expression-n> := <branch-n>
+  | else := <branch-else>
+--8<-- [end:if-syntax]
+```

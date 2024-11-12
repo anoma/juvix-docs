@@ -154,7 +154,7 @@ nav:
           - Traits: ./reference/language/traits.juvix.md
           - Modules: ./reference/language/modules.md
           - Local definitions: ./reference/language/lets.juvix.md
-          - Control structures: ./reference/language/control.md
+          - Control structures: ./reference/language/control.juvix.md
           - Comments: ./reference/language/comments.md
           - Pragmas: ./reference/language/pragmas.juvix.md
           - Axioms: ./reference/language/axioms.juvix.md
