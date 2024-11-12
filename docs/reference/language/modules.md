@@ -24,14 +24,12 @@ In this syntax:
 
 - `<name>` represents the module's name.
 
-- `<body>` is a sequence of Juvix statements (traits, data types, functions,
+- `<body>` is a sequence of Juvix statements (declarations of data types, functions, traits,
   etc.).
 
 - The `end` keyword is used to close the module definition.
 
-!!!info Inline end "Note"
-
-    The `end` keyword is optional if the module definition is the last statement in the file.
+The `end` keyword is optional if the module definition is the last statement in the file.
 
 For instance, to define a module named `Data.List`, we write:
 
@@ -168,7 +166,7 @@ module ModuleName;
 end;
 ```
 
-Note that local module names cannot contain the `.` character.
+Local module names cannot contain the `.` character.
 
 After the definition of a local module, we can access its definitions by using
 qualified names. Local modules can be opened by open statements in the same way
@@ -185,4 +183,4 @@ apply, and they probably follow your intuition:
 
 As a consequence of 2 and 3, using a symbol that is both defined and opened
 locally will result in an ambiguity error. In order to solve that, the symbol
-that was opened, would need to be used qualified instead.
+that was opened would need to be used qualified instead.
