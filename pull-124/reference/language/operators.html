@@ -1553,18 +1553,19 @@
 
 <!-- Page content -->
 <h1 id="operator-syntax">Operator Syntax<a class="headerlink" href="#operator-syntax" title="Permanent link">&para;</a></h1>
-<p>The <code>syntax</code> keyword, paired with <code>operator</code>, caters for functions serving as
-operators. These operators often have distinct associativity and precedence from
-regular functions. The pairing associates a term with one <a href="fixity.html">fixity</a>,
-defining its arity and potentially its precedence and associativity. This syntax
-declaration has to precede the term declaration.</p>
+<p>The <code>syntax</code> keyword followed by <code>operator</code> declares a function to be
+an operators. These operators often have distinct associativity and
+precedence from regular functions. The operator declaration associates a term with
+one <a href="fixity.html">fixity</a> which define its arity and potentially
+its precedence and associativity. The operator syntax declaration has to
+precede the term declaration.</p>
 <div class="highlight"><pre><span></span><code>syntax operator &lt;name&gt; &lt;fixity&gt;;
 </code></pre></div>
-<p>Where <code>&lt;fixity&gt;</code> is a previously declared <a href="fixity.html">fixity</a>. Note that there
-are already many commons of these declarations included with the standard
+<p>Here <code>&lt;fixity&gt;</code> is a previously declared <a href="fixity.html">fixity</a>. Note that there
+are already many common fixities included in the standard
 library. See <a href="fixity.html#examples-of-fixity-declarations">common fixities</a> for more
 information.</p>
-<p>For instance, we can define the <code>×</code> operator as a binary operator as follows:</p>
+<p>For instance, we can define the <code>×</code> operator as a binary operator:</p>
 <pre class="highlight"><code class="juvix"><pre class="src-content"><span class="ju-keyword">syntax</span> <span class="ju-keyword">fixity</span> <span class="ju-fixity"><span class="annot"><a href="https://docs.juvix.org/pull-124/reference/language/operators.html#reference.language.operators:1" class="ju-code-link ju-fixity"><span class="ju-fixity">product</span></a></span></span> <span class="ju-keyword">:=</span> binary<span class="ju-delimiter">;</span><br/><br/><span class="ju-keyword">syntax</span> <span class="ju-keyword">operator</span> <span class="ju-var">×</span> <span class="ju-var">product</span><span class="ju-delimiter">;</span><br/><br/><span class="ju-keyword">type</span> <span id="reference.language.operators:3"><span class="annot"><a href="https://docs.juvix.org/pull-124/reference/language/operators.html#reference.language.operators:3" class="ju-code-link ju-inductive"><span class="annot"><a href="https://docs.juvix.org/pull-124/reference/language/operators.html#reference.language.operators:3" class="ju-code-link ju-inductive"><span class="ju-inductive">×</span></a></span></a></span></span> <span id="reference.language.operators:5"><span class="annot"><a href="https://docs.juvix.org/pull-124/reference/language/operators.html#reference.language.operators:5" class="ju-code-link ju-var"><span class="annot"><a href="https://docs.juvix.org/pull-124/reference/language/operators.html#reference.language.operators:5" class="ju-code-link ju-var"><span class="ju-var"><span class="ju-delimiter">(</span>a</span></a></span></a></span></span> <span class="ju-keyword">:</span> <span class="ju-keyword">Type</span><span class="ju-delimiter">)</span> <span id="reference.language.operators:6"><span class="annot"><a href="https://docs.juvix.org/pull-124/reference/language/operators.html#reference.language.operators:6" class="ju-code-link ju-var"><span class="annot"><a href="https://docs.juvix.org/pull-124/reference/language/operators.html#reference.language.operators:6" class="ju-code-link ju-var"><span class="ju-var"><span class="ju-delimiter">(</span>b</span></a></span></a></span></span> <span class="ju-keyword">:</span> <span class="ju-keyword">Type</span><span class="ju-delimiter">)</span> <span class="ju-keyword">:=</span> <span id="reference.language.operators:4"><span class="annot"><a href="https://docs.juvix.org/pull-124/reference/language/operators.html#reference.language.operators:4" class="ju-code-link ju-constructor"><span class="annot"><a href="https://docs.juvix.org/pull-124/reference/language/operators.html#reference.language.operators:4" class="ju-code-link ju-constructor"><span class="ju-constructor">,</span></a></span></a></span></span> <span class="ju-keyword">:</span> <span class="annot"><a href="https://docs.juvix.org/pull-124/reference/language/operators.html#reference.language.operators:5" class="ju-code-link ju-var"><span class="ju-var">a</span></a></span> <span class="ju-keyword">→</span> <span class="annot"><a href="https://docs.juvix.org/pull-124/reference/language/operators.html#reference.language.operators:6" class="ju-code-link ju-var"><span class="ju-var">b</span></a></span> <span class="ju-keyword">→</span> <span class="annot"><a href="https://docs.juvix.org/pull-124/reference/language/operators.html#reference.language.operators:5" class="ju-code-link ju-var"><span class="ju-var">a</span></a></span> <span class="annot"><a href="https://docs.juvix.org/pull-124/reference/language/operators.html#reference.language.operators:3" class="ju-code-link ju-inductive"><span class="ju-inductive">×</span></a></span> <span class="annot"><a href="https://docs.juvix.org/pull-124/reference/language/operators.html#reference.language.operators:6" class="ju-code-link ju-var"><span class="ju-var">b</span></a></span><span class="ju-delimiter">;</span></pre></code></pre>
 
 <!-- Source file information -->
@@ -1591,7 +1592,7 @@ information.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-07-11T18:25:24+02:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-11-12T11:43:17+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-12</span>
   </span>
 
     
@@ -1726,7 +1727,7 @@ information.</p>
       <li><a href="https://anoma.net/" target="_blank">Anoma</a> | <a href="https://anoma.net/blog" target="_blank">Anoma Blog</a> | <a href="https://anoma.net/talks" target="_blank">Anoma Talks</a></li>
       <li>
       <!-- include time  -->
-      Last updated: 2024-11-12 08:59:05 UTC
+      Last updated: 2024-11-12 10:57:54 UTC
         </li>
       </li>
       </ul>

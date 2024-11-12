@@ -1495,17 +1495,19 @@
 <h2 id="global-command-flags">Global Command flags<a class="headerlink" href="#global-command-flags" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>--no-colors</code> Disable globally ANSI formatting</li>
+<li><code>--vscode</code> Enable VSCode compatible output</li>
 <li><code>--show-name-ids</code> Show the unique number of each identifier when
   pretty printing</li>
-<li><code>--only-errors</code> Only print errors in a uniform format (used by
-  juvix-mode)</li>
 <li><code>--no-termination</code> Disable termination checking</li>
 <li><code>--no-positivity</code> Disable positivity checking for inductive types</li>
 <li><code>--no-coverage</code> Disable coverage checking for patterns</li>
 <li><code>--no-stdlib</code> Do not use the standard library</li>
 <li><code>--internal-build-dir BUILD_DIR</code> Directory for compiler internal output</li>
 <li><code>--stdin</code> Read from Stdin</li>
-<li><code>--unroll ARG</code> Recursion unrolling limit (default: 140)</li>
+<li><code>--offline</code> Disable access to network resources</li>
+<li><code>--log-level LOG_LEVEL</code>  Determines how much log the compiler produces.error &lt; warn &lt; info &lt; progress &lt; verbose &lt; debug</li>
+<li><code>--dev-show-thread-ids</code> [DEV] Show the thread id when compiling a module</li>
+<li><code>-N,--threads THREADS</code> Number of physical threads to run (default: auto)</li>
 </ul>
 <h2 id="main-commands">Main Commands<a class="headerlink" href="#main-commands" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1536,8 +1538,9 @@
 <li><code>root</code> Show the root path for a Juvix project</li>
 <li><code>termination</code> Subcommands related to termination checking</li>
 <li><code>internal</code> Subcommands related to Internal</li>
-<li><code>minic</code> Translate a Juvix file to a subset of C</li>
-<li><code>geb</code> Subcommands related to JuvixGeb</li>
+<li><code>casm</code> Subcommands related to Cairo Assembly</li>
+<li><code>anoma</code> Subcommands related to Anoma</li>
+<li><code>nockma</code> Subcommands related to Nockma</li>
 <li><code>runtime</code> Subcommands related to the Juvix runtime</li>
 <li><code>repl</code> Run the Juvix dev REPL</li>
 </ul>
@@ -1591,7 +1594,7 @@ you can inspect by running <code>echo $FPATH</code> in the shell).</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-07-11T18:25:24+02:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-11-12T11:54:59+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-12</span>
   </span>
 
     
@@ -1774,7 +1777,7 @@ you can inspect by running <code>echo $FPATH</code> in the shell).</p>
       <li><a href="https://anoma.net/" target="_blank">Anoma</a> | <a href="https://anoma.net/blog" target="_blank">Anoma Blog</a> | <a href="https://anoma.net/talks" target="_blank">Anoma Talks</a></li>
       <li>
       <!-- include time  -->
-      Last updated: 2024-11-12 08:59:05 UTC
+      Last updated: 2024-11-12 10:57:54 UTC
         </li>
       </li>
       </ul>

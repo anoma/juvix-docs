@@ -1414,7 +1414,7 @@ blocks</em> to the following entities:</p>
 <li>A module.</li>
 <li>A type definition.</li>
 <li>A constructor definition.</li>
-<li>A type signature of a function.</li>
+<li>A function definition.</li>
 <li>An axiom definition.</li>
 </ul>
 <p>In order to attach documentation to any of these entities, write <em>blocks</em> of
@@ -1437,14 +1437,13 @@ type Nat : Type :=
     suc : Nat -&gt; Nat;
 </code></pre></div>
 <ul>
-<li>For type signatures (and likewise for axioms):</li>
+<li>For functions (and likewise for axioms):</li>
 </ul>
 <div class="highlight"><pre><span></span><code>--- The polymorphic identity function
-id : {A : Type} -&gt; A -&gt; A;
+id {A} (x : A) : A := x;
 </code></pre></div>
-<p>Next we define the syntax of Judoc <em>blocks</em>.</p>
 <h2 id="block">Block<a class="headerlink" href="#block" title="Permanent link">&para;</a></h2>
-<p>A <em>block</em> can be one of these:</p>
+<p>A <em>block</em> can be one of:</p>
 <ol>
 <li>A <em>paragraph</em>.</li>
 <li>An <em>example</em>.</li>
@@ -1528,7 +1527,7 @@ For instance:</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-09-15T17:47:28+02:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-11-12T11:54:59+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-12</span>
   </span>
 
     
@@ -1711,7 +1710,7 @@ For instance:</p>
       <li><a href="https://anoma.net/" target="_blank">Anoma</a> | <a href="https://anoma.net/blog" target="_blank">Anoma Blog</a> | <a href="https://anoma.net/talks" target="_blank">Anoma Talks</a></li>
       <li>
       <!-- include time  -->
-      Last updated: 2024-11-12 08:59:05 UTC
+      Last updated: 2024-11-12 10:57:54 UTC
         </li>
       </li>
       </ul>
