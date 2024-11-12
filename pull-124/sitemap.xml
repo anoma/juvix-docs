@@ -2,214 +2,214 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.juvix.org/pull-124/CHANGELOG.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/README.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/everything.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/juvix-packages.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/talks.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/blog/index.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/blog/iterators.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/blog/strictly-positive-data-types.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/explanations/index.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/explanations/typetheory.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/explanations/totality/coverage.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/explanations/totality/positive.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/explanations/totality/termination.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/howto/compilation.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/howto/contributing.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/howto/installing.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/howto/judoc.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/howto/project.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/howto/quick-start.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/benchmarks.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/compiler.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/examples.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/judoc.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/stdlib.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/index.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/aliases.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/axioms.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/builtins.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/comments.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/control.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/datatypes.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/fixity.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/functions.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/iterators.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/lets.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/modules.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/operators.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/pragmas.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/records.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/syntax.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/language/traits.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/tooling/CLI.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/tooling/doctor.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/tooling/emacs.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/reference/tooling/testing.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/tutorials/emacs.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/tutorials/learn.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/tutorials/structure.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/tutorials/vscode.juvix.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/blog/archive/2023.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/blog/archive/2022.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/blog/category/language.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.juvix.org/pull-124/blog/category/type-system.html</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-12</lastmod>
     </url>
 </urlset>

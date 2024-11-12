@@ -1268,8 +1268,99 @@
 </a></p>
 <h2 id="v068-2024-11-11"><a href="https://github.com/anoma/juvix/tree/v0.6.8">v0.6.8</a> (2024-11-11)<a class="headerlink" href="#v068-2024-11-11" title="Permanent link">&para;</a></h2>
 <p><a href="https://github.com/anoma/juvix/compare/v0.6.7...v0.6.8">Full Changelog</a></p>
+<p><strong>Merged pull requests:</strong></p>
+<ul>
+<li>Add option to run Anoma tests in non-debug mode <a href="https://github.com/anoma/juvix/pull/3144">#3144</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Support traces in the anoma node <a href="https://github.com/anoma/juvix/pull/3152">#3152</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Add NFData instance for Core.Module <a href="https://github.com/anoma/juvix/pull/3160">#3160</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Add <code>--vscode</code> option <a href="https://github.com/anoma/juvix/pull/3162">#3162</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Don't write log messages to stdout <a href="https://github.com/anoma/juvix/pull/3159">#3159</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Release 0.6.8 <a href="https://github.com/anoma/juvix/pull/3165">#3165</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+</ul>
 <h2 id="v067-2024-11-06"><a href="https://github.com/anoma/juvix/tree/v0.6.7">v0.6.7</a> (2024-11-06)<a class="headerlink" href="#v067-2024-11-06" title="Permanent link">&para;</a></h2>
 <p><a href="https://github.com/anoma/juvix/compare/v0.6.6...v0.6.7">Full Changelog</a></p>
+<p><strong>Merged pull requests:</strong></p>
+<ul>
+<li>Fix locations in Internal hole substitution (only for the case of substituting identifiers) <a href="https://github.com/anoma/juvix/pull/2995">#2995</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Fix typechecking of default arguments in signatures with trait arguments <a href="https://github.com/anoma/juvix/pull/2998">#2998</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Fix a bug that prevented use of name signature defined after the point <a href="https://github.com/anoma/juvix/pull/3001">#3001</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Remove legacy naive match-to-case compiler <a href="https://github.com/anoma/juvix/pull/3003">#3003</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Do not inline the functions library everywhere in the Nockma backend <a href="https://github.com/anoma/juvix/pull/3004">#3004</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Compilation of side conditions in pattern matches <a href="https://github.com/anoma/juvix/pull/2984">#2984</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Only output .debug.nockma file with the --debug flag <a href="https://github.com/anoma/juvix/pull/3006">#3006</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Do not duplicate nockma stdlib in the nockma backend <a href="https://github.com/anoma/juvix/pull/3005">#3005</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Lift non-immediate expressions out of case values for the Nockma backend <a href="https://github.com/anoma/juvix/pull/3010">#3010</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Fix location of scoped modulePathName <a href="https://github.com/anoma/juvix/pull/3011">#3011</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Fix RISC0 compilation on the CI <a href="https://github.com/anoma/juvix/pull/3015">#3015</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Fix bug in symbol dependency graph generation in Core <a href="https://github.com/anoma/juvix/pull/3018">#3018</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Store the <code>DocTable</code> in the .jvo file <a href="https://github.com/anoma/juvix/pull/3021">#3021</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Fix the location in the parser for .juvix.md <a href="https://github.com/anoma/juvix/pull/3020">#3020</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>The <code>assert</code> builtin <a href="https://github.com/anoma/juvix/pull/3014">#3014</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Fix RISC0 in the CI <a href="https://github.com/anoma/juvix/pull/3025">#3025</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Fix JuvixTree parsing and pretty printing <a href="https://github.com/anoma/juvix/pull/3024">#3024</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Remove old named application syntax <a href="https://github.com/anoma/juvix/pull/3026">#3026</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Update to GHC 9.10.1 <a href="https://github.com/anoma/juvix/pull/2991">#2991</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Update linux static binary workflow for GHC 9.10.1 <a href="https://github.com/anoma/juvix/pull/3034">#3034</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Don't fold lets if the let-bound variable occurs under a lambda-abstraction <a href="https://github.com/anoma/juvix/pull/3029">#3029</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Update cabal.project.freeze for GHC 9.10.1 update <a href="https://github.com/anoma/juvix/pull/3035">#3035</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Precompute debug operations info in linear time <a href="https://github.com/anoma/juvix/pull/3038">#3038</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Revert GHC 9.10.1 update <a href="https://github.com/anoma/juvix/pull/3052">#3052</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Improve parsing error for missing @ in named application <a href="https://github.com/anoma/juvix/pull/3012">#3012</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Fix linux static build: Remove -j argument from C runtime make invocation <a href="https://github.com/anoma/juvix/pull/3055">#3055</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Group tables related to typechecking <a href="https://github.com/anoma/juvix/pull/3056">#3056</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Fix RISC0 on the CI <a href="https://github.com/anoma/juvix/pull/3061">#3061</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Parse stdlibPlaceholder in Nockma parser <a href="https://github.com/anoma/juvix/pull/3065">#3065</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Include the juvix version in the build directory path <a href="https://github.com/anoma/juvix/pull/3069">#3069</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Ignore files that start with a <code>.</code> <a href="https://github.com/anoma/juvix/pull/3072">#3072</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Remove unused field from <code>ScoperState</code> <a href="https://github.com/anoma/juvix/pull/3073">#3073</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Reimplement positivity checker <a href="https://github.com/anoma/juvix/pull/3057">#3057</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Fix termination crash due to empty permutation <a href="https://github.com/anoma/juvix/pull/3081">#3081</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Merge typechecker negative tests <a href="https://github.com/anoma/juvix/pull/3076">#3076</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Fix named application bug <a href="https://github.com/anoma/juvix/pull/3075">#3075</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Nockma backend: translate <code>trace</code> to <code>%puts</code> hints <a href="https://github.com/anoma/juvix/pull/3053">#3053</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Add coding style guidelines <a href="https://github.com/anoma/juvix/pull/3059">#3059</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Avoid duplication in Nockma code generation <a href="https://github.com/anoma/juvix/pull/3070">#3070</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Fix JuvixTree unification <a href="https://github.com/anoma/juvix/pull/3087">#3087</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Merge containers into standard library <a href="https://github.com/anoma/juvix/pull/3088">#3088</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Support Anoma stdlib curry function <a href="https://github.com/anoma/juvix/pull/3097">#3097</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Update standard library coding style according to the guidelines <a href="https://github.com/anoma/juvix/pull/3092">#3092</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Allow <code>@</code> in constructor declarations <a href="https://github.com/anoma/juvix/pull/3099">#3099</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Update anoma nock stdlib <a href="https://github.com/anoma/juvix/pull/3103">#3103</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Compile-time configuration <a href="https://github.com/anoma/juvix/pull/3102">#3102</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Remove VampIR compile command and tests <a href="https://github.com/anoma/juvix/pull/3104">#3104</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Update AnomaCallablePathId to match Anoma calling convention <a href="https://github.com/anoma/juvix/pull/3107">#3107</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Update license reference <a href="https://github.com/anoma/juvix/pull/3108">#3108</a> (<a href="https://github.com/emmanuel-ferdman">emmanuel-ferdman</a>)</li>
+<li>Add frontend support for Anoma stdlib sha256 <a href="https://github.com/anoma/juvix/pull/3109">#3109</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Update anoma nock stdlib to include resource machine client library <a href="https://github.com/anoma/juvix/pull/3110">#3110</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Fix closure representation in the Nock backend <a href="https://github.com/anoma/juvix/pull/3105">#3105</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Rename Nockma stdlib to anomalib and add RM references <a href="https://github.com/anoma/juvix/pull/3111">#3111</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Add frontend support for Anoma Resource Machine builtins <a href="https://github.com/anoma/juvix/pull/3113">#3113</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Refactor dangerous default branches in Core to Tree translation <a href="https://github.com/anoma/juvix/pull/3116">#3116</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Serialize Nockma output using nock jam <a href="https://github.com/anoma/juvix/pull/3066">#3066</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Don't put a space after the lambda keyword <a href="https://github.com/anoma/juvix/pull/3121">#3121</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Improve Set and Map modules in the standard library <a href="https://github.com/anoma/juvix/pull/3120">#3120</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Update Anoma nock library <a href="https://github.com/anoma/juvix/pull/3119">#3119</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Remove VampIR from the CI <a href="https://github.com/anoma/juvix/pull/3126">#3126</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Formatter: add braces when the iterator body is not enclosed <a href="https://github.com/anoma/juvix/pull/3122">#3122</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Set line width to 80 <a href="https://github.com/anoma/juvix/pull/3124">#3124</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Improve function argument names in the standard library <a href="https://github.com/anoma/juvix/pull/3127">#3127</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Run Nockma in an Anoma node <a href="https://github.com/anoma/juvix/pull/3128">#3128</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Allow trailing semicolons everywhere <a href="https://github.com/anoma/juvix/pull/3123">#3123</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Support random API from the Anoma stdlib <a href="https://github.com/anoma/juvix/pull/3129">#3129</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Fix linux static build by pinning ghc-musl container version <a href="https://github.com/anoma/juvix/pull/3132">#3132</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Detect redundant patterns <a href="https://github.com/anoma/juvix/pull/3101">#3101</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Detect constant side conditions in matches <a href="https://github.com/anoma/juvix/pull/3133">#3133</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Stdlib: add functions to the Map module <a href="https://github.com/anoma/juvix/pull/3136">#3136</a> (<a href="https://github.com/lukaszcz">lukaszcz</a>)</li>
+<li>Fix package-base interaction <a href="https://github.com/anoma/juvix/pull/3139">#3139</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Add anoma nockma tests <a href="https://github.com/anoma/juvix/pull/3134">#3134</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Anoma client verbose request response <a href="https://github.com/anoma/juvix/pull/3140">#3140</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li><code>juvix dev nockma run --anoma-dir ./anoma --args</code> are given as a nockma list <a href="https://github.com/anoma/juvix/pull/3142">#3142</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Add <code>dev nockma  encode</code> command <a href="https://github.com/anoma/juvix/pull/3135">#3135</a> (<a href="https://github.com/janmasrovira">janmasrovira</a>)</li>
+<li>Update juvix-stdlib ref to latest main <a href="https://github.com/anoma/juvix/pull/3148">#3148</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Use <code>nockmaEq</code> instead of Eq instance to detect <code>nil</code> terminator <a href="https://github.com/anoma/juvix/pull/3149">#3149</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Fix StdlibRandomNextBytes call <a href="https://github.com/anoma/juvix/pull/3150">#3150</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+<li>Release 0.6.7 <a href="https://github.com/anoma/juvix/pull/3153">#3153</a> (<a href="https://github.com/paulcadman">paulcadman</a>)</li>
+</ul>
 <h2 id="v066-2024-09-03"><a href="https://github.com/anoma/juvix/tree/v0.6.6">v0.6.6</a> (2024-09-03)<a class="headerlink" href="#v066-2024-09-03" title="Permanent link">&para;</a></h2>
 <p><a href="https://github.com/anoma/juvix/compare/v0.6.5...v0.6.6">Full Changelog</a></p>
 <p><strong>Implemented enhancements:</strong></p>
@@ -3598,7 +3689,7 @@ and will not be fixed.</p>
       <li><a href="https://anoma.net/" target="_blank">Anoma</a> | <a href="https://anoma.net/blog" target="_blank">Anoma Blog</a> | <a href="https://anoma.net/talks" target="_blank">Anoma Talks</a></li>
       <li>
       <!-- include time  -->
-      Last updated: 2024-11-11 18:40:45 UTC
+      Last updated: 2024-11-12 08:59:05 UTC
         </li>
       </li>
       </ul>
