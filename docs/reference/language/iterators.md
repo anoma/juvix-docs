@@ -7,9 +7,7 @@ search:
 
 # Iterators
 
-Any identifier can be declared as an iterator. The syntax to define an iterator is the following:
-
-## Syntax
+Any identifier can be declared as an iterator. The syntax to define an iterator is:
 
 ```text
 --8<-- "docs/reference/language/syntax.md:iterator-syntax-simple"
@@ -29,7 +27,7 @@ An application of an iterator `iter` has the general form
 iter (acc1 := a1; ..; accn := an) (x1 in xs1; ..; xk in xsk) {body}
 ```
 
-where `acci`, `xi` are patterns, `ai`, `xsi` are expressions, and `body` is an expression which can refer to the variables bound by the `acci`, `xi`. The braces around `body` are optional.
+where `acci`, `xi` are patterns, `ai`, `xsi` are expressions, and `body` is an expression which can refer to the variables bound by the `acci`, `xi`. The braces around `body` are optional when `body` is an atom.
 
 The iterator application syntax is equivalent to
 
