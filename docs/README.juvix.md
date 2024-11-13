@@ -27,7 +27,7 @@ module README;
 
 [Install Juvix on your machine](./howto/installing.md#shell-script){ .md-button .md-button--primary}
 
-[:fontawesome-regular-circle-dot:{ .heart }  Try Juvix now on Codespaces](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=102404734&machine=standardLinux32gb&location=WestEurope){ .md-button  }
+[:fontawesome-regular-circle-dot:{ .heart }  Try Juvix now on Codespaces](https://codespaces.new/anoma/applications-workshop?quickstart=1){ .md-button  }
 
 </div>
 
