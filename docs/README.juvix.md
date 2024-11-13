@@ -73,9 +73,9 @@ Discord][anomaDiscord]. -->
     Learn how to [install Juvix](./howto/installing.md) on macOS or Linux, as well as compile and
    document your Juvix projects.
 
-    [:octicons-arrow-right-24: Quick start ](./howto/quick-start.md)
+    [:octicons-arrow-right-24: Quick start](./howto/quick-start.md)
 
-    [:octicons-arrow-right-24: How-to guides ](./howto/installing.md)
+    [:octicons-arrow-right-24: How-to guides](./howto/installing.md)
 
 -   :material-clock-fast:{ .lg .middle } __Tutorials__
 
@@ -84,15 +84,7 @@ Discord][anomaDiscord]. -->
     Master the essentials of Juvix through a series of
     tailored examples, tutorials and technical explanations.
 
-    [:octicons-arrow-right-24: Learn Juvix in 5 minutes](./tutorials/learn.html)
-
-<!-- -  :fontawesome-solid-book-open:{ .lg .middle } __Explanations__
-
-    ---
-
-    A series dedicated to delivering more in-depth technical explanations of Juvix.
-
-    [:octicons-arrow-right-24: Read the book](./explanations/README.md) -->
+    [:octicons-arrow-right-24: Functional programming with Juvix](./tutorials/learn.html)
 
 -  :fontawesome-solid-video:{ .lg .middle } __Talks and Workshops__
 
