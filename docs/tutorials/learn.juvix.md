@@ -5,7 +5,7 @@ search:
   boost: 2
 tags:
   - tutorial
-  - beginner
+  - intermediate
   - functional-programming
 ---
 
@@ -13,15 +13,15 @@ tags:
 module tutorials.learn;
 ```
 
-# Juvix tutorial
+# Functional programming with Juvix
 
 ![tara-teaching](./../assets/images/tara-teaching.svg){ align=left width="280" }
 
-Welcome to the Juvix tutorial! This concise guide will introduce you to
-essential language features, while also serving as an introduction to functional
-programming. By the end of this tutorial, you'll have a strong foundation in
-Juvix's core concepts, ready to explore its advanced capabilities. Let's get
-started on your Juvix journey!
+Welcome to the Juvix functional programming tutorial! This thorough
+guide provides a structured introduction to Juvix language features
+and functional programming concepts. By the end of this tutorial,
+you'll have a strong foundation in functional programming with
+Juvix. Let's get started on your Juvix journey!
 
 ## Juvix REPL
 
@@ -994,11 +994,9 @@ case tail' lst of
 
 ## Exercises
 
-You have now learnt the very basics of Juvix. To consolidate your understanding
-of Juvix and functional programming, try doing some of the following exercises.
-To learn how to write more complex Juvix programs, see the [advanced
-tutorial](./../examples/html/Tutorial/Tutorial.html) and the [Juvix program
-examples](../reference/examples.md).
+You have now learnt essential functional programming techniques in
+Juvix. To consolidate your understanding, try doing some of the
+following exercises.
 
 <!-- Include solutions as details -->
 
@@ -1010,7 +1008,7 @@ Let's start by defining some functions on booleans.
 
 The type for booleans is defined in the standard library like this:
 
-```juvix extract-module-statements 1
+```juvix extract-module-statements
 module Bool-Ex;
 
   type Bool :=
@@ -1019,7 +1017,7 @@ module Bool-Ex;
 end;
 ```
 
-Remember that you can \import this definition by adding `import Stdlib.Prelude
+Remember that you can import this definition by adding `import Stdlib.Prelude
 open` at the beginning of your module.
 
 Now, define the logical function `not` by using pattern matching.
@@ -1384,7 +1382,7 @@ Can you make the `compose` function polymorphic and as general as possible?
     end;
     ```
 
-Congratulations! your warm-up is complete!
+Congratulations! Your warm-up is complete!
 
 ### More exercises
 

@@ -140,7 +140,7 @@ nav:
       - Judoc documentation tool: ./howto/judoc.md
 
   - Tutorials:
-      - Learn Juvix in minutes: ./tutorials/learn.juvix.md
+      - Functional programming with Juvix: ./tutorials/learn.juvix.md
       - Juvix VSCode extension: ./tutorials/vscode.juvix.md
       - Juvix Emacs mode: ./tutorials/emacs.juvix.md
 
