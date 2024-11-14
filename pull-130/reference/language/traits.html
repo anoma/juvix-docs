@@ -1728,7 +1728,7 @@ showListI {A} {{Show A}} : Show (List A) :=
 </code></pre></div>
 <p>In the body of <code>show</code>, the qualified <code>Show.show</code> refers to the trait projection, i.e., the record projection associated with the trait <code>Show</code>, while unqualified <code>show</code> refers to the function being defined recursively. One uses trait projections to automatically infer appropriate instance arguments.</p>
 <p>In contrast to record projections for non-trait types, the first non-parameter argument of a trait projection is an instance argument and not ordinary explicit argument. For example, the type signature of <code>Show.show</code> is:</p>
-<div class="highlight"><pre><span></span><code>Show.show {A} {{Show A}} : List A -&gt; String
+<div class="highlight"><pre><span></span><code>Show.show {A} : {{Show A}} -&gt; List A -&gt; String
 </code></pre></div>
 <h2 id="instance-resolution">Instance resolution<a class="headerlink" href="#instance-resolution" title="Permanent link">&para;</a></h2>
 <p>Instance resolution is the search for a declared instance matching a
@@ -1840,7 +1840,7 @@ myUnit : Unit := T.pp unit;
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-11-14T11:56:06+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-11-14T13:04:39+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-14</span>
   </span>
 
     
@@ -1975,7 +1975,7 @@ myUnit : Unit := T.pp unit;
       <li><a href="https://anoma.net/" target="_blank">Anoma</a> | <a href="https://anoma.net/blog" target="_blank">Anoma Blog</a> | <a href="https://anoma.net/talks" target="_blank">Anoma Talks</a></li>
       <li>
       <!-- include time  -->
-      Last updated: 2024-11-14 12:06:14 UTC
+      Last updated: 2024-11-14 12:09:04 UTC
         </li>
       </li>
       </ul>
