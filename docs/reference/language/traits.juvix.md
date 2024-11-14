@@ -110,7 +110,7 @@ In the body of `show`, the qualified `Show.show` refers to the trait projection,
 In contrast to record projections for non-trait types, the first non-parameter argument of a trait projection is an instance argument and not ordinary explicit argument. For example, the type signature of `Show.show` is:
 
 ```
-Show.show {A} {{Show A}} : List A -> String
+Show.show {A} : {{Show A}} -> List A -> String
 ```
 
 
