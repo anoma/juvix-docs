@@ -1,0 +1,67 @@
+/* Color palette based on https://github.com/ayu-theme/ayu-colors */
+
+.src-content {
+  background-color: var(--md-juvix-background);
+}
+
+.ju-inductive {
+  color: var(--md-juvix-inductive);
+}
+
+.ju-constructor {
+  color: var(--md-juvix-constructor);
+}
+
+.ju-function {
+  color: var(--md-juvix-function);
+}
+
+.ju-axiom {
+  color: var(--md-juvix-axiom);
+}
+
+.ju-string {
+  color: var(--md-juvix-string);
+}
+
+.ju-keyword {
+  color: var(--md-juvix-keyword);
+}
+
+.ju-delimiter {
+  color: var(--md-juvix-delimiter);
+}
+
+.ju-var {
+  color: var(--md-juvix-var);
+}
+
+.ju-fixity {
+  color: var(--md-juvix-fixity);
+}
+
+.ju-comment {
+  color: var(--md-juvix-comment);
+}
+
+.ju-judoc {
+  color: var(--md-juvix-judoc);
+}
+
+.ju-number {
+  color: var√(--md-juvix-number);
+}
+
+.ju-define {
+  font-weight: bold;
+}
+
+.src-content a:hover,
+.src-content a.hover-highlight {
+  background-color: var(--md-juvix-hover);
+}
+
+.src-content a:link,
+.src-content a:visited {
+  text-decoration: none;
+}

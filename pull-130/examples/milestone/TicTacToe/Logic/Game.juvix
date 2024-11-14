@@ -1,0 +1,45 @@
+--- Tic-tac-toe is a paper-and-pencil game for two players who take turns marking the spaces
+--- in a three-by-three grid with X or O.
+--- The player who succeeds in placing three of their marks in a horizontal, vertical, or
+--- diagonal row is the winner. It is a solved game, with a forced draw assuming best play from both players.
+module Logic.Game;
+
+import Stdlib.Prelude open;
+import Logic.Extra open public;
+import Logic.Board open public;
+import Logic.GameState open public;
+
+--- Checks if we reached the end of the game.
+checkState (state : GameState) : GameState :=
+  if
+    | won state :=
+      state@GameState{error := terminate
+        ("Player "
+          ++str showSymbol (switch (GameState.player state))
+          ++str " wins!")}
+    | draw state := state@GameState{error := terminate "It's a draw!"}
+    | else := state;
+
+--- Given a player attempted move, updates the state accordingly.
+playMove (attemptedMove : Maybe Nat) (state : GameState) : GameState :=
+  case attemptedMove of
+    | nothing :=
+      state@GameState{error := continue "\nInvalid number, try again\n"}
+    | just k :=
+      let
+        squares := Board.squares (GameState.board state);
+        player' := GameState.player state;
+      in if
+        | not (isMember k (possibleMoves (flatten squares))) :=
+          state@GameState{error := continue
+            "\nThe square is already occupied, try again\n"}
+        | else :=
+          checkState
+            mkGameState@{
+              board := mkBoard (map (map (replace player' k)) squares);
+              player := switch player';
+              error := noError;
+            };
+
+--- Returns ;just; if the given ;Nat; is in range of 1..9
+validMove (n : Nat) : Maybe Nat := ite (n <= 9 && n >= 1) (just n) nothing;
