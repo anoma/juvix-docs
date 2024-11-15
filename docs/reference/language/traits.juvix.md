@@ -7,7 +7,7 @@ search:
 
 ```juvix hide
 module reference.language.traits;
-import Stdlib.Prelude open hiding {Show; mkShow; module Show};
+import Stdlib.Prelude open hiding {Show; mkShow; module Show; showListI};
 ```
 
 # Traits
@@ -74,22 +74,45 @@ showNatI : Show Nat :=
 The following a bit more involved example defines an instance of `Show`
 for the type of lists:
 
-```juvix
+```juvix extract-module-statements
+module show-list;
+
+showList {A} {{Show A}} : List A -> String
+  | nil := "nil"
+  | (h :: t) := Show.show h ++str " :: " ++str showList t;
+
+instance
+showListI {A} {{Show A}} : Show (List A) :=
+   mkShow@{show := showList};
+
+end;
+```
+
+The second argument of `showList` of type `Show A` is an _instance
+argument_, which is indicated by enclosing the argument type in double
+braces. When calling a function, the instance arguments are typically
+not provided explicity but inferred with instance resolution.
+
+The above instance definition could be written more compactly:
+
+```
 instance
 showListI {A} {{Show A}} : Show (List A) :=
    mkShow@{
-     show {A} {{Show A}} : List A -> String
+     show : List A -> String
        | nil := "nil"
        | (h :: t) := Show.show h ++str " :: " ++str show t;
    };
 ```
 
-The second argument of `show` of type `Show A` is an _instance
-argument_, which is indicated by enclosing the argument type in double
-braces. When calling a function, the instance arguments are typically
-not provided explicity but inferred with instance resolution.
-
 In the body of `show`, the qualified `Show.show` refers to the trait projection, i.e., the record projection associated with the trait `Show`, while unqualified `show` refers to the function being defined recursively. One uses trait projections to automatically infer appropriate instance arguments.
+
+In contrast to record projections for non-trait types, the first non-parameter argument of a trait projection is an instance argument and not ordinary explicit argument. For example, the type signature of `Show.show` is:
+
+```
+Show.show {A} : {{Show A}} -> List A -> String
+```
+
 
 ## Instance resolution
 
