@@ -46,12 +46,7 @@ high-level programming language with many more on the horizon. It can
 compile programs into native executable, WASM, Cairo bytecode and
 arithmetic circuits facilitating zero-knowledge proofs.
 
-Stay tuned for Juvix updates! Follow us on [:material-twitter: Twitter][twitter]
-and join our [:fontawesome-brands-discord: Discord][Discord] community.
-
-<!-- To follow the development of Anoma, follow [:material-twitter: Anoma
-Twitter][anomaTwitter] and join [:fontawesome-brands-discord: Anoma
-Discord][anomaDiscord]. -->
+Stay tuned for Juvix updates and follow us on [:material-twitter: Twitter][twitter]!
 
 </div>
 
@@ -115,7 +110,7 @@ Discord][anomaDiscord]. -->
     ---
 
     Check out our blog to discover new features in the upcoming release, along
-    with helpful examples and more. And, don't forget to join us on [Discord].
+    with helpful examples and more.
 
     [:octicons-arrow-right-24: Blog](./blog/index.md)
 
@@ -132,8 +127,6 @@ Discord][anomaDiscord]. -->
 
 [anoma]: https://anoma.net
 [changelog]: https://docs.juvix.org/changelog.html
-[Discord]: https://discord.gg/jwzaMZ2Sct
-[anomaDiscord]: https://discord.gg/jwzaMZ2Sct
 [geb]: https://github.com/anoma/geb
 [GitHub]: https://github.com/anoma/juvix
 [homebrew]: https://brew.sh

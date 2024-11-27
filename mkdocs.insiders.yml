@@ -74,8 +74,6 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/anoma/juvix
-    - icon: fontawesome/brands/discord
-      link: https://discord.gg/jwzaMZ2Sct
     - icon: fontawesome/brands/x-twitter
       link: https://x.com/juvixlang
     - icon: fontawesome/solid/blog

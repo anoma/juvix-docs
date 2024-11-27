@@ -182,8 +182,6 @@ nav:
       - blog/index.md
   - Talks:
       - talks.md
-  - Discord: https://discord.gg/jwzaMZ2Sct
-
 
 validation:
   nav:
