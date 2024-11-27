@@ -1,0 +1,9 @@
+--- This is an advanced tutorial for the Juvix programming language. You should read
+--- the "Quick start" and the "Learn Juvix in minutes" pages in the documentation
+--- first.
+module Tutorial;
+
+-- import the standard library prelude and bring it into scope
+import Stdlib.Prelude open;
+
+main : IO := printStringLn "Hello world!";
