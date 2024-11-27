@@ -42,8 +42,7 @@ Codespace][juvix-codespace]
 We value readability and maintainability over saving lines of code. The best
 source of truth for the Juvix code style is the existing codebase. We strongly
 encourage you to look at the existing code and follow the same style. Open an
-issue if you have any questions, or better yet, join our [Discord][discord] and
-ask there!
+issue if you have any questions.
 
 Some basic guidelines when writing code:
 
@@ -73,4 +72,3 @@ Thank you for contributing to Juvix!
 [stack]: https://docs.haskellstack.org/en/stable/README/
 [just]: https://just.systems
 [pre-commit]: https://pre-commit.com/
-[discord]: https://discord.gg/PfaaFVErHt
