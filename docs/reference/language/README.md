@@ -7,14 +7,40 @@ hide:
   - toc
 ---
 
-Juvix is designed with a focus on safety. The Juvix compiler runs several
-static analyses which guarantee the absence of runtime errors. Analyses
-performed include termination and type checking.
+## Language reference
 
-The Juvix module system allows developers to break down their programs into
-smaller, reusable modules that can be compiled separately and combined to create
-larger programs. These modules can be used to build libraries, which can then be
-documented using Juvix's built-in documentation generation tool, see for
-example, [the Juvix standard library's website][stdlib].
+- [Functions](../language/functions.html)
+- [Builtins](../language/builtins.html)
+- [Data types](../reference/language/datatypes.juvix.md)
+- [Records](./reference/language/records.juvix.md)
+- [Traits](./reference/language/traits.juvix.md)
+- [Modules](./reference/language/modules.md)
+- [Local definitions](./reference/language/lets.juvix.md)
+- [Control structures](./reference/language/control.juvix.md)
+- [Comments](./reference/language/comments.md)
+- [Pragmas](./reference/language/pragmas.juvix.md)
+- [Axioms](./reference/language/axioms.juvix.md)
 
-[stdlib]: https://anoma.github.io/juvix-stdlib/
+### Syntax extensions
+
+- [Aliases](./reference/language/aliases.juvix.md)
+- [Iterators](./reference/language/iterators.md)
+- [Fixities](./reference/language/fixity.juvix.md)
+- [Operators](./reference/language/operators.juvix.md)
+
+### Libraries and projects
+
+- [Standard library](./reference/stdlib.md)
+- [Example programs](./reference/examples.md)
+
+## Tooling
+
+- [Documentation tool](./reference/judoc.md)
+- [Command line interface](./reference/tooling/CLI.md)
+- [Doctor](./reference/tooling/doctor.md)
+- [Emacs mode](./reference/tooling/emacs.md)
+- [Haskell test suite](./reference/tooling/testing.md)
+
+## Compiler implementation
+
+- [Compiler pipeline](./reference/compiler.md)

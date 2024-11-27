@@ -133,6 +133,7 @@ nav:
   - ./README.juvix.md
 
   - How-to guides:
+      - How-to guides: ./howto/README.md
       - Installing Juvix: ./howto/installing.md
       - Compiling programs: ./howto/compilation.md
       - Setting up a project: ./howto/project.md
@@ -140,13 +141,14 @@ nav:
       - Judoc documentation tool: ./howto/judoc.md
 
   - Tutorials:
+      - Tutorials: ./tutorials/README.md
       - Functional programming with Juvix: ./tutorials/learn.juvix.md
       - Juvix VSCode extension: ./tutorials/vscode.juvix.md
       - Juvix Emacs mode: ./tutorials/emacs.juvix.md
 
   - Reference:
       - Language reference:
-          - About: ./reference/language/README.md
+          - Reference: ./reference/README.md
           - Functions: ./reference/language/functions.juvix.md
           - Builtins: ./reference/language/builtins.juvix.md
           - Data types: ./reference/language/datatypes.juvix.md

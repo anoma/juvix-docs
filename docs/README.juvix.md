@@ -75,7 +75,7 @@ Discord][anomaDiscord]. -->
 
     [:octicons-arrow-right-24: Quick start](./howto/quick-start.md)
 
-    [:octicons-arrow-right-24: How-to guides](./howto/installing.md)
+    [:octicons-arrow-right-24: How-to guides](./howto/README.md)
 
 -   :material-clock-fast:{ .lg .middle } __Tutorials__
 
@@ -85,6 +85,8 @@ Discord][anomaDiscord]. -->
     tailored examples, tutorials and technical explanations.
 
     [:octicons-arrow-right-24: Functional programming with Juvix](./tutorials/learn.html)
+
+    [:octicons-arrow-right-24: Tutorials](./tutorials/README.md)
 
 -  :fontawesome-solid-video:{ .lg .middle } __Talks and Workshops__
 
@@ -99,10 +101,14 @@ Discord][anomaDiscord]. -->
 
     ---
 
-    Explore the Language reference, milestone examples, and tooling
+    Explore the language reference, milestone examples, and tooling
     documentation!
 
-    [:octicons-arrow-right-24: Reference](./reference/language/README.md)
+    [:octicons-arrow-right-24: Reference](./reference/README.md)
+
+    [:octicons-arrow-right-24: Standard library](https://anoma.github.io/juvix-stdlib/index.html)
+
+    [:octicons-arrow-right-24: Packages and projects](./juvix-packages.md)
 
 -   :material-account-group:{ .lg .middle } __Blog__
 
