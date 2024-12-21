@@ -1,0 +1,10 @@
+module Package;
+
+import PackageDescription.V2 open;
+
+package : Package := defaultPackage@{
+dependencies :=
+[
+  github "anoma" "juvix-stdlib" "v0.9.0"
+]
+};
