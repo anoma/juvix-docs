@@ -7,6 +7,7 @@ hide:
   - toc
 ---
 
+- [Essential Juvix](./essential.html)
 - [Functional programming with Juvix](./learn.html)
 - [Juvix VSCode extension](./vscode.html)
 - [Juvix Emacs mode](./emacs.html)

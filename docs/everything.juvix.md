@@ -6,6 +6,7 @@ import README;
 import tutorials.vscode;
 import tutorials.emacs;
 import tutorials.learn;
+import tutorials.essential;
 import reference.language.lets;
 import reference.language.aliases;
 import reference.language.pragmas;

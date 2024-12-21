@@ -94,7 +94,7 @@ the directory of your project.
         Add the following to your `Package.juvix` file in the `dependencies` field:
 
         ```text
-        --8<------ "docs/Package.juvix:anoma-applib"
+        github "anoma" "anoma-app-patterns" "v0.5.0"
         ```
 
 </div>

@@ -142,6 +142,7 @@ nav:
 
   - Tutorials:
       - Tutorials: ./tutorials/README.md
+      - Essential Juvix: ./tutorials/essential.juvix.md
       - Functional programming with Juvix: ./tutorials/learn.juvix.md
       - Juvix VSCode extension: ./tutorials/vscode.juvix.md
       - Juvix Emacs mode: ./tutorials/emacs.juvix.md
