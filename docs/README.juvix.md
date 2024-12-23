@@ -79,6 +79,8 @@ Stay tuned for Juvix updates and follow us on [:material-twitter: Twitter][twitt
     Master the essentials of Juvix through a series of
     tailored examples, tutorials and technical explanations.
 
+    [:octicons-arrow-right-24: Essential Juvix](./tutorials/essential.html)
+
     [:octicons-arrow-right-24: Functional programming with Juvix](./tutorials/learn.html)
 
     [:octicons-arrow-right-24: Tutorials](./tutorials/README.md)

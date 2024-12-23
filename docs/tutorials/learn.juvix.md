@@ -1,5 +1,5 @@
 ---
-icon: material/notebook-heart
+icon: material/lambda
 comments: true
 search:
   boost: 2
@@ -21,133 +21,13 @@ Welcome to the Juvix functional programming tutorial! This thorough
 guide provides a structured introduction to Juvix language features
 and functional programming concepts. By the end of this tutorial,
 you'll have a strong foundation in functional programming with
-Juvix. Let's get started on your Juvix journey!
+Juvix.
 
-## Juvix REPL
-
-After [installing Juvix](../howto/installing.md), launch the Juvix REPL:
-
-```shell
-juvix repl
-```
-
-The response should be similar to:
-
-```jrepl
-Juvix REPL version 0.6.1: https://juvix.org. Run :help for help
-OK loaded: ./.juvix-build/stdlib/Stdlib/Prelude.juvix
-Stdlib.Prelude>
-```
-
-Currently, the REPL supports evaluating expressions but it does not yet support
-adding new definitions. To see the list of available REPL commands type `:help`.
-
-## Basic expressions
-
-You can try evaluating simple arithmetic expressions in the REPL:
-
-```jrepl
-Stdlib.Prelude> 3 + 4
-7
-Stdlib.Prelude> 1 + 3 * 7
-22
-Stdlib.Prelude> div 35 4
-8
-Stdlib.Prelude> mod 35 4
-3
-Stdlib.Prelude> sub 35 4
-31
-Stdlib.Prelude> sub 4 35
-0
-```
-
-By default, Juvix operates on non-negative natural numbers. Natural number
-subtraction is implemented by the function `sub`. Subtracting a bigger natural
-number from a smaller one yields `0`.
-
-You can also try boolean expressions
-
-```jrepl
-Stdlib.Prelude> true
-true
-Stdlib.Prelude> not true
-false
-Stdlib.Prelude> true && false
-false
-Stdlib.Prelude> true || false
-true
-Stdlib.Prelude> if | true := 1 | else := 0
-1
-```
-
-and strings, pairs and lists:
-
-```jrepl
-Stdlib.Prelude> "Hello world!"
-"Hello world!"
-Stdlib.Prelude> (1, 2)
-(1, 2)
-Stdlib.Prelude> [1; 2; 3]
-1 :: 2 :: 3 :: nil
-```
-The notation `[a; b; c]` is an abbreviation for `a :: b :: c :: nil`, where `::` is a list "cons" operator and `nil` (also `[]`) denotes the empty list.
-
-In fact, you can use all functions and types from the
-[Stdlib.Prelude](https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html)
-module of the [standard library](https://anoma.github.io/juvix-stdlib), which is
-preloaded by default.
-
-```jrepl
-Stdlib.Prelude> length [1; 2]
-2
-Stdlib.Prelude> isEmpty [1; 2]
-false
-Stdlib.Prelude> swap (1, 2)
-2, 1
-```
-
-## Files, modules and compilation
-
-Currently, the REPL does not support adding new definitions. To define new
-functions or data types, you need to put them in a separate file and either load
-the file in the REPL with `:load file.juvix`, evaluate it with the shell command
-`juvix eval file.juvix`, or compile it to a binary executable with `juvix
-compile native file.juvix`.
-
-To conveniently edit Juvix files, an [Emacs mode](./emacs.juvix.md) and a [VSCode
-extension](./vscode.juvix.md) are available.
-
-A Juvix file must declare a module whose name corresponds exactly to the name of
-the file. For example, a file `Hello.juvix` must declare a module `Hello`:
-
-```juvix
-module Hello;
-  -- Import the standard library prelude, including the 'String' type
-  import Stdlib.Prelude open;
-
-  main : String := "Hello world!";
-end;
-```
-
-A file compiled to an executable must define the zero-argument function `main`
-which is evaluated when running the program. The definition of `main` can have
-any non-function type, e.g., `String`, `Bool`, `Nat` or `Int`. The generated executable
-prints the result of evaluating `main`.
+Before reading this tutorial, it is recommended to work through the [Essential Juvix](./essential.html) tutorial which introduces basic Juvix freatures. Here we focus on explaining the Juvix language more thoroughly and on employing common functional programming techniques.
 
 ## Data types and functions
 
-To see the type of an expression, use the `:type` REPL command:
-
-```jrepl
-Stdlib.Prelude> :type 1
-Nat
-Stdlib.Prelude> :type -1
-Int
-Stdlib.Prelude> :type true
-Bool
-```
-
-The types `Nat`, `Int` and `Bool` are defined in the standard library.
+Common types like `Nat`, `Int` and `Bool` are defined in the standard library. These built-in types are treated specially by the compiler, but they still have ordinary definitions like any other type.
 
 The type `Bool` has two constructors `true` and `false`.
 
@@ -446,7 +326,7 @@ The variables `x` and `y` are not visible outside `f`.
 One can also use multi-clause definitions in `let`-expressions, with the same
 syntax as definitions inside a module. For example:
 
-```juvix extract-module-statements 1
+```juvix extract-module-statements 2
 module Let-Even;
   open Nat;
   open Bool;
