@@ -229,44 +229,75 @@ When calling `id`, the right type to be substituted for `A` is inferred
 automatically by the type checker when the function is called. For example, in
 the call `id 3` the type checker infers that `A` refers to the type `Nat`.
 
-Note that `id` already exists in the standard library, so redefining it in your
-file may lead to name clashes.
+!!! note
+
+    The function `id` already exists in the standard library, so redefining it
+    in your file may lead to name clashes.
 
 ## Local definitions
 
-Local definitions visible only inside a function body are introduced with the `let .. in ..` syntax:
+Local definitions visible only inside a function body are introduced with the
+`let .. in ..` syntax:
 
 ```juvix
 foo (pair : Pair Nat Nat) : Nat :=
   let
     (x, y) := pair;
-    bar := 42 + y;
+    bar : Nat := 42 + y;
     bang (z : Nat) : Nat := z * bar;
   in bang (add x bar);
 ```
 
-The identifiers `x`, `y`, `bar` and `bang` are visible only inside the `foo` function after they are defined. The definitions in a `let`-block follow the same syntax as top-level definitions. In particular, it is possible to define local functions, like `bang` above. Type annotations for variables or data structure patterns, like for `bar` or `(x, y)` above, can be omitted and automatically inferred by the type checker.
+The identifiers `x`, `y`, `bar`, and `bang` are only accessible within the `foo`
+function after their declaration. The definitions in a `let`-block follow the
+same syntax as top-level definitions. In particular, it is possible to define
+local functions, like `bang` above. Type annotations for variables or data
+structure patterns are optional and can be omitted and automatically inferred
+by the type checker. So for example `bar` can be written as `bar` without
+specifying its type.
 
 ## Functional programming
 
-Juvix is a purely functional language, which means that functions have no side effects and all variables are immutable. Once a variable is assigned a value it cannot be modified - destructive updates are simply absent from the language. Instead of mutating existing variables or data structures, a common functional programming pattern is to "update" them by creating new ones.
+Juvix is a purely functional language, which means that functions have no side
+effects and all variables are immutable. Once a variable is assigned a value it
+cannot be modified - destructive updates are simply absent from the language.
+Instead of mutating existing variables or data structures, a common functional
+programming pattern is to "update" them by creating new ones.
 
-For example, a polymorphic function that swaps the components of a pair could be implemented as follows:
+For example, a polymorphic function that swaps the components of a pair could be
+implemented as follows:
 
 ```juvix
 swap {A B} (pair : Pair A B) : Pair B A :=
   (snd pair, fst pair);
 ```
 
-Instead of modifying the pair in place, `swap` returns a new pair with the components swapped. The standard library functions `fst` and `snd` return the first and second components of a pair, respectively.
+Instead of modifying the pair in place, `swap` returns a new pair with the
+components swapped. The standard library functions `fst` and `snd` return the
+first and second components of a pair, respectively.
 
-Purely functional programming may at first seem exotic to a mainstream imperative programmer, but once assimilated it offers unique advantages. Purity guarantees that all functions are _referentially transparent_, meaning that they always return the same result for the same arguments. This is not the case in imperative programs, where the result of a function may depend on the implicit global state or the call may have side effects, which is a common source of errors. Functional programs are often more succinct, reliable, and easier to reason about. In particular, [formal verification](https://ethereum.org/en/developers/docs/smart-contracts/formal-verification/) is more manageable for functional than for imperative programs.
+Purely functional programming may at first seem exotic to a mainstream
+imperative programmer, but once assimilated it offers unique advantages. Purity
+guarantees that all functions are _referentially transparent_, meaning that they
+always return the same result for the same arguments. This is not the case in
+imperative programs, where the result of a function may depend on the implicit
+global state or the call may have side effects, which is a common source of
+errors. Functional programs are often more succinct, reliable, and easier to
+reason about. In particular, [formal
+verification](https://ethereum.org/en/developers/docs/smart-contracts/formal-verification/)
+is more manageable for functional than for imperative programs.
 
-Functional programming does require a certain shift in the developer's mindset. Nonetheless, the learning curve of a well-designed user-focused purely functional language should not be too steep. Juvix aims to deliver on this promise.
+Functional programming does require a certain shift in the developer's mindset.
+Nonetheless, the learning curve of a well-designed user-focused purely
+functional language should not be too steep. Juvix aims to deliver on this
+promise.
 
 ## Records
 
-A statically typed programming language would not be very useful without the ability to define new data types. Records with named fields of specified types are among the most common data types. In Juvix, a record type can be defined as follows.
+A statically typed programming language would not be very useful without the
+ability to define new data types. Records with named fields of specified types
+are among the most common data types. In Juvix, a record type can be defined as
+follows.
 
 ```juvix
 type Resource := mkResource@{
@@ -275,7 +306,9 @@ type Resource := mkResource@{
 };
 ```
 
-The above defines a record type `Resource` with two fields `quantity` and `price`, both of type `Nat`. A record of type `Resource` can be created using the _record constructor_ `mkResource`:
+The above defines a record type `Resource` with two fields `quantity` and
+`price`, both of type `Nat`. A record of type `Resource` can be created using
+the _record constructor_ `mkResource`:
 
 ```juvix
 myResource : Resource := mkResource@{
@@ -284,7 +317,9 @@ myResource : Resource := mkResource@{
 };
 ```
 
-The fields of a record can be accessed with _record projections_ (`Resource.quantity` and `Resource.price` below).
+The fields of a record can be accessed via their _record projections_
+(`Resource.quantity` and `Resource.price` below). For example, the following
+function computes the total cost of a resource:
 
 ```juvix
 totalCost (r : Resource) : Nat :=
@@ -325,9 +360,12 @@ type Ordering :=
 end;
 ```
 
-The above defines a type `Ordering` with three possible values: `LessThan`, `Equal`, `GreaterThan`. The values of an enumeration type are its _constructors_.
+The above defines a type `Ordering` with three possible values: `LessThan`,
+`Equal`, and `GreaterThan`. The values of an enumeration type are its
+_constructors_.
 
-Distinguishing between different constructors can be achieved using `case`-expressions:
+Distinguishing between different constructors can be achieved using
+`case`-expressions:
 
 ```juvix
 orderingToInt (ord : Ordering) : Int :=
@@ -337,7 +375,12 @@ orderingToInt (ord : Ordering) : Int :=
   | GreaterThan := 1;
 ```
 
-Records and enumerations are special cases of _inductive types_ specified by a number of constructors with arguments. Here is an example of an inductive type with two constructors `Created` and `Consumed`, each with one argument of type `Nat`.
+Records and enumerations are special cases of _inductive types_ specified by a
+number of constructors with arguments. Here is an example of an inductive type
+with two constructors:
+
+- `Created` which has one argument of type `Nat`
+- `Consumed` which also has one argument of type `Nat`
 
 ```juvix extract-module-statements
 module Tag0;
@@ -351,7 +394,10 @@ type Tag :=
 end;
 ```
 
-Actually, it is not required to name the arguments of a constructor - their types can be specified in a space-separated sequence instead. The names are often omitted when the constructor has only one argument with the argument being a record and/or the argument name being insignificant.
+Actually, it is not required to name the arguments of a constructor - their
+types can be specified in a space-separated sequence instead. The names are
+often omitted when the constructor has only one argument with the argument being
+a record and/or the argument name being insignificant.
 
 ```juvix
 type Commitment := mkCommitment@{
@@ -365,11 +411,16 @@ type Tag :=
   | Consumed Nullifier;
 ```
 
-For most types with multiple constructors, it is considered good practice to wrap constructor arguments into records. This makes type information more explicit and allows to pass all constructor arguments together to a helper function.
+For most types with multiple constructors, it is considered good practice to
+wrap constructor arguments into records. This makes type information more
+explicit and allows to pass all constructor arguments together to a helper
+function.
 
 ## Optional values
 
-The polymorphic inductive type `Maybe` from the standard library is commonly used to represent optional or nullable values in a type-safe manner. It is analogous to `Option` in Rust, `option` in OCaml or `Maybe` in Haskell.
+The polymorphic inductive type `Maybe` from the standard library is commonly
+used to represent optional or nullable values in a type-safe manner. It is
+analogous to `Option` in Rust, `option` in OCaml or `Maybe` in Haskell.
 
 ```juvix extract-module-statements
 module myMaybe;
@@ -380,6 +431,7 @@ end;
 ```
 
 Here are two standard library functions commonly used with the `Maybe` type:
+
 ```juvix extract-module-statements
 module myMaybeFunctions;
 isJust {A} (maybeValue : Maybe A) : Bool :=
@@ -394,7 +446,10 @@ fromMaybe {A} (default : A) (maybeValue : Maybe A) : A :=
 end;
 ```
 
-Juvix requires all functions to be total, i.e., to return a result for all possible argument values. One way of handling partial functions is to use the `Maybe` type for the result with `nothing` returned when the result is undefined.
+In Juvix, all functions must be total, meaning they must return a result for
+every possible input. To handle cases where a function might not have a result
+for certain inputs, you can use the `Maybe` type. When the result is undefined,
+the function can return `nothing`.
 
 ```juvix
 getCommitment (tag : Tag) : Maybe Commitment :=
@@ -406,11 +461,16 @@ getCommitmentD (default : Commitment) (tag : Tag) : Commitment :=
   fromMaybe default (getCommitment tag);
 ```
 
-The function `getCommitmentD` returns its first argument `default` if the `tag` does not contain a commitment.
+The function `getCommitmentD` returns its first argument `default` if the `tag`
+does not contain a commitment.
 
 ## Lists and iteration
 
-In the Juvix standard library, the list type is defined as a polymorphic inductive type with two constructors `nil` (empty list `[]`) and `::` ("cons" - a non-empty list with a head and a tail).
+In the Juvix standard library, the list type is defined as a polymorphic
+inductive type with two constructors:
+
+- `nil` (empty list `[]`) and
+- `::` ("cons" - a non-empty list with a head and a tail).
 
 ```juvix extract-module-statements
 module ListDefinition;
@@ -420,7 +480,10 @@ type List A :=
 end;
 ```
 
-Recall that constructor arguments can be specified without naming them by listing their types after the constructor name, like above for the arguments of `::`. The first argument of `::` is the _head_ (first list element) and the second argument is the _tail_ (remaining list elements).
+Recall that constructor arguments can be specified without naming them by
+listing their types after the constructor name, like above for the arguments of
+`::`. The first argument of `::` is the _head_ (first list element) and the
+second argument is the _tail_ (remaining list elements).
 
 The "cons" constructor `::` can be used in right-associative infix notation, e.g., `1 :: 2 :: 3 :: nil` is the same as `1 :: (2 :: (3 :: nil))` which is the same as `(::) 1 ((::) 2 ((::) 3 nil))`. So if `lst` is a list of `Nat`s, then `1 :: lst` is the list with head `1` and tail `lst`, i.e., the first element of `1 :: lst` is `1` and the remaining elements come from `lst`. When specifying all list elements at once, a move convenient notation `[1; 2; 3]` can be used. So `[1; 2; 3]` is the same as `1 :: [2; 3]`, `1 :: 2 :: [3]`, `1 :: 2 :: 3 :: []` and `1 :: 2 :: 3 :: nil`.
 
