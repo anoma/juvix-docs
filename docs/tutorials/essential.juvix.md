@@ -18,7 +18,11 @@ import Stdlib.Prelude open;
 
 ![tara-teaching](./../assets/images/tara-teaching.svg){ align=left width="280" }
 
-Welcome to the essential Juvix tutorial! This brief guide will introduce you to basic Juvix language features and allow you to quickly get up to speed with programming in Juvix. After working through this tutorial, you should be able to write simple Juvix programs and have a basic understanding of common patterns and language concepts. Let's get started on your Juvix journey!
+Welcome to the essential Juvix tutorial! This brief guide will introduce you to
+basic Juvix language features and allow you to quickly get up to speed with
+programming in Juvix. After working through this tutorial, you should be able to
+write simple Juvix programs and have a basic understanding of common patterns
+and language concepts. Let's get started on your Juvix journey!
 
 ## Juvix REPL
 
@@ -87,7 +91,11 @@ Stdlib.Prelude> (1, 2)
 Stdlib.Prelude> [1; 2; 3]
 1 :: 2 :: 3 :: nil
 ```
-The parentheses around pairs, as in `(1, 2)`, are in fact optional when no ambiguity arises. The notation `[a; b; c]` is an abbreviation for `a :: b :: c :: nil`, where `::` is a list "cons" operator and `nil` (also `[]`) denotes the empty list.
+
+The parentheses around pairs, as in `(1, 2)`, are in fact optional when no
+ambiguity arises. The notation `[a; b; c]` is an abbreviation for `a :: b :: c
+:: nil`, where `::` is a list "cons" operator and `nil` (also `[]`) denotes the
+empty list.
 
 In fact, you can use all functions and types from the
 [Stdlib.Prelude](https://anoma.github.io/juvix-stdlib/Stdlib.Prelude.html)
@@ -118,7 +126,9 @@ Stdlib.Prelude> :type (1, "A")
 Pair Nat String
 ```
 
-The type `List Nat` is the type of lists whose elements have type `Nat`. The type `Pair Nat String` is the type of pairs whose first component has type `Nat` and second component has type `String`.
+The type `List Nat` is the type of lists whose elements have type `Nat`. The
+type `Pair Nat String` is the type of pairs whose first component has type `Nat`
+and second component has type `String`.
 
 ## Files, modules and compilation
 
@@ -126,7 +136,8 @@ Currently, the REPL does not support adding new definitions. To define new
 functions or data types, you need to put them in a separate file and either load
 the file in the REPL with `:load file.juvix`, evaluate it with the shell command
 `juvix eval file.juvix`, or compile it to a binary executable with `juvix
-compile native file.juvix`. To only type-check a file without evaluating it, use `juvix typecheck file.juvix`.
+compile native file.juvix`. To only type-check a file without evaluating it, use
+`juvix typecheck file.juvix`.
 
 To conveniently edit Juvix files, an [Emacs mode](./emacs.juvix.md) and a [VSCode
 extension](./vscode.html) are available.
@@ -166,9 +177,17 @@ Function definitions in Juvix look like this:
 add (x y : Nat) : Nat := x + y;
 ```
 
-In contrast to many other languages, no function definition keyword like `def` or `fun` is required. Just the name of the function needs to be provided, followed by its arguments and the result type. The function body is specified after the assignment symbol (`:=`). The definition needs to be terminated with a semicolon.
+In contrast to many other languages, no function definition keyword like `def`
+or `fun` is required. Just the name of the function needs to be provided,
+followed by its arguments and the result type. The function body is specified
+after the assignment symbol (`:=`). The definition needs to be terminated with a
+semicolon.
 
-Juvix is a statically typed language, which means that the compiler enforces a strict typing discipline with type checking done at compilation time. It is mandatory to specify the types of the function arguments and of the result. When the arguments have different types, they need to be given in separate parenthesized argument groups:
+Juvix is a statically typed language, which means that the compiler enforces a
+strict typing discipline with type checking done at compilation time. It is
+mandatory to specify the types of the function arguments and of the result. When
+the arguments have different types, they need to be given in separate
+parenthesized argument groups:
 
 ```juvix
 addOrMul (shouldMul : Bool) (x y : Nat) : Nat :=
@@ -177,9 +196,16 @@ addOrMul (shouldMul : Bool) (x y : Nat) : Nat :=
     | else := add x y;
 ```
 
-As you see above, functions are called by listing their space-separated arguments after the function name: `add x y` calls `add` with two arguments `x` and `y`. This syntax is different than in mainstream imperative languages, but common in functional languages like OCaml, Haskell or Lean. In Juvix, the expression `add (x, y)` is a call to the function `add` with a single argument `(x, y)` which is a pair of `x` and `y`. Using `add (x, y)` instead of `add x y` in `addOrMul` would result in a type error.
+As you see above, functions are called by listing their space-separated
+arguments after the function name: `add x y` calls `add` with two arguments `x`
+and `y`. This syntax is different than in mainstream imperative languages, but
+common in functional languages like OCaml, Haskell or Lean. In Juvix, the
+expression `add (x, y)` is a call to the function `add` with a single argument
+`(x, y)` which is a pair of `x` and `y`. Using `add (x, y)` instead of `add x y`
+in `addOrMul` would result in a type error.
 
-A "function" can have zero arguments. In this way, definitions of functions and constants / variables follow the same syntax:
+A "function" can have zero arguments. In this way, definitions of functions and
+constants / variables follow the same syntax:
 
 ```juvix extract-module-statements
 module MyValue;
@@ -187,7 +213,11 @@ myValue : Nat := 42;
 end;
 ```
 
-Juvix functions can be parameterized by types, similar to generics in Java, Rust or C++. In functional programming terminology, such functions are called _polymorphic_. For example, here is a polymorphic identity function which takes an argument of an arbitrary type `A` and returns it:
+Juvix functions can be parameterized by types, similar to generics in Java,
+Rust, and C++. In functional programming terminology, such functions are called
+_polymorphic_, functions that work uniformly on all types, without relying on
+type-specific implementations. For example, here is a polymorphic identity
+function which takes an argument of an arbitrary type `A` and returns it:
 
 ```juvix extract-module-statements
 module IdPolymorphic;
@@ -195,9 +225,12 @@ id {A} (x : A) : A := x;
 end;
 ```
 
-When calling `id`, the right type to be substituted for `A` is inferred automatically by the type checker. For example, in the call `id 3` the type checker infers that `A` must be `Nat`.
+When calling `id`, the right type to be substituted for `A` is inferred
+automatically by the type checker when the function is called. For example, in
+the call `id 3` the type checker infers that `A` refers to the type `Nat`.
 
-Note that `id` already exists in the standard library, so redefining it in your file may lead to name clashes.
+Note that `id` already exists in the standard library, so redefining it in your
+file may lead to name clashes.
 
 ## Local definitions
 
