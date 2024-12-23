@@ -1,0 +1,8 @@
+/* This file is used to style the Juvix codeblock footer. */
+code.juvix::after {
+    font-family: var(--md-code-font-family);
+    content: "Juvix v0.6.6";
+    font-size: 11px;
+    color: var(--md-juvix-codeblock-footer);
+    float: right;
+}
