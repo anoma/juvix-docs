@@ -485,11 +485,23 @@ listing their types after the constructor name, like above for the arguments of
 `::`. The first argument of `::` is the _head_ (first list element) and the
 second argument is the _tail_ (remaining list elements).
 
-The "cons" constructor `::` can be used in right-associative infix notation, e.g., `1 :: 2 :: 3 :: nil` is the same as `1 :: (2 :: (3 :: nil))` which is the same as `(::) 1 ((::) 2 ((::) 3 nil))`. So if `lst` is a list of `Nat`s, then `1 :: lst` is the list with head `1` and tail `lst`, i.e., the first element of `1 :: lst` is `1` and the remaining elements come from `lst`. When specifying all list elements at once, a move convenient notation `[1; 2; 3]` can be used. So `[1; 2; 3]` is the same as `1 :: [2; 3]`, `1 :: 2 :: [3]`, `1 :: 2 :: 3 :: []` and `1 :: 2 :: 3 :: nil`.
+The "cons" constructor `::` can be used in right-associative infix notation,
+e.g., `1 :: 2 :: 3 :: nil` is the same as `1 :: (2 :: (3 :: nil))` which is the
+same as `(::) 1 ((::) 2 ((::) 3 nil))`. So if `lst` is a list of `Nat`s, then `1
+:: lst` is the list with head `1` and tail `lst`, i.e., the first element of `1
+:: lst` is `1` and the remaining elements come from `lst`. When specifying all
+list elements at once, a move convenient notation `[1; 2; 3]` can be used. So
+`[1; 2; 3]` is the same as `1 :: [2; 3]`, `1 :: 2 :: [3]`, `1 :: 2 :: 3 :: []`
+and `1 :: 2 :: 3 :: nil`.
 
-Lists are fundamental data structures in functional programming which represent ordered sequences of elements. Lists are often used where an imperative program would use arrays, but these are not always directly interchangeable. To use lists, imperative array-based code needs to be reformulated to process elements sequentially.
+Lists are fundamental data structures in functional programming which represent
+ordered sequences of elements. Lists are often used where an imperative program
+would use arrays, but these are not always directly interchangeable. To use
+lists, imperative array-based code needs to be reformulated to process elements
+sequentially.
 
-In Juvix, list processing is often performed with the `for` iterator. The expression
+In Juvix, list processing is often performed with the `for` iterator. The
+expression
 
 ```
 for (acc := initialValue) (x in list) {
@@ -497,7 +509,14 @@ for (acc := initialValue) (x in list) {
 }
 ```
 
-is evaluated as follows. First, the _accumulator_ `acc` is assigned its initial value. Then each list element is processed sequentially in the order from left to right (from beginning to end of list). At each step, `BODY` is evaluated with the current value of `acc` and the current element `x`. The result of evaluating `BODY` becomes the new value of `acc`, and the iteration proceeds with the next element. The final value of the accumulator `acc` becomes the value of the whole `for`-expression.
+is evaluated as follows. First, the _accumulator_ `acc` is assigned its initial
+value and made available to the body of the `for`-expression. Then each list
+element is processed sequentially in the order from left to right (from
+beginning to end of list). At each step, `BODY` is evaluated with the current
+value of `acc` and the current element `x`. The result of evaluating `BODY`
+becomes the new value of `acc`, and the iteration proceeds with the next
+element. The final value of the accumulator `acc` becomes the value of the whole
+`for`-expression.
 
 For example, here is a function which sums the elements of a list of natural numbers:
 
@@ -508,9 +527,14 @@ sum (lst : List Nat) : Nat :=
   };
 ```
 
-First, `acc` is initialized to 0. Going through the list from left to right, at each step the current element `x` is added to `acc` giving the new value of `acc`. At the end, `acc` is equal to the sum of all elements in the list.
+First, the accumulator `acc` is initialized to 0. As the list `lst` is
+traversed from left to right, each element `x` is added to `acc`, updating its
+value. By the end of the iteration, `acc` holds the sum of all elements in the
+list.
 
-As another example, consider a function computing the total cost of all resources priced at more than 100 (recall `Resource` and `totalCost` defined earlier in this tutorial).
+As another example, consider a function computing the total cost of all
+resources priced at more than 100 (recall `Resource` and `totalCost` defined
+earlier in this tutorial).
 
 ```juvix
 totalCostOfValuableResources (lst : List Resource) : Nat :=
@@ -521,7 +545,10 @@ totalCostOfValuableResources (lst : List Resource) : Nat :=
   };
 ```
 
-The next example demonstrates how to perform iteration with multiple accumulators. The following function `minmax` computes the minimum and the maximum in a list of natural numbers. The functions `min` and `max` are defined in the standard library.
+The next example demonstrates how to perform iteration with multiple
+accumulators. The following function `minmax` computes the minimum and the
+maximum values in a list of natural numbers. The functions `min` and `max` are
+defined in the standard library.
 
 ```juvix
 minmax (lst : List Nat) : Pair Nat Nat :=
@@ -530,7 +557,10 @@ minmax (lst : List Nat) : Pair Nat Nat :=
   };
 ```
 
-You can iterate over multiple lists simultaneously with the help of the `zip` function, which combines two lists into a list of pairs. For example, `zip [1; 2; 3] [4; 5; 6]` evaluates to `[(1, 4); (2, 5); (3, 6)]`. As an illustration, here is an implementation of the dot product for two lists of the same length.
+You can iterate over multiple lists simultaneously with the help of the `zip`
+function, which combines two lists into a list of pairs. For example, `zip [1;
+2; 3] [4; 5; 6]` evaluates to `[(1, 4); (2, 5); (3, 6)]`. As an illustration,
+here is an implementation of the dot product for two lists of the same length.
 
 ```juvix
 dotProduct (lst1 lst2 : List Nat) : Nat :=
@@ -539,7 +569,8 @@ dotProduct (lst1 lst2 : List Nat) : Nat :=
   };
 ```
 
-The dot product is the sum of products of elements at corresponding positions, e.g.,
+The dot product is the sum of products of elements at corresponding positions,
+e.g.,
 
 ```
 dotProduct [1; 2; 3] [4; 5; 6]
