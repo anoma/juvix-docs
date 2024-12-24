@@ -821,9 +821,10 @@ end;
 
 In Juvix, traits provide a way to define shared behaviour for types, similarly
 to traits in Rust, type classes in Haskell, and interfaces in Java. A trait
-specifies a set functions that must be implemented in an instance for a given
-type. Traits allow to write generic, reusable code by specifying constraints on
-types without committing to a specific implementation.
+defines a set of functions that must be implemented for a given type. Types that
+implement a trait are called *instances* of the trait. Traits enable writing
+generic, reusable code by specifying constraints on types without committing to a
+specific implementation.
 
 For example, the `Eq` trait from the standard library specifies the equality
 function `Eq.eq`.
