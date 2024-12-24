@@ -598,7 +598,9 @@ sumAllProducts [1; 2; 3] [4; 5; 6]
 = 90
 ```
 
-The `for` iterator is suitable for sequentially accumulating values from a list. Often, we want to transform a list into a new list. The `map` and `filter` iterators are commonly used for this purpose.
+The `for` iterator is suitable for sequentially accumulating values from a list.
+Often, we want to transform a list into a new list. The `map` and `filter`
+iterators are commonly used for this purpose.
 
 The expression
 
@@ -606,7 +608,9 @@ The expression
 map (x in lst) {f x}
 ```
 
-evaluates to a list obtained from `lst` by replacing each element `x` with `f x`. For example, the following function increases the prices of all resources by `n`.
+evaluates to a list obtained from `lst` by replacing each element `x` with `f
+x`. For example, the following function increases the prices of all resources by
+`n`.
 
 ```juvix
 increaseAllPrices (n : Nat) (lst : List Resource) : List Resource :=
@@ -617,7 +621,9 @@ increaseAllPrices (n : Nat) (lst : List Resource) : List Resource :=
   };
 ```
 
-The `filter` iterator picks out elements of a list that satisfy a given condition. For example, the following function picks resources with price greater than `price`. The order of the elements is preserved.
+The `filter` iterator picks out elements of a list that satisfy a given
+condition. For example, the following function picks resources with price
+greater than `price`. The order of the elements is preserved.
 
 ```juvix
 pickValuable (price : Nat) (lst : List Resource) : List Resource :=
@@ -626,13 +632,31 @@ pickValuable (price : Nat) (lst : List Resource) : List Resource :=
   };
 ```
 
-Lists do not allow for random access to their elements by index. The Juvix standard library intentionally does not provide a function to access the nth element of a list. Such a function could easily be implemented, but it would not be efficient. Lists are *not* arrays. If you find yourself wanting to access list elements by numerical index, you are most likely doing something very wrong: trying to incongruently fit imperative array programming patterns into a functional language instead of using more elegant functional techniques. If you are used to array-based programming, the shift away from "low-level" index-based array manipulations in favour of "high-level" list iterators and functions may be challenging at first. The section [Common techniques](#common-techniques) at the end of this tutorial collects some methods for solving common programming tasks in a purely functional manner.
+Lists do not allow for random access to their elements by index. The Juvix
+standard library intentionally does not provide a function to access the nth
+element of a list. Such a function could easily be implemented, but it would not
+be efficient. Lists are *not* arrays. If you find yourself wanting to access
+list elements by numerical index, you are most likely doing something wrong:
+trying to incongruently fit imperative array programming patterns into a
+functional language instead of using more elegant functional techniques. If you
+are used to array-based programming, the shift away from "low-level" index-based
+array manipulations in favour of "high-level" list iterators and functions may
+be challenging at first. The section [Common techniques](#common-techniques) at
+the end of this tutorial collects some methods for solving common programming
+tasks in a purely functional manner.
 
 ## Pipes
 
-With the pipe `|>` operator, the last argument of a function can be moved to the front: `z |> f x y` is the same as `f x y z`. This is useful for chaining function applications which perform some processing steps in sequence: `x |> doStep1 |> doStep2 |> doStep3 |> doStep4` is the same as `doStep4 (doStep3 (doStep2 (doStep1 x)))`. Such processing pipelines are favored over loops with complex bodies, as they result in cleaner code, better separation of concerns across steps, and improved modularity.
+With the pipe `|>` operator, the last argument of a function can be moved to the
+front: `z |> f x y` is the same as `f x y z`. This is useful for chaining
+function applications which perform some processing steps in sequence: `x |>
+doStep1 |> doStep2 |> doStep3 |> doStep4` is the same as `doStep4 (doStep3
+(doStep2 (doStep1 x)))`. Such processing pipelines are favored over loops with
+complex bodies, as they result in cleaner code, better separation of concerns
+across steps, and improved modularity.
 
-For example, recall the function `totalCostOfValuableResources` from the previous section.
+For example, recall the function `totalCostOfValuableResources` from the
+previous section.
 
 ```juvix extract-module-statements
 module pipes0;
@@ -645,7 +669,11 @@ totalCostOfValuableResources (lst : List Resource) : Nat :=
 end;
 ```
 
-The body of the `for`-expression is somewhat complex, performing three distinct operations: checking if the price of `r` exceeds a threshold, computing the total cost for `r`, and computing the sum. The `for`-expression can be rewritten into a pipeline, resulting in increased readability and cleaner separation between the performed operations.
+The body of the `for`-expression is somewhat complex, performing three distinct
+operations: checking if the price of `r` exceeds a threshold, computing the
+total cost for `r`, and computing the sum. The `for`-expression can be rewritten
+into a pipeline, resulting in increased readability and cleaner separation
+between the performed operations.
 
 ```juvix extract-module-statements
 module pipes1;
@@ -657,9 +685,17 @@ totalCostOfValuableResources (lst : List Resource) : Nat :=
 end;
 ```
 
-The iterators `map` and `filter` can be used as functions like above, with the body becoming the first argument and the list becoming the second argument. So `map doIt lst` is the same as `map (x in lst) {doIt x}`, and `filter doIt lst` is the same as `filter (x in lst) {doIt x}`.
+The iterators `map` and `filter` can be used as functions like above, with the
+body becoming the first argument and the list becoming the second argument. So
+`map doIt lst` is the same as `map (x in lst) {doIt x}`, and `filter doIt lst`
+is the same as `filter (x in lst) {doIt x}`.
 
-Now suppose we would like to modify `totalCostOfValuableResources` to take into account only resources with quantity greater than 10. In the first version, we would need to modify the `for`-expression body by inserting an extra check, which would complicate it even further. In the second version, we just need to add an extra step to the pipeline. There is no need to modify existing pipeline steps.
+Now suppose we would like to modify `totalCostOfValuableResources` to take into
+account only resources with quantity greater than 10. In the first version, we
+would need to modify the `for`-expression body by inserting an extra check,
+which would complicate it even further. In the second version, we just need to
+add an extra step to the pipeline. There is no need to modify existing pipeline
+steps.
 
 ```juvix extract-module-statements
 module pipes2;
@@ -674,15 +710,20 @@ end;
 
 ## Sets
 
-Lists represent ordered sequences of elements with possible duplicates. They are intended for sequential processing and do not support efficient membership checks. If you need to check for membership, the order is not significant and duplicates not allowed, then a `Set` is an appropriate data structure.
+Lists represent ordered sequences of elements with possible duplicates. They are
+intended for sequential processing and do not support efficient membership
+checks. If you need to check for membership, the order is not significant and
+duplicates not allowed, then a `Set` is an appropriate data structure.
 
-Sets are not in the standard library prelude, so you need to import them separately.
+Sets are not in the standard library prelude, so you need to import them
+separately.
 
 ```juvix
 import Stdlib.Data.Set as Set open using {Set};
 ```
 
-The above statement makes set functions available qualified with `Set.` and the `Set` type available unqualified.
+The above statement makes set functions available qualified with `Set.` and the
+`Set` type available unqualified.
 
 The following functions are available for sets.
 
@@ -691,7 +732,8 @@ The following functions are available for sets.
 - `Set.insert elem set` inserts `elem` into `set`, returning the updated set.
 - `Set.delete elem set` removes `elem` from `set`.
 
-As an example, here is a function which removes duplicates from a list, preserving element order and keeping the first occurrence of each value.
+As an example, here is a function which removes duplicates from a list,
+preserving element order and keeping the first occurrence of each value.
 
 ```juvix
 removeDuplicates (lst : List Nat) : List Nat :=
@@ -704,13 +746,22 @@ removeDuplicates (lst : List Nat) : List Nat :=
   |> reverse;
 ```
 
-The function uses an auxiliary set `seen` to check if an element was already encountered. The result of the `for` iteration is a pair of `(acc, seen)`, so to get the result list we need to extract the first component `acc` with `fst`. Since the `for` iterator goes through the list from beginning to end, the order of the accumulated result list is reversed. The standard library function `reverse` reverses the result list back to the original order.
+The function uses an auxiliary set `seen` to check if an element was already
+encountered. The result of the `for` iteration is a pair of `(acc, seen)`, so to
+get the result list we need to extract the first component `acc` with `fst`.
+Since the `for` iterator goes through the list from beginning to end, the order
+of the accumulated result list is reversed. The standard library function
+`reverse`, as its name indicates, reverses the result list back to the original
+order.
 
 ## Maps
 
-Maps are data structures which represent associations from keys to values. Each key may be associated with only one value.
+A *map* is a data structure that represents associations from keys to values. Each
+key can be associated with only one value.
 
-In Juvix, the `Map` type needs to be imported with the following statement:
+In Juvix, maps are of type `Map`, however the `Map` type is not in the standard
+library prelude, so it needs to be imported with the following statement:
+
 ```juvix
 import Stdlib.Data.Map as Map open using {Map};
 ```
@@ -718,13 +769,22 @@ import Stdlib.Data.Map as Map open using {Map};
 The following functions are supported for maps.
 
 - `Map.empty` is the empty map.
-- `Map.lookup key map` evaluates to `just value` if `key` is associated with `value` in `map`, or to `nothing` if `key` has no association in `map`.
-- `Map.insert key value map` associates `key` with `value` in `map`, overriding any previous association if present.
+
+- `Map.lookup key map` evaluates to `just value` if `key` is associated with
+`value` in `map`, or to `nothing` if `key` has no association in `map`.
+
+- `Map.insert key value map` associates `key` with `value` in `map`, overriding
+any previous association if present.
+
 - `Map.delete key map` removes the association for `key` from the `map`.
+
 - `Map.keys map` returns the list of keys present in `map`.
+
 - `Map.values map` returns the list of values associated with some key in `map`.
 
-As an example of `Map` usage, consider the following function which groups resources by their price and adds up the quantities to create one resource for each price. The order of elements in the result list is not preserved.
+As an example of `Map` usage, consider the following function which groups
+resources by their price and adds up the quantities to create one resource for
+each price. The order of elements in the result list is not preserved.
 
 ```juvix
 groupResourcesByPrice (lst : List Resource) : List Resource :=
@@ -738,7 +798,10 @@ groupResourcesByPrice (lst : List Resource) : List Resource :=
   |> Map.values;
 ```
 
-In fact, `groupResourcesByPrice` could be written more succinctly using `Map.insertWith`, which does not replace the value when the key is already present, but instead combines the new and the old values using a provided function.
+In fact, `groupResourcesByPrice` could be written more succinctly using
+`Map.insertWith`, which does not replace the value when the key is already
+present, but instead combines the new and the old values using a provided
+function.
 
 ```juvix extract-module-statements
 module map1;
@@ -756,9 +819,14 @@ end;
 
 ## Traits
 
-In Juvix, traits provide a way to define shared behaviour for types, similarly to traits in Rust, type classes in Haskell or interfaces in Java. A trait specifies a set functions that must be implemented in an instance for a given type. Traits allow to write generic, reusable code by specifying constraints on types without committing to a specific implementation.
+In Juvix, traits provide a way to define shared behaviour for types, similarly
+to traits in Rust, type classes in Haskell, and interfaces in Java. A trait
+specifies a set functions that must be implemented in an instance for a given
+type. Traits allow to write generic, reusable code by specifying constraints on
+types without committing to a specific implementation.
 
-For example, the `Eq` trait from the standard library specifies the equality function `Eq.eq`.
+For example, the `Eq` trait from the standard library specifies the equality
+function `Eq.eq`.
 
 ```juvix extract-module-statements
 module EqTrait;
