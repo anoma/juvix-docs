@@ -2,7 +2,7 @@
 icon: material/notebook-heart
 comments: true
 search:
-  boost: 2
+  boost: 3
 tags:
   - tutorial
   - beginner
