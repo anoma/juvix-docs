@@ -590,6 +590,7 @@ sumAllProducts (lst1 lst2 : List Nat) : Nat :=
 ```
 
 For example:
+
 ```
 sumAllProducts [1; 2; 3] [4; 5; 6]
 = 1 * 4 + 1 * 5 + 1 * 6 +
@@ -817,14 +818,12 @@ groupResourcesByPrice (lst : List Resource) : List Resource :=
 end;
 ```
 
-## Traits
 
 In Juvix, traits provide a way to define shared behaviour for types, similarly
 to traits in Rust, type classes in Haskell, and interfaces in Java. A trait
-defines a set of functions that must be implemented for a given type. Types that
-implement a trait are called *instances* of the trait. Traits enable writing
-generic, reusable code by specifying constraints on types without committing to a
-specific implementation.
+specifies a set of functions that must be implemented in an instance for a given
+type. Traits allow you to write generic, reusable code by specifying constraints on
+types without committing to a specific implementation.
 
 For example, the `Eq` trait from the standard library specifies the equality
 function `Eq.eq`.
@@ -839,7 +838,8 @@ type Eq A :=
 end;
 ```
 
-An instance of Eq for a given type can be defined by implementing `Eq.eq` for this type. Here is an `Eq` instance definition for the `Resource` type.
+An instance of `Eq` for a given type can be defined by implementing `Eq.eq` for
+this type. Here is an `Eq` instance definition for the `Resource` type.
 
 ```juvix
 instance
@@ -851,17 +851,30 @@ eqResourceI : Eq Resource :=
   };
 ```
 
-A polymorphic function that needs an equality operation for its type parameter can be defined generically by requiring an instance of the `Eq` trait, rather than relying on a specific equality implementation. Then the function can be used with any type for which an instance of `Eq` is available. The appropriate instance is chosen at compilation time based on the type. The corresponding concrete equality implementation from the instance is then used.
+A polymorphic function that needs an equality operation for its type parameter
+can be defined generically by requiring an instance of the `Eq` trait, rather
+than relying on a specific equality implementation. Then, the function can be
+used with any type for which an instance of `Eq` is available. The appropriate
+instance is chosen at compilation time based on the type. The corresponding
+concrete equality implementation from the instance is then used.
 
-As a trivial example, the standard library actually defines the infix equality operator `==` in terms of the `Eq` trait.
+As a trivial example, the standard library actually defines the infix equality
+operator `==` in terms of the `Eq` trait.
+
 ```juvix extract-module-statements
 module traits1;
 == {A} {{Eq A}} (x y : A) : Bool := Eq.eq x y;
 end;
 ```
-The implicit instance argument `{{Eq A}}` specifies that wherever the function `==` is called, an instance of `Eq` is required for the type parameter `A`. The specific instance is automatically inferred by the type checker, separately for each function call.
 
-Because we have defined an instance of `Eq` for `Resource`, we can now use `==` with resources. The type checker automatically choses `eqResourceI` as the required instance and uses the corresponding equality implementation.
+The implicit instance argument `{{Eq A}}` specifies that wherever the function
+`==` is called, an instance of `Eq` is required for the type parameter `A`. The
+specific instance is automatically inferred by the type checker, separately for
+each function call.
+
+Because we have defined an instance of `Eq` for `Resource`, we can now use `==`
+with resources. The type checker automatically choses `eqResourceI` as the
+required instance and uses the corresponding equality implementation.
 
 ```juvix
 countResource (resource : Resource) (lst : List Resource) : Nat :=
@@ -872,7 +885,9 @@ countResource (resource : Resource) (lst : List Resource) : Nat :=
   };
 ```
 
-The above function does not depend on the details of the `Resource` type. It only requires that equality be available for the list elements. Hence, the function can be generalized to use the `Eq` trait.
+The above function does not depend on the details of the `Resource` type. It
+only requires that equality be available for the list elements. Hence, the
+function can be generalized to use the `Eq` trait.
 
 ```juvix
 countValue {A} {{Eq A}} (value : A) (lst : List A) : Nat :=
@@ -883,7 +898,11 @@ countValue {A} {{Eq A}} (value : A) (lst : List A) : Nat :=
   };
 ```
 
-To use the polymorphic equality operator `==`, a type must have an instance of the `Eq` trait. It is quite tedious to manually implement instances of `Eq` for each user-defined type. Fortunately, an `Eq` instance may be derived automatically if there already exist `Eq` instances for the types of all record fields / constructor arguments.
+To use the polymorphic equality operator `==`, a type must have an instance of
+the `Eq` trait. It is quite tedious to manually implement instances of `Eq` for
+each user-defined type. Fortunately, an `Eq` instance may be derived
+automatically if `Eq` instances already exist for the types of all record fields
+or constructor arguments.
 
 ```
 deriving instance
@@ -892,9 +911,13 @@ eqResourceI : Eq Resource;
 
 ## Debugging
 
-Juvix does not currently have a debugger. A common way of debugging Juvix programs is to make use of the REPL. Once you load your file into the REPL (with `juvix repl file.juvix`, or via Emacs or VSCode), you can evaluate any function from the file with the desired arguments and inspect the result.
+Juvix does not currently have a debugger. A common way of debugging Juvix
+programs is to make use of the REPL. Once you load your file into the REPL (with
+`juvix repl file.juvix`, or via Emacs or VSCode), you can evaluate any function
+from the file with the desired arguments and inspect the result.
 
-Another technique is to use the `trace` function which prints its argument and returns it.
+Another technique is to use the `trace` function which prints its argument and
+returns it.
 
 ```juvix
 import Stdlib.Debug.Trace open;
@@ -906,9 +929,14 @@ combineResources (r1 r2 : Resource) : Resource :=
   };
 ```
 
-The function `combineResources` first prints `r1`, then prints `r2`, then returns updated `r1`. The sequencing operator `>->` first evaluates the expression on the left, ignores the result, then evaluates the expression on the right and returns it. The import above the function is necessary, because `trace` is not in the standard library prelude.
+The function `combineResources` first prints `r1`, then prints `r2`, then
+returns updated `r1`. The sequencing operator `>->` first evaluates the
+expression on the left, ignores the result, then evaluates the expression on the
+right and returns it. The import above the function is necessary, because
+`trace` is not in the standard library prelude.
 
-The `failwith` function may also be useful to immediately crash with an error message.
+The `failwith` function may also be useful to immediately crash with an error
+message.
 
 ```juvix
 import Stdlib.Debug.Fail open;
@@ -924,7 +952,7 @@ giveAllAway (lst : List Resource) : List Resource :=
     | else := trace "Hurray!" >-> lst';
 ```
 
-Finally, `assert` allows to specify assumptions at different points in the program.
+Finally, `assert` allows you to specify assumptions at different points in the program.
 
 ```juvix
 dividePrice (n : Nat) (r : Resource) : Resource :=
@@ -934,14 +962,17 @@ dividePrice (n : Nat) (r : Resource) : Resource :=
   };
 ```
 
-
 ## Common techniques
 
-This section lists some common programming tasks and explains how to solve them in a purely functional manner.
+This section lists some common programming tasks and explains how to solve them
+in a purely functional manner.
 
 ### Accumulate list elements from left to right
+
   - Solution: use `for`.
+
   - Example:
+
     ```juvix extract-module-statements
     module ForExample;
     reverse {A} (lst : List A) : List A :=
@@ -952,8 +983,11 @@ This section lists some common programming tasks and explains how to solve them 
     ```
 
 ### Accumulate list elements from right to left
+
   - Solution: use `rfor`.
+
   - Example:
+
   ```juvix
   duplicate (lst : List Nat) : List Nat :=
     rfor (acc := []) (x in lst) {
@@ -962,14 +996,21 @@ This section lists some common programming tasks and explains how to solve them 
   ```
 
 ### Check if a list is empty
+
   - Solution: use `isEmpty`
+
   - Anti-pattern: do _not_ use `length lst == 0`
 
-  The `length` function requires computation time proportional to the length of its argument - it needs to traverse the entire list to compute the length. The `isEmpty` function runs in constant time.
+  The `length` function requires computation time proportional to the length of
+  its argument - it needs to traverse the entire list to compute the length. The
+  `isEmpty` function runs in constant time.
 
 ### Check if a condition holds for all list elements
+
   - Solution: use `all`.
+
   - Example:
+
   ```juvix
   allDivisible (n : Nat) (lst : List Nat) : Bool :=
     all (x in lst) {
@@ -978,8 +1019,11 @@ This section lists some common programming tasks and explains how to solve them 
   ```
 
 ### Check if a condition holds for any list element
+
   - Solution: use `any`.
+
   - Example:
+
   ```juvix
   anyDivisible (n : Nat) (lst : List Nat) : Bool :=
     any (x in lst) {
@@ -988,8 +1032,11 @@ This section lists some common programming tasks and explains how to solve them 
   ```
 
 ### Keep a state when accumulating list elements
+
   - Solution: use an extra accumulator.
+
   - Example:
+
   ```juvix
   listToMap {A} {{Ord A}} (lst : List A) : Map Nat A :=
     for (acc, i := [], 0) (x in lst) {
@@ -1000,12 +1047,19 @@ This section lists some common programming tasks and explains how to solve them 
   ```
 
 ### Replicate an element into a list
-  - Solution: use `replicate`. The call `replicate n a` evaluates to `[a; a; ..; a]` with `a` repeated `n` times.
+
+  - Solution: use `replicate`. The call `replicate n a` evaluates to
+  `[a; a; ..; a]` with `a` repeated `n` times.
 
 ### Concatenate two lists
+
   - Solution: use `++`.
-  - Warning: `lst1 ++ lst2` takes time proportional to the length of `lst1`. When used inside a loop, care must be taken to avoid excessive running time.
+
+  - Warning: `lst1 ++ lst2` takes time proportional to the length of `lst1`.
+  When used inside a loop, care must be taken to avoid excessive running time.
+
   - Example:
+
   ```juvix extract-module-statements
   module myFlatten1;
   flatten {A} (listOfLists : List (List A)) : List A :=
@@ -1014,31 +1068,56 @@ This section lists some common programming tasks and explains how to solve them 
     };
   end;
   ```
-  In each step, `++` takes time proportional to the length of `lst`, so the total running time of `flatten` is proportional to the length of the result.
+
+  In each step, `++` takes time proportional to the length of `lst`, so the
+  total running time of `flatten` is proportional to the length of the result.
 
   - Anti-example:
+
   ```juvix
   flattenWRONG {A} (listOfLists : List (List A)) : List A :=
     for (acc := []) (lst in listOfLists) {
       acc ++ lst
     };
   ```
-  In each step, `++` takes time proportional to the current length of `acc`, which gets longer with every step. The total running time of `flattenWRONG` is proportional to the square of the length of the result.
+
+  In each step, `++` takes time proportional to the current length of `acc`,
+  which gets longer with every step. The total running time of `flattenWRONG` is
+  proportional to the square of the length of the result.
+
 
 ### Add an element at the back of a list
-  - Solution: don't do it. Lists are designed to allow adding elements efficiently only at the front. You should _never_ accumulate list elements by adding them at the back. Change the direction of your iteration (from `for` to `rfor` or vice versa) or use `reverse`.
-  - If you _really_ need to do it: use `lst ++ [x]`, but be aware of the inefficiency. The only legitimate use-cases are when the length of `lst` is a known constant, or when used carefully like list concatenation.
-  - Legitimate use-case examples:
+
+
+- Solution: don't do it. Lists are designed to allow adding elements efficiently
+only at the front. You should _never_ accumulate list elements by adding them at
+the back. Change the direction of your iteration (from `for` to `rfor` or vice
+versa) or use `reverse`.
+
+- If you _really_ need to do it: use `lst ++ [x]`, but be aware of the
+inefficiency. The only legitimate use-cases are when the length of `lst` is a
+known constant, or when used carefully like list concatenation.
+
+- Legitimate use-case examples:
+
+  - Key with 32 bytes:
+
   ```juvix
   key32Bytes : List Nat :=
     replicate 31 0x0 ++ [0x1];
+  ```
 
+  - Flatten a list of lists with a separator:
+
+  ```juvix
   flattenWithSeparator {A} (sep : A) (listOfLists : List (List A)) : List A :=
     rfor (acc := []) (lst in listOfLists) {
       lst ++ [sep] ++ acc
     };
   ```
+
   - Anti-example:
+
   ```juvix
   tagsToPairWRONG (tags : List Tag) : Pair (List Nullifier) (List Commitment) :=
     for (nfs, cms := [], []) (tag in tags) {
@@ -1047,7 +1126,9 @@ This section lists some common programming tasks and explains how to solve them 
         | Created cm := nfs, cms ++ [cm]
     };
   ```
+
   - Correction:
+
   ```juvix
   tagsToPair (tags : List Tag) : Pair (List Nullifier) (List Commitment) :=
     rfor (nfs, cms := [], []) (tag in tags) {
@@ -1058,36 +1139,53 @@ This section lists some common programming tasks and explains how to solve them 
   ```
 
 ### Iterate over a range of numbers
+
   - Solution: use `a to b` or `a to b step k`.
+
   - Examples:
-  ```juvix
-  listUpTo (n : Nat) : List Nat :=
-    rfor (acc := []) (x in 1 to n) {
-      x :: acc
-    };
 
-  divisors (n : Nat) : List Nat :=
-    if
-     | n == 0 := []
-     | else :=
-       rfor (acc := []) (x in 1 to n) {
-         if
-           | mod n x == 0 := x :: acc
-           | else := acc
-       };
+    - List of numbers up to `n`:
 
-  sumEvenUpTo (n : Nat) : Nat :=
-    for (acc := 0) (x in 2 to n step 2) {
-      acc + x
-    };
-  ```
+    ```juvix
+    listUpTo (n : Nat) : List Nat :=
+      rfor (acc := []) (x in 1 to n) {
+        x :: acc
+      };
+    ```
+
+    - Divisors of a number:
+
+    ```juvix
+    divisors (n : Nat) : List Nat :=
+      if
+      | n == 0 := []
+      | else :=
+        rfor (acc := []) (x in 1 to n) {
+          if
+            | mod n x == 0 := x :: acc
+            | else := acc
+        };
+    ```
+
+    - Sum of even numbers up to `n`:
+
+    ```juvix
+    sumEvenUpTo (n : Nat) : Nat :=
+      for (acc := 0) (x in 2 to n step 2) {
+        acc + x
+      };
+    ```
 
 ### Repeat n times
+
   - Solution: use `iterate`.
+
   - Example:
+
   ```juvix
   random (seed : Nat) : Nat :=
     mod (1103515245 * seed + 12345) 2147483648;
+
   randoms (n initialSeed : Nat) : Pair Nat (List Nat) :=
     let
       update (acc : Pair Nat (List Nat)) : Pair Nat (List Nat) :=
