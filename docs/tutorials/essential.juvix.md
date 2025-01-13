@@ -252,9 +252,8 @@ The identifiers `x`, `y`, `bar`, and `bang` are only accessible within the `foo`
 function after their declaration. The definitions in a `let`-block follow the
 same syntax as top-level definitions. In particular, it is possible to define
 local functions, like `bang` above. Type annotations for variables or data
-structure patterns are optional and can be omitted and automatically inferred
-by the type checker. So for example `bar` can be written as `bar` without
-specifying its type.
+structure patterns, like for `bar` or `(x, y)` above, can be omitted and
+automatically inferred by the type checker.
 
 ## Functional programming
 
