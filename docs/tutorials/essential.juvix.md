@@ -215,7 +215,7 @@ end;
 
 Juvix functions can be parameterized by types, similar to generics in Java,
 Rust, and C++. In functional programming terminology, such functions are called
-_polymorphic_, functions that work uniformly on all types, without relying on
+_polymorphic_ - they act uniformly on all types, without relying on
 type-specific implementations. For example, here is a polymorphic identity
 function which takes an argument of an arbitrary type `A` and returns it:
 
