@@ -226,7 +226,7 @@ end;
 ```
 
 When calling `id`, the right type to be substituted for `A` is inferred
-automatically by the type checker when the function is called. For example, in
+automatically by the type checker. For example, in
 the call `id 3` the type checker infers that `A` refers to the type `Nat`.
 
 !!! note
