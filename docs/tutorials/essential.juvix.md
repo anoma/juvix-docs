@@ -446,7 +446,7 @@ end;
 ```
 
 In Juvix, all functions must be total, meaning they must return a result for
-every possible input. To handle cases where a function might not have a result
+every possible input. To handle cases where a function might not produce a result
 for certain inputs, you can use the `Maybe` type. When the result is undefined,
 the function can return `nothing`.
 
