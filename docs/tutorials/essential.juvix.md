@@ -319,7 +319,7 @@ myResource : Resource := mkResource@{
 
 The fields of a record can be accessed via their _record projections_
 (`Resource.quantity` and `Resource.price` below). For example, the following
-function computes the total cost of a resource:
+The fields of a record can be accessed via their _record projections_, as demonstrated in the following function with `Resource.quantity` and `Resource.price`.
 
 ```juvix
 totalCost (r : Resource) : Nat :=
