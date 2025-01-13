@@ -1691,7 +1691,7 @@ function which takes an argument of an arbitrary type <code>A</code> and returns
 <pre class="highlight"><code class="juvix"><pre class="src-content"><span id="tutorials.essential:13"><span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:13" class="ju-code-link ju-function"><span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:13" class="ju-code-link ju-function"><span class="ju-function">id</span></a></span></a></span></span> <span class="ju-delimiter">{</span><span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:14" class="ju-code-link ju-var"><span class="ju-var">A</span></a></span><span class="ju-delimiter">}</span> <span class="ju-delimiter">(</span><span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:15" class="ju-code-link ju-var"><span class="ju-var">x</span></a></span> <span class="ju-keyword">:</span> <span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:14" class="ju-code-link ju-var"><span class="ju-var">A</span></a></span><span class="ju-delimiter">)</span> <span class="ju-keyword">:</span> <span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:14" class="ju-code-link ju-var"><span class="ju-var">A</span></a></span> <span class="ju-keyword">:=</span> <span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:15" class="ju-code-link ju-var"><span class="ju-var">x</span></a></span><span class="ju-delimiter">;</span></pre></code></pre>
 
 <p>When calling <code>id</code>, the right type to be substituted for <code>A</code> is inferred
-automatically by the type checker when the function is called. For example, in
+automatically by the type checker. For example, in
 the call <code>id 3</code> the type checker infers that <code>A</code> refers to the type <code>Nat</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1707,9 +1707,8 @@ in your file may lead to name clashes.</p>
 function after their declaration. The definitions in a <code>let</code>-block follow the
 same syntax as top-level definitions. In particular, it is possible to define
 local functions, like <code>bang</code> above. Type annotations for variables or data
-structure patterns are optional and can be omitted and automatically inferred
-by the type checker. So for example <code>bar</code> can be written as <code>bar</code> without
-specifying its type.</p>
+structure patterns, like for <code>bar</code> or <code>(x, y)</code> above, can be omitted and
+automatically inferred by the type checker.</p>
 <h2 id="functional-programming">Functional programming<a class="headerlink" href="#functional-programming" title="Permanent link">&para;</a></h2>
 <p>Juvix is a purely functional language, which means that functions have no side
 effects and all variables are immutable. Once a variable is assigned a value it
@@ -1751,7 +1750,7 @@ the <em>record constructor</em> <code>mkResource</code>:</p>
 
 <p>The fields of a record can be accessed via their <em>record projections</em>
 (<code>Resource.quantity</code> and <code>Resource.price</code> below). For example, the following
-function computes the total cost of a resource:</p>
+The fields of a record can be accessed via their <em>record projections</em>, as demonstrated in the following function with <code>Resource.quantity</code> and <code>Resource.price</code>.</p>
 <pre class="highlight"><code class="juvix"><pre class="src-content"><span id="tutorials.essential:39"><span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:39" class="ju-code-link ju-function"><span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:39" class="ju-code-link ju-function"><span class="ju-function">totalCost</span></a></span></a></span></span> <span class="ju-delimiter">(</span><span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:43" class="ju-code-link ju-var"><span class="ju-var">r</span></a></span> <span class="ju-keyword">:</span> <span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:19" class="ju-code-link ju-inductive"><span class="ju-inductive">Resource</span></a></span><span class="ju-delimiter">)</span> <span class="ju-keyword">:</span> <span class="annot"><a href="https://docs.juvix.org/pull-135/Juvix/Builtin/V1/Nat/Base.html#Juvix.Builtin.V1.Nat.Base:1" class="ju-code-link ju-inductive"><span class="ju-inductive">Nat</span></a></span> <span class="ju-keyword">:=</span> <span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:33" class="ju-code-link ju-function"><span class="ju-function">Resource<span class="ju-delimiter">.</span>quantity</span></a></span> <span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:43" class="ju-code-link ju-var"><span class="ju-var">r</span></a></span> <span class="annot"><a href="https://docs.juvix.org/pull-135/Juvix/Builtin/V1/Trait/Natural.html#Juvix.Builtin.V1.Trait.Natural:9" class="ju-code-link ju-function"><span class="ju-function">*</span></a></span> <span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:34" class="ju-code-link ju-function"><span class="ju-function">Resource<span class="ju-delimiter">.</span>price</span></a></span> <span class="annot"><a href="https://docs.juvix.org/pull-135/tutorials/essential.html#tutorials.essential:43" class="ju-code-link ju-var"><span class="ju-var">r</span></a></span><span class="ju-delimiter">;</span></pre></code></pre>
 
 <p>A record can be "updated" by creating a new record with some fields modified:</p>
@@ -2274,7 +2273,7 @@ known constant, or when used carefully like list concatenation.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-13T01:47:20+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-13T01:58:33+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-13</span>
   </span>
 
     
@@ -2457,7 +2456,7 @@ known constant, or when used carefully like list concatenation.</p>
       <li><a href="https://anoma.net/" target="_blank">Anoma</a> | <a href="https://anoma.net/blog" target="_blank">Anoma Blog</a> | <a href="https://anoma.net/talks" target="_blank">Anoma Talks</a></li>
       <li>
       <!-- include time  -->
-      Last updated: 2025-01-13 00:49:53 UTC
+      Last updated: 2025-01-13 01:01:11 UTC
         </li>
       </li>
       </ul>
