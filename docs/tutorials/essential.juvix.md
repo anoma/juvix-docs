@@ -509,7 +509,7 @@ for (acc := initialValue) (x in list) {
 ```
 
 is evaluated as follows. First, the _accumulator_ `acc` is assigned its initial
-value and made available to the body of the `for`-expression. Then each list
+value. Then each list
 element is processed sequentially in the order from left to right (from
 beginning to end of list). At each step, `BODY` is evaluated with the current
 value of `acc` and the current element `x`. The result of evaluating `BODY`
@@ -759,8 +759,7 @@ order.
 A *map* is a data structure that represents associations from keys to values. Each
 key can be associated with only one value.
 
-In Juvix, maps are of type `Map`, however the `Map` type is not in the standard
-library prelude, so it needs to be imported with the following statement:
+In Juvix, the `Map` type of maps needs to be imported with the following statement:
 
 ```juvix
 import Stdlib.Data.Map as Map open using {Map};
@@ -817,6 +816,7 @@ groupResourcesByPrice (lst : List Resource) : List Resource :=
 end;
 ```
 
+## Traits
 
 In Juvix, traits provide a way to define shared behaviour for types, similarly
 to traits in Rust, type classes in Haskell, and interfaces in Java. A trait
@@ -968,125 +968,124 @@ in a purely functional manner.
 
 ### Accumulate list elements from left to right
 
-  - Solution: use `for`.
+- Solution: use `for`.
 
-  - Example:
+- Example:
 
-    ```juvix extract-module-statements
-    module ForExample;
-    reverse {A} (lst : List A) : List A :=
-      for (acc := []) (x in lst) {
-        x :: acc
-      };
-    end;
-    ```
+```juvix extract-module-statements
+module ForExample;
+reverse {A} (lst : List A) : List A :=
+  for (acc := []) (x in lst) {
+    x :: acc
+  };
+end;
+```
 
 ### Accumulate list elements from right to left
 
-  - Solution: use `rfor`.
+- Solution: use `rfor`.
 
-  - Example:
+- Example:
 
-  ```juvix
-  duplicate (lst : List Nat) : List Nat :=
-    rfor (acc := []) (x in lst) {
-      x :: x :: acc
-    };
-  ```
+```juvix
+duplicate (lst : List Nat) : List Nat :=
+  rfor (acc := []) (x in lst) {
+    x :: x :: acc
+  };
+```
 
 ### Check if a list is empty
 
-  - Solution: use `isEmpty`
+- Solution: use `isEmpty`
 
-  - Anti-pattern: do _not_ use `length lst == 0`
+- Anti-pattern: do _not_ use `length lst == 0`
 
-  The `length` function requires computation time proportional to the length of
-  its argument - it needs to traverse the entire list to compute the length. The
-  `isEmpty` function runs in constant time.
+The `length` function requires computation time proportional to the length of
+its argument - it needs to traverse the entire list to compute the length. The
+`isEmpty` function runs in constant time.
 
 ### Check if a condition holds for all list elements
 
-  - Solution: use `all`.
+- Solution: use `all`.
 
-  - Example:
+- Example:
 
-  ```juvix
-  allDivisible (n : Nat) (lst : List Nat) : Bool :=
-    all (x in lst) {
-      mod x n == 0
-    };
-  ```
+```juvix
+allDivisible (n : Nat) (lst : List Nat) : Bool :=
+  all (x in lst) {
+    mod x n == 0
+  };
+```
 
 ### Check if a condition holds for any list element
 
-  - Solution: use `any`.
+- Solution: use `any`.
 
-  - Example:
+- Example:
 
-  ```juvix
-  anyDivisible (n : Nat) (lst : List Nat) : Bool :=
-    any (x in lst) {
-      mod x n == 0
-    };
-  ```
+```juvix
+anyDivisible (n : Nat) (lst : List Nat) : Bool :=
+  any (x in lst) {
+    mod x n == 0
+  };
+```
 
 ### Keep a state when accumulating list elements
 
-  - Solution: use an extra accumulator.
+- Solution: use an extra accumulator.
 
-  - Example:
+- Example:
 
-  ```juvix
-  listToMap {A} {{Ord A}} (lst : List A) : Map Nat A :=
-    for (acc, i := [], 0) (x in lst) {
-      (i, x) :: acc, i + 1
-    }
-    |> fst
-    |> Map.fromList;
-  ```
+```juvix
+listToMap {A} {{Ord A}} (lst : List A) : Map Nat A :=
+  for (acc, i := [], 0) (x in lst) {
+    (i, x) :: acc, i + 1
+  }
+  |> fst
+  |> Map.fromList;
+```
 
 ### Replicate an element into a list
 
-  - Solution: use `replicate`. The call `replicate n a` evaluates to
-  `[a; a; ..; a]` with `a` repeated `n` times.
+- Solution: use `replicate`. The call `replicate n a` evaluates to
+`[a; a; ..; a]` with `a` repeated `n` times.
 
 ### Concatenate two lists
 
-  - Solution: use `++`.
+- Solution: use `++`.
 
-  - Warning: `lst1 ++ lst2` takes time proportional to the length of `lst1`.
-  When used inside a loop, care must be taken to avoid excessive running time.
+- Warning: `lst1 ++ lst2` takes time proportional to the length of `lst1`.
+When used inside a loop, care must be taken to avoid excessive running time.
 
-  - Example:
+- Example:
 
-  ```juvix extract-module-statements
-  module myFlatten1;
-  flatten {A} (listOfLists : List (List A)) : List A :=
-    rfor (acc := []) (lst in listOfLists) {
-      lst ++ acc
-    };
-  end;
-  ```
+```juvix extract-module-statements
+module myFlatten1;
+flatten {A} (listOfLists : List (List A)) : List A :=
+  rfor (acc := []) (lst in listOfLists) {
+    lst ++ acc
+  };
+end;
+```
 
-  In each step, `++` takes time proportional to the length of `lst`, so the
-  total running time of `flatten` is proportional to the length of the result.
+In each step, `++` takes time proportional to the length of `lst`, so the
+total running time of `flatten` is proportional to the length of the result.
 
-  - Anti-example:
+- Anti-example:
 
-  ```juvix
-  flattenWRONG {A} (listOfLists : List (List A)) : List A :=
-    for (acc := []) (lst in listOfLists) {
-      acc ++ lst
-    };
-  ```
+```juvix
+flattenWRONG {A} (listOfLists : List (List A)) : List A :=
+  for (acc := []) (lst in listOfLists) {
+    acc ++ lst
+  };
+```
 
-  In each step, `++` takes time proportional to the current length of `acc`,
-  which gets longer with every step. The total running time of `flattenWRONG` is
-  proportional to the square of the length of the result.
+In each step, `++` takes time proportional to the current length of `acc`,
+which gets longer with every step. The total running time of `flattenWRONG` is
+proportional to the square of the length of the result.
 
 
 ### Add an element at the back of a list
-
 
 - Solution: don't do it. Lists are designed to allow adding elements efficiently
 only at the front. You should _never_ accumulate list elements by adding them at
@@ -1115,82 +1114,82 @@ known constant, or when used carefully like list concatenation.
     };
   ```
 
-  - Anti-example:
+- Anti-example:
 
-  ```juvix
-  tagsToPairWRONG (tags : List Tag) : Pair (List Nullifier) (List Commitment) :=
-    for (nfs, cms := [], []) (tag in tags) {
-      case tag of
-        | Consumed nf := nfs ++ [nf], cms
-        | Created cm := nfs, cms ++ [cm]
-    };
-  ```
+```juvix
+tagsToPairWRONG (tags : List Tag) : Pair (List Nullifier) (List Commitment) :=
+  for (nfs, cms := [], []) (tag in tags) {
+    case tag of
+      | Consumed nf := nfs ++ [nf], cms
+      | Created cm := nfs, cms ++ [cm]
+  };
+```
 
-  - Correction:
+- Correction:
 
-  ```juvix
-  tagsToPair (tags : List Tag) : Pair (List Nullifier) (List Commitment) :=
-    rfor (nfs, cms := [], []) (tag in tags) {
-      case tag of
-        | Consumed nf := nf :: nfs, cms
-        | Created cm := nfs, cm :: cms
-    };
-  ```
+```juvix
+tagsToPair (tags : List Tag) : Pair (List Nullifier) (List Commitment) :=
+  rfor (nfs, cms := [], []) (tag in tags) {
+    case tag of
+      | Consumed nf := nf :: nfs, cms
+      | Created cm := nfs, cm :: cms
+  };
+```
 
 ### Iterate over a range of numbers
 
-  - Solution: use `a to b` or `a to b step k`.
+- Solution: use `a to b` or `a to b step k`.
 
-  - Examples:
+- Examples:
 
-    - List of numbers up to `n`:
+  - List of numbers up to `n`:
 
-    ```juvix
-    listUpTo (n : Nat) : List Nat :=
+  ```juvix
+  listUpTo (n : Nat) : List Nat :=
+    rfor (acc := []) (x in 1 to n) {
+      x :: acc
+    };
+  ```
+
+  - Divisors of a number:
+
+  ```juvix
+  divisors (n : Nat) : List Nat :=
+    if
+    | n == 0 := []
+    | else :=
       rfor (acc := []) (x in 1 to n) {
-        x :: acc
+        if
+          | mod n x == 0 := x :: acc
+          | else := acc
       };
-    ```
+  ```
 
-    - Divisors of a number:
+  - Sum of even numbers up to `n`:
 
-    ```juvix
-    divisors (n : Nat) : List Nat :=
-      if
-      | n == 0 := []
-      | else :=
-        rfor (acc := []) (x in 1 to n) {
-          if
-            | mod n x == 0 := x :: acc
-            | else := acc
-        };
-    ```
-
-    - Sum of even numbers up to `n`:
-
-    ```juvix
-    sumEvenUpTo (n : Nat) : Nat :=
-      for (acc := 0) (x in 2 to n step 2) {
-        acc + x
-      };
-    ```
+  ```juvix
+  sumEvenUpTo (n : Nat) : Nat :=
+    for (acc := 0) (x in 2 to n step 2) {
+      acc + x
+    };
+  ```
 
 ### Repeat n times
 
-  - Solution: use `iterate`.
+- Solution: use `iterate`.
 
-  - Example:
+- Example:
 
-  ```juvix
-  random (seed : Nat) : Nat :=
-    mod (1103515245 * seed + 12345) 2147483648;
+```juvix
+random (seed : Nat) : Nat :=
+  mod (1103515245 * seed + 12345) 2147483648;
 
-  randoms (n initialSeed : Nat) : Pair Nat (List Nat) :=
-    let
-      update (acc : Pair Nat (List Nat)) : Pair Nat (List Nat) :=
-        let seed := random (fst acc)
-        in
-        seed, seed :: snd acc
-    in
-    iterate n update (initialSeed, []);
-  ```
+randoms (n initialSeed : Nat) : Pair Nat (List Nat) :=
+  let
+    update (acc : Pair Nat (List Nat)) : Pair Nat (List Nat) :=
+      let seed := random (fst acc)
+      in
+      seed, seed :: snd acc
+  in
+  iterate n update (initialSeed, []);
+```
