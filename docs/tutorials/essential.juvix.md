@@ -969,28 +969,26 @@ in a purely functional manner.
 - Solution: use `for`.
 
 - Example:
-
-```juvix extract-module-statements
-module ForExample;
-reverse {A} (lst : List A) : List A :=
-  for (acc := []) (x in lst) {
-    x :: acc
-  };
-end;
-```
+  ```juvix extract-module-statements
+  module ForExample;
+  reverse {A} (lst : List A) : List A :=
+    for (acc := []) (x in lst) {
+      x :: acc
+    };
+  end;
+  ```
 
 ### Accumulate list elements from right to left
 
 - Solution: use `rfor`.
 
 - Example:
-
-```juvix
-duplicate (lst : List Nat) : List Nat :=
-  rfor (acc := []) (x in lst) {
-    x :: x :: acc
-  };
-```
+  ```juvix
+  duplicate (lst : List Nat) : List Nat :=
+    rfor (acc := []) (x in lst) {
+      x :: x :: acc
+    };
+  ```
 
 ### Check if a list is empty
 
@@ -1007,41 +1005,38 @@ its argument - it needs to traverse the entire list to compute the length. The
 - Solution: use `all`.
 
 - Example:
-
-```juvix
-allDivisible (n : Nat) (lst : List Nat) : Bool :=
-  all (x in lst) {
-    mod x n == 0
-  };
-```
+  ```juvix
+  allDivisible (n : Nat) (lst : List Nat) : Bool :=
+    all (x in lst) {
+      mod x n == 0
+    };
+  ```
 
 ### Check if a condition holds for any list element
 
 - Solution: use `any`.
 
 - Example:
-
-```juvix
-anyDivisible (n : Nat) (lst : List Nat) : Bool :=
-  any (x in lst) {
-    mod x n == 0
-  };
-```
+  ```juvix
+  anyDivisible (n : Nat) (lst : List Nat) : Bool :=
+    any (x in lst) {
+      mod x n == 0
+    };
+  ```
 
 ### Keep a state when accumulating list elements
 
 - Solution: use an extra accumulator.
 
 - Example:
-
-```juvix
-listToMap {A} {{Ord A}} (lst : List A) : Map Nat A :=
-  for (acc, i := [], 0) (x in lst) {
-    (i, x) :: acc, i + 1
-  }
-  |> fst
-  |> Map.fromList;
-```
+  ```juvix
+  listToMap {A} {{Ord A}} (lst : List A) : Map Nat A :=
+    for (acc, i := [], 0) (x in lst) {
+      (i, x) :: acc, i + 1
+    }
+    |> fst
+    |> Map.fromList;
+  ```
 
 ### Replicate an element into a list
 
@@ -1056,31 +1051,27 @@ listToMap {A} {{Ord A}} (lst : List A) : Map Nat A :=
 When used inside a loop, care must be taken to avoid excessive running time.
 
 - Example:
-
-```juvix extract-module-statements
-module myFlatten1;
-flatten {A} (listOfLists : List (List A)) : List A :=
-  rfor (acc := []) (lst in listOfLists) {
-    lst ++ acc
-  };
-end;
-```
-
-In each step, `++` takes time proportional to the length of `lst`, so the
-total running time of `flatten` is proportional to the length of the result.
+  ```juvix extract-module-statements
+  module myFlatten1;
+  flatten {A} (listOfLists : List (List A)) : List A :=
+    rfor (acc := []) (lst in listOfLists) {
+      lst ++ acc
+    };
+  end;
+  ```
+  In each step, `++` takes time proportional to the length of `lst`, so the
+  total running time of `flatten` is proportional to the length of the result.
 
 - Anti-example:
-
-```juvix
-flattenWRONG {A} (listOfLists : List (List A)) : List A :=
-  for (acc := []) (lst in listOfLists) {
-    acc ++ lst
-  };
-```
-
-In each step, `++` takes time proportional to the current length of `acc`,
-which gets longer with every step. The total running time of `flattenWRONG` is
-proportional to the square of the length of the result.
+  ```juvix
+  flattenWRONG {A} (listOfLists : List (List A)) : List A :=
+    for (acc := []) (lst in listOfLists) {
+      acc ++ lst
+    };
+  ```
+  In each step, `++` takes time proportional to the current length of `acc`,
+  which gets longer with every step. The total running time of `flattenWRONG` is
+  proportional to the square of the length of the result.
 
 
 ### Add an element at the back of a list
@@ -1095,17 +1086,10 @@ inefficiency. The only legitimate use-cases are when the length of `lst` is a
 known constant, or when used carefully like list concatenation.
 
 - Legitimate use-case examples:
-
-  - Key with 32 bytes:
-
   ```juvix
   key32Bytes : List Nat :=
     replicate 31 0x0 ++ [0x1];
-  ```
 
-  - Flatten a list of lists with a separator:
-
-  ```juvix
   flattenWithSeparator {A} (sep : A) (listOfLists : List (List A)) : List A :=
     rfor (acc := []) (lst in listOfLists) {
       lst ++ [sep] ++ acc
@@ -1113,45 +1097,38 @@ known constant, or when used carefully like list concatenation.
   ```
 
 - Anti-example:
-
-```juvix
-tagsToPairWRONG (tags : List Tag) : Pair (List Nullifier) (List Commitment) :=
-  for (nfs, cms := [], []) (tag in tags) {
-    case tag of
-      | Consumed nf := nfs ++ [nf], cms
-      | Created cm := nfs, cms ++ [cm]
-  };
-```
+  ```juvix
+  tagsToPairWRONG (tags : List Tag) : Pair (List Nullifier) (List Commitment) :=
+    for (nfs, cms := [], []) (tag in tags) {
+      case tag of
+        | Consumed nf := nfs ++ [nf], cms
+        | Created cm := nfs, cms ++ [cm]
+    };
+  ```
 
 - Correction:
-
-```juvix
-tagsToPair (tags : List Tag) : Pair (List Nullifier) (List Commitment) :=
-  rfor (nfs, cms := [], []) (tag in tags) {
-    case tag of
-      | Consumed nf := nf :: nfs, cms
-      | Created cm := nfs, cm :: cms
-  };
-```
+  ```juvix
+  tagsToPair (tags : List Tag) : Pair (List Nullifier) (List Commitment) :=
+    rfor (nfs, cms := [], []) (tag in tags) {
+      case tag of
+        | Consumed nf := nf :: nfs, cms
+        | Created cm := nfs, cm :: cms
+    };
+  ```
 
 ### Iterate over a range of numbers
 
 - Solution: use `a to b` or `a to b step k`.
 
 - Examples:
-
-  - List of numbers up to `n`:
-
   ```juvix
+  -- list of numbers up to `n`
   listUpTo (n : Nat) : List Nat :=
     rfor (acc := []) (x in 1 to n) {
       x :: acc
     };
-  ```
 
-  - Divisors of a number:
-
-  ```juvix
+  -- divisors of a number
   divisors (n : Nat) : List Nat :=
     if
     | n == 0 := []
@@ -1161,11 +1138,8 @@ tagsToPair (tags : List Tag) : Pair (List Nullifier) (List Commitment) :=
           | mod n x == 0 := x :: acc
           | else := acc
       };
-  ```
 
-  - Sum of even numbers up to `n`:
-
-  ```juvix
+  -- sum of even numbers up to `n`
   sumEvenUpTo (n : Nat) : Nat :=
     for (acc := 0) (x in 2 to n step 2) {
       acc + x
@@ -1177,17 +1151,16 @@ tagsToPair (tags : List Tag) : Pair (List Nullifier) (List Commitment) :=
 - Solution: use `iterate`.
 
 - Example:
+  ```juvix
+  random (seed : Nat) : Nat :=
+    mod (1103515245 * seed + 12345) 2147483648;
 
-```juvix
-random (seed : Nat) : Nat :=
-  mod (1103515245 * seed + 12345) 2147483648;
-
-randoms (n initialSeed : Nat) : Pair Nat (List Nat) :=
-  let
-    update (acc : Pair Nat (List Nat)) : Pair Nat (List Nat) :=
-      let seed := random (fst acc)
-      in
-      seed, seed :: snd acc
-  in
-  iterate n update (initialSeed, []);
-```
+  randoms (n initialSeed : Nat) : Pair Nat (List Nat) :=
+    let
+      update (acc : Pair Nat (List Nat)) : Pair Nat (List Nat) :=
+        let seed := random (fst acc)
+        in
+        seed, seed :: snd acc
+    in
+    iterate n update (initialSeed, []);
+  ```
