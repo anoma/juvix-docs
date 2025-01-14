@@ -243,7 +243,7 @@ Local definitions visible only inside a function body are introduced with the
 foo (pair : Pair Nat Nat) : Nat :=
   let
     (x, y) := pair;
-    bar : Nat := 42 + y;
+    bar := 42 + y;
     bang (z : Nat) : Nat := z * bar;
   in bang (add x bar);
 ```
@@ -316,8 +316,6 @@ myResource : Resource := mkResource@{
 };
 ```
 
-The fields of a record can be accessed via their _record projections_
-(`Resource.quantity` and `Resource.price` below). For example, the following
 The fields of a record can be accessed via their _record projections_, as demonstrated in the following function with `Resource.quantity` and `Resource.price`.
 
 ```juvix
@@ -378,8 +376,8 @@ Records and enumerations are special cases of _inductive types_ specified by a
 number of constructors with arguments. Here is an example of an inductive type
 with two constructors:
 
-- `Created` which has one argument of type `Nat`
-- `Consumed` which also has one argument of type `Nat`
+- `Created` with one argument `commitment` of type `Nat`,
+- `Consumed` with one argument `nullifier` of type `Nat`.
 
 ```juvix extract-module-statements
 module Tag0;
@@ -468,8 +466,8 @@ does not contain a commitment.
 In the Juvix standard library, the list type is defined as a polymorphic
 inductive type with two constructors:
 
-- `nil` (empty list `[]`) and
-- `::` ("cons" - a non-empty list with a head and a tail).
+- `nil` - empty list `[]`,
+- `::` - "cons" - a non-empty list with a head and a tail.
 
 ```juvix extract-module-statements
 module ListDefinition;
@@ -621,7 +619,7 @@ increaseAllPrices (n : Nat) (lst : List Resource) : List Resource :=
   };
 ```
 
-The `filter` iterator picks out elements of a list that satisfy a given
+The `filter` iterator selects elements of a list that satisfy a given
 condition. For example, the following function picks resources with price
 greater than `price`. The order of the elements is preserved.
 
@@ -747,8 +745,8 @@ removeDuplicates (lst : List Nat) : List Nat :=
 ```
 
 The function uses an auxiliary set `seen` to check if an element was already
-encountered. The result of the `for` iteration is a pair of `(acc, seen)`, so to
-get the result list we need to extract the first component `acc` with `fst`.
+encountered. The result of the `for` iteration is a pair `(acc, seen)`, so to
+get the result list we need to extract the first component `acc` using `fst`.
 Since the `for` iterator goes through the list from beginning to end, the order
 of the accumulated result list is reversed. The standard library function
 `reverse`, as its name indicates, reverses the result list back to the original
@@ -996,9 +994,9 @@ duplicate (lst : List Nat) : List Nat :=
 
 ### Check if a list is empty
 
-- Solution: use `isEmpty`
+- Solution: use `isEmpty`.
 
-- Anti-pattern: do _not_ use `length lst == 0`
+- Anti-pattern: do _not_ use `length lst == 0`.
 
 The `length` function requires computation time proportional to the length of
 its argument - it needs to traverse the entire list to compute the length. The
