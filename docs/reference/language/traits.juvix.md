@@ -142,9 +142,8 @@ instance
 boxT {A} {{T (Box A)}} : T (Box A) := mkT (\{x := x});
 ```
 
-We check whether each parameter is a strict subterm of some trait parameter in
-the target. This ordering is included in the finite multiset extension of the
-subterm ordering, hence terminating.
+We check whether the mutisets of instance parameters decrease w.r.t. the finite multiset extension of the
+subterm ordering.
 
 ## Matching on implicit instances
 
