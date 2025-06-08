@@ -32,13 +32,16 @@ Common types like `Nat`, `Int` and `Bool` are defined in the standard library. T
 The type `Bool` has two constructors `true` and `false`.
 
 ```juvix extract-module-statements
-module Bool;
+module Bool-module;
 
   type Bool :=
     | true
     | false;
+
+  open Bool public;
 end;
 ```
+By default, constructors need to be qualified by their type name. To use them unqualified, we need the last line: `open Bool public`.
 
 The constructors of a data type can be used to build elements of the type. They
 can also appear as patterns in function definitions. For example, the `not`
@@ -47,7 +50,7 @@ function is defined in the standard library by:
 ```juvix extract-module-statements 1
 module Bool-Not;
 
-  open Bool;
+  open Bool-module;
   not : Bool -> Bool
     | true := false
     | false := true;
@@ -69,7 +72,7 @@ can be moved to the left of the colon. For example,
 
 ```juvix extract-module-statements 1
 module Bool-Or;
-  open Bool;
+  open Bool-module;
 
   or (x : Bool) : Bool -> Bool
     | true := true
@@ -81,7 +84,7 @@ is equivalent to
 
 ```juvix extract-module-statements 1
 module Bool-Or-Altl;
-  open Bool;
+  open Bool-module;
 
   or : Bool -> Bool -> Bool
     | _ true := true
@@ -93,7 +96,7 @@ pipe `|` should be omitted:
 
 ```juvix extract-module-statements 1
 module Bool-Id;
-  open Bool;
+  open Bool-module;
 
   id (x : Bool) : Bool := x;
 end;
@@ -103,11 +106,13 @@ A more complex example of a data type is the `Nat` type from the standard
 library:
 
 ```juvix extract-module-statements
-module Nat;
+module Nat-module;
 
   type Nat :=
     | zero : Nat
     | suc : Nat -> Nat;
+
+  open Nat public;
 end;
 ```
 
@@ -158,7 +163,7 @@ One can use `zero` and `suc` in pattern matching, like any other constructors:
 ```juvix extract-module-statements 2
 module Nat-Add;
   import Stdlib.Data.Fixity open;
-  open Nat;
+  open Nat-module;
 
   syntax operator + additive;
   + : Nat -> Nat -> Nat
@@ -227,8 +232,8 @@ implementation of a function which checks whether a natural number is even:
 
 ```juvix extract-module-statements 2
 module Even;
-  open Nat;
-  open Bool;
+  open Nat-module;
+  open Bool-module;
 
   isEven : Nat -> Bool
     | zero := true
@@ -245,8 +250,8 @@ naming the subpattern.
 
 ```juvix extract-module-statements 2
 module Positive;
-  open Nat;
-  open Bool;
+  open Nat-module;
+  open Bool-module;
 
   isPositive : Nat -> Bool
     | zero := false
@@ -258,8 +263,8 @@ The above function could also be written as:
 
 ```juvix extract-module-statements 2
 module Positive-Alt;
-  open Nat;
-  open Bool;
+  open Nat-module;
+  open Bool-module;
 
   isPositive : Nat -> Bool
     | zero := false
@@ -328,8 +333,8 @@ syntax as definitions inside a module. For example:
 
 ```juvix extract-module-statements 2
 module Let-Even;
-  open Nat;
-  open Bool;
+  open Nat-module;
+  open Bool-module;
 
   isEven : Nat -> Bool :=
     let
@@ -367,6 +372,8 @@ module NList;
   type NList :=
     | nnil : NList
     | ncons : Nat -> NList -> NList;
+
+  open NList public;
   end;
   ```
 
@@ -418,11 +425,12 @@ binary trees with natural numbers in nodes.
 
 ```juvix extract-module-statements 1
 module Tree;
-  open Nat;
+  open Nat-module;
 
     type Tree :=
     | leaf : Nat -> Tree
     | node : Nat -> Tree -> Tree -> Tree;
+    open Tree public;
 end;
 ```
 
@@ -507,10 +515,12 @@ from the standard library:
 module List;
   import Stdlib.Data.Fixity open;
 
-  syntax operator :: cons;
   type List A :=
     | nil : List A
     | :: : A -> List A -> List A;
+
+  open List public;
+  syntax operator :: cons;
 end
 ```
 
@@ -847,6 +857,8 @@ module Maybe;
   type Maybe A :=
     | nothing : Maybe A
     | just : A -> Maybe A;
+
+  open Maybe public;
 end;
 ```
 
@@ -931,6 +943,7 @@ pattern matching, use the previously defined logical functions.
       type Bool :=
         | true : Bool
         | false : Bool;
+      open Bool;
 
       not : Bool -> Bool
         | false := true
@@ -975,6 +988,7 @@ value is present.
         type NMaybe :=
           | nnothing : NMaybe
           | njust : Nat → NMaybe;
+        open NMaybe;
 
         isJust : NMaybe -> Bool
           | (njust _) := true
@@ -995,6 +1009,7 @@ as a default value.
       type NMaybe :=
         | nnothing : NMaybe
         | njust : Nat → NMaybe;
+      open NMaybe;
 
       fromMaybe (d : Nat) : NMaybe -> Nat
         | (njust n) := n
@@ -1069,10 +1084,12 @@ We can define polymorphic lists as follows:
 module List-Ex;
   import Stdlib.Data.Fixity open;
 
-  syntax operator :: cons;
   type List A :=
     | nil : List A
     | :: : A -> List A -> List A;
+
+  open List public;
+  syntax operator :: cons;
 end;
 ```
 
@@ -1358,6 +1375,7 @@ which applies a function to all natural numbers stored in a tree.
       type Tree :=
         | leaf : Nat -> Tree
         | node : Nat -> Tree -> Tree -> Tree;
+      open Tree;
 
       tmap (f : Nat -> Nat) : Tree -> Tree
         | (leaf x) := leaf (f x)
@@ -1380,6 +1398,7 @@ repeat the previous exercise.
       type Tree A :=
         | leaf : A -> Tree A
         | node : A -> Tree A -> Tree A -> Tree A;
+      open Tree;
 
       tmap {A B} (f : A -> B) : Tree A -> Tree B
         | (leaf x) := leaf (f x)

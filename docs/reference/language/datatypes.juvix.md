@@ -81,8 +81,8 @@ numbers:
 ```juvix
 syntax operator + additive;
 + : Nat -> Nat -> Nat
-  | zero b := b
-  | (suc a) b := suc (a + b);
+  | Nat.zero b := b
+  | (Nat.suc a) b := Nat.suc (a + b);
 ```
 
 # ADT syntax
@@ -135,10 +135,13 @@ A classic example of this concept is the `List` type, which is polymorphic in
 the type of its list elements.
 
 ```juvix
-  syntax operator :: cons;
   type List (A : Type) :=
     | nil : List A
     | :: : A -> List A -> List A;
+
+  open List; -- make nil and :: available in the current scope
+
+  syntax operator :: cons;
 ```
 
 The following function determines whether an element is in a list or not.

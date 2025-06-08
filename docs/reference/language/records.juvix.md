@@ -48,12 +48,12 @@ types with named constructor arguments.
 
 ### Examples
 
-We declare the `newType` record type with the `mkNewtype` type
+We declare the `NewType` record type with the `NewType.mk` type
 constructor and one field `f`.
 
 ```juvix
-type T := constructT : T;
-type newtype := mkNewtype@{f : T};
+type T := construct : T;
+type NewType := mk@{f : T};
 ```
 
 Consider the `Pair` record type that models pairs of values. The
@@ -62,7 +62,7 @@ Consider the `Pair` record type that models pairs of values. The
 
 ```juvix
 type Pair (A B : Type) :=
-  mkPair@{
+  mk@{
     fst : A;
     snd : B
   };
@@ -89,9 +89,9 @@ constructor and provide values for each field.
 
 ```juvix
 p1 : Pair T T :=
-  mkPair@{
-    fst := constructT;
-    snd := constructT
+  Pair.mk@{
+    fst := T.construct;
+    snd := T.construct
   };
 ```
 
@@ -99,9 +99,9 @@ An pair of `EnumRecord`s can be created as follows.
 
 ```juvix
 p2 : Pair EnumRecord EnumRecord :=
-  mkPair@{
-    fst := C1@{c1a := constructT; c1b := constructT};
-    snd := C2@{c2a := constructT; c2b := constructT};
+  Pair.mk@{
+    fst := EnumRecord.C1@{c1a := T.construct; c1b := T.construct};
+    snd := EnumRecord.C2@{c2a := T.construct; c2b := T.construct};
   };
 ```
 
@@ -117,7 +117,7 @@ using values retrieved with record projections.
 
 ```juvix
 p1' : Pair T T :=
-  mkPair@{
+  Pair.mk@{
     fst := Pair.fst p1;
     snd := Pair.snd p1;
   };
@@ -132,7 +132,7 @@ module Open-Pair;
 open Pair;
 
 flipP : Pair T T :=
-  mkPair (snd p1) (fst p1);
+  Pair.mk (snd p1) (fst p1);
 end;
 ```
 
@@ -146,7 +146,7 @@ import Stdlib.Data.Nat open;
 ```
 
 ```juvix
-natPair : Pair Nat Nat := mkPair@{fst := 1; snd := 2};
+natPair : Pair Nat Nat := Pair.mk@{fst := 1; snd := 2};
 ```
 
 We can update the value of the `fst` field from `1` to `2` as follows:
@@ -163,7 +163,7 @@ When using records, one often defines variables with the same names as record fi
 p3 : Pair Nat Nat :=
   let fst := 1;
       snd := 2;
-  in mkPair@{
+  in Pair.mk@{
     fst := fst;
     snd := snd;
   };
@@ -175,7 +175,7 @@ With record punning, the assignment to a record field of a variable with the sam
 p3' : Pair Nat Nat :=
   let fst := 1;
       snd := 2;
-  in mkPair@{fst; snd};
+  in Pair.mk@{fst; snd};
 ```
 
 ## Record patterns
@@ -184,6 +184,6 @@ Record syntax can be used in pattern matching, e.g.,
 
 ```juvix
 f : Pair Nat Nat -> Nat
-  | mkPair@{fst := zero; snd} := snd
-  | mkPair@{fst} := fst;
+  | Pair.mk@{fst := zero; snd} := snd
+  | Pair.mk@{fst} := fst;
 ```

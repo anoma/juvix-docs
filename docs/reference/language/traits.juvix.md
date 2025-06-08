@@ -7,7 +7,7 @@ search:
 
 ```juvix hide
 module reference.language.traits;
-import Stdlib.Prelude open hiding {Show; mkShow; module Show; showListI};
+import Stdlib.Prelude open hiding {Show; module Show; showListI};
 ```
 
 # Traits
@@ -30,7 +30,7 @@ For example, the following defines a trait `Show`. Any type `A` that implements
 
 ```juvix
 trait
-type Show A := mkShow@{show : A -> String};
+type Show A := mk@{show : A -> String};
 ```
 
 ## Instance declarations
@@ -51,11 +51,11 @@ For example, we could define three instances of `Show` for `String`, `Bool`, and
 
 ```juvix
 instance
-showStringI : Show String := mkShow@{show := id};
+showStringI : Show String := Show.mk@{show := id};
 
 instance
 showBoolI : Show Bool :=
-  mkShow@{
+  Show.mk@{
     show (x : Bool) : String :=
       if
         | x := "true"
@@ -64,7 +64,7 @@ showBoolI : Show Bool :=
 
 instance
 showNatI : Show Nat :=
-  mkShow@{
+  Show.mk@{
     show := natToString
   };
 ```
@@ -83,7 +83,7 @@ showList {A} {{Show A}} : List A -> String
 
 instance
 showListI {A} {{Show A}} : Show (List A) :=
-   mkShow@{show := showList};
+   Show.mk@{show := showList};
 
 end;
 ```
@@ -98,7 +98,7 @@ The above instance definition could be written more compactly:
 ```
 instance
 showListI {A} {{Show A}} : Show (List A) :=
-   mkShow@{
+   Show.mk@{
      show : List A -> String
        | nil := "nil"
        | (h :: t) := Show.show h ++str " :: " ++str show t;
@@ -136,10 +136,10 @@ To prevent looping during instance search, we need to ensure that the trait para
 type Box A := box A;
 
 trait
-type T A := mkT@{pp : A -> A};
+type T A := mk@{pp : A -> A};
 
 instance
-boxT {A} {{T (Box A)}} : T (Box A) := mkT (\{x := x});
+boxT {A} {{T (Box A)}} : T (Box A) := T.mk (\{x := x});
 ```
 
 We check whether the mutisets of instance parameters decrease w.r.t. the finite multiset extension of the
@@ -155,7 +155,7 @@ f {A} {{Show A}} (x : A) : String :=
   Show.show x;
 
 f' {A} : {{Show A}} -> A -> String
-  | {{mkShow s}} x := s x;
+  | {{Show.mk s}} x := s x;
 
 f'' {A} : {{Show A}} -> A -> String
   | {{M}} x := Show.show {{M}} x;
@@ -203,28 +203,28 @@ The following type-checks because:
 module coercions-1;
 
 trait
-type U A := mkU {pp : A -> A};
+type U A := mk {pp : A -> A};
 
 trait
-type U1 A := mkU1 {pp : A -> A};
+type U1 A := mk {pp : A -> A};
 
 trait
-type U2 A := mkU2 {pp : A -> A};
+type U2 A := mk {pp : A -> A};
 
 coercion instance
 fromU1toU {A} {{U1 A}} : U A :=
-  mkU@{
+  U.mk@{
     pp := U1.pp
   };
 
 coercion instance
 fromU2toU {A} {{U2 A}} : U A :=
-  mkU@{
+  U.mk@{
     pp := U2.pp
   };
 
 instance
-instU2 : U2 String := mkU2 id;
+instU2 : U2 String := U2.mk id;
 
 printMain : IO := printStringLn (U.pp "X")
 
@@ -238,27 +238,27 @@ The following results in an ambiguity error because:
 
 ```
 trait
-type T A := mkT { pp : A → A };
+type T A := mk { pp : A → A };
 
 trait
-type T1 A := mkT1 { pp : A → A };
+type T1 A := mk { pp : A → A };
 
 trait
-type T2 A := mkT2 { pp : A → A };
+type T2 A := mk { pp : A → A };
 
 instance
-unitT1 : T1 Unit := mkT1 (pp := λ{_ := unit});
+unitT1 : T1 Unit := T1.mk (pp := λ{_ := unit});
 
 instance
-unitT2 : T2 Unit := mkT2 (pp := λ{_ := unit});
+unitT2 : T2 Unit := T2.mk (pp := λ{_ := unit});
 
 coercion instance
-fromT1toT {A} {{T1 A}} : T A := mkT@{
+fromT1toT {A} {{T1 A}} : T A := T.mk@{
   pp := T1.pp
 };
 
 coercion instance
-fromT2toT {A} {{T2 A}} : T A := mkT@{
+fromT2toT {A} {{T2 A}} : T A := T.mk@{
   pp := T2.pp
 };
 
@@ -271,26 +271,26 @@ The following type-checks, because there exists a non-coercion instance for `T2 
 module coercions-2;
 
 trait
-type T1 A := mkT1 {pp : A -> A};
+type T1 A := mk {pp : A -> A};
 
 trait
-type T2 A := mkT2 {pp : A -> A};
+type T2 A := mk {pp : A -> A};
 
 instance
 instT1 {A} : T1 A :=
-  mkT1@{
+  T1.mk@{
     pp := id
   };
 
 coercion instance
 fromT1toT2 {A} {{M : T1 A}} : T2 A :=
-  mkT2@{
+  T2.mk@{
     pp := T1.pp {{M}}
   };
 
 instance
 instT2 : T2 String :=
-  mkT2@{
+  T2.mk@{
     pp (s : String) : String := s ++str "!"
   };
 

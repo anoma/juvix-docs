@@ -30,8 +30,8 @@ type Nat :=
 syntax operator + additive;
 builtin nat-plus
 + : Nat → Nat → Nat
-  | zero b := b
-  | (suc a) b := suc (a + b);
+  | Nat.zero b := b
+  | (Nat.suc a) b := Nat.suc (a + b);
 ```
 
 ## Builtin axiom definitions

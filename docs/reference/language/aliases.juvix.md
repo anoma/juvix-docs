@@ -32,8 +32,8 @@ For instance, consider the following example where we define the alias `Boolean`
 
 ```juvix
 syntax alias Boolean := Bool;
-syntax alias ⊥ := false;
-syntax alias ⊤ := true;
+syntax alias ⊥ := Bool.false;
+syntax alias ⊤ := Bool.true;
 
 type Bool :=
   | false

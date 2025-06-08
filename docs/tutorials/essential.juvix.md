@@ -243,12 +243,13 @@ Local definitions visible only inside a function body are introduced with the
 foo (pair : Pair Nat Nat) : Nat :=
   let
     (x, y) := pair;
-    bar := 42 + y;
+    z : Nat := 7;
+    bar := 42 + y * z;
     bang (z : Nat) : Nat := z * bar;
   in bang (add x bar);
 ```
 
-The identifiers `x`, `y`, `bar`, and `bang` are only accessible within the `foo`
+The identifiers `x`, `y`, `z`, `bar`, and `bang` are only accessible within the `foo`
 function after their declaration. The definitions in a `let`-block follow the
 same syntax as top-level definitions. In particular, it is possible to define
 local functions, like `bang` above. Type annotations for variables or data
@@ -299,7 +300,7 @@ are among the most common data types. In Juvix, a record type can be defined as
 follows.
 
 ```juvix
-type Resource := mkResource@{
+type Resource := mk@{
   quantity : Nat;
   price : Nat;
 };
@@ -310,7 +311,7 @@ The above defines a record type `Resource` with two fields `quantity` and
 the _record constructor_ `mkResource`:
 
 ```juvix
-myResource : Resource := mkResource@{
+myResource : Resource := Resource.mk@{
   quantity := 42;
   price := 100;
 };
@@ -337,7 +338,7 @@ The above is equivalent to:
 ```juvix extract-module-statements
 module addQuantityPrime;
 addQuantity (n : Nat) (r : Resource) : Resource :=
-  mkResource@{
+  Resource.mk@{
     quantity := Resource.quantity r + n;
     price := Resource.price r;
   };
@@ -367,9 +368,9 @@ Distinguishing between different constructors can be achieved using
 ```juvix
 orderingToInt (ord : Ordering) : Int :=
   case ord of
-  | LessThan := -1
-  | Equal := 0
-  | GreaterThan := 1;
+  | Ordering.LessThan := -1
+  | Ordering.Equal := 0
+  | Ordering.GreaterThan := 1;
 ```
 
 Records and enumerations are special cases of _inductive types_ specified by a
@@ -397,10 +398,10 @@ often omitted when the constructor has only one argument with the argument being
 a record and/or the argument name being insignificant.
 
 ```juvix
-type Commitment := mkCommitment@{
+type Commitment := mk@{
   commitment : Nat;
 };
-type Nullifier := mkNullifier@{
+type Nullifier := mk@{
   nullifier : Nat;
 };
 type Tag :=
@@ -424,8 +425,11 @@ module myMaybe;
 type Maybe A :=
   | nothing
   | just A;
+
+open Maybe;
 end;
 ```
+By default, constructor names need to be qualified with the type name, e.g., `Maybe.just`. The statement `open Maybe` makes the constructor names available unqualified in the current scope.
 
 Here are two standard library functions commonly used with the `Maybe` type:
 
@@ -451,8 +455,8 @@ the function can return `nothing`.
 ```juvix
 getCommitment (tag : Tag) : Maybe Commitment :=
   case tag of
-  | Created c := just c
-  | Consumed _ := nothing;
+  | Tag.Created c := just c
+  | Tag.Consumed _ := nothing;
 
 getCommitmentD (default : Commitment) (tag : Tag) : Commitment :=
   fromMaybe default (getCommitment tag);
@@ -474,6 +478,8 @@ module ListDefinition;
 type List A :=
   | nil
   | :: A (List A);
+
+open List;
 end;
 ```
 
@@ -713,13 +719,6 @@ intended for sequential processing and do not support efficient membership
 checks. If you need to check for membership, the order is not significant and
 duplicates not allowed, then a `Set` is an appropriate data structure.
 
-Sets are not in the standard library prelude, so you need to import them
-separately.
-
-```juvix
-import Stdlib.Data.Set as Set open using {Set};
-```
-
 The above statement makes set functions available qualified with `Set.` and the
 `Set` type available unqualified.
 
@@ -756,12 +755,6 @@ order.
 
 A *map* is a data structure that represents associations from keys to values. Each
 key can be associated with only one value.
-
-In Juvix, the `Map` type of maps needs to be imported with the following statement:
-
-```juvix
-import Stdlib.Data.Map as Map open using {Map};
-```
 
 The following functions are supported for maps.
 
@@ -829,8 +822,8 @@ function `Eq.eq`.
 module EqTrait;
 trait
 type Eq A :=
-  mkEq@{
-    eq (x y : A) : Bool;
+  mk@{
+    isEqual (x y : A) : Bool;
   };
 end;
 ```
@@ -841,8 +834,8 @@ this type. Here is an `Eq` instance definition for the `Resource` type.
 ```juvix
 instance
 eqResourceI : Eq Resource :=
-  mkEq@{
-    eq (r1 r2 : Resource) : Bool :=
+  Eq.mk@{
+    isEqual (r1 r2 : Resource) : Bool :=
       Resource.quantity r1 == Resource.quantity r2 &&
       Resource.price r1 == Resource.price r2;
   };
@@ -860,7 +853,7 @@ operator `==` in terms of the `Eq` trait.
 
 ```juvix extract-module-statements
 module traits1;
-== {A} {{Eq A}} (x y : A) : Bool := Eq.eq x y;
+== {A} {{Eq A}} (x y : A) : Bool := Eq.isEqual x y;
 end;
 ```
 
@@ -1101,8 +1094,8 @@ known constant, or when used carefully like list concatenation.
   tagsToPairWRONG (tags : List Tag) : Pair (List Nullifier) (List Commitment) :=
     for (nfs, cms := [], []) (tag in tags) {
       case tag of
-        | Consumed nf := nfs ++ [nf], cms
-        | Created cm := nfs, cms ++ [cm]
+        | Tag.Consumed nf := nfs ++ [nf], cms
+        | Tag.Created cm := nfs, cms ++ [cm]
     };
   ```
 
@@ -1111,8 +1104,8 @@ known constant, or when used carefully like list concatenation.
   tagsToPair (tags : List Tag) : Pair (List Nullifier) (List Commitment) :=
     rfor (nfs, cms := [], []) (tag in tags) {
       case tag of
-        | Consumed nf := nf :: nfs, cms
-        | Created cm := nfs, cm :: cms
+        | Tag.Consumed nf := nf :: nfs, cms
+        | Tag.Created cm := nfs, cm :: cms
     };
   ```
 

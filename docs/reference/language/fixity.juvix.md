@@ -84,39 +84,7 @@ For an operator with both associativity and precedence:
 syntax fixity <name> := <arity> {
     assoc := <associativity>;
     above := [otherOperatorName1;...; otherOperatorNameN]
-    };
-```
-
-## Operator Alias Fixity
-
-In Juvix, when an operator is aliased, the new alias automatically inherits the
-fixity of the original operator. This behavior ensures consistency and
-predictability when using aliases in place of their corresponding operators.
-
-Consider a scenario where the `or` operator is an alias of the `||` operator.
-The `or` operator will inherit the fixity of the `||` operator by default.
-
-```juvix hide
-import reference.language.aliases open;
-```
-
-```juvix extract-module-statements
-module fixityInherit;
-  syntax alias or := ||;
-  newor (a b c : Bool) : Bool := (a or b) or c;
-end;
-```
-
-However, if you want to override this behavior, you can declare the alias with
-`none` as its fixity. Make sure to import `Stdlib.Data.Fixity`.
-
-```juvix extract-module-statements
-module fixityNone;
-  import Stdlib.Data.Fixity open;
-  syntax operator or none;
-  syntax alias or := ||;
-  or3 (a b c : Bool) : Bool := or (or a b) c;
-end;
+};
 ```
 
 ## Examples of Fixity Declarations

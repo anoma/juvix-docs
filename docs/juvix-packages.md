@@ -39,7 +39,7 @@ the directory of your project.
         Add the following to your `Package.juvix` file in the `dependencies` field:
 
         ```text
-        --8<------ "docs/Package.juvix:juvix-stdlib"
+        github "anoma" "juvix-stdlib" "v0.12.1"
         ```
 
 - :octicons-mark-github-16: [`anoma/juvix-test`](https://github.com/anoma/juvix-test)
@@ -55,7 +55,7 @@ the directory of your project.
         Add the following to your `Package.juvix` file in the `dependencies` field:
 
         ```text
-        --8<------ "docs/Package.juvix:juvix-test"
+        github "anoma" "juvix-test" "v0.18.0"
         ```
 
 - :octicons-mark-github-16: [`anoma/juvix-quickcheck`](https://github.com/anoma/juvix-quickcheck)
@@ -73,7 +73,7 @@ the directory of your project.
         Add the following to your `Package.juvix` file in the `dependencies` field:
 
         ```text
-        --8<------ "docs/Package.juvix:juvix-quickcheck"
+        github "anoma" "juvix-quickcheck" "v0.18.0"
         ```
 </div>
 

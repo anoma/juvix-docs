@@ -11,5 +11,5 @@ type Maybe (A : Type) :=
 --- Retrieves a value from a ;Maybe; or returns the default value if missing.
 fromMaybe {A} (default : A) (maybeValue : Maybe A) : A :=
   case maybeValue of
-    | nothing := default
-    | just value := value;
+    | Maybe.nothing := default
+    | Maybe.just value := value;
