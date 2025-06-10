@@ -1,0 +1,11 @@
+module Fibonacci;
+
+import Stdlib.Prelude open;
+
+fib : (n : Nat) -> (x1 : Nat) -> (x2 : Nat) -> Nat
+  | zero x1 _ := x1
+  | (suc n) x1 x2 := fib n x2 (x1 + x2);
+
+fibonacci (n : Nat) : Nat := fib n 0 1;
+
+main : IO := readLn (stringToNat >> fibonacci >> printNatLn);
