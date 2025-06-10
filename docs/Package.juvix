@@ -8,5 +8,5 @@ defaultPackage@{
 name := "juvix-docs";
 dependencies :=
 [
-  github "anoma" "juvix-stdlib" "d0ff76b36927f051b5572351a12ebba84cdb3aeb"
+  github "anoma" "juvix-stdlib" "v0.12.1"
 ]};
