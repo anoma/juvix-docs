@@ -8,7 +8,7 @@ hide:
 
 ## Quick Start
 
-To install a package, you must sure that you have created the `Package.juvix`
+To install a package, you must make sure that you have created the `Package.juvix`
 file. You can run `juvix init` to get a template `Package.juvix` file. A more
 detailed description on the usage of `Package.juvix` can be found in [*How to
 setup a Juvix project*](./howto/project.md). For now, one example is
@@ -99,7 +99,7 @@ the directory of your project.
 
 </div>
 
-Please let us know if you are using Juvix in your project. Opening an issue or a
+Please let us know if you are using Juvix in your project. Open an issue or a
 pull request to add it to this list.
 
 Check out other examples of Juvix programs in the [examples/milestone](./reference/examples.md).

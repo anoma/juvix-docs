@@ -46,7 +46,7 @@ convention. That is, if `dir` is the root of a project, then the module in
 
 ## _Import_ and _open_ statements
 
-In order to access the definitions from another modules we use an
+In order to access the definitions from other modules we use an
 _import_ statement. To import some module named `Data.List` we will write
 
 ```juvix

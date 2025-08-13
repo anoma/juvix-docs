@@ -12,7 +12,7 @@ big or small, of any kind. We appreciate any help/feedback we can get.
 
 Make sure you have followed the [installation instructions][installation] and
 have a working Juvix installation. You can also use the web-based development
-environment ready to the Juvix development, [Juvix Github
+environment ready for Juvix development, [Juvix Github
 Codespace][juvix-codespace]
 
 1. Fork the repository.

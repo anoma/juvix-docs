@@ -8,7 +8,7 @@ comments: true
 # Juvix Doctor
 
 The `juvix doctor` command can help you to troubleshoot problems with
-your development environment. For each problem the doctor finds they'll
+your development environment. For each problem the doctor finds, there will
 be a link to a section on this page to help you fix it.
 
 ## Could not find the clang command

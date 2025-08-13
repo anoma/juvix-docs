@@ -23,7 +23,7 @@ and functional programming concepts. By the end of this tutorial,
 you'll have a strong foundation in functional programming with
 Juvix.
 
-Before reading this tutorial, it is recommended to work through the [Essential Juvix](./essential.html) tutorial which introduces basic Juvix freatures. Here we focus on explaining the Juvix language more thoroughly and on employing common functional programming techniques.
+Before reading this tutorial, it is recommended to work through the [Essential Juvix](./essential.html) tutorial which introduces basic Juvix features. Here we focus on explaining the Juvix language more thoroughly and on employing common functional programming techniques.
 
 ## Data types and functions
 

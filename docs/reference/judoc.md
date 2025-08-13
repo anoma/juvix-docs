@@ -91,7 +91,7 @@ For instance, the following is a paragraph with two _lines_:
 --- Second line
 ```
 
-Note that a rendered paragraph will have have no line breaks. If you want to
+Note that a rendered paragraph will have no line breaks. If you want to
 have line breaks, you will need to split the paragraph. Hence, the paragraph
 above will be rendered as
 

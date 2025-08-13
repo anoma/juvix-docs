@@ -65,7 +65,7 @@ It may have multiple patterns:
 --8<-- [end:function-pattern-matching-multiple-arguments]
 ```
 
-Lambdas
+### Lambdas
 
 ```
 --8<-- [start:function-lambda]

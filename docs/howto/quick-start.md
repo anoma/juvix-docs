@@ -92,4 +92,4 @@ You can also evaluate the file without compiling it first by executing
 juvix eval HelloWorld.juvix
 ```
 
-The output should be the same : `hello world!`.
+The output should be the same: `hello world!`.
